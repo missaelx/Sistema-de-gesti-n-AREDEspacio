@@ -6,6 +6,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.RegistrarMaestroController">
-    
+<AnchorPane id="AnchorPane" prefHeight="586.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.RegistrarMaestroController">
+   <children>
+      <Label layoutX="46.0" layoutY="44.0" text="Nombre" />
+      <Label layoutX="47.0" layoutY="145.0" text="Apellidos" />
+      <Label layoutX="46.0" layoutY="247.0" text="Correo Electronico" />
+      <VBox layoutX="513.0" layoutY="106.0" prefHeight="176.0" prefWidth="276.0">
+         <children>
+            <CheckBox mnemonicParsing="false" text="Salsa" />
+         </children>
+      </VBox>
+      <Label layoutX="49.0" layoutY="357.0" text="Telefono" />
+      <TextField fx:id="campoNombre" layoutX="46.0" layoutY="94.0" />
+      <TextField fx:id="campoApellido" layoutX="46.0" layoutY="196.0" />
+      <TextField fx:id="campoCorreo" layoutX="46.0" layoutY="306.0" />
+      <TextField fx:id="campoTelefono" layoutX="46.0" layoutY="412.0" />
+      <Button id="btnGuardar" fx:id="btnGuardar" layoutX="611.0" layoutY="498.0" mnemonicParsing="false" text="Guardar" />
+      <Button id="btnCancelar" fx:id="btnCancelar" cancelButton="true" layoutX="757.0" layoutY="498.0" mnemonicParsing="false" text="Cancelar" />
+      <Label layoutX="513.0" layoutY="44.0" text="Danzas impartidas" />
+   </children>
 </AnchorPane>
