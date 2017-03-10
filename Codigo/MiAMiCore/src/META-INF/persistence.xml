@@ -2,18 +2,18 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="MiAMiCorePU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>modelo.Alumnos</class>
+    <class>modelo.Inscripciones</class>
     <class>modelo.GrupoClase</class>
-    <class>modelo.Horario</class>
-    <class>modelo.Mensualidades</class>
+    <class>modelo.TipoDanza</class>
+    <class>modelo.Asistencias</class>
+    <class>modelo.Egresos</class>
     <class>modelo.Promociones</class>
     <class>modelo.Ingresos</class>
-    <class>modelo.Inscripciones</class>
-    <class>modelo.Egresos</class>
+    <class>modelo.Horario</class>
     <class>modelo.Maestros</class>
     <class>modelo.Pagosdesalario</class>
-    <class>modelo.Asistencias</class>
-    <class>modelo.TipoDanza</class>
-    <class>modelo.Alumnos</class>
+    <class>modelo.Mensualidades</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/danza?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="danza"/>

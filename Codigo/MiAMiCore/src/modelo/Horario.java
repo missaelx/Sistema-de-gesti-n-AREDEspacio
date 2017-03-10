@@ -134,7 +134,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Horario[ idhorario=" + idhorario + " ]";
+        return "recursos.Horario[ idhorario=" + idhorario + " ]";
     }
     
 }

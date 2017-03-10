@@ -97,7 +97,7 @@ public class Mensualidades implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Mensualidades[ idmensualidad=" + idmensualidad + " ]";
+        return "recursos.Mensualidades[ idmensualidad=" + idmensualidad + " ]";
     }
     
 }

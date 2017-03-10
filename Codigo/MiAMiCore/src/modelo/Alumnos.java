@@ -54,31 +54,41 @@ public class Alumnos implements Serializable {
     @Basic(optional = false)
     @Column(name = "idalumno")
     private Integer idalumno;
+    
     @Column(name = "correo")
     private String correo;
+    
     @Basic(optional = false)
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
+    
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
+    
     @Basic(optional = false)
     @Column(name = "apellidos")
     private String apellidos;
+    
     @Column(name = "telefono")
     private String telefono;
+    
     @Basic(optional = false)
     @Column(name = "telefono_emergencia")
     private String telefonoEmergencia;
+    
     @Column(name = "tipo_sangre")
     private String tipoSangre;
+    
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
+    
     @Basic(optional = false)
     @Column(name = "diapago")
     private int diapago;
+    
     @JoinTable(name = "alumnos_grupo_aux", joinColumns = {
         @JoinColumn(name = "idalumno", referencedColumnName = "idalumno")}, inverseJoinColumns = {
         @JoinColumn(name = "idclase", referencedColumnName = "idGrupoClase")})
@@ -246,7 +256,7 @@ public class Alumnos implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Alumnos[ idalumno=" + idalumno + " ]";
+        return "recursos.Alumnos[ idalumno=" + idalumno + " ]";
     }
     
 }
