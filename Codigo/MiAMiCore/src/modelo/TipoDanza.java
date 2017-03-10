@@ -131,7 +131,7 @@ public class TipoDanza implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.TipoDanza[ idTipoDanza=" + idTipoDanza + " ]";
+        return "recursos.TipoDanza[ idTipoDanza=" + idTipoDanza + " ]";
     }
     
 }

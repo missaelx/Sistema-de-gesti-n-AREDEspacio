@@ -97,7 +97,7 @@ public class Pagosdesalario implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Pagosdesalario[ idpagodesalario=" + idpagodesalario + " ]";
+        return "recursos.Pagosdesalario[ idpagodesalario=" + idpagodesalario + " ]";
     }
     
 }

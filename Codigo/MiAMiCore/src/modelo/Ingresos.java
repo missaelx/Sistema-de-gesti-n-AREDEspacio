@@ -7,6 +7,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -19,6 +20,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -33,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ingresos.findAll", query = "SELECT i FROM Ingresos i")
     , @NamedQuery(name = "Ingresos.findByIdingreso", query = "SELECT i FROM Ingresos i WHERE i.idingreso = :idingreso")
     , @NamedQuery(name = "Ingresos.findByMonto", query = "SELECT i FROM Ingresos i WHERE i.monto = :monto")
-    , @NamedQuery(name = "Ingresos.findByDescripcion", query = "SELECT i FROM Ingresos i WHERE i.descripcion = :descripcion")})
+    , @NamedQuery(name = "Ingresos.findByDescripcion", query = "SELECT i FROM Ingresos i WHERE i.descripcion = :descripcion")
+    , @NamedQuery(name = "Ingresos.findByFecha", query = "SELECT i FROM Ingresos i WHERE i.fecha = :fecha")})
 public class Ingresos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,6 +52,10 @@ public class Ingresos implements Serializable {
     private BigDecimal monto;
     @Column(name = "descripcion")
     private String descripcion;
+    @Basic(optional = false)
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idingreso")
     private List<Inscripciones> inscripcionesList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idingreso")
@@ -60,9 +68,10 @@ public class Ingresos implements Serializable {
         this.idingreso = idingreso;
     }
 
-    public Ingresos(Integer idingreso, BigDecimal monto) {
+    public Ingresos(Integer idingreso, BigDecimal monto, Date fecha) {
         this.idingreso = idingreso;
         this.monto = monto;
+        this.fecha = fecha;
     }
 
     public Integer getIdingreso() {
@@ -87,6 +96,14 @@ public class Ingresos implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     @XmlTransient
@@ -129,7 +146,7 @@ public class Ingresos implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Ingresos[ idingreso=" + idingreso + " ]";
+        return "recursos.Ingresos[ idingreso=" + idingreso + " ]";
     }
     
 }

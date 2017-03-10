@@ -7,6 +7,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -19,6 +20,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -33,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Egresos.findAll", query = "SELECT e FROM Egresos e")
     , @NamedQuery(name = "Egresos.findByIdegresos", query = "SELECT e FROM Egresos e WHERE e.idegresos = :idegresos")
     , @NamedQuery(name = "Egresos.findByMonto", query = "SELECT e FROM Egresos e WHERE e.monto = :monto")
-    , @NamedQuery(name = "Egresos.findByDescripcion", query = "SELECT e FROM Egresos e WHERE e.descripcion = :descripcion")})
+    , @NamedQuery(name = "Egresos.findByDescripcion", query = "SELECT e FROM Egresos e WHERE e.descripcion = :descripcion")
+    , @NamedQuery(name = "Egresos.findByFecha", query = "SELECT e FROM Egresos e WHERE e.fecha = :fecha")})
 public class Egresos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,6 +52,10 @@ public class Egresos implements Serializable {
     private BigDecimal monto;
     @Column(name = "descripcion")
     private String descripcion;
+    @Basic(optional = false)
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idegreso")
     private List<Pagosdesalario> pagosdesalarioList;
 
@@ -58,9 +66,10 @@ public class Egresos implements Serializable {
         this.idegresos = idegresos;
     }
 
-    public Egresos(Integer idegresos, BigDecimal monto) {
+    public Egresos(Integer idegresos, BigDecimal monto, Date fecha) {
         this.idegresos = idegresos;
         this.monto = monto;
+        this.fecha = fecha;
     }
 
     public Integer getIdegresos() {
@@ -85,6 +94,14 @@ public class Egresos implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     @XmlTransient
@@ -118,7 +135,7 @@ public class Egresos implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Egresos[ idegresos=" + idegresos + " ]";
+        return "recursos.Egresos[ idegresos=" + idegresos + " ]";
     }
     
 }

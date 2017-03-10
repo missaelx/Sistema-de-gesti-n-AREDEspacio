@@ -97,7 +97,7 @@ public class Inscripciones implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Inscripciones[ idinscripcion=" + idinscripcion + " ]";
+        return "recursos.Inscripciones[ idinscripcion=" + idinscripcion + " ]";
     }
     
 }

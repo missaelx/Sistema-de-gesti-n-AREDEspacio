@@ -149,7 +149,7 @@ public class Maestros implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Maestros[ idmaestro=" + idmaestro + " ]";
+        return "recursos.Maestros[ idmaestro=" + idmaestro + " ]";
     }
     
 }

@@ -118,7 +118,7 @@ public class Asistencias implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Asistencias[ idasistencia=" + idasistencia + " ]";
+        return "recursos.Asistencias[ idasistencia=" + idasistencia + " ]";
     }
     
 }

@@ -127,7 +127,7 @@ public class Promociones implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Promociones[ idpromocion=" + idpromocion + " ]";
+        return "recursos.Promociones[ idpromocion=" + idpromocion + " ]";
     }
     
 }

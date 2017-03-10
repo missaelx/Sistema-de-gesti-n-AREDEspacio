@@ -36,14 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "GrupoClase.findAll", query = "SELECT g FROM GrupoClase g")
     , @NamedQuery(name = "GrupoClase.findByIdGrupoClase", query = "SELECT g FROM GrupoClase g WHERE g.idGrupoClase = :idGrupoClase")
     , @NamedQuery(name = "GrupoClase.findByActivo", query = "SELECT g FROM GrupoClase g WHERE g.activo = :activo")
-    , @NamedQuery(name = "GrupoClase.findByCostoMensual", query = "SELECT g FROM GrupoClase g WHERE g.costoMensual = :costoMensual")})
+    , @NamedQuery(name = "GrupoClase.findByCostoMensual", query = "SELECT g FROM GrupoClase g WHERE g.costoMensual = :costoMensual")
+    , @NamedQuery(name = "GrupoClase.findByTerminado", query = "SELECT g FROM GrupoClase g WHERE g.terminado = :terminado")
+    , @NamedQuery(name = "GrupoClase.findByFechaTermino", query = "SELECT g FROM GrupoClase g WHERE g.fechaTermino = :fechaTermino")})
 public class GrupoClase implements Serializable {
-
-    @Basic(optional = false)
-    @Column(name = "terminado")
-    private boolean terminado;
-    @Column(name = "fecha_termino")
-    private String fechaTermino;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -58,6 +54,11 @@ public class GrupoClase implements Serializable {
     @Basic(optional = false)
     @Column(name = "costo_mensual")
     private BigDecimal costoMensual;
+    @Basic(optional = false)
+    @Column(name = "terminado")
+    private boolean terminado;
+    @Column(name = "fecha_termino")
+    private String fechaTermino;
     @ManyToMany(mappedBy = "grupoClaseList")
     private List<Alumnos> alumnosList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoClase")
@@ -75,10 +76,11 @@ public class GrupoClase implements Serializable {
         this.idGrupoClase = idGrupoClase;
     }
 
-    public GrupoClase(Integer idGrupoClase, boolean activo, BigDecimal costoMensual) {
+    public GrupoClase(Integer idGrupoClase, boolean activo, BigDecimal costoMensual, boolean terminado) {
         this.idGrupoClase = idGrupoClase;
         this.activo = activo;
         this.costoMensual = costoMensual;
+        this.terminado = terminado;
     }
 
     public Integer getIdGrupoClase() {
@@ -103,6 +105,22 @@ public class GrupoClase implements Serializable {
 
     public void setCostoMensual(BigDecimal costoMensual) {
         this.costoMensual = costoMensual;
+    }
+
+    public boolean getTerminado() {
+        return terminado;
+    }
+
+    public void setTerminado(boolean terminado) {
+        this.terminado = terminado;
+    }
+
+    public String getFechaTermino() {
+        return fechaTermino;
+    }
+
+    public void setFechaTermino(String fechaTermino) {
+        this.fechaTermino = fechaTermino;
     }
 
     @XmlTransient
@@ -162,23 +180,7 @@ public class GrupoClase implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.GrupoClase[ idGrupoClase=" + idGrupoClase + " ]";
-    }
-
-    public boolean getTerminado() {
-        return terminado;
-    }
-
-    public void setTerminado(boolean terminado) {
-        this.terminado = terminado;
-    }
-
-    public String getFechaTermino() {
-        return fechaTermino;
-    }
-
-    public void setFechaTermino(String fechaTermino) {
-        this.fechaTermino = fechaTermino;
+        return "recursos.GrupoClase[ idGrupoClase=" + idGrupoClase + " ]";
     }
     
 }
