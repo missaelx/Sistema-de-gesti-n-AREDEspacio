@@ -38,6 +38,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Maestros.findByActivo", query = "SELECT m FROM Maestros m WHERE m.activo = :activo")})
 public class Maestros implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "activo")
+    private boolean activo;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,9 +56,6 @@ public class Maestros implements Serializable {
     private String correo;
     @Column(name = "telefono")
     private String telefono;
-    @Basic(optional = false)
-    @Column(name = "activo")
-    private String activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmaestro")
     private List<Pagosdesalario> pagosdesalarioList;
 
@@ -65,7 +66,7 @@ public class Maestros implements Serializable {
         this.idmaestro = idmaestro;
     }
 
-    public Maestros(Integer idmaestro, String activo) {
+    public Maestros(Integer idmaestro, boolean activo) {
         this.idmaestro = idmaestro;
         this.activo = activo;
     }
@@ -110,13 +111,6 @@ public class Maestros implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getActivo() {
-        return activo;
-    }
-
-    public void setActivo(String activo) {
-        this.activo = activo;
-    }
 
     @XmlTransient
     public List<Pagosdesalario> getPagosdesalarioList() {
@@ -150,6 +144,14 @@ public class Maestros implements Serializable {
     @Override
     public String toString() {
         return "recursos.Maestros[ idmaestro=" + idmaestro + " ]";
+    }
+
+    public boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
     
 }

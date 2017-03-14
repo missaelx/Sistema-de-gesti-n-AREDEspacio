@@ -31,6 +31,8 @@ public class AlumnosView {
             recursoAlumno.eliminarAlumno(alumno);
         } catch (NonexistentEntityException ex) {
             System.out.println("No existe la entidad");
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

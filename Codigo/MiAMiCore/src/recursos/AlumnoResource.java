@@ -18,10 +18,8 @@ import modelo.Alumnos;
  */
 public class AlumnoResource {
     EntityManagerFactory emf;
-    EntityManager em;
     public AlumnoResource(){
         emf = Persistence.createEntityManagerFactory("MiAMiCorePU");
-        em = emf.createEntityManager();
     }
     
     public boolean registrarAlumno(Alumnos alumno){
