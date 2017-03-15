@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pagosdesalario.findAll", query = "SELECT p FROM Pagosdesalario p")
-    , @NamedQuery(name = "Pagosdesalario.findByIdpagodesalario", query = "SELECT p FROM Pagosdesalario p WHERE p.idpagodesalario = :idpagodesalario")})
+    , @NamedQuery(name = "Pagosdesalario.findByIdpagodesalario", query = "SELECT p FROM Pagosdesalario p WHERE p.idpagodesalario = :idpagodesalario")
+    , @NamedQuery(name = "Pagosdesalario.findByMaestro", query = "SELECT p FROM Pagosdesalario p WHERE p.idmaestro.idmaestro = :idmaestro")})
 public class Pagosdesalario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,10 +40,10 @@ public class Pagosdesalario implements Serializable {
     @Column(name = "idpagodesalario")
     private Integer idpagodesalario;
     @JoinColumn(name = "idegreso", referencedColumnName = "idegresos")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,fetch=FetchType.EAGER)
     private Egresos idegreso;
     @JoinColumn(name = "idmaestro", referencedColumnName = "idmaestro")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch=FetchType.EAGER)
     private Maestros idmaestro;
 
     public Pagosdesalario() {
@@ -97,7 +99,9 @@ public class Pagosdesalario implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.Pagosdesalario[ idpagodesalario=" + idpagodesalario + " ]";
+        return "Pagosdesalario{" + "idpagodesalario=" + idpagodesalario + ", idegreso=" + idegreso + ", idmaestro=" + idmaestro + '}';
     }
+
+    
     
 }

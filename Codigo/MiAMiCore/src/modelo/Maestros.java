@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,7 +57,7 @@ public class Maestros implements Serializable {
     private String correo;
     @Column(name = "telefono")
     private String telefono;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmaestro")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmaestro", fetch=FetchType.EAGER)
     private List<Pagosdesalario> pagosdesalarioList;
 
     public Maestros() {
@@ -141,10 +142,18 @@ public class Maestros implements Serializable {
         return true;
     }
 
+//    @Override
+//    public String toString() {
+//        return "recursos.Maestros[ idmaestro=" + idmaestro + " ]";
+//    }
+
     @Override
     public String toString() {
-        return "recursos.Maestros[ idmaestro=" + idmaestro + " ]";
+        return "Maestro";
+        //return "Maestros{" + "activo=" + activo + ", idmaestro=" + idmaestro + ", nombre=" + nombre + ", apellidos=" + apellidos + ", correo=" + correo + ", telefono=" + telefono + ", pagosdesalarioList=" + pagosdesalarioList + '}';
     }
+    
+    
 
     public boolean getActivo() {
         return activo;
