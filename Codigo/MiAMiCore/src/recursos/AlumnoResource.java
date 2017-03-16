@@ -6,7 +6,6 @@ import controladores.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import modelo.Alumnos;
@@ -52,5 +51,9 @@ public class AlumnoResource {
     public List<Alumnos> visualizarRegistros() {
         AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
         return alumnosController.findAlumnosEntities();
-    }    
+    }
+    public Alumnos getAlumnoPorId(int id){
+        AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
+        return alumnosController.findAlumnos(id);
+    }
 }

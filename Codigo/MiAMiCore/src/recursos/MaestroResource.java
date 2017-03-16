@@ -3,14 +3,11 @@ package recursos;
 import controladores.MaestrosJpaController;
 import controladores.PagosdesalarioJpaController;
 import controladores.exceptions.NonexistentEntityException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import modelo.Alumnos;
 import modelo.Maestros;
 import modelo.Pagosdesalario;
 
@@ -60,10 +57,9 @@ public class MaestroResource {
         return salarioController.getPagosSalarioFromMaestro(idMaestro);
     }
     
-    public List<Maestros> getMaestro(){
+    public List<Maestros> getMaestros(){
         MaestrosJpaController maestrosController = new MaestrosJpaController(emf);
         return maestrosController.findMaestrosEntities();
     }
-    
     
 }

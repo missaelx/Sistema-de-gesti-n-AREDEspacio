@@ -3,6 +3,7 @@ package recursos;
 import controladores.GrupoClaseJpaController;
 import controladores.TipoDanzaJpaController;
 import controladores.exceptions.NonexistentEntityException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
@@ -26,14 +27,35 @@ public class DanzaResource {
         return true;
     }
     
+    public boolean modificarDanza(TipoDanza tipoDanza) throws NonexistentEntityException{
+        TipoDanzaJpaController danzaController = new TipoDanzaJpaController(emf);
+        try {
+            danzaController.edit(tipoDanza);
+        } catch (Exception ex) {
+            Logger.getLogger(DanzaResource.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
+    }
+    public boolean eliminarDanza(TipoDanza tipoDanza) throws NonexistentEntityException{
+        tipoDanza.setActivo(false);
+        return modificarDanza(tipoDanza);
+    }
+    
+    public List<TipoDanza> getTiposDanza(){
+        TipoDanzaJpaController danzaController = new TipoDanzaJpaController(emf);
+        return danzaController.findTipoDanzaEntities();
+    }
+    
+    
+    
+    
+    
     public boolean crearGrupoClase(GrupoClase grupo){
         GrupoClaseJpaController grupoController = new GrupoClaseJpaController(emf);
         grupoController.create(grupo);
         return true;
     }
-    
-    
-    
     
     public boolean modificarGrupoClase(GrupoClase grupo) throws NonexistentEntityException{
         GrupoClaseJpaController grupoController = new GrupoClaseJpaController(emf);
@@ -50,18 +72,13 @@ public class DanzaResource {
         return modificarGrupoClase(grupo);
     }
     
-    public boolean modificarDanza(TipoDanza tipoDanza) throws NonexistentEntityException{
-        TipoDanzaJpaController danzaController = new TipoDanzaJpaController(emf);
-        try {
-            danzaController.edit(tipoDanza);
-        } catch (Exception ex) {
-            Logger.getLogger(DanzaResource.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        return true;
+    public List<GrupoClase> getGruposClase(){
+        GrupoClaseJpaController grupoController = new GrupoClaseJpaController(emf);
+        return grupoController.findGrupoClaseEntities();
     }
-    public boolean eliminarDanza(TipoDanza tipoDanza) throws NonexistentEntityException{
-        tipoDanza.setActivo(false);
-        return modificarDanza(tipoDanza);
+    public GrupoClase getGrupoClase(int idGrupo){
+        GrupoClaseJpaController grupoController = new GrupoClaseJpaController(emf);
+        return grupoController.findGrupoClase(idGrupo);
     }
+    
 }
