@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="669.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarAlumnosController">
+   <children>
+      <TextField layoutX="328.0" layoutY="79.0" />
+      <ComboBox layoutX="85.0" layoutY="79.0" prefHeight="51.0" prefWidth="200.0" promptText="Buscar por" />
+      <TableView layoutX="54.0" layoutY="151.0" prefHeight="486.0" prefWidth="720.0">
+        <columns>
+          <TableColumn prefWidth="196.0" text="nombre" />
+          <TableColumn minWidth="0.0" prefWidth="336.0" text="Direccion" />
+            <TableColumn prefWidth="187.0" text="Telefono" />
+        </columns>
+      </TableView>
+      <Button layoutX="839.0" layoutY="151.0" mnemonicParsing="false" text="Inscribir " />
+      <Button layoutX="822.0" layoutY="501.0" mnemonicParsing="false" text="Ver detalles" />
+      <Button layoutX="839.0" layoutY="586.0" mnemonicParsing="false" text="Eliminar " />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="801.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
