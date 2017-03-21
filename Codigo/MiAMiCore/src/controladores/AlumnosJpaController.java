@@ -348,4 +348,9 @@ public class AlumnosJpaController implements Serializable {
         }
     }
     
+    public Alumnos getAlumnoFromNombre(String nombre){
+        EntityManager em = getEntityManager();
+        return (Alumnos) em.createNamedQuery("Alumnos.findByNombre").setParameter("nombre", nombre).getSingleResult();
+    }
+    
 }

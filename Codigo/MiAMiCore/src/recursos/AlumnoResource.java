@@ -56,4 +56,8 @@ public class AlumnoResource {
         AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
         return alumnosController.findAlumnos(id);
     }
+    public Alumnos buscarAlumnoPorNombre(String nombre){
+        AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
+        return alumnosController.getAlumnoFromNombre(nombre);
+    }
 }
