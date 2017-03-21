@@ -194,4 +194,8 @@ public class PagosdesalarioJpaController implements Serializable {
         }
     }
     
+    public List<Pagosdesalario> getPagosSalarioFromMaestro(int idMaestro){
+        EntityManager em = getEntityManager();
+        return em.createNamedQuery("Pagosdesalario.findByMaestro").setParameter("idmaestro", idMaestro).getResultList();
+    }
 }
