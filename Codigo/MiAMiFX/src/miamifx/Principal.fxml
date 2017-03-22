@@ -41,27 +41,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="tabMaestros" closable="false" text="Maestros">
-               <content>
-                  <AnchorPane id="AnchorPane" prefHeight="558.0" prefWidth="886.0">
-                     <children>
-                        <TextField layoutX="234.0" layoutY="28.0" />
-                        <ComboBox fx:id="MbuscarPor" layoutX="22.0" layoutY="28.0" prefHeight="51.0" prefWidth="200.0" promptText="Buscar por" />
-                        <TableView layoutX="20.0" layoutY="120.0" prefHeight="411.0" prefWidth="611.0">
-                           <columns>
-                              <TableColumn prefWidth="136.0" text="nombre" />
-                              <TableColumn minWidth="0.0" prefWidth="186.0" text="Direccion" />
-                              <TableColumn prefWidth="288.0" text="Telefono" />
-                           </columns>
-                        </TableView>
-                        <Button fx:id="btnInscribir1" layoutX="679.0" layoutY="54.0" mnemonicParsing="false" onAction="#seleccionarFoto" text="Inscribir " />
-                        <Button layoutX="663.0" layoutY="389.0" mnemonicParsing="false" text="Ver detalles" />
-                        <Button layoutX="679.0" layoutY="480.0" mnemonicParsing="false" text="Eliminar " />
-                        <ImageView fx:id="imagenMaestro" fitHeight="150.0" fitWidth="200.0" layoutX="655.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
+            <Tab fx:id="tabMaestros" closable="false" text="Maestros" />
             <Tab fx:id="tabDanzas" text="Danzas">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
