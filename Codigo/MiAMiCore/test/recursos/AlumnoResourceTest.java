@@ -5,53 +5,53 @@
  */
 package recursos;
 
+import controladores.AlumnosJpaController;
+import java.util.Date;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
 import modelo.Alumnos;
 import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  *
  * @author macbookpro
  */
 public class AlumnoResourceTest {
+    private Alumnos test;
     
-    public AlumnoResourceTest() {
+    public AlumnoResourceTest(){
+        test = new Alumnos();
+        test.setActivo(true);
+        test.setApellidos("test");
+        test.setCorreo("test");
+        test.setDiapago(1);
+        test.setFechaNacimiento(new Date());
+        test.setNombre("test");
+        test.setTelefono("test");
+        test.setTelefonoEmergencia("test");
+        test.setTipoSangre("O+");
     }
-    
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws Exception {
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of registrarAlumno method, of class AlumnoResource.
+     * Con alumno correcto
      */
     @Test
     public void testRegistrarAlumno() {
         System.out.println("registrarAlumno");
-        Alumnos alumno = null;
         AlumnoResource instance = new AlumnoResource();
-        boolean expResult = false;
-        boolean result = instance.registrarAlumno(alumno);
+        boolean expResult = true;
+        boolean result = instance.registrarAlumno(test);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -60,13 +60,12 @@ public class AlumnoResourceTest {
     @Test
     public void testEliminarAlumno() throws Exception {
         System.out.println("eliminarAlumno");
-        Alumnos alumno = null;
         AlumnoResource instance = new AlumnoResource();
-        boolean expResult = false;
-        boolean result = instance.eliminarAlumno(alumno);
+        boolean expResult = true;
+        
+        boolean result = instance.eliminarAlumno(instance.buscarAlumnoPorNombre(test.getNombre()));
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -75,13 +74,14 @@ public class AlumnoResourceTest {
     @Test
     public void testModificarAlumno() throws Exception {
         System.out.println("modificarAlumno");
-        Alumnos alumno = null;
         AlumnoResource instance = new AlumnoResource();
-        boolean expResult = false;
+        Alumnos alumno = instance.buscarAlumnoPorNombre(test.getNombre());
+        alumno.setNombre("test2");
+        boolean expResult = true;
         boolean result = instance.modificarAlumno(alumno);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -91,11 +91,17 @@ public class AlumnoResourceTest {
     public void testVisualizarRegistros() {
         System.out.println("visualizarRegistros");
         AlumnoResource instance = new AlumnoResource();
-        List<Alumnos> expResult = null;
         List<Alumnos> result = instance.visualizarRegistros();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
+    }
+
+    @Test
+    public void testGetAlumnoPorId() {
+        
+    }
+
+    //@Test
+    public void testBuscarAlumnoPorNombre() {
     }
     
 }
