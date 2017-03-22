@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pagodesalario.findAll", query = "SELECT p FROM Pagodesalario p")
-    , @NamedQuery(name = "Pagodesalario.findById", query = "SELECT p FROM Pagodesalario p WHERE p.id = :id")})
+    , @NamedQuery(name = "Pagodesalario.findById", query = "SELECT p FROM Pagodesalario p WHERE p.id = :id")
+    , @NamedQuery(name = "Pagodesalario.findByMaestro", query = "SELECT p FROM Pagodesalario p WHERE p.idmaestro.id = :idmaestro")})
 public class Pagodesalario implements Serializable {
 
     private static final long serialVersionUID = 1L;

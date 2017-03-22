@@ -16,7 +16,9 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
     
     public Alumno getAlumnoFromNombre(String nombre){
         EntityManager em = getEntityManager();
-        return (Alumno) em.createNamedQuery("Alumnos.findByNombre").setParameter("nombre", nombre).getSingleResult();
+        Alumno alumno = (Alumno) em.createNamedQuery("Alumnos.findByNombre").setParameter("nombre", nombre).getSingleResult();
+        em.close();
+        return alumno;
     }
 
     
