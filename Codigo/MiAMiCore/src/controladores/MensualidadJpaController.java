@@ -14,17 +14,17 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import modelo.Alumnos;
-import modelo.Ingresos;
-import modelo.Mensualidades;
+import modelo.Alumno;
+import modelo.Ingreso;
+import modelo.Mensualidad;
 
 /**
  *
  * @author macbookpro
  */
-public class MensualidadesJpaController implements Serializable {
+public class MensualidadJpaController implements Serializable {
 
-    public MensualidadesJpaController(EntityManagerFactory emf) {
+    public MensualidadJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -33,28 +33,28 @@ public class MensualidadesJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Mensualidades mensualidades) {
+    public void create(Mensualidad mensualidad) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Alumnos idalumno = mensualidades.getIdalumno();
+            Alumno idalumno = mensualidad.getIdalumno();
             if (idalumno != null) {
-                idalumno = em.getReference(idalumno.getClass(), idalumno.getIdalumno());
-                mensualidades.setIdalumno(idalumno);
+                idalumno = em.getReference(idalumno.getClass(), idalumno.getId());
+                mensualidad.setIdalumno(idalumno);
             }
-            Ingresos idingreso = mensualidades.getIdingreso();
+            Ingreso idingreso = mensualidad.getIdingreso();
             if (idingreso != null) {
-                idingreso = em.getReference(idingreso.getClass(), idingreso.getIdingreso());
-                mensualidades.setIdingreso(idingreso);
+                idingreso = em.getReference(idingreso.getClass(), idingreso.getId());
+                mensualidad.setIdingreso(idingreso);
             }
-            em.persist(mensualidades);
+            em.persist(mensualidad);
             if (idalumno != null) {
-                idalumno.getMensualidadesList().add(mensualidades);
+                idalumno.getMensualidadList().add(mensualidad);
                 idalumno = em.merge(idalumno);
             }
             if (idingreso != null) {
-                idingreso.getMensualidadesList().add(mensualidades);
+                idingreso.getMensualidadList().add(mensualidad);
                 idingreso = em.merge(idingreso);
             }
             em.getTransaction().commit();
@@ -65,48 +65,48 @@ public class MensualidadesJpaController implements Serializable {
         }
     }
 
-    public void edit(Mensualidades mensualidades) throws NonexistentEntityException, Exception {
+    public void edit(Mensualidad mensualidad) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Mensualidades persistentMensualidades = em.find(Mensualidades.class, mensualidades.getIdmensualidad());
-            Alumnos idalumnoOld = persistentMensualidades.getIdalumno();
-            Alumnos idalumnoNew = mensualidades.getIdalumno();
-            Ingresos idingresoOld = persistentMensualidades.getIdingreso();
-            Ingresos idingresoNew = mensualidades.getIdingreso();
+            Mensualidad persistentMensualidad = em.find(Mensualidad.class, mensualidad.getId());
+            Alumno idalumnoOld = persistentMensualidad.getIdalumno();
+            Alumno idalumnoNew = mensualidad.getIdalumno();
+            Ingreso idingresoOld = persistentMensualidad.getIdingreso();
+            Ingreso idingresoNew = mensualidad.getIdingreso();
             if (idalumnoNew != null) {
-                idalumnoNew = em.getReference(idalumnoNew.getClass(), idalumnoNew.getIdalumno());
-                mensualidades.setIdalumno(idalumnoNew);
+                idalumnoNew = em.getReference(idalumnoNew.getClass(), idalumnoNew.getId());
+                mensualidad.setIdalumno(idalumnoNew);
             }
             if (idingresoNew != null) {
-                idingresoNew = em.getReference(idingresoNew.getClass(), idingresoNew.getIdingreso());
-                mensualidades.setIdingreso(idingresoNew);
+                idingresoNew = em.getReference(idingresoNew.getClass(), idingresoNew.getId());
+                mensualidad.setIdingreso(idingresoNew);
             }
-            mensualidades = em.merge(mensualidades);
+            mensualidad = em.merge(mensualidad);
             if (idalumnoOld != null && !idalumnoOld.equals(idalumnoNew)) {
-                idalumnoOld.getMensualidadesList().remove(mensualidades);
+                idalumnoOld.getMensualidadList().remove(mensualidad);
                 idalumnoOld = em.merge(idalumnoOld);
             }
             if (idalumnoNew != null && !idalumnoNew.equals(idalumnoOld)) {
-                idalumnoNew.getMensualidadesList().add(mensualidades);
+                idalumnoNew.getMensualidadList().add(mensualidad);
                 idalumnoNew = em.merge(idalumnoNew);
             }
             if (idingresoOld != null && !idingresoOld.equals(idingresoNew)) {
-                idingresoOld.getMensualidadesList().remove(mensualidades);
+                idingresoOld.getMensualidadList().remove(mensualidad);
                 idingresoOld = em.merge(idingresoOld);
             }
             if (idingresoNew != null && !idingresoNew.equals(idingresoOld)) {
-                idingresoNew.getMensualidadesList().add(mensualidades);
+                idingresoNew.getMensualidadList().add(mensualidad);
                 idingresoNew = em.merge(idingresoNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = mensualidades.getIdmensualidad();
-                if (findMensualidades(id) == null) {
-                    throw new NonexistentEntityException("The mensualidades with id " + id + " no longer exists.");
+                Integer id = mensualidad.getId();
+                if (findMensualidad(id) == null) {
+                    throw new NonexistentEntityException("The mensualidad with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -122,24 +122,24 @@ public class MensualidadesJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Mensualidades mensualidades;
+            Mensualidad mensualidad;
             try {
-                mensualidades = em.getReference(Mensualidades.class, id);
-                mensualidades.getIdmensualidad();
+                mensualidad = em.getReference(Mensualidad.class, id);
+                mensualidad.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The mensualidades with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The mensualidad with id " + id + " no longer exists.", enfe);
             }
-            Alumnos idalumno = mensualidades.getIdalumno();
+            Alumno idalumno = mensualidad.getIdalumno();
             if (idalumno != null) {
-                idalumno.getMensualidadesList().remove(mensualidades);
+                idalumno.getMensualidadList().remove(mensualidad);
                 idalumno = em.merge(idalumno);
             }
-            Ingresos idingreso = mensualidades.getIdingreso();
+            Ingreso idingreso = mensualidad.getIdingreso();
             if (idingreso != null) {
-                idingreso.getMensualidadesList().remove(mensualidades);
+                idingreso.getMensualidadList().remove(mensualidad);
                 idingreso = em.merge(idingreso);
             }
-            em.remove(mensualidades);
+            em.remove(mensualidad);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -148,19 +148,19 @@ public class MensualidadesJpaController implements Serializable {
         }
     }
 
-    public List<Mensualidades> findMensualidadesEntities() {
-        return findMensualidadesEntities(true, -1, -1);
+    public List<Mensualidad> findMensualidadEntities() {
+        return findMensualidadEntities(true, -1, -1);
     }
 
-    public List<Mensualidades> findMensualidadesEntities(int maxResults, int firstResult) {
-        return findMensualidadesEntities(false, maxResults, firstResult);
+    public List<Mensualidad> findMensualidadEntities(int maxResults, int firstResult) {
+        return findMensualidadEntities(false, maxResults, firstResult);
     }
 
-    private List<Mensualidades> findMensualidadesEntities(boolean all, int maxResults, int firstResult) {
+    private List<Mensualidad> findMensualidadEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Mensualidades.class));
+            cq.select(cq.from(Mensualidad.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -172,20 +172,20 @@ public class MensualidadesJpaController implements Serializable {
         }
     }
 
-    public Mensualidades findMensualidades(Integer id) {
+    public Mensualidad findMensualidad(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Mensualidades.class, id);
+            return em.find(Mensualidad.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getMensualidadesCount() {
+    public int getMensualidadCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Mensualidades> rt = cq.from(Mensualidades.class);
+            Root<Mensualidad> rt = cq.from(Mensualidad.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

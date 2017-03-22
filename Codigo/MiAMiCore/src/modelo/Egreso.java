@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,22 +31,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author macbookpro
  */
 @Entity
-@Table(name = "ingresos")
+@Table(name = "egreso")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Ingresos.findAll", query = "SELECT i FROM Ingresos i")
-    , @NamedQuery(name = "Ingresos.findByIdingreso", query = "SELECT i FROM Ingresos i WHERE i.idingreso = :idingreso")
-    , @NamedQuery(name = "Ingresos.findByMonto", query = "SELECT i FROM Ingresos i WHERE i.monto = :monto")
-    , @NamedQuery(name = "Ingresos.findByDescripcion", query = "SELECT i FROM Ingresos i WHERE i.descripcion = :descripcion")
-    , @NamedQuery(name = "Ingresos.findByFecha", query = "SELECT i FROM Ingresos i WHERE i.fecha = :fecha")})
-public class Ingresos implements Serializable {
+    @NamedQuery(name = "Egreso.findAll", query = "SELECT e FROM Egreso e")
+    , @NamedQuery(name = "Egreso.findById", query = "SELECT e FROM Egreso e WHERE e.id = :id")
+    , @NamedQuery(name = "Egreso.findByMonto", query = "SELECT e FROM Egreso e WHERE e.monto = :monto")
+    , @NamedQuery(name = "Egreso.findByDescripcion", query = "SELECT e FROM Egreso e WHERE e.descripcion = :descripcion")
+    , @NamedQuery(name = "Egreso.findByFecha", query = "SELECT e FROM Egreso e WHERE e.fecha = :fecha")})
+public class Egreso implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idingreso")
-    private Integer idingreso;
+    @Column(name = "id")
+    private Integer id;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "monto")
@@ -56,30 +57,30 @@ public class Ingresos implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idingreso")
-    private List<Inscripciones> inscripcionesList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idingreso")
-    private List<Mensualidades> mensualidadesList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEgreso")
+    private List<Gastovariable> gastovariableList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idegreso")
+    private Pagodesalario pagodesalario;
 
-    public Ingresos() {
+    public Egreso() {
     }
 
-    public Ingresos(Integer idingreso) {
-        this.idingreso = idingreso;
+    public Egreso(Integer id) {
+        this.id = id;
     }
 
-    public Ingresos(Integer idingreso, BigDecimal monto, Date fecha) {
-        this.idingreso = idingreso;
+    public Egreso(Integer id, BigDecimal monto, Date fecha) {
+        this.id = id;
         this.monto = monto;
         this.fecha = fecha;
     }
 
-    public Integer getIdingreso() {
-        return idingreso;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdingreso(Integer idingreso) {
-        this.idingreso = idingreso;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public BigDecimal getMonto() {
@@ -107,38 +108,37 @@ public class Ingresos implements Serializable {
     }
 
     @XmlTransient
-    public List<Inscripciones> getInscripcionesList() {
-        return inscripcionesList;
+    public List<Gastovariable> getGastovariableList() {
+        return gastovariableList;
     }
 
-    public void setInscripcionesList(List<Inscripciones> inscripcionesList) {
-        this.inscripcionesList = inscripcionesList;
+    public void setGastovariableList(List<Gastovariable> gastovariableList) {
+        this.gastovariableList = gastovariableList;
     }
 
-    @XmlTransient
-    public List<Mensualidades> getMensualidadesList() {
-        return mensualidadesList;
+    public Pagodesalario getPagodesalario() {
+        return pagodesalario;
     }
 
-    public void setMensualidadesList(List<Mensualidades> mensualidadesList) {
-        this.mensualidadesList = mensualidadesList;
+    public void setPagodesalario(Pagodesalario pagodesalario) {
+        this.pagodesalario = pagodesalario;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idingreso != null ? idingreso.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ingresos)) {
+        if (!(object instanceof Egreso)) {
             return false;
         }
-        Ingresos other = (Ingresos) object;
-        if ((this.idingreso == null && other.idingreso != null) || (this.idingreso != null && !this.idingreso.equals(other.idingreso))) {
+        Egreso other = (Egreso) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -146,7 +146,7 @@ public class Ingresos implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.Ingresos[ idingreso=" + idingreso + " ]";
+        return "modelo.Egreso[ id=" + id + " ]";
     }
     
 }

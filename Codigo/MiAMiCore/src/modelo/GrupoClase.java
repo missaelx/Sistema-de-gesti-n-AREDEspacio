@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "GrupoClase.findAll", query = "SELECT g FROM GrupoClase g")
-    , @NamedQuery(name = "GrupoClase.findByIdGrupoClase", query = "SELECT g FROM GrupoClase g WHERE g.idGrupoClase = :idGrupoClase")
+    , @NamedQuery(name = "GrupoClase.findById", query = "SELECT g FROM GrupoClase g WHERE g.id = :id")
     , @NamedQuery(name = "GrupoClase.findByActivo", query = "SELECT g FROM GrupoClase g WHERE g.activo = :activo")
     , @NamedQuery(name = "GrupoClase.findByCostoMensual", query = "SELECT g FROM GrupoClase g WHERE g.costoMensual = :costoMensual")
     , @NamedQuery(name = "GrupoClase.findByTerminado", query = "SELECT g FROM GrupoClase g WHERE g.terminado = :terminado")
@@ -45,8 +45,8 @@ public class GrupoClase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idGrupoClase")
-    private Integer idGrupoClase;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
@@ -60,35 +60,38 @@ public class GrupoClase implements Serializable {
     @Column(name = "fecha_termino")
     private String fechaTermino;
     @ManyToMany(mappedBy = "grupoClaseList")
-    private List<Alumnos> alumnosList;
+    private List<Alumno> alumnoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoClase")
     private List<Horario> horarioList;
-    @JoinColumn(name = "idTipoDanza", referencedColumnName = "idTipoDanza")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoClase")
+    private List<Asistencia> asistenciaList;
+    @JoinColumn(name = "idMaestro", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Maestro idMaestro;
+    @JoinColumn(name = "idTipoDanza", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private TipoDanza idTipoDanza;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoClase")
-    private List<Asistencias> asistenciasList;
 
     public GrupoClase() {
     }
 
-    public GrupoClase(Integer idGrupoClase) {
-        this.idGrupoClase = idGrupoClase;
+    public GrupoClase(Integer id) {
+        this.id = id;
     }
 
-    public GrupoClase(Integer idGrupoClase, boolean activo, BigDecimal costoMensual, boolean terminado) {
-        this.idGrupoClase = idGrupoClase;
+    public GrupoClase(Integer id, boolean activo, BigDecimal costoMensual, boolean terminado) {
+        this.id = id;
         this.activo = activo;
         this.costoMensual = costoMensual;
         this.terminado = terminado;
     }
 
-    public Integer getIdGrupoClase() {
-        return idGrupoClase;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdGrupoClase(Integer idGrupoClase) {
-        this.idGrupoClase = idGrupoClase;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public boolean getActivo() {
@@ -124,12 +127,12 @@ public class GrupoClase implements Serializable {
     }
 
     @XmlTransient
-    public List<Alumnos> getAlumnosList() {
-        return alumnosList;
+    public List<Alumno> getAlumnoList() {
+        return alumnoList;
     }
 
-    public void setAlumnosList(List<Alumnos> alumnosList) {
-        this.alumnosList = alumnosList;
+    public void setAlumnoList(List<Alumno> alumnoList) {
+        this.alumnoList = alumnoList;
     }
 
     @XmlTransient
@@ -141,6 +144,23 @@ public class GrupoClase implements Serializable {
         this.horarioList = horarioList;
     }
 
+    @XmlTransient
+    public List<Asistencia> getAsistenciaList() {
+        return asistenciaList;
+    }
+
+    public void setAsistenciaList(List<Asistencia> asistenciaList) {
+        this.asistenciaList = asistenciaList;
+    }
+
+    public Maestro getIdMaestro() {
+        return idMaestro;
+    }
+
+    public void setIdMaestro(Maestro idMaestro) {
+        this.idMaestro = idMaestro;
+    }
+
     public TipoDanza getIdTipoDanza() {
         return idTipoDanza;
     }
@@ -149,19 +169,10 @@ public class GrupoClase implements Serializable {
         this.idTipoDanza = idTipoDanza;
     }
 
-    @XmlTransient
-    public List<Asistencias> getAsistenciasList() {
-        return asistenciasList;
-    }
-
-    public void setAsistenciasList(List<Asistencias> asistenciasList) {
-        this.asistenciasList = asistenciasList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idGrupoClase != null ? idGrupoClase.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -172,7 +183,7 @@ public class GrupoClase implements Serializable {
             return false;
         }
         GrupoClase other = (GrupoClase) object;
-        if ((this.idGrupoClase == null && other.idGrupoClase != null) || (this.idGrupoClase != null && !this.idGrupoClase.equals(other.idGrupoClase))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -180,7 +191,7 @@ public class GrupoClase implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.GrupoClase[ idGrupoClase=" + idGrupoClase + " ]";
+        return "modelo.GrupoClase[ id=" + id + " ]";
     }
     
 }

@@ -55,7 +55,7 @@ public class PromocionesJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = promociones.getIdpromocion();
+                Integer id = promociones.getId();
                 if (findPromociones(id) == null) {
                     throw new NonexistentEntityException("The promociones with id " + id + " no longer exists.");
                 }
@@ -76,7 +76,7 @@ public class PromocionesJpaController implements Serializable {
             Promociones promociones;
             try {
                 promociones = em.getReference(Promociones.class, id);
-                promociones.getIdpromocion();
+                promociones.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The promociones with id " + id + " no longer exists.", enfe);
             }

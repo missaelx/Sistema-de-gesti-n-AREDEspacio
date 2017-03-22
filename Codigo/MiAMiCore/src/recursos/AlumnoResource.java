@@ -1,6 +1,7 @@
 package recursos;
 
-import controladores.AlumnosJpaController;
+import controladores.AlumnoJpaController;
+import controladores.AlumnoJpaControllerExtended;
 import controladores.exceptions.IllegalOrphanException;
 import controladores.exceptions.NonexistentEntityException;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import modelo.Alumnos;
+import modelo.Alumno;
 
 
 /**
@@ -21,21 +22,21 @@ public class AlumnoResource {
         emf = Persistence.createEntityManagerFactory("MiAMiCorePU");
     }
     
-    public boolean registrarAlumno(Alumnos alumno){
+    public boolean registrarAlumno(Alumno alumno){
         boolean result = true;
-        AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
+        AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
         alumnosController.create(alumno);
         return result;
     }
-    public boolean eliminarAlumno(Alumnos alumno) throws NonexistentEntityException, Exception{
+    public boolean eliminarAlumno(Alumno alumno) throws NonexistentEntityException, Exception{
         boolean result = true;
         alumno.setActivo(false);
         modificarAlumno(alumno);
         return result;
     }
-    public boolean modificarAlumno(Alumnos alumno) throws NonexistentEntityException, Exception{
+    public boolean modificarAlumno(Alumno alumno) throws NonexistentEntityException, Exception{
         boolean result = true;
-        AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
+        AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
         try {
             alumnosController.edit(alumno);
         } catch (IllegalOrphanException ex) {
@@ -48,16 +49,16 @@ public class AlumnoResource {
     
     
     
-    public List<Alumnos> visualizarRegistros() {
-        AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
-        return alumnosController.findAlumnosEntities();
+    public List<Alumno> visualizarRegistros() {
+        AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
+        return alumnosController.findAlumnoEntities();
     }
-    public Alumnos getAlumnoPorId(int id){
-        AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
-        return alumnosController.findAlumnos(id);
+    public Alumno getAlumnoPorId(int id){
+        AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
+        return alumnosController.findAlumno(id);
     }
-    public Alumnos buscarAlumnoPorNombre(String nombre){
-        AlumnosJpaController alumnosController = new AlumnosJpaController(emf);
+    public Alumno buscarAlumnoPorNombre(String nombre){
+        AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
         return alumnosController.getAlumnoFromNombre(nombre);
     }
 }

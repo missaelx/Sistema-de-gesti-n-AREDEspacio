@@ -1,14 +1,9 @@
 package vistasProvisionales;
 
-import controladores.exceptions.NonexistentEntityException;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import modelo.Alumnos;
-import modelo.Pagosdesalario;
-import recursos.AlumnoResource;
+import modelo.Pagodesalario;
 import recursos.MaestroResource;
+
 
 /**
  *
@@ -39,8 +34,8 @@ public class AlumnosView {
 //        }
         
         MaestroResource mResource = new MaestroResource();
-        List<Pagosdesalario> pagos = mResource.getPagosDeSalario(1);
-        for(Pagosdesalario e : pagos){
+        List<Pagodesalario> pagos = mResource.getPagosDeSalario(1);
+        for(Pagodesalario e : pagos){
             System.out.println(e.toString());
         }
     }
