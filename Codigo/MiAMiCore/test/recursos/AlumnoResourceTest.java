@@ -35,9 +35,6 @@ public class AlumnoResourceTest {
         test.setTipoSangre("O+");
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
     
     
 
