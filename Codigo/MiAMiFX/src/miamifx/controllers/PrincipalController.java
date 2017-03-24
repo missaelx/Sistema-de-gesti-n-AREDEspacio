@@ -64,7 +64,7 @@ public class PrincipalController implements Initializable {
         }*/
         try{
             Tab nuevaPestana = new Tab("Registro de alumno");
-            nuevaPestana.setStyle("background-color: #2f2");
+            nuevaPestana.setStyle("-fx-background-color: #2f2");
             pestañas.getTabs().add(nuevaPestana);
             URL url = new File("src/miamifx/RegistrarAlumno.fxml").toURL();
             nuevaPestana.setContent((Node) FXMLLoader.load(url));
@@ -79,7 +79,12 @@ public class PrincipalController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        try {
+            URL urlMaestros = new File("src/miamifx/AdministrarAlumnos.fxml").toURL();
+            tabMaestros.setContent((Node) FXMLLoader.load(urlMaestros));
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }    
