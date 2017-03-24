@@ -18,6 +18,7 @@ public class PagodesalarioJpaControllerExtended extends PagodesalarioJpaControll
     public List<Pagodesalario> getPagoSalarioFromMaestro(int idMaestro){
         EntityManager em = getEntityManager();
         List<Pagodesalario> lista = em.createNamedQuery("Pagodesalario.findByMaestro").setParameter("idmaestro", idMaestro).getResultList();
+        
         em.close();
         return lista;
     }
