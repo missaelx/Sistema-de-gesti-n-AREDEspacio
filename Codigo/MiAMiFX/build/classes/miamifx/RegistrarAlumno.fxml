@@ -9,7 +9,7 @@
 <AnchorPane id="contenedor" prefHeight="640.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.RegistrarAlumnoController">
    <children>
       <Button id="btnGuardar" fx:id="btnGuardar" layoutX="674.0" layoutY="550.0" mnemonicParsing="false" onAction="#registrarAlumno" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="808.0" layoutY="550.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="btnCancelar" cancelButton="true" layoutX="808.0" layoutY="550.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
       <Label layoutX="38.0" layoutY="44.0" text="Nombre" />
       <TextField id="campoNombre" fx:id="campoNombre" layoutX="38.0" layoutY="79.0" promptText="Ej. Juan Luis" />
       <Label layoutX="562.0" layoutY="44.0" text="Apellidos" />
