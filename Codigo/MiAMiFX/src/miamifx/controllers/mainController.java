@@ -12,7 +12,6 @@ public class mainController {
     
     @FXML public void initialize(){
         System.out.println("aplicacion lanzada");
-        administrarAlumnos.init(this);
-        principal.init(this);
+
     }
 }

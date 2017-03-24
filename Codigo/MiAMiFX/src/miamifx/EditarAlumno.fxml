@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="719.0" prefWidth="1076.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controladores.EditarAlumnoController">
+<AnchorPane id="AnchorPane" prefHeight="719.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.EditarAlumnoController">
    <children>
       <Button layoutX="569.0" layoutY="442.0" mnemonicParsing="false" text="Examinar" />
       <Label layoutX="572.0" layoutY="407.0" text="Foto" />
-      <TextField id="campoFacebook" fx:id="campoFacebook" editable="false" layoutX="48.0" layoutY="442.0" />
-      <Label layoutX="48.0" layoutY="407.0" text="Facebook" />
+      <TextField id="campoFacebook" fx:id="campoNumeroEmergencia" editable="false" layoutX="48.0" layoutY="442.0" />
+      <Label layoutX="48.0" layoutY="407.0" text="Numero de Emergencia" />
       <DatePicker id="campoFecha" fx:id="campoFechaNacimiento" editable="false" layoutX="572.0" layoutY="327.0" />
       <Label layoutX="572.0" layoutY="283.0" text="Fecha de nacimiento" />
-      <ComboBox id="campoTipoSangre" fx:id="campoSangre" layoutX="53.0" layoutY="326.0" prefWidth="150.0" />
+      <ComboBox id="campoTipoSangre" fx:id="campoSangre" disable="true" layoutX="53.0" layoutY="326.0" prefWidth="150.0" />
       <Label layoutX="48.0" layoutY="283.0" text="Tipo de Sangre" />
       <Label layoutX="572.0" layoutY="167.0" text="Numero telefonico" />
       <TextField id="campoTelefono" fx:id="campoNumero" editable="false" layoutX="572.0" layoutY="203.0" />
@@ -25,7 +25,8 @@
       <Label layoutX="572.0" layoutY="54.0" text="Apellidos" />
       <TextField id="campoNombre" fx:id="campoNombre" editable="false" layoutX="48.0" layoutY="89.0" />
       <Label layoutX="48.0" layoutY="54.0" text="Nombre" />
-      <Button layoutX="748.0" layoutY="628.0" mnemonicParsing="false" text="Editar" />
-      <Button layoutX="872.0" layoutY="628.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="btnEditar" layoutX="748.0" layoutY="628.0" mnemonicParsing="false" onAction="#editarDatos" text="Editar" />
+      <Button fx:id="btnCancelar" layoutX="872.0" layoutY="628.0" mnemonicParsing="false" onAction="#cancelar" text="Cerrar" />
+      <ImageView fx:id="imagenAlumno" fitHeight="150.0" fitWidth="200.0" layoutX="741.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

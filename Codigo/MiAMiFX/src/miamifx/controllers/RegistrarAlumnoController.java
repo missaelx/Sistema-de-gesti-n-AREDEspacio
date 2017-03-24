@@ -1,21 +1,30 @@
 package miamifx.controllers;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import miamifx.ControlPantalla.ControladorPantallas;
 import java.net.URL;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modelo.Alumnos;
@@ -26,12 +35,7 @@ import modelo.Alumnos;
  * @author Miguel Acosta
  */
 public class RegistrarAlumnoController implements Initializable, ControladorPantallas {
-    private ObservableList<String> options = 
-        FXCollections.observableArrayList(
-            "Option 1",
-            "Option 2",
-            "Option 3"
-    );
+
     
     @FXML
     private Button btnGuardar, btnCancelar, btnExaminar;
@@ -41,6 +45,8 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
     private ComboBox campoSangre;
     @FXML
     private DatePicker campoFechaNacimiento;
+    
+    private Stage contenedor;
     
     ControladorPantallas controlador;
             
@@ -54,6 +60,12 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
         }
         return true;
     }
+
+    public void setContenedor(Stage contenedor) {
+        this.contenedor = contenedor;
+    }
+    
+    
     
     public boolean tamañoCorrecto(String cadena) {
         return cadena.length() <= 20;
@@ -64,6 +76,35 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
     chooser.setTitle("Open File");
     File file = chooser.showOpenDialog(new Stage());
     
+    }
+    
+    @FXML 
+    private void cancelar(ActionEvent event) throws MalformedURLException, IOException{
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle("Confirmacion");
+        alerta.setContentText("Esta seguro que desea cancelar la operacion?");
+        
+        ButtonType si = new ButtonType("Si");
+        ButtonType no = new ButtonType("No");
+        
+        
+        
+        alerta.getButtonTypes().addAll(si, no);
+        alerta.show();
+        try{
+            alerta.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    //((Stage) .getSource()).close();
+                    contenedor.close();
+                }
+            });
+        } catch(Exception e){
+            System.out.println("-------");
+            System.out.println(e.getMessage());
+            
+        }
+        
+        
     }
     @FXML
     private void registrarAlumno(ActionEvent event){
