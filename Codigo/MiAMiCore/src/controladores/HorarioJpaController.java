@@ -39,7 +39,7 @@ public class HorarioJpaController implements Serializable {
             em.getTransaction().begin();
             GrupoClase idGrupoClase = horario.getIdGrupoClase();
             if (idGrupoClase != null) {
-                idGrupoClase = em.getReference(idGrupoClase.getClass(), idGrupoClase.getIdGrupoClase());
+                idGrupoClase = em.getReference(idGrupoClase.getClass(), idGrupoClase.getId());
                 horario.setIdGrupoClase(idGrupoClase);
             }
             em.persist(horario);
@@ -60,11 +60,11 @@ public class HorarioJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Horario persistentHorario = em.find(Horario.class, horario.getIdhorario());
+            Horario persistentHorario = em.find(Horario.class, horario.getId());
             GrupoClase idGrupoClaseOld = persistentHorario.getIdGrupoClase();
             GrupoClase idGrupoClaseNew = horario.getIdGrupoClase();
             if (idGrupoClaseNew != null) {
-                idGrupoClaseNew = em.getReference(idGrupoClaseNew.getClass(), idGrupoClaseNew.getIdGrupoClase());
+                idGrupoClaseNew = em.getReference(idGrupoClaseNew.getClass(), idGrupoClaseNew.getId());
                 horario.setIdGrupoClase(idGrupoClaseNew);
             }
             horario = em.merge(horario);
@@ -80,7 +80,7 @@ public class HorarioJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = horario.getIdhorario();
+                Integer id = horario.getId();
                 if (findHorario(id) == null) {
                     throw new NonexistentEntityException("The horario with id " + id + " no longer exists.");
                 }
@@ -101,7 +101,7 @@ public class HorarioJpaController implements Serializable {
             Horario horario;
             try {
                 horario = em.getReference(Horario.class, id);
-                horario.getIdhorario();
+                horario.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The horario with id " + id + " no longer exists.", enfe);
             }

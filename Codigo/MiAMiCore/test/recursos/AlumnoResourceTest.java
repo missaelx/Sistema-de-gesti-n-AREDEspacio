@@ -5,11 +5,11 @@
  */
 package recursos;
 
-import controladores.AlumnosJpaController;
+import controladores.AlumnoJpaControllerExtended;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
-import modelo.Alumnos;
+import modelo.Alumno;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -20,14 +20,14 @@ import org.junit.BeforeClass;
  * @author macbookpro
  */
 public class AlumnoResourceTest {
-    private Alumnos test;
+    private Alumno test;
     
     public AlumnoResourceTest(){
-        test = new Alumnos();
+        test = new Alumno();
         test.setActivo(true);
         test.setApellidos("test");
         test.setCorreo("test");
-        test.setDiapago(1);
+        test.setDiapago(new Date());
         test.setFechaNacimiento(new Date());
         test.setNombre("test");
         test.setTelefono("test");
@@ -35,9 +35,6 @@ public class AlumnoResourceTest {
         test.setTipoSangre("O+");
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
     
     
 
@@ -75,13 +72,11 @@ public class AlumnoResourceTest {
     public void testModificarAlumno() throws Exception {
         System.out.println("modificarAlumno");
         AlumnoResource instance = new AlumnoResource();
-        Alumnos alumno = instance.buscarAlumnoPorNombre(test.getNombre());
+        Alumno alumno = instance.buscarAlumnoPorNombre(test.getNombre());
         alumno.setNombre("test2");
         boolean expResult = true;
         boolean result = instance.modificarAlumno(alumno);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -91,7 +86,7 @@ public class AlumnoResourceTest {
     public void testVisualizarRegistros() {
         System.out.println("visualizarRegistros");
         AlumnoResource instance = new AlumnoResource();
-        List<Alumnos> result = instance.visualizarRegistros();
+        List<Alumno> result = instance.visualizarRegistros();
         assertNotNull(result);
     }
 

@@ -26,15 +26,17 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author macbookpro
  */
 @Entity
-@Table(name = "tipoDanza")
+@Table(name = "maestro")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TipoDanza.findAll", query = "SELECT t FROM TipoDanza t")
-    , @NamedQuery(name = "TipoDanza.findById", query = "SELECT t FROM TipoDanza t WHERE t.id = :id")
-    , @NamedQuery(name = "TipoDanza.findByDescripcion", query = "SELECT t FROM TipoDanza t WHERE t.descripcion = :descripcion")
-    , @NamedQuery(name = "TipoDanza.findByNombre", query = "SELECT t FROM TipoDanza t WHERE t.nombre = :nombre")
-    , @NamedQuery(name = "TipoDanza.findByActivo", query = "SELECT t FROM TipoDanza t WHERE t.activo = :activo")})
-public class TipoDanza implements Serializable {
+    @NamedQuery(name = "Maestro.findAll", query = "SELECT m FROM Maestro m")
+    , @NamedQuery(name = "Maestro.findById", query = "SELECT m FROM Maestro m WHERE m.id = :id")
+    , @NamedQuery(name = "Maestro.findByNombre", query = "SELECT m FROM Maestro m WHERE m.nombre = :nombre")
+    , @NamedQuery(name = "Maestro.findByApellidos", query = "SELECT m FROM Maestro m WHERE m.apellidos = :apellidos")
+    , @NamedQuery(name = "Maestro.findByCorreo", query = "SELECT m FROM Maestro m WHERE m.correo = :correo")
+    , @NamedQuery(name = "Maestro.findByTelefono", query = "SELECT m FROM Maestro m WHERE m.telefono = :telefono")
+    , @NamedQuery(name = "Maestro.findByActivo", query = "SELECT m FROM Maestro m WHERE m.activo = :activo")})
+public class Maestro implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,28 +45,34 @@ public class TipoDanza implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "descripcion")
-    private String descripcion;
-    @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
+    @Column(name = "apellidos")
+    private String apellidos;
+    @Column(name = "correo")
+    private String correo;
+    @Column(name = "telefono")
+    private String telefono;
+    @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoDanza")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMaestro")
     private List<GrupoClase> grupoClaseList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmaestro")
+    private List<Pagodesalario> pagodesalarioList;
 
-    public TipoDanza() {
+    public Maestro() {
     }
 
-    public TipoDanza(Integer id) {
+    public Maestro(Integer id) {
         this.id = id;
     }
 
-    public TipoDanza(Integer id, String descripcion, String nombre, boolean activo) {
+    public Maestro(Integer id, String nombre, String apellidos, boolean activo) {
         this.id = id;
-        this.descripcion = descripcion;
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.activo = activo;
     }
 
@@ -76,20 +84,36 @@ public class TipoDanza implements Serializable {
         this.id = id;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public boolean getActivo() {
@@ -109,6 +133,15 @@ public class TipoDanza implements Serializable {
         this.grupoClaseList = grupoClaseList;
     }
 
+    @XmlTransient
+    public List<Pagodesalario> getPagodesalarioList() {
+        return pagodesalarioList;
+    }
+
+    public void setPagodesalarioList(List<Pagodesalario> pagodesalarioList) {
+        this.pagodesalarioList = pagodesalarioList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -119,10 +152,10 @@ public class TipoDanza implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TipoDanza)) {
+        if (!(object instanceof Maestro)) {
             return false;
         }
-        TipoDanza other = (TipoDanza) object;
+        Maestro other = (Maestro) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -131,7 +164,7 @@ public class TipoDanza implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.TipoDanza[ id=" + id + " ]";
+        return "modelo.Maestro[ id=" + id + " ]";
     }
     
 }

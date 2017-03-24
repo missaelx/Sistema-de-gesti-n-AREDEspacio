@@ -12,14 +12,15 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import modelo.Maestro;
 import modelo.TipoDanza;
-import modelo.Alumnos;
+import modelo.Alumno;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import modelo.Horario;
-import modelo.Asistencias;
+import modelo.Asistencia;
 import modelo.GrupoClase;
 
 /**
@@ -38,50 +39,59 @@ public class GrupoClaseJpaController implements Serializable {
     }
 
     public void create(GrupoClase grupoClase) {
-        if (grupoClase.getAlumnosList() == null) {
-            grupoClase.setAlumnosList(new ArrayList<Alumnos>());
+        if (grupoClase.getAlumnoList() == null) {
+            grupoClase.setAlumnoList(new ArrayList<Alumno>());
         }
         if (grupoClase.getHorarioList() == null) {
             grupoClase.setHorarioList(new ArrayList<Horario>());
         }
-        if (grupoClase.getAsistenciasList() == null) {
-            grupoClase.setAsistenciasList(new ArrayList<Asistencias>());
+        if (grupoClase.getAsistenciaList() == null) {
+            grupoClase.setAsistenciaList(new ArrayList<Asistencia>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Maestro idMaestro = grupoClase.getIdMaestro();
+            if (idMaestro != null) {
+                idMaestro = em.getReference(idMaestro.getClass(), idMaestro.getId());
+                grupoClase.setIdMaestro(idMaestro);
+            }
             TipoDanza idTipoDanza = grupoClase.getIdTipoDanza();
             if (idTipoDanza != null) {
-                idTipoDanza = em.getReference(idTipoDanza.getClass(), idTipoDanza.getIdTipoDanza());
+                idTipoDanza = em.getReference(idTipoDanza.getClass(), idTipoDanza.getId());
                 grupoClase.setIdTipoDanza(idTipoDanza);
             }
-            List<Alumnos> attachedAlumnosList = new ArrayList<Alumnos>();
-            for (Alumnos alumnosListAlumnosToAttach : grupoClase.getAlumnosList()) {
-                alumnosListAlumnosToAttach = em.getReference(alumnosListAlumnosToAttach.getClass(), alumnosListAlumnosToAttach.getIdalumno());
-                attachedAlumnosList.add(alumnosListAlumnosToAttach);
+            List<Alumno> attachedAlumnoList = new ArrayList<Alumno>();
+            for (Alumno alumnoListAlumnoToAttach : grupoClase.getAlumnoList()) {
+                alumnoListAlumnoToAttach = em.getReference(alumnoListAlumnoToAttach.getClass(), alumnoListAlumnoToAttach.getId());
+                attachedAlumnoList.add(alumnoListAlumnoToAttach);
             }
-            grupoClase.setAlumnosList(attachedAlumnosList);
+            grupoClase.setAlumnoList(attachedAlumnoList);
             List<Horario> attachedHorarioList = new ArrayList<Horario>();
             for (Horario horarioListHorarioToAttach : grupoClase.getHorarioList()) {
-                horarioListHorarioToAttach = em.getReference(horarioListHorarioToAttach.getClass(), horarioListHorarioToAttach.getIdhorario());
+                horarioListHorarioToAttach = em.getReference(horarioListHorarioToAttach.getClass(), horarioListHorarioToAttach.getId());
                 attachedHorarioList.add(horarioListHorarioToAttach);
             }
             grupoClase.setHorarioList(attachedHorarioList);
-            List<Asistencias> attachedAsistenciasList = new ArrayList<Asistencias>();
-            for (Asistencias asistenciasListAsistenciasToAttach : grupoClase.getAsistenciasList()) {
-                asistenciasListAsistenciasToAttach = em.getReference(asistenciasListAsistenciasToAttach.getClass(), asistenciasListAsistenciasToAttach.getIdasistencia());
-                attachedAsistenciasList.add(asistenciasListAsistenciasToAttach);
+            List<Asistencia> attachedAsistenciaList = new ArrayList<Asistencia>();
+            for (Asistencia asistenciaListAsistenciaToAttach : grupoClase.getAsistenciaList()) {
+                asistenciaListAsistenciaToAttach = em.getReference(asistenciaListAsistenciaToAttach.getClass(), asistenciaListAsistenciaToAttach.getId());
+                attachedAsistenciaList.add(asistenciaListAsistenciaToAttach);
             }
-            grupoClase.setAsistenciasList(attachedAsistenciasList);
+            grupoClase.setAsistenciaList(attachedAsistenciaList);
             em.persist(grupoClase);
+            if (idMaestro != null) {
+                idMaestro.getGrupoClaseList().add(grupoClase);
+                idMaestro = em.merge(idMaestro);
+            }
             if (idTipoDanza != null) {
                 idTipoDanza.getGrupoClaseList().add(grupoClase);
                 idTipoDanza = em.merge(idTipoDanza);
             }
-            for (Alumnos alumnosListAlumnos : grupoClase.getAlumnosList()) {
-                alumnosListAlumnos.getGrupoClaseList().add(grupoClase);
-                alumnosListAlumnos = em.merge(alumnosListAlumnos);
+            for (Alumno alumnoListAlumno : grupoClase.getAlumnoList()) {
+                alumnoListAlumno.getGrupoClaseList().add(grupoClase);
+                alumnoListAlumno = em.merge(alumnoListAlumno);
             }
             for (Horario horarioListHorario : grupoClase.getHorarioList()) {
                 GrupoClase oldIdGrupoClaseOfHorarioListHorario = horarioListHorario.getIdGrupoClase();
@@ -92,13 +102,13 @@ public class GrupoClaseJpaController implements Serializable {
                     oldIdGrupoClaseOfHorarioListHorario = em.merge(oldIdGrupoClaseOfHorarioListHorario);
                 }
             }
-            for (Asistencias asistenciasListAsistencias : grupoClase.getAsistenciasList()) {
-                GrupoClase oldIdGrupoClaseOfAsistenciasListAsistencias = asistenciasListAsistencias.getIdGrupoClase();
-                asistenciasListAsistencias.setIdGrupoClase(grupoClase);
-                asistenciasListAsistencias = em.merge(asistenciasListAsistencias);
-                if (oldIdGrupoClaseOfAsistenciasListAsistencias != null) {
-                    oldIdGrupoClaseOfAsistenciasListAsistencias.getAsistenciasList().remove(asistenciasListAsistencias);
-                    oldIdGrupoClaseOfAsistenciasListAsistencias = em.merge(oldIdGrupoClaseOfAsistenciasListAsistencias);
+            for (Asistencia asistenciaListAsistencia : grupoClase.getAsistenciaList()) {
+                GrupoClase oldIdGrupoClaseOfAsistenciaListAsistencia = asistenciaListAsistencia.getIdGrupoClase();
+                asistenciaListAsistencia.setIdGrupoClase(grupoClase);
+                asistenciaListAsistencia = em.merge(asistenciaListAsistencia);
+                if (oldIdGrupoClaseOfAsistenciaListAsistencia != null) {
+                    oldIdGrupoClaseOfAsistenciaListAsistencia.getAsistenciaList().remove(asistenciaListAsistencia);
+                    oldIdGrupoClaseOfAsistenciaListAsistencia = em.merge(oldIdGrupoClaseOfAsistenciaListAsistencia);
                 }
             }
             em.getTransaction().commit();
@@ -114,15 +124,17 @@ public class GrupoClaseJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            GrupoClase persistentGrupoClase = em.find(GrupoClase.class, grupoClase.getIdGrupoClase());
+            GrupoClase persistentGrupoClase = em.find(GrupoClase.class, grupoClase.getId());
+            Maestro idMaestroOld = persistentGrupoClase.getIdMaestro();
+            Maestro idMaestroNew = grupoClase.getIdMaestro();
             TipoDanza idTipoDanzaOld = persistentGrupoClase.getIdTipoDanza();
             TipoDanza idTipoDanzaNew = grupoClase.getIdTipoDanza();
-            List<Alumnos> alumnosListOld = persistentGrupoClase.getAlumnosList();
-            List<Alumnos> alumnosListNew = grupoClase.getAlumnosList();
+            List<Alumno> alumnoListOld = persistentGrupoClase.getAlumnoList();
+            List<Alumno> alumnoListNew = grupoClase.getAlumnoList();
             List<Horario> horarioListOld = persistentGrupoClase.getHorarioList();
             List<Horario> horarioListNew = grupoClase.getHorarioList();
-            List<Asistencias> asistenciasListOld = persistentGrupoClase.getAsistenciasList();
-            List<Asistencias> asistenciasListNew = grupoClase.getAsistenciasList();
+            List<Asistencia> asistenciaListOld = persistentGrupoClase.getAsistenciaList();
+            List<Asistencia> asistenciaListNew = grupoClase.getAsistenciaList();
             List<String> illegalOrphanMessages = null;
             for (Horario horarioListOldHorario : horarioListOld) {
                 if (!horarioListNew.contains(horarioListOldHorario)) {
@@ -132,43 +144,55 @@ public class GrupoClaseJpaController implements Serializable {
                     illegalOrphanMessages.add("You must retain Horario " + horarioListOldHorario + " since its idGrupoClase field is not nullable.");
                 }
             }
-            for (Asistencias asistenciasListOldAsistencias : asistenciasListOld) {
-                if (!asistenciasListNew.contains(asistenciasListOldAsistencias)) {
+            for (Asistencia asistenciaListOldAsistencia : asistenciaListOld) {
+                if (!asistenciaListNew.contains(asistenciaListOldAsistencia)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Asistencias " + asistenciasListOldAsistencias + " since its idGrupoClase field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Asistencia " + asistenciaListOldAsistencia + " since its idGrupoClase field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
+            if (idMaestroNew != null) {
+                idMaestroNew = em.getReference(idMaestroNew.getClass(), idMaestroNew.getId());
+                grupoClase.setIdMaestro(idMaestroNew);
+            }
             if (idTipoDanzaNew != null) {
-                idTipoDanzaNew = em.getReference(idTipoDanzaNew.getClass(), idTipoDanzaNew.getIdTipoDanza());
+                idTipoDanzaNew = em.getReference(idTipoDanzaNew.getClass(), idTipoDanzaNew.getId());
                 grupoClase.setIdTipoDanza(idTipoDanzaNew);
             }
-            List<Alumnos> attachedAlumnosListNew = new ArrayList<Alumnos>();
-            for (Alumnos alumnosListNewAlumnosToAttach : alumnosListNew) {
-                alumnosListNewAlumnosToAttach = em.getReference(alumnosListNewAlumnosToAttach.getClass(), alumnosListNewAlumnosToAttach.getIdalumno());
-                attachedAlumnosListNew.add(alumnosListNewAlumnosToAttach);
+            List<Alumno> attachedAlumnoListNew = new ArrayList<Alumno>();
+            for (Alumno alumnoListNewAlumnoToAttach : alumnoListNew) {
+                alumnoListNewAlumnoToAttach = em.getReference(alumnoListNewAlumnoToAttach.getClass(), alumnoListNewAlumnoToAttach.getId());
+                attachedAlumnoListNew.add(alumnoListNewAlumnoToAttach);
             }
-            alumnosListNew = attachedAlumnosListNew;
-            grupoClase.setAlumnosList(alumnosListNew);
+            alumnoListNew = attachedAlumnoListNew;
+            grupoClase.setAlumnoList(alumnoListNew);
             List<Horario> attachedHorarioListNew = new ArrayList<Horario>();
             for (Horario horarioListNewHorarioToAttach : horarioListNew) {
-                horarioListNewHorarioToAttach = em.getReference(horarioListNewHorarioToAttach.getClass(), horarioListNewHorarioToAttach.getIdhorario());
+                horarioListNewHorarioToAttach = em.getReference(horarioListNewHorarioToAttach.getClass(), horarioListNewHorarioToAttach.getId());
                 attachedHorarioListNew.add(horarioListNewHorarioToAttach);
             }
             horarioListNew = attachedHorarioListNew;
             grupoClase.setHorarioList(horarioListNew);
-            List<Asistencias> attachedAsistenciasListNew = new ArrayList<Asistencias>();
-            for (Asistencias asistenciasListNewAsistenciasToAttach : asistenciasListNew) {
-                asistenciasListNewAsistenciasToAttach = em.getReference(asistenciasListNewAsistenciasToAttach.getClass(), asistenciasListNewAsistenciasToAttach.getIdasistencia());
-                attachedAsistenciasListNew.add(asistenciasListNewAsistenciasToAttach);
+            List<Asistencia> attachedAsistenciaListNew = new ArrayList<Asistencia>();
+            for (Asistencia asistenciaListNewAsistenciaToAttach : asistenciaListNew) {
+                asistenciaListNewAsistenciaToAttach = em.getReference(asistenciaListNewAsistenciaToAttach.getClass(), asistenciaListNewAsistenciaToAttach.getId());
+                attachedAsistenciaListNew.add(asistenciaListNewAsistenciaToAttach);
             }
-            asistenciasListNew = attachedAsistenciasListNew;
-            grupoClase.setAsistenciasList(asistenciasListNew);
+            asistenciaListNew = attachedAsistenciaListNew;
+            grupoClase.setAsistenciaList(asistenciaListNew);
             grupoClase = em.merge(grupoClase);
+            if (idMaestroOld != null && !idMaestroOld.equals(idMaestroNew)) {
+                idMaestroOld.getGrupoClaseList().remove(grupoClase);
+                idMaestroOld = em.merge(idMaestroOld);
+            }
+            if (idMaestroNew != null && !idMaestroNew.equals(idMaestroOld)) {
+                idMaestroNew.getGrupoClaseList().add(grupoClase);
+                idMaestroNew = em.merge(idMaestroNew);
+            }
             if (idTipoDanzaOld != null && !idTipoDanzaOld.equals(idTipoDanzaNew)) {
                 idTipoDanzaOld.getGrupoClaseList().remove(grupoClase);
                 idTipoDanzaOld = em.merge(idTipoDanzaOld);
@@ -177,16 +201,16 @@ public class GrupoClaseJpaController implements Serializable {
                 idTipoDanzaNew.getGrupoClaseList().add(grupoClase);
                 idTipoDanzaNew = em.merge(idTipoDanzaNew);
             }
-            for (Alumnos alumnosListOldAlumnos : alumnosListOld) {
-                if (!alumnosListNew.contains(alumnosListOldAlumnos)) {
-                    alumnosListOldAlumnos.getGrupoClaseList().remove(grupoClase);
-                    alumnosListOldAlumnos = em.merge(alumnosListOldAlumnos);
+            for (Alumno alumnoListOldAlumno : alumnoListOld) {
+                if (!alumnoListNew.contains(alumnoListOldAlumno)) {
+                    alumnoListOldAlumno.getGrupoClaseList().remove(grupoClase);
+                    alumnoListOldAlumno = em.merge(alumnoListOldAlumno);
                 }
             }
-            for (Alumnos alumnosListNewAlumnos : alumnosListNew) {
-                if (!alumnosListOld.contains(alumnosListNewAlumnos)) {
-                    alumnosListNewAlumnos.getGrupoClaseList().add(grupoClase);
-                    alumnosListNewAlumnos = em.merge(alumnosListNewAlumnos);
+            for (Alumno alumnoListNewAlumno : alumnoListNew) {
+                if (!alumnoListOld.contains(alumnoListNewAlumno)) {
+                    alumnoListNewAlumno.getGrupoClaseList().add(grupoClase);
+                    alumnoListNewAlumno = em.merge(alumnoListNewAlumno);
                 }
             }
             for (Horario horarioListNewHorario : horarioListNew) {
@@ -200,14 +224,14 @@ public class GrupoClaseJpaController implements Serializable {
                     }
                 }
             }
-            for (Asistencias asistenciasListNewAsistencias : asistenciasListNew) {
-                if (!asistenciasListOld.contains(asistenciasListNewAsistencias)) {
-                    GrupoClase oldIdGrupoClaseOfAsistenciasListNewAsistencias = asistenciasListNewAsistencias.getIdGrupoClase();
-                    asistenciasListNewAsistencias.setIdGrupoClase(grupoClase);
-                    asistenciasListNewAsistencias = em.merge(asistenciasListNewAsistencias);
-                    if (oldIdGrupoClaseOfAsistenciasListNewAsistencias != null && !oldIdGrupoClaseOfAsistenciasListNewAsistencias.equals(grupoClase)) {
-                        oldIdGrupoClaseOfAsistenciasListNewAsistencias.getAsistenciasList().remove(asistenciasListNewAsistencias);
-                        oldIdGrupoClaseOfAsistenciasListNewAsistencias = em.merge(oldIdGrupoClaseOfAsistenciasListNewAsistencias);
+            for (Asistencia asistenciaListNewAsistencia : asistenciaListNew) {
+                if (!asistenciaListOld.contains(asistenciaListNewAsistencia)) {
+                    GrupoClase oldIdGrupoClaseOfAsistenciaListNewAsistencia = asistenciaListNewAsistencia.getIdGrupoClase();
+                    asistenciaListNewAsistencia.setIdGrupoClase(grupoClase);
+                    asistenciaListNewAsistencia = em.merge(asistenciaListNewAsistencia);
+                    if (oldIdGrupoClaseOfAsistenciaListNewAsistencia != null && !oldIdGrupoClaseOfAsistenciaListNewAsistencia.equals(grupoClase)) {
+                        oldIdGrupoClaseOfAsistenciaListNewAsistencia.getAsistenciaList().remove(asistenciaListNewAsistencia);
+                        oldIdGrupoClaseOfAsistenciaListNewAsistencia = em.merge(oldIdGrupoClaseOfAsistenciaListNewAsistencia);
                     }
                 }
             }
@@ -215,7 +239,7 @@ public class GrupoClaseJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = grupoClase.getIdGrupoClase();
+                Integer id = grupoClase.getId();
                 if (findGrupoClase(id) == null) {
                     throw new NonexistentEntityException("The grupoClase with id " + id + " no longer exists.");
                 }
@@ -236,7 +260,7 @@ public class GrupoClaseJpaController implements Serializable {
             GrupoClase grupoClase;
             try {
                 grupoClase = em.getReference(GrupoClase.class, id);
-                grupoClase.getIdGrupoClase();
+                grupoClase.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The grupoClase with id " + id + " no longer exists.", enfe);
             }
@@ -248,25 +272,30 @@ public class GrupoClaseJpaController implements Serializable {
                 }
                 illegalOrphanMessages.add("This GrupoClase (" + grupoClase + ") cannot be destroyed since the Horario " + horarioListOrphanCheckHorario + " in its horarioList field has a non-nullable idGrupoClase field.");
             }
-            List<Asistencias> asistenciasListOrphanCheck = grupoClase.getAsistenciasList();
-            for (Asistencias asistenciasListOrphanCheckAsistencias : asistenciasListOrphanCheck) {
+            List<Asistencia> asistenciaListOrphanCheck = grupoClase.getAsistenciaList();
+            for (Asistencia asistenciaListOrphanCheckAsistencia : asistenciaListOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This GrupoClase (" + grupoClase + ") cannot be destroyed since the Asistencias " + asistenciasListOrphanCheckAsistencias + " in its asistenciasList field has a non-nullable idGrupoClase field.");
+                illegalOrphanMessages.add("This GrupoClase (" + grupoClase + ") cannot be destroyed since the Asistencia " + asistenciaListOrphanCheckAsistencia + " in its asistenciaList field has a non-nullable idGrupoClase field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
+            }
+            Maestro idMaestro = grupoClase.getIdMaestro();
+            if (idMaestro != null) {
+                idMaestro.getGrupoClaseList().remove(grupoClase);
+                idMaestro = em.merge(idMaestro);
             }
             TipoDanza idTipoDanza = grupoClase.getIdTipoDanza();
             if (idTipoDanza != null) {
                 idTipoDanza.getGrupoClaseList().remove(grupoClase);
                 idTipoDanza = em.merge(idTipoDanza);
             }
-            List<Alumnos> alumnosList = grupoClase.getAlumnosList();
-            for (Alumnos alumnosListAlumnos : alumnosList) {
-                alumnosListAlumnos.getGrupoClaseList().remove(grupoClase);
-                alumnosListAlumnos = em.merge(alumnosListAlumnos);
+            List<Alumno> alumnoList = grupoClase.getAlumnoList();
+            for (Alumno alumnoListAlumno : alumnoList) {
+                alumnoListAlumno.getGrupoClaseList().remove(grupoClase);
+                alumnoListAlumno = em.merge(alumnoListAlumno);
             }
             em.remove(grupoClase);
             em.getTransaction().commit();

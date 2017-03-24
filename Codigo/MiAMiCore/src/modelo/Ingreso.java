@@ -13,7 +13,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,22 +30,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author macbookpro
  */
 @Entity
-@Table(name = "egresos")
+@Table(name = "ingreso")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Egresos.findAll", query = "SELECT e FROM Egresos e")
-    , @NamedQuery(name = "Egresos.findByIdegresos", query = "SELECT e FROM Egresos e WHERE e.idegresos = :idegresos")
-    , @NamedQuery(name = "Egresos.findByMonto", query = "SELECT e FROM Egresos e WHERE e.monto = :monto")
-    , @NamedQuery(name = "Egresos.findByDescripcion", query = "SELECT e FROM Egresos e WHERE e.descripcion = :descripcion")
-    , @NamedQuery(name = "Egresos.findByFecha", query = "SELECT e FROM Egresos e WHERE e.fecha = :fecha")})
-public class Egresos implements Serializable {
+    @NamedQuery(name = "Ingreso.findAll", query = "SELECT i FROM Ingreso i")
+    , @NamedQuery(name = "Ingreso.findById", query = "SELECT i FROM Ingreso i WHERE i.id = :id")
+    , @NamedQuery(name = "Ingreso.findByMonto", query = "SELECT i FROM Ingreso i WHERE i.monto = :monto")
+    , @NamedQuery(name = "Ingreso.findByDescripcion", query = "SELECT i FROM Ingreso i WHERE i.descripcion = :descripcion")
+    , @NamedQuery(name = "Ingreso.findByFecha", query = "SELECT i FROM Ingreso i WHERE i.fecha = :fecha")})
+public class Ingreso implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idegresos")
-    private Integer idegresos;
+    @Column(name = "id")
+    private Integer id;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "monto")
@@ -57,28 +56,30 @@ public class Egresos implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idegreso", fetch=FetchType.EAGER)
-    private List<Pagosdesalario> pagosdesalarioList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idingreso")
+    private List<Mensualidad> mensualidadList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idingreso")
+    private List<Inscripcion> inscripcionList;
 
-    public Egresos() {
+    public Ingreso() {
     }
 
-    public Egresos(Integer idegresos) {
-        this.idegresos = idegresos;
+    public Ingreso(Integer id) {
+        this.id = id;
     }
 
-    public Egresos(Integer idegresos, BigDecimal monto, Date fecha) {
-        this.idegresos = idegresos;
+    public Ingreso(Integer id, BigDecimal monto, Date fecha) {
+        this.id = id;
         this.monto = monto;
         this.fecha = fecha;
     }
 
-    public Integer getIdegresos() {
-        return idegresos;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdegresos(Integer idegresos) {
-        this.idegresos = idegresos;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public BigDecimal getMonto() {
@@ -106,29 +107,38 @@ public class Egresos implements Serializable {
     }
 
     @XmlTransient
-    public List<Pagosdesalario> getPagosdesalarioList() {
-        return pagosdesalarioList;
+    public List<Mensualidad> getMensualidadList() {
+        return mensualidadList;
     }
 
-    public void setPagosdesalarioList(List<Pagosdesalario> pagosdesalarioList) {
-        this.pagosdesalarioList = pagosdesalarioList;
+    public void setMensualidadList(List<Mensualidad> mensualidadList) {
+        this.mensualidadList = mensualidadList;
+    }
+
+    @XmlTransient
+    public List<Inscripcion> getInscripcionList() {
+        return inscripcionList;
+    }
+
+    public void setInscripcionList(List<Inscripcion> inscripcionList) {
+        this.inscripcionList = inscripcionList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idegresos != null ? idegresos.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Egresos)) {
+        if (!(object instanceof Ingreso)) {
             return false;
         }
-        Egresos other = (Egresos) object;
-        if ((this.idegresos == null && other.idegresos != null) || (this.idegresos != null && !this.idegresos.equals(other.idegresos))) {
+        Ingreso other = (Ingreso) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -136,7 +146,7 @@ public class Egresos implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.Egresos[ idegresos=" + idegresos + " ]";
+        return "modelo.Ingreso[ id=" + id + " ]";
     }
     
 }

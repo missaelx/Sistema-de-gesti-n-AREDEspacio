@@ -24,72 +24,72 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author macbookpro
  */
 @Entity
-@Table(name = "mensualidades")
+@Table(name = "inscripcion")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Mensualidades.findAll", query = "SELECT m FROM Mensualidades m")
-    , @NamedQuery(name = "Mensualidades.findByIdmensualidad", query = "SELECT m FROM Mensualidades m WHERE m.idmensualidad = :idmensualidad")})
-public class Mensualidades implements Serializable {
+    @NamedQuery(name = "Inscripcion.findAll", query = "SELECT i FROM Inscripcion i")
+    , @NamedQuery(name = "Inscripcion.findById", query = "SELECT i FROM Inscripcion i WHERE i.id = :id")})
+public class Inscripcion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idmensualidad")
-    private Integer idmensualidad;
-    @JoinColumn(name = "idalumno", referencedColumnName = "idalumno")
+    @Column(name = "id")
+    private Integer id;
+    @JoinColumn(name = "idalumno", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Alumnos idalumno;
-    @JoinColumn(name = "idingreso", referencedColumnName = "idingreso")
+    private Alumno idalumno;
+    @JoinColumn(name = "idingreso", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Ingresos idingreso;
+    private Ingreso idingreso;
 
-    public Mensualidades() {
+    public Inscripcion() {
     }
 
-    public Mensualidades(Integer idmensualidad) {
-        this.idmensualidad = idmensualidad;
+    public Inscripcion(Integer id) {
+        this.id = id;
     }
 
-    public Integer getIdmensualidad() {
-        return idmensualidad;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdmensualidad(Integer idmensualidad) {
-        this.idmensualidad = idmensualidad;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Alumnos getIdalumno() {
+    public Alumno getIdalumno() {
         return idalumno;
     }
 
-    public void setIdalumno(Alumnos idalumno) {
+    public void setIdalumno(Alumno idalumno) {
         this.idalumno = idalumno;
     }
 
-    public Ingresos getIdingreso() {
+    public Ingreso getIdingreso() {
         return idingreso;
     }
 
-    public void setIdingreso(Ingresos idingreso) {
+    public void setIdingreso(Ingreso idingreso) {
         this.idingreso = idingreso;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idmensualidad != null ? idmensualidad.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Mensualidades)) {
+        if (!(object instanceof Inscripcion)) {
             return false;
         }
-        Mensualidades other = (Mensualidades) object;
-        if ((this.idmensualidad == null && other.idmensualidad != null) || (this.idmensualidad != null && !this.idmensualidad.equals(other.idmensualidad))) {
+        Inscripcion other = (Inscripcion) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -97,7 +97,7 @@ public class Mensualidades implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.Mensualidades[ idmensualidad=" + idmensualidad + " ]";
+        return "modelo.Inscripcion[ id=" + id + " ]";
     }
     
 }

@@ -14,17 +14,17 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import modelo.Alumnos;
-import modelo.Asistencias;
+import modelo.Alumno;
+import modelo.Asistencia;
 import modelo.GrupoClase;
 
 /**
  *
  * @author macbookpro
  */
-public class AsistenciasJpaController implements Serializable {
+public class AsistenciaJpaController implements Serializable {
 
-    public AsistenciasJpaController(EntityManagerFactory emf) {
+    public AsistenciaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -33,28 +33,28 @@ public class AsistenciasJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Asistencias asistencias) {
+    public void create(Asistencia asistencia) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Alumnos idAlumno = asistencias.getIdAlumno();
+            Alumno idAlumno = asistencia.getIdAlumno();
             if (idAlumno != null) {
-                idAlumno = em.getReference(idAlumno.getClass(), idAlumno.getIdalumno());
-                asistencias.setIdAlumno(idAlumno);
+                idAlumno = em.getReference(idAlumno.getClass(), idAlumno.getId());
+                asistencia.setIdAlumno(idAlumno);
             }
-            GrupoClase idGrupoClase = asistencias.getIdGrupoClase();
+            GrupoClase idGrupoClase = asistencia.getIdGrupoClase();
             if (idGrupoClase != null) {
-                idGrupoClase = em.getReference(idGrupoClase.getClass(), idGrupoClase.getIdGrupoClase());
-                asistencias.setIdGrupoClase(idGrupoClase);
+                idGrupoClase = em.getReference(idGrupoClase.getClass(), idGrupoClase.getId());
+                asistencia.setIdGrupoClase(idGrupoClase);
             }
-            em.persist(asistencias);
+            em.persist(asistencia);
             if (idAlumno != null) {
-                idAlumno.getAsistenciasList().add(asistencias);
+                idAlumno.getAsistenciaList().add(asistencia);
                 idAlumno = em.merge(idAlumno);
             }
             if (idGrupoClase != null) {
-                idGrupoClase.getAsistenciasList().add(asistencias);
+                idGrupoClase.getAsistenciaList().add(asistencia);
                 idGrupoClase = em.merge(idGrupoClase);
             }
             em.getTransaction().commit();
@@ -65,48 +65,48 @@ public class AsistenciasJpaController implements Serializable {
         }
     }
 
-    public void edit(Asistencias asistencias) throws NonexistentEntityException, Exception {
+    public void edit(Asistencia asistencia) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Asistencias persistentAsistencias = em.find(Asistencias.class, asistencias.getIdasistencia());
-            Alumnos idAlumnoOld = persistentAsistencias.getIdAlumno();
-            Alumnos idAlumnoNew = asistencias.getIdAlumno();
-            GrupoClase idGrupoClaseOld = persistentAsistencias.getIdGrupoClase();
-            GrupoClase idGrupoClaseNew = asistencias.getIdGrupoClase();
+            Asistencia persistentAsistencia = em.find(Asistencia.class, asistencia.getId());
+            Alumno idAlumnoOld = persistentAsistencia.getIdAlumno();
+            Alumno idAlumnoNew = asistencia.getIdAlumno();
+            GrupoClase idGrupoClaseOld = persistentAsistencia.getIdGrupoClase();
+            GrupoClase idGrupoClaseNew = asistencia.getIdGrupoClase();
             if (idAlumnoNew != null) {
-                idAlumnoNew = em.getReference(idAlumnoNew.getClass(), idAlumnoNew.getIdalumno());
-                asistencias.setIdAlumno(idAlumnoNew);
+                idAlumnoNew = em.getReference(idAlumnoNew.getClass(), idAlumnoNew.getId());
+                asistencia.setIdAlumno(idAlumnoNew);
             }
             if (idGrupoClaseNew != null) {
-                idGrupoClaseNew = em.getReference(idGrupoClaseNew.getClass(), idGrupoClaseNew.getIdGrupoClase());
-                asistencias.setIdGrupoClase(idGrupoClaseNew);
+                idGrupoClaseNew = em.getReference(idGrupoClaseNew.getClass(), idGrupoClaseNew.getId());
+                asistencia.setIdGrupoClase(idGrupoClaseNew);
             }
-            asistencias = em.merge(asistencias);
+            asistencia = em.merge(asistencia);
             if (idAlumnoOld != null && !idAlumnoOld.equals(idAlumnoNew)) {
-                idAlumnoOld.getAsistenciasList().remove(asistencias);
+                idAlumnoOld.getAsistenciaList().remove(asistencia);
                 idAlumnoOld = em.merge(idAlumnoOld);
             }
             if (idAlumnoNew != null && !idAlumnoNew.equals(idAlumnoOld)) {
-                idAlumnoNew.getAsistenciasList().add(asistencias);
+                idAlumnoNew.getAsistenciaList().add(asistencia);
                 idAlumnoNew = em.merge(idAlumnoNew);
             }
             if (idGrupoClaseOld != null && !idGrupoClaseOld.equals(idGrupoClaseNew)) {
-                idGrupoClaseOld.getAsistenciasList().remove(asistencias);
+                idGrupoClaseOld.getAsistenciaList().remove(asistencia);
                 idGrupoClaseOld = em.merge(idGrupoClaseOld);
             }
             if (idGrupoClaseNew != null && !idGrupoClaseNew.equals(idGrupoClaseOld)) {
-                idGrupoClaseNew.getAsistenciasList().add(asistencias);
+                idGrupoClaseNew.getAsistenciaList().add(asistencia);
                 idGrupoClaseNew = em.merge(idGrupoClaseNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = asistencias.getIdasistencia();
-                if (findAsistencias(id) == null) {
-                    throw new NonexistentEntityException("The asistencias with id " + id + " no longer exists.");
+                Integer id = asistencia.getId();
+                if (findAsistencia(id) == null) {
+                    throw new NonexistentEntityException("The asistencia with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -122,24 +122,24 @@ public class AsistenciasJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Asistencias asistencias;
+            Asistencia asistencia;
             try {
-                asistencias = em.getReference(Asistencias.class, id);
-                asistencias.getIdasistencia();
+                asistencia = em.getReference(Asistencia.class, id);
+                asistencia.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The asistencias with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The asistencia with id " + id + " no longer exists.", enfe);
             }
-            Alumnos idAlumno = asistencias.getIdAlumno();
+            Alumno idAlumno = asistencia.getIdAlumno();
             if (idAlumno != null) {
-                idAlumno.getAsistenciasList().remove(asistencias);
+                idAlumno.getAsistenciaList().remove(asistencia);
                 idAlumno = em.merge(idAlumno);
             }
-            GrupoClase idGrupoClase = asistencias.getIdGrupoClase();
+            GrupoClase idGrupoClase = asistencia.getIdGrupoClase();
             if (idGrupoClase != null) {
-                idGrupoClase.getAsistenciasList().remove(asistencias);
+                idGrupoClase.getAsistenciaList().remove(asistencia);
                 idGrupoClase = em.merge(idGrupoClase);
             }
-            em.remove(asistencias);
+            em.remove(asistencia);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -148,19 +148,19 @@ public class AsistenciasJpaController implements Serializable {
         }
     }
 
-    public List<Asistencias> findAsistenciasEntities() {
-        return findAsistenciasEntities(true, -1, -1);
+    public List<Asistencia> findAsistenciaEntities() {
+        return findAsistenciaEntities(true, -1, -1);
     }
 
-    public List<Asistencias> findAsistenciasEntities(int maxResults, int firstResult) {
-        return findAsistenciasEntities(false, maxResults, firstResult);
+    public List<Asistencia> findAsistenciaEntities(int maxResults, int firstResult) {
+        return findAsistenciaEntities(false, maxResults, firstResult);
     }
 
-    private List<Asistencias> findAsistenciasEntities(boolean all, int maxResults, int firstResult) {
+    private List<Asistencia> findAsistenciaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Asistencias.class));
+            cq.select(cq.from(Asistencia.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -172,20 +172,20 @@ public class AsistenciasJpaController implements Serializable {
         }
     }
 
-    public Asistencias findAsistencias(Integer id) {
+    public Asistencia findAsistencia(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Asistencias.class, id);
+            return em.find(Asistencia.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getAsistenciasCount() {
+    public int getAsistenciaCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Asistencias> rt = cq.from(Asistencias.class);
+            Root<Asistencia> rt = cq.from(Asistencia.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

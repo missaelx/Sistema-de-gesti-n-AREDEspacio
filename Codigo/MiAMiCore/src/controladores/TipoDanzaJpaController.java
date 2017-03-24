@@ -44,7 +44,7 @@ public class TipoDanzaJpaController implements Serializable {
             em.getTransaction().begin();
             List<GrupoClase> attachedGrupoClaseList = new ArrayList<GrupoClase>();
             for (GrupoClase grupoClaseListGrupoClaseToAttach : tipoDanza.getGrupoClaseList()) {
-                grupoClaseListGrupoClaseToAttach = em.getReference(grupoClaseListGrupoClaseToAttach.getClass(), grupoClaseListGrupoClaseToAttach.getIdGrupoClase());
+                grupoClaseListGrupoClaseToAttach = em.getReference(grupoClaseListGrupoClaseToAttach.getClass(), grupoClaseListGrupoClaseToAttach.getId());
                 attachedGrupoClaseList.add(grupoClaseListGrupoClaseToAttach);
             }
             tipoDanza.setGrupoClaseList(attachedGrupoClaseList);
@@ -71,7 +71,7 @@ public class TipoDanzaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            TipoDanza persistentTipoDanza = em.find(TipoDanza.class, tipoDanza.getIdTipoDanza());
+            TipoDanza persistentTipoDanza = em.find(TipoDanza.class, tipoDanza.getId());
             List<GrupoClase> grupoClaseListOld = persistentTipoDanza.getGrupoClaseList();
             List<GrupoClase> grupoClaseListNew = tipoDanza.getGrupoClaseList();
             List<String> illegalOrphanMessages = null;
@@ -88,7 +88,7 @@ public class TipoDanzaJpaController implements Serializable {
             }
             List<GrupoClase> attachedGrupoClaseListNew = new ArrayList<GrupoClase>();
             for (GrupoClase grupoClaseListNewGrupoClaseToAttach : grupoClaseListNew) {
-                grupoClaseListNewGrupoClaseToAttach = em.getReference(grupoClaseListNewGrupoClaseToAttach.getClass(), grupoClaseListNewGrupoClaseToAttach.getIdGrupoClase());
+                grupoClaseListNewGrupoClaseToAttach = em.getReference(grupoClaseListNewGrupoClaseToAttach.getClass(), grupoClaseListNewGrupoClaseToAttach.getId());
                 attachedGrupoClaseListNew.add(grupoClaseListNewGrupoClaseToAttach);
             }
             grupoClaseListNew = attachedGrupoClaseListNew;
@@ -109,7 +109,7 @@ public class TipoDanzaJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = tipoDanza.getIdTipoDanza();
+                Integer id = tipoDanza.getId();
                 if (findTipoDanza(id) == null) {
                     throw new NonexistentEntityException("The tipoDanza with id " + id + " no longer exists.");
                 }
@@ -130,7 +130,7 @@ public class TipoDanzaJpaController implements Serializable {
             TipoDanza tipoDanza;
             try {
                 tipoDanza = em.getReference(TipoDanza.class, id);
-                tipoDanza.getIdTipoDanza();
+                tipoDanza.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The tipoDanza with id " + id + " no longer exists.", enfe);
             }

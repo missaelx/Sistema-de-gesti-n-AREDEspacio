@@ -27,49 +27,49 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author macbookpro
  */
 @Entity
-@Table(name = "asistencias")
+@Table(name = "asistencia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Asistencias.findAll", query = "SELECT a FROM Asistencias a")
-    , @NamedQuery(name = "Asistencias.findByIdasistencia", query = "SELECT a FROM Asistencias a WHERE a.idasistencia = :idasistencia")
-    , @NamedQuery(name = "Asistencias.findByDia", query = "SELECT a FROM Asistencias a WHERE a.dia = :dia")})
-public class Asistencias implements Serializable {
+    @NamedQuery(name = "Asistencia.findAll", query = "SELECT a FROM Asistencia a")
+    , @NamedQuery(name = "Asistencia.findById", query = "SELECT a FROM Asistencia a WHERE a.id = :id")
+    , @NamedQuery(name = "Asistencia.findByDia", query = "SELECT a FROM Asistencia a WHERE a.dia = :dia")})
+public class Asistencia implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idasistencia")
-    private Integer idasistencia;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @Column(name = "dia")
     @Temporal(TemporalType.DATE)
     private Date dia;
-    @JoinColumn(name = "idAlumno", referencedColumnName = "idalumno")
+    @JoinColumn(name = "idAlumno", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Alumnos idAlumno;
-    @JoinColumn(name = "idGrupoClase", referencedColumnName = "idGrupoClase")
+    private Alumno idAlumno;
+    @JoinColumn(name = "idGrupoClase", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private GrupoClase idGrupoClase;
 
-    public Asistencias() {
+    public Asistencia() {
     }
 
-    public Asistencias(Integer idasistencia) {
-        this.idasistencia = idasistencia;
+    public Asistencia(Integer id) {
+        this.id = id;
     }
 
-    public Asistencias(Integer idasistencia, Date dia) {
-        this.idasistencia = idasistencia;
+    public Asistencia(Integer id, Date dia) {
+        this.id = id;
         this.dia = dia;
     }
 
-    public Integer getIdasistencia() {
-        return idasistencia;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdasistencia(Integer idasistencia) {
-        this.idasistencia = idasistencia;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Date getDia() {
@@ -80,11 +80,11 @@ public class Asistencias implements Serializable {
         this.dia = dia;
     }
 
-    public Alumnos getIdAlumno() {
+    public Alumno getIdAlumno() {
         return idAlumno;
     }
 
-    public void setIdAlumno(Alumnos idAlumno) {
+    public void setIdAlumno(Alumno idAlumno) {
         this.idAlumno = idAlumno;
     }
 
@@ -99,18 +99,18 @@ public class Asistencias implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idasistencia != null ? idasistencia.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Asistencias)) {
+        if (!(object instanceof Asistencia)) {
             return false;
         }
-        Asistencias other = (Asistencias) object;
-        if ((this.idasistencia == null && other.idasistencia != null) || (this.idasistencia != null && !this.idasistencia.equals(other.idasistencia))) {
+        Asistencia other = (Asistencia) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -118,7 +118,7 @@ public class Asistencias implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.Asistencias[ idasistencia=" + idasistencia + " ]";
+        return "modelo.Asistencia[ id=" + id + " ]";
     }
     
 }
