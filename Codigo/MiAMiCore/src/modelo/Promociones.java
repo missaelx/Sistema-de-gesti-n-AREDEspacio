@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Promociones.findAll", query = "SELECT p FROM Promociones p")
-    , @NamedQuery(name = "Promociones.findByIdpromocion", query = "SELECT p FROM Promociones p WHERE p.idpromocion = :idpromocion")
+    , @NamedQuery(name = "Promociones.findById", query = "SELECT p FROM Promociones p WHERE p.id = :id")
     , @NamedQuery(name = "Promociones.findByTitulo", query = "SELECT p FROM Promociones p WHERE p.titulo = :titulo")
     , @NamedQuery(name = "Promociones.findByDescripcion", query = "SELECT p FROM Promociones p WHERE p.descripcion = :descripcion")
     , @NamedQuery(name = "Promociones.findByPorcentajeDescuento", query = "SELECT p FROM Promociones p WHERE p.porcentajeDescuento = :porcentajeDescuento")
@@ -37,8 +37,8 @@ public class Promociones implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idpromocion")
-    private Integer idpromocion;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @Column(name = "titulo")
     private String titulo;
@@ -54,23 +54,23 @@ public class Promociones implements Serializable {
     public Promociones() {
     }
 
-    public Promociones(Integer idpromocion) {
-        this.idpromocion = idpromocion;
+    public Promociones(Integer id) {
+        this.id = id;
     }
 
-    public Promociones(Integer idpromocion, String titulo, int porcentajeDescuento, String aplicaPara) {
-        this.idpromocion = idpromocion;
+    public Promociones(Integer id, String titulo, int porcentajeDescuento, String aplicaPara) {
+        this.id = id;
         this.titulo = titulo;
         this.porcentajeDescuento = porcentajeDescuento;
         this.aplicaPara = aplicaPara;
     }
 
-    public Integer getIdpromocion() {
-        return idpromocion;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdpromocion(Integer idpromocion) {
-        this.idpromocion = idpromocion;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -108,7 +108,7 @@ public class Promociones implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idpromocion != null ? idpromocion.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -119,7 +119,7 @@ public class Promociones implements Serializable {
             return false;
         }
         Promociones other = (Promociones) object;
-        if ((this.idpromocion == null && other.idpromocion != null) || (this.idpromocion != null && !this.idpromocion.equals(other.idpromocion))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -127,7 +127,7 @@ public class Promociones implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.Promociones[ idpromocion=" + idpromocion + " ]";
+        return "modelo.Promociones[ id=" + id + " ]";
     }
     
 }

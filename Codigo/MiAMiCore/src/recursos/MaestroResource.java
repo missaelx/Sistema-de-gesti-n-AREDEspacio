@@ -1,15 +1,16 @@
 package recursos;
 
-import controladores.MaestrosJpaController;
-import controladores.PagosdesalarioJpaController;
+import controladores.MaestroJpaController;
+import controladores.PagodesalarioJpaController;
+import controladores.PagodesalarioJpaControllerExtended;
 import controladores.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import modelo.Maestros;
-import modelo.Pagosdesalario;
+import modelo.Maestro;
+import modelo.Pagodesalario;
 
 /**
  *
@@ -20,22 +21,22 @@ public class MaestroResource {
     public MaestroResource(){
         emf = Persistence.createEntityManagerFactory("MiAMiCorePU");
     }
-    public boolean registrarMaestro(Maestros maestro){
+    public boolean registrarMaestro(Maestro maestro){
         boolean result = true;
-        MaestrosJpaController maestrosController = new MaestrosJpaController(emf);
+        MaestroJpaController maestrosController = new MaestroJpaController(emf);
         maestrosController.create(maestro);
         return result;
     }
-    public boolean eliminarMaestro(Maestros maestro) throws NonexistentEntityException{
+    public boolean eliminarMaestro(Maestro maestro) throws NonexistentEntityException{
         boolean result = true;
-        MaestrosJpaController maestrosController = new MaestrosJpaController(emf);
+        MaestroJpaController maestrosController = new MaestroJpaController(emf);
         maestro.setActivo(false);
         result = modificarMaestro(maestro);
         return result;
     }
-    public boolean modificarMaestro(Maestros maestro) throws NonexistentEntityException{
+    public boolean modificarMaestro(Maestro maestro) throws NonexistentEntityException{
         boolean result = true;
-        MaestrosJpaController maestrosController = new MaestrosJpaController(emf);
+        MaestroJpaController maestrosController = new MaestroJpaController(emf);
         try {
             maestrosController.edit(maestro);
         } catch (Exception ex) {
@@ -45,21 +46,21 @@ public class MaestroResource {
         return result;
     }
     
-    public Maestros buscarMaestroPorIdentificador(int id){
-        MaestrosJpaController maestrosController = new MaestrosJpaController(emf);
-        return maestrosController.findMaestros(id);
+    public Maestro buscarMaestroPorIdentificador(int id){
+        MaestroJpaController maestrosController = new MaestroJpaController(emf);
+        return maestrosController.findMaestro(id);
     }
     
     
-    public List<Pagosdesalario> getPagosDeSalario(int idMaestro){
-        PagosdesalarioJpaController salarioController = new PagosdesalarioJpaController(emf);
+    public List<Pagodesalario> getPagosDeSalario(int idMaestro){
+        PagodesalarioJpaControllerExtended salarioController = new PagodesalarioJpaControllerExtended(emf);
         
-        return salarioController.getPagosSalarioFromMaestro(idMaestro);
+        return salarioController.getPagoSalarioFromMaestro(idMaestro);
     }
     
-    public List<Maestros> getMaestros(){
-        MaestrosJpaController maestrosController = new MaestrosJpaController(emf);
-        return maestrosController.findMaestrosEntities();
+    public List<Maestro> getMaestros(){
+        MaestroJpaController maestrosController = new MaestroJpaController(emf);
+        return maestrosController.findMaestroEntities();
     }
     
 }

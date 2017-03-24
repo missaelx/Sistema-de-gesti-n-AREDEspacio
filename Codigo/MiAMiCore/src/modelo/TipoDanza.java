@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TipoDanza.findAll", query = "SELECT t FROM TipoDanza t")
-    , @NamedQuery(name = "TipoDanza.findByIdTipoDanza", query = "SELECT t FROM TipoDanza t WHERE t.idTipoDanza = :idTipoDanza")
+    , @NamedQuery(name = "TipoDanza.findById", query = "SELECT t FROM TipoDanza t WHERE t.id = :id")
     , @NamedQuery(name = "TipoDanza.findByDescripcion", query = "SELECT t FROM TipoDanza t WHERE t.descripcion = :descripcion")
     , @NamedQuery(name = "TipoDanza.findByNombre", query = "SELECT t FROM TipoDanza t WHERE t.nombre = :nombre")
     , @NamedQuery(name = "TipoDanza.findByActivo", query = "SELECT t FROM TipoDanza t WHERE t.activo = :activo")})
@@ -40,8 +40,8 @@ public class TipoDanza implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idTipoDanza")
-    private Integer idTipoDanza;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
@@ -57,23 +57,23 @@ public class TipoDanza implements Serializable {
     public TipoDanza() {
     }
 
-    public TipoDanza(Integer idTipoDanza) {
-        this.idTipoDanza = idTipoDanza;
+    public TipoDanza(Integer id) {
+        this.id = id;
     }
 
-    public TipoDanza(Integer idTipoDanza, String descripcion, String nombre, boolean activo) {
-        this.idTipoDanza = idTipoDanza;
+    public TipoDanza(Integer id, String descripcion, String nombre, boolean activo) {
+        this.id = id;
         this.descripcion = descripcion;
         this.nombre = nombre;
         this.activo = activo;
     }
 
-    public Integer getIdTipoDanza() {
-        return idTipoDanza;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdTipoDanza(Integer idTipoDanza) {
-        this.idTipoDanza = idTipoDanza;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescripcion() {
@@ -112,7 +112,7 @@ public class TipoDanza implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTipoDanza != null ? idTipoDanza.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -123,7 +123,7 @@ public class TipoDanza implements Serializable {
             return false;
         }
         TipoDanza other = (TipoDanza) object;
-        if ((this.idTipoDanza == null && other.idTipoDanza != null) || (this.idTipoDanza != null && !this.idTipoDanza.equals(other.idTipoDanza))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -131,7 +131,7 @@ public class TipoDanza implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.TipoDanza[ idTipoDanza=" + idTipoDanza + " ]";
+        return "modelo.TipoDanza[ id=" + id + " ]";
     }
     
 }

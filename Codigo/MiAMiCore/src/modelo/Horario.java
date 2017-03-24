@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h")
-    , @NamedQuery(name = "Horario.findByIdhorario", query = "SELECT h FROM Horario h WHERE h.idhorario = :idhorario")
+    , @NamedQuery(name = "Horario.findById", query = "SELECT h FROM Horario h WHERE h.id = :id")
     , @NamedQuery(name = "Horario.findByDia", query = "SELECT h FROM Horario h WHERE h.dia = :dia")
     , @NamedQuery(name = "Horario.findByHorainicio", query = "SELECT h FROM Horario h WHERE h.horainicio = :horainicio")
     , @NamedQuery(name = "Horario.findByHorafinal", query = "SELECT h FROM Horario h WHERE h.horafinal = :horafinal")})
@@ -41,8 +41,8 @@ public class Horario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idhorario")
-    private Integer idhorario;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @Column(name = "dia")
     private String dia;
@@ -54,30 +54,30 @@ public class Horario implements Serializable {
     @Column(name = "horafinal")
     @Temporal(TemporalType.TIME)
     private Date horafinal;
-    @JoinColumn(name = "idGrupoClase", referencedColumnName = "idGrupoClase")
+    @JoinColumn(name = "idGrupoClase", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private GrupoClase idGrupoClase;
 
     public Horario() {
     }
 
-    public Horario(Integer idhorario) {
-        this.idhorario = idhorario;
+    public Horario(Integer id) {
+        this.id = id;
     }
 
-    public Horario(Integer idhorario, String dia, Date horainicio, Date horafinal) {
-        this.idhorario = idhorario;
+    public Horario(Integer id, String dia, Date horainicio, Date horafinal) {
+        this.id = id;
         this.dia = dia;
         this.horainicio = horainicio;
         this.horafinal = horafinal;
     }
 
-    public Integer getIdhorario() {
-        return idhorario;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdhorario(Integer idhorario) {
-        this.idhorario = idhorario;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDia() {
@@ -115,7 +115,7 @@ public class Horario implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idhorario != null ? idhorario.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -126,7 +126,7 @@ public class Horario implements Serializable {
             return false;
         }
         Horario other = (Horario) object;
-        if ((this.idhorario == null && other.idhorario != null) || (this.idhorario != null && !this.idhorario.equals(other.idhorario))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -134,7 +134,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "recursos.Horario[ idhorario=" + idhorario + " ]";
+        return "modelo.Horario[ id=" + id + " ]";
     }
     
 }
