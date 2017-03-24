@@ -27,7 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import modelo.Alumnos;
+import modelo.Alumno;
 
 /**
  * FXML Controller class
@@ -108,7 +108,7 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
     }
     @FXML
     private void registrarAlumno(ActionEvent event){
-        Alumnos alumno = new Alumnos();
+        Alumno alumno = new Alumno();
         if(campoNombre.getText().equals("") || campoApellidos.getText().equals("")
                 || campoCorreo.getText().equals("") || campoNumero.getText().equals("")
                 || campoSangre.getValue().toString().equals("")
@@ -121,7 +121,7 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
             alumno.setFechaNacimiento(Date.from(campoFechaNacimiento.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
             alumno.setTelefonoEmergencia(campoEmergencia.getText());
             alumno.setActivo(true);
-            alumno.setDiapago(Calendar.getInstance().getTime().getDay());
+            alumno.setDiapago(Calendar.getInstance().getTime());
         }        
         
     }

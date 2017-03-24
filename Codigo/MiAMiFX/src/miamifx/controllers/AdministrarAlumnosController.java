@@ -9,9 +9,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,12 +22,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import modelo.Alumnos;
+import modelo.Alumno;
+import recursos.AlumnoResource;
 
 /**
  * FXML Controller class
@@ -41,6 +47,8 @@ public class AdministrarAlumnosController implements Initializable {
     private TextField campoBusqueda;
     @FXML 
     private TableView tablaAlumnos;
+    @FXML
+    private TableColumn columnaNombre, columnaDireccion, columnaTelefono;
     @FXML 
     private ImageView fotoAlumno;
     
@@ -80,9 +88,17 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
     
+    @FXML
+    private void buscarAlumno(ActionEvent event){
+        ArrayList<Alumno> alumnos = new ArrayList();
+        
+        campoBusqueda.getText();
+    }
+    
     @FXML 
     private void editarDatos(ActionEvent event){
-        ArrayList<Alumnos> alumnocampoBusqueda.getText();
+        
+        
     }
     
     @FXML 
@@ -90,8 +106,20 @@ public class AdministrarAlumnosController implements Initializable {
         
     }
             
+    private void setTabla(){
+        AlumnoResource recurso = new AlumnoResource();        
+        ObservableList lista = FXCollections.observableArrayList(recurso.visualizarRegistros());
+        
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<Alumno, String>("nombre"));
+        columnaDireccion.setCellFactory(new PropertyValueFactory<Alumno, String>("direccion"));
+        columnaTelefono.setCellFactory(new PropertyValueFactory<Alumno, String>("telefono"));
+        
+        tablaAlumnos.setItems(lista);
+        
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboBusqueda.getItems().addAll("Nombre","telefono");
+        setTabla();
     }
 }
