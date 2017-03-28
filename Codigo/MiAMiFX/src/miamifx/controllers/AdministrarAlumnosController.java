@@ -128,6 +128,7 @@ public class AdministrarAlumnosController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        setTabla();
     }
             
     private void setTabla(){
