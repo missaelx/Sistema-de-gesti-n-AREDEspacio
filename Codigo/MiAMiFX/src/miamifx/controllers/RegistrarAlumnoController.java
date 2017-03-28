@@ -49,6 +49,8 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
     
     private Stage contenedor;
     
+    private Alumno alumno;
+    
     ControladorPantallas controlador;
             
     
@@ -64,6 +66,10 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
 
     public void setContenedor(Stage contenedor) {
         this.contenedor = contenedor;
+    }
+    
+    public void setAlumno(Alumno alumn){
+        this.alumno = alumn;
     }
     
     
@@ -85,18 +91,15 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
         alerta.setTitle("Confirmacion");
         alerta.setContentText("Esta seguro que desea cancelar la operacion?");
         
-        ButtonType si = new ButtonType("Si");
-        ButtonType no = new ButtonType("No");
-        
-        
-        
-        alerta.getButtonTypes().addAll(si, no);
+        //ButtonType si = new ButtonType("Si");
+        //ButtonType no = new ButtonType("No");
+        //alerta.getButtonTypes().addAll(si, no);
         alerta.show();
         try{
             alerta.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    //((Stage) .getSource()).close();
-                    contenedor.close();
+                    Stage stage = (Stage) btnCancelar.getScene().getWindow();
+                    stage.close();
                 }
             });
         } catch(Exception e){
@@ -138,6 +141,15 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
     public void initialize(URL url, ResourceBundle rb) {
         campoSangre.setEditable(false);
         campoSangre.getItems().addAll("O-", "O+","A-","A+","B+","B-","AB+","AB-");
+        if(alumno != null){
+            this.campoEmergencia.setText(alumno.getTelefonoEmergencia());
+            this.campoCorreo.setText(alumno.getCorreo());
+            this.campoNombre.setText(alumno.getNombre());
+            this.campoFechaNacimiento.setPromptText(alumno.getFechaNacimiento().toString());
+            this.campoApellidos.setText(alumno.getApellidos());
+            this.campoSangre.setPromptText(alumno.getTipoSangre());
+            this.campoNumero.setText(alumno.getTelefono());
+        }
     }    
 
     @Override

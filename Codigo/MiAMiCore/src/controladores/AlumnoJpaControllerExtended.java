@@ -27,11 +27,18 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
         em.close();
         return alumno;
     }
-    public Alumno getAlumnoFromCorreo(String correo){
+    public List<Alumno> getAlumnoFromCorreo(String correo){
         EntityManager em = getEntityManager();
-        Alumno alumno = (Alumno) em.createNamedQuery("Alumno.findByCorreo").setParameter("correo", correo).getSingleResult();
+        List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findByCorreo").setParameter("correo", correo).getResultList();
         em.close();
         return alumno;
+    }
     
+    
+    public List<Alumno> getAllAlumnos(){
+        EntityManager em = getEntityManager();
+        List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findAll").getResultList();
+        em.close();
+        return alumno;
     }
 }
