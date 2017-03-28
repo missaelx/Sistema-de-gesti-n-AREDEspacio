@@ -50,8 +50,8 @@ public class AlumnoResource {
     
     
     public List<Alumno> visualizarRegistros() {
-        AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
-        return alumnosController.findAlumnoEntities();
+        AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
+        return alumnosController.getAllAlumnos();
     }
     public Alumno getAlumnoPorId(int id){
         AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
