@@ -70,7 +70,16 @@ public class EditarAlumnoController implements Initializable {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public void setCampos(Alumno alumn){
+        /*this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
+        this.campoCorreo.setPromptText(alumn.getCorreo());
+        this.campoNombre.setPromptText(alumn.getNombre());
+        this.campoFechaNacimiento.setPromptText(alumn.getFechaNacimiento().toString());
+        this.campoApellidos.setPromptText(alumn.getApellidos());
+        this.campoSangre.setPromptText(alumn.getTipoSangre());
+        this.campoNumero.setPromptText(alumn.getTelefono());*/
+        campoCorreo.setText("Correo de la bd");
+    }
     @FXML 
     private void cancelar(ActionEvent event){
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
@@ -78,13 +87,16 @@ public class EditarAlumnoController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.campoEmergencia.setText(alumno.getTelefonoEmergencia());
+        if(alumno != null ){
+            this.campoEmergencia.setText(alumno.getTelefonoEmergencia());
         this.campoCorreo.setText(alumno.getCorreo());
         this.campoNombre.setText(alumno.getNombre());
         this.campoFechaNacimiento.setPromptText(alumno.getFechaNacimiento().toString());
         this.campoApellidos.setText(alumno.getApellidos());
         this.campoSangre.setPromptText(alumno.getTipoSangre());
         this.campoNumero.setText(alumno.getTelefono());
+        }
+        
     }    
     
 }
