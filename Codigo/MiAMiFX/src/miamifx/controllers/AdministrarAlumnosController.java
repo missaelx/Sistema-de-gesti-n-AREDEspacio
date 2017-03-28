@@ -48,7 +48,7 @@ public class AdministrarAlumnosController implements Initializable {
     @FXML 
     private TableView<Alumno> tablaAlumnos;
     @FXML
-    private TableColumn columnaNombre, columnaCorreo, columnaTelefono;
+    private TableColumn columnaNombre, columnaApellidos, columnaCorreo, columnaTelefono;
     @FXML 
     private ImageView fotoAlumno;
     
@@ -73,7 +73,7 @@ public class AdministrarAlumnosController implements Initializable {
     @FXML 
     private void verDetalles(ActionEvent event){
         try {
-            Stage inscribirAlumno = new Stage();
+            Stage editarAlumno = new Stage();
             Alumno alumno = tablaAlumnos.getSelectionModel().getSelectedItem();
             FXMLLoader cargador = new FXMLLoader();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
@@ -83,8 +83,8 @@ public class AdministrarAlumnosController implements Initializable {
             EditarAlumnoController editarAlumnoController = (EditarAlumnoController) cargador.getController();
             editarAlumnoController.setAlumno(alumno);
             Scene escena = new Scene(root);
-            inscribirAlumno.setScene(escena);
-            inscribirAlumno.show();
+            editarAlumno.setScene(escena);
+            editarAlumno.show();
             
             
         } catch (IOException ex) {
@@ -114,6 +114,10 @@ public class AdministrarAlumnosController implements Initializable {
     }
     
     @FXML 
+    private void activarBusqueda(ActionEvent event){
+        campoBusqueda.setDisable(false);
+    }
+    @FXML 
     private void editarDatos(ActionEvent event){
         
         
@@ -134,8 +138,8 @@ public class AdministrarAlumnosController implements Initializable {
     private void setTabla(){
         AlumnoResource recurso = new AlumnoResource();        
         ObservableList lista = FXCollections.observableArrayList(recurso.visualizarRegistros());
-        
-        columnaNombre.setCellValueFactory(new PropertyValueFactory<Alumno, String>("nombre"));
+        columnaNombre.setCellValueFactory( new PropertyValueFactory<Alumno, String>("nombre"));
+        //columnaApellidos.setCellValueFactory( new PropertyValueFactory<Alumno, String>("apellidos"));
         columnaCorreo.setCellValueFactory(new PropertyValueFactory<Alumno, String>("correo"));
         columnaTelefono.setCellValueFactory(new PropertyValueFactory<Alumno, String>("telefono"));
         tablaAlumnos.setItems(lista);
@@ -147,6 +151,7 @@ public class AdministrarAlumnosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        campoBusqueda.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre","Telefono","Correo");
         setTabla();
     }
