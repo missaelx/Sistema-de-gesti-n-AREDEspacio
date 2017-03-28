@@ -24,6 +24,10 @@
       <Button fx:id="btnEliminar" layoutX="801.0" layoutY="501.0" mnemonicParsing="false" onAction="#eliminarRegistro" text="Eliminar " />
       <ImageView fx:id="fotoAlumno" fitHeight="182.0" fitWidth="218.0" layoutX="754.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="btnBuscar" layoutX="632.0" layoutY="53.0" mnemonicParsing="false" onAction="#buscarAlumno" text="Buscar" />
+<<<<<<< HEAD
+      <ComboBox fx:id="comboBusqueda" layoutX="33.0" layoutY="53.0" onAction="#activarBusqueda" promptText="buscar Por" />
+=======
       <ComboBox fx:id="comboBusqueda" layoutX="33.0" layoutY="53.0" onAction="#activarBusqueda" promptText="Selecciona el método de busqueda" />
+>>>>>>> 8875955ce563cfaff481bc76fea5d105d8f0a634
    </children>
 </AnchorPane>

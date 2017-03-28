@@ -115,7 +115,11 @@ public class AdministrarAlumnosController implements Initializable {
     
     @FXML 
     private void activarBusqueda(ActionEvent event){
+<<<<<<< HEAD
+        System.out.println("si jala");
+=======
         btnBuscar.setDisable(false);
+>>>>>>> 8875955ce563cfaff481bc76fea5d105d8f0a634
         campoBusqueda.setDisable(false);
     }
     @FXML 
@@ -152,9 +156,13 @@ public class AdministrarAlumnosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< HEAD
+        comboBusqueda.getItems().addAll("Nombre","Telefono","Correo");
+=======
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre","Correo");
+>>>>>>> 8875955ce563cfaff481bc76fea5d105d8f0a634
         setTabla();
     }
 }
