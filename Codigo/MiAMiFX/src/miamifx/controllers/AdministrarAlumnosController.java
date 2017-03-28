@@ -96,7 +96,7 @@ public class AdministrarAlumnosController implements Initializable {
     private void buscarAlumno(ActionEvent event){        
         AlumnoResource recurso = new AlumnoResource();
         //ObservableList lista = FXCollections.observableArrayList();
-        System.out.println(campoBusqueda.getText());
+        
         
         List<Alumno> listaBusqueda = new ArrayList<>();
         

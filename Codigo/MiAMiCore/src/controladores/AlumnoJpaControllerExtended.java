@@ -34,8 +34,8 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
         return alumno;
     }
     
-    @Override
-    public List<Alumno> findAlumnoEntities(){
+    
+    public List<Alumno> getAllAlumnos(){
         EntityManager em = getEntityManager();
         List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findAll").getResultList();
         em.close();
