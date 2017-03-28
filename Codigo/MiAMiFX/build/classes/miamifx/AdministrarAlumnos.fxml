@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="669.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarAlumnosController">
    <children>
-      <TextField fx:id="campoBusqueda" layoutX="312.0" layoutY="78.0" onAction="#buscarAlumno" prefHeight="51.0" prefWidth="335.0" />
+      <TextField fx:id="campoBusqueda" layoutX="275.0" layoutY="78.0" onAction="#buscarAlumno" prefHeight="51.0" prefWidth="335.0" />
       <TableView fx:id="tablaAlumnos" layoutX="54.0" layoutY="151.0" prefHeight="486.0" prefWidth="720.0">
         <columns>
           <TableColumn fx:id="columnaNombre" prefWidth="196.0" text="nombre" />
@@ -27,7 +27,7 @@
       <Button fx:id="btnEliminar" layoutX="839.0" layoutY="586.0" mnemonicParsing="false" onAction="#eliminarRegistro" text="Eliminar " />
       <ImageView fx:id="fotoAlumno" fitHeight="150.0" fitWidth="200.0" layoutX="801.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="801.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnBuscar" layoutX="672.0" layoutY="78.0" mnemonicParsing="false" onAction="#buscarAlumno" text="Buscar" />
+      <Button fx:id="btnBuscar" layoutX="630.0" layoutY="78.0" mnemonicParsing="false" onAction="#buscarAlumno" text="Buscar" />
       <ComboBox fx:id="comboBusqueda" layoutX="54.0" layoutY="78.0" prefHeight="51.0" prefWidth="200.0" promptText="buscar Por" />
    </children>
 </AnchorPane>
