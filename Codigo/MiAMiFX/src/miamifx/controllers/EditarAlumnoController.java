@@ -15,6 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import modelo.Alumno;
 
 /**
  * FXML Controller class
@@ -34,10 +35,20 @@ public class EditarAlumnoController implements Initializable {
     @FXML
     private ImageView imagenAlumno;
     
+    private Alumno alumno;
+    
+    public void setAlumno(Alumno alumn){
+        this.alumno = alumn;
+    }
     
     
     @FXML
     private void editarDatos(ActionEvent event){
+        
+    }
+    
+    @FXML 
+    private void cancelar(ActionEvent event){
         
     }
     @Override

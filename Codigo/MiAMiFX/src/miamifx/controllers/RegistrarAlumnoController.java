@@ -27,7 +27,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import modelo.Alumnos;
+import modelo.Alumno;
+import recursos.AlumnoResource;
 
 /**
  * FXML Controller class
@@ -108,21 +109,29 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
     }
     @FXML
     private void registrarAlumno(ActionEvent event){
-        Alumnos alumno = new Alumnos();
+        Alumno alumno = new Alumno();
+        java.util.Date fecha = new Date();
+        AlumnoResource recurso = new AlumnoResource();
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setContentText("Algunos campos se encuentan vacios, por favor ingresa la informacion completa");
         if(campoNombre.getText().equals("") || campoApellidos.getText().equals("")
                 || campoCorreo.getText().equals("") || campoNumero.getText().equals("")
                 || campoSangre.getValue().toString().equals("")
-                ||campoFechaNacimiento.getValue()==null|| campoEmergencia.getText().equals("")){
-            alumno.setNombre(campoNombre.getText());
+                ||campoFechaNacimiento.getValue().equals(null)
+                || campoEmergencia.getText().equals("")){
+            alerta.show();
+        }else{
+            alumno.setActivo(true);
             alumno.setApellidos(campoApellidos.getText());
+            alumno.setNombre(campoNombre.getText());
             alumno.setCorreo(campoCorreo.getText());
             alumno.setTelefono(campoNumero.getText());
             alumno.setTipoSangre(campoSangre.getValue().toString());
-            alumno.setFechaNacimiento(Date.from(campoFechaNacimiento.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
             alumno.setTelefonoEmergencia(campoEmergencia.getText());
-            alumno.setActivo(true);
-            alumno.setDiapago(Calendar.getInstance().getTime().getDay());
-        }        
+            alumno.setFechaNacimiento(java.sql.Date.valueOf(campoFechaNacimiento.getValue()));
+            alumno.setDiapago(fecha);
+            recurso.registrarAlumno(alumno);
+        }
         
     }
     @Override
