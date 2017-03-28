@@ -95,22 +95,20 @@ public class AdministrarAlumnosController implements Initializable {
     @FXML
     private void buscarAlumno(ActionEvent event){        
         AlumnoResource recurso = new AlumnoResource();
-        ObservableList lista = FXCollections.observableArrayList();
+        //ObservableList lista = FXCollections.observableArrayList();
         System.out.println(campoBusqueda.getText());
         
-        if(comboBusqueda.getValue().toString().equals("Nombre") || comboBusqueda.getValue()==null){
-           lista.add(recurso.buscarAlumnoPorNombre(campoBusqueda.getText())); 
+        List<Alumno> listaBusqueda = new ArrayList<>();
+        
+        if(comboBusqueda.getValue().toString().equals("Nombre")){
+           listaBusqueda = recurso.buscarAlumnoPorNombre(campoBusqueda.getText());
         }
-        if(comboBusqueda.getValue().toString().equals("Correo")){
-            lista.add(recurso.buscarAlumnoPorNombre(campoBusqueda.getText()));
+        else if(comboBusqueda.getValue().toString().equals("Correo")){
+            listaBusqueda = recurso.buscarAlumnoPorNombre(campoBusqueda.getText());
         }
         
-        if(lista.isEmpty()){
-            System.out.println("No se encontraron coincidencias");
-        }else{
-            setTabla(lista);
-        }
-        
+        ObservableList lista = FXCollections.observableList(listaBusqueda);
+        tablaAlumnos.setItems(lista);
         
         
     }
