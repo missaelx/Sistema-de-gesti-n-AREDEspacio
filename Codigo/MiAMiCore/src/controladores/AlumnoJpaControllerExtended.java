@@ -26,5 +26,11 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
         em.close();
         return alumno;
     }
+    public Alumno getAlumnoFromCorreo(String correo){
+        EntityManager em = getEntityManager();
+        Alumno alumno = (Alumno) em.createNamedQuery("Alumno.findByCorreo").setParameter("correo", correo).getSingleResult();
+        em.close();
+        return alumno;
     
+    }
 }
