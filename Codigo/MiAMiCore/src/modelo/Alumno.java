@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Alumno.findByCorreo", query = "SELECT a FROM Alumno a WHERE a.correo = :correo")
     , @NamedQuery(name = "Alumno.findByFechaNacimiento", query = "SELECT a FROM Alumno a WHERE a.fechaNacimiento = :fechaNacimiento")
     , @NamedQuery(name = "Alumno.findByNombre", query = "SELECT a FROM Alumno a WHERE a.nombre = :nombre")
+    , @NamedQuery(name = "Alumno.findByNombreLike", query = "SELECT a FROM Alumno a WHERE (0 < LOCATE(:nombre, a.nombre))")
     , @NamedQuery(name = "Alumno.findByApellidos", query = "SELECT a FROM Alumno a WHERE a.apellidos = :apellidos")
     , @NamedQuery(name = "Alumno.findByTelefono", query = "SELECT a FROM Alumno a WHERE a.telefono = :telefono")
     , @NamedQuery(name = "Alumno.findByTelefonoEmergencia", query = "SELECT a FROM Alumno a WHERE a.telefonoEmergencia = :telefonoEmergencia")
