@@ -1,5 +1,6 @@
 package controladores;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import modelo.Alumno;
@@ -14,9 +15,9 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
         super(emf);
     }
     
-    public Alumno getAlumnoFromNombre(String nombre){
+    public List<Alumno> getAlumnoFromNombre(String nombre){
         EntityManager em = getEntityManager();
-        Alumno alumno = (Alumno) em.createNamedQuery("Alumno.findByNombre").setParameter("nombre", nombre).getSingleResult();
+        List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findByNombreLike").setParameter("nombre", nombre).getResultList();
         em.close();
         return alumno;
     }
@@ -26,5 +27,11 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
         em.close();
         return alumno;
     }
+    public Alumno getAlumnoFromCorreo(String correo){
+        EntityManager em = getEntityManager();
+        Alumno alumno = (Alumno) em.createNamedQuery("Alumno.findByCorreo").setParameter("correo", correo).getSingleResult();
+        em.close();
+        return alumno;
     
+    }
 }

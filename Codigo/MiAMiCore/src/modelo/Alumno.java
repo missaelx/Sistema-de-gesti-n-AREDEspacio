@@ -35,11 +35,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "alumno")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Alumno.findAll", query = "SELECT a FROM Alumno a")
+    @NamedQuery(name = "Alumno.findAll", query = "SELECT a FROM Alumno a WHERE a.activo = 1")
     , @NamedQuery(name = "Alumno.findById", query = "SELECT a FROM Alumno a WHERE a.id = :id")
     , @NamedQuery(name = "Alumno.findByCorreo", query = "SELECT a FROM Alumno a WHERE a.correo = :correo")
     , @NamedQuery(name = "Alumno.findByFechaNacimiento", query = "SELECT a FROM Alumno a WHERE a.fechaNacimiento = :fechaNacimiento")
     , @NamedQuery(name = "Alumno.findByNombre", query = "SELECT a FROM Alumno a WHERE a.nombre = :nombre")
+    , @NamedQuery(name = "Alumno.findByNombreLike", query = "SELECT a FROM Alumno a WHERE (0 < LOCATE(:nombre, a.nombre))")
     , @NamedQuery(name = "Alumno.findByApellidos", query = "SELECT a FROM Alumno a WHERE a.apellidos = :apellidos")
     , @NamedQuery(name = "Alumno.findByTelefono", query = "SELECT a FROM Alumno a WHERE a.telefono = :telefono")
     , @NamedQuery(name = "Alumno.findByTelefonoEmergencia", query = "SELECT a FROM Alumno a WHERE a.telefonoEmergencia = :telefonoEmergencia")
@@ -47,6 +48,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Alumno.findByActivo", query = "SELECT a FROM Alumno a WHERE a.activo = :activo")
     , @NamedQuery(name = "Alumno.findByDiapago", query = "SELECT a FROM Alumno a WHERE a.diapago = :diapago")})
 public class Alumno implements Serializable {
+
+    @Column(name = "foto")
+    private String foto;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -248,6 +252,14 @@ public class Alumno implements Serializable {
     @Override
     public String toString() {
         return "modelo.Alumno[ id=" + id + " ]";
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
     
 }

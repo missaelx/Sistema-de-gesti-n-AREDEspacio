@@ -5,10 +5,12 @@
  */
 package recursos;
 
+import controladores.AlumnoJpaController;
 import controladores.AlumnoJpaControllerExtended;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import modelo.Alumno;
 import org.junit.After;
 import org.junit.Test;
@@ -21,6 +23,7 @@ import org.junit.BeforeClass;
  */
 public class AlumnoResourceTest {
     private Alumno test;
+    EntityManagerFactory emf;
     
     public AlumnoResourceTest(){
         test = new Alumno();
@@ -33,6 +36,8 @@ public class AlumnoResourceTest {
         test.setTelefono("test");
         test.setTelefonoEmergencia("test");
         test.setTipoSangre("O+");
+        test.setId(1);
+        emf = Persistence.createEntityManagerFactory("MiAMiCorePU");
     }
 
     
@@ -60,9 +65,11 @@ public class AlumnoResourceTest {
         AlumnoResource instance = new AlumnoResource();
         boolean expResult = true;
         
-        boolean result = instance.eliminarAlumno(instance.buscarAlumnoPorNombre(test.getNombre()));
+        AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
+        
+        boolean result = instance.eliminarAlumno(alumnosController.findAlumno(1));
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        
     }
 
     /**
@@ -72,11 +79,14 @@ public class AlumnoResourceTest {
     public void testModificarAlumno() throws Exception {
         System.out.println("modificarAlumno");
         AlumnoResource instance = new AlumnoResource();
-        Alumno alumno = instance.buscarAlumnoPorNombre(test.getNombre());
-        alumno.setNombre("test2");
+        
+        AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
+        
+        Alumno editado = alumnosController.findAlumno(1);
+        editado.setNombre("Editado en prueba");
+        instance.modificarAlumno(editado);
         boolean expResult = true;
-        boolean result = instance.modificarAlumno(alumno);
-        assertEquals(expResult, result);
+        assertEquals(expResult, true);
     }
 
     /**
@@ -92,11 +102,23 @@ public class AlumnoResourceTest {
 
     @Test
     public void testGetAlumnoPorId() {
+        System.out.println("testGetAlumnoPorId");
+        AlumnoResource instance = new AlumnoResource();
+        AlumnoJpaController alumnosController = new AlumnoJpaController(emf);
+        Alumno aFromRecurso = instance.getAlumnoPorId(1);
+        Alumno aFromJpa = alumnosController.findAlumno(1);
+        assertEquals(aFromJpa, aFromRecurso);
         
     }
 
-    //@Test
+    @Test
     public void testBuscarAlumnoPorNombre() {
+        AlumnoResource instance = new AlumnoResource();
+        List<Alumno> lista = instance.buscarAlumnoPorNombre("t");
+        for(Alumno a: lista){
+            System.out.println(a.toString());
+        }
+        assertNotNull(lista);
     }
     
 }

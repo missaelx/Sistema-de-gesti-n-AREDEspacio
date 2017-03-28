@@ -31,19 +31,12 @@ import miamifx.ControlPantalla.ControladorPantallas;
  */
 public class PrincipalController implements Initializable {
 
-    private mainController main;
     @FXML 
     private TabPane pestañas;
     @FXML 
     private Tab tabInicio, tabAlumnos, tabMaestros, tabDanzas;
     @FXML
-    private ImageView promociones, aredEspacioImagen, imagenAlumno, imagenMaestro;
-    @FXML 
-    private Button aBtnEliminar, aBtnInscribir, aBtnDetalles, mBtnEliminar, mBtnInscribir, mBtnDetalles;
-    @FXML 
-    private TableView tablaAlumnos, tablaMaestros;
-    @FXML 
-    private TableColumn nombreAlumno, direccionAlumno, telefonoAlumno, nombreMaestro, direccionMaestro, telefonoMaestro;
+    private ImageView promociones, aredEspacioImagen;
     
     @FXML 
     private void inscribirAlumno(ActionEvent evento){
@@ -80,6 +73,9 @@ public class PrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            URL urlAlumnos = new File("src/miamifx/AdministrarAlumnos.fxml").toURL();
+            tabAlumnos.setContent((Node) FXMLLoader.load(urlAlumnos));
+            
             URL urlMaestros = new File("src/miamifx/AdministrarAlumnos.fxml").toURL();
             tabMaestros.setContent((Node) FXMLLoader.load(urlMaestros));
         } catch (IOException ex) {
@@ -89,8 +85,6 @@ public class PrincipalController implements Initializable {
         
     }    
 
-    void init(mainController aThis) {
-        main=aThis;
-    }
+    
     
 }
