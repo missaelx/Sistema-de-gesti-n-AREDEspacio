@@ -61,4 +61,9 @@ public class AlumnoResource {
         AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
         return alumnosController.getAlumnoFromNombre(nombre);
     }
+    
+    public List<Alumno> buscarAlumnoPorCorreo(String correo){
+        AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
+        return alumnosController.getAlumnoFromCorreo(correo);
+    }
 }
