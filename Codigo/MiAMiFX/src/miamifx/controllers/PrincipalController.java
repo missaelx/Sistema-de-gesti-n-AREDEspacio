@@ -78,6 +78,10 @@ public class PrincipalController implements Initializable {
             
             URL urlMaestros = new File("src/miamifx/AdministrarAlumnos.fxml").toURL();
             tabMaestros.setContent((Node) FXMLLoader.load(urlMaestros));
+            
+            URL urlDanzas = new File("src/miamifx/AdministrarDanzas.fxml").toURL();
+            tabDanzas.setContent((Node) FXMLLoader.load(urlDanzas));
+            
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
