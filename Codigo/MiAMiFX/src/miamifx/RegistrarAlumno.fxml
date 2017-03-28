@@ -23,7 +23,7 @@
       <Label layoutX="562.0" layoutY="273.0" text="Fecha de nacimiento" />
       <DatePicker id="campoFecha" fx:id="campoFechaNacimiento" layoutX="562.0" layoutY="317.0" promptText="01/01/1990" />
       <Label layoutX="38.0" layoutY="397.0" text="Numero de Emergencia" />
-      <TextField id="campoFacebook" fx:id="campoNumeroEmergencia" layoutX="38.0" layoutY="432.0" promptText="Ej. Juan Lopez" />
+      <TextField id="campoFacebook" fx:id="campoEmergencia" layoutX="38.0" layoutY="432.0" promptText="Ej. 2281013201" />
       <Label layoutX="562.0" layoutY="397.0" text="Foto" />
       <Button fx:id="btnExaminar" layoutX="559.0" layoutY="432.0" mnemonicParsing="false" onAction="#seleccionarFoto" text="Examinar" />
    </children>

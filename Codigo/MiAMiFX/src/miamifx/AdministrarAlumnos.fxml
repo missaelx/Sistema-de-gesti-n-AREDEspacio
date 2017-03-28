@@ -14,22 +14,20 @@
 
 <AnchorPane id="AnchorPane" prefHeight="669.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarAlumnosController">
    <children>
-      <TextField fx:id="campoBusqueda" layoutX="328.0" layoutY="79.0" onAction="#buscarAlumno" />
-      <ComboBox fx:id="comboBusqueda" layoutX="85.0" layoutY="79.0" prefHeight="51.0" prefWidth="200.0" promptText="Buscar por" />
+      <TextField fx:id="campoBusqueda" layoutX="275.0" layoutY="78.0" onAction="#buscarAlumno" prefHeight="51.0" prefWidth="335.0" />
       <TableView fx:id="tablaAlumnos" layoutX="54.0" layoutY="151.0" prefHeight="486.0" prefWidth="720.0">
         <columns>
           <TableColumn fx:id="columnaNombre" prefWidth="196.0" text="nombre" />
-          <TableColumn fx:id="columnaDireccion" minWidth="0.0" prefWidth="336.0" text="Direccion" />
-            <TableColumn fx:id="columnaTelefono" prefWidth="187.0" text="Telefono" />
+          <TableColumn fx:id="columnaCorreo" minWidth="0.0" prefWidth="261.0" text="Correo" />
+            <TableColumn fx:id="columnaTelefono" prefWidth="262.0" text="Telefono" />
         </columns>
       </TableView>
       <Button fx:id="btnInscribir" layoutX="839.0" layoutY="151.0" mnemonicParsing="false" onAction="#inscribirAlumno" text="Inscribir " />
       <Button fx:id="btnDetalles" layoutX="822.0" layoutY="501.0" mnemonicParsing="false" onAction="#verDetalles" text="Ver detalles" />
       <Button fx:id="btnEliminar" layoutX="839.0" layoutY="586.0" mnemonicParsing="false" onAction="#eliminarRegistro" text="Eliminar " />
       <ImageView fx:id="fotoAlumno" fitHeight="150.0" fitWidth="200.0" layoutX="801.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="822.0" layoutY="151.0" mnemonicParsing="false" text="Inscribir " />
-      <Button layoutX="822.0" layoutY="501.0" mnemonicParsing="false" text="Ver detalles" />
-      <Button layoutX="822.0" layoutY="587.0" mnemonicParsing="false" text="Eliminar " />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="801.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btnBuscar" layoutX="630.0" layoutY="78.0" mnemonicParsing="false" onAction="#buscarAlumno" text="Buscar" />
+      <ComboBox fx:id="comboBusqueda" layoutX="54.0" layoutY="78.0" prefHeight="51.0" prefWidth="200.0" promptText="buscar Por" />
    </children>
 </AnchorPane>

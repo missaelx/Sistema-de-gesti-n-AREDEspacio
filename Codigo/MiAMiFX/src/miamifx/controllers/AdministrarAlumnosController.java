@@ -46,9 +46,9 @@ public class AdministrarAlumnosController implements Initializable {
     @FXML 
     private TextField campoBusqueda;
     @FXML 
-    private TableView tablaAlumnos;
+    private TableView<Alumno> tablaAlumnos;
     @FXML
-    private TableColumn columnaNombre, columnaDireccion, columnaTelefono;
+    private TableColumn columnaNombre, columnaCorreo, columnaTelefono;
     @FXML 
     private ImageView fotoAlumno;
     
@@ -74,10 +74,14 @@ public class AdministrarAlumnosController implements Initializable {
     private void verDetalles(ActionEvent event){
         try {
             Stage inscribirAlumno = new Stage();
+            Alumno alumno = tablaAlumnos.getSelectionModel().getSelectedItem();
+            FXMLLoader cargador = new FXMLLoader();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
 
             URL url = new File("src/miamifx/EditarAlumno.fxml").toURL();            
-            AnchorPane root = FXMLLoader.load(url);
+            AnchorPane root = cargador.load(url);
+            EditarAlumnoController editarAlumnoController = (EditarAlumnoController) cargador.getController();
+            editarAlumnoController.setAlumno(alumno);
             Scene escena = new Scene(root);
             inscribirAlumno.setScene(escena);
             inscribirAlumno.show();
@@ -89,10 +93,26 @@ public class AdministrarAlumnosController implements Initializable {
     }
     
     @FXML
-    private void buscarAlumno(ActionEvent event){
-        ArrayList<Alumno> alumnos = new ArrayList();
+    private void buscarAlumno(ActionEvent event){        
+        AlumnoResource recurso = new AlumnoResource();
+        ObservableList lista = FXCollections.observableArrayList();
+        System.out.println(campoBusqueda.getText());
         
-        campoBusqueda.getText();
+        if(comboBusqueda.getValue().toString().equals("Nombre") || comboBusqueda.getValue()==null){
+           lista.add(recurso.buscarAlumnoPorNombre(campoBusqueda.getText())); 
+        }
+        if(comboBusqueda.getValue().toString().equals("Correo")){
+            lista.add(recurso.buscarAlumnoPorNombre(campoBusqueda.getText()));
+        }
+        
+        if(lista.isEmpty()){
+            System.out.println("No se encontraron coincidencias");
+        }else{
+            setTabla(lista);
+        }
+        
+        
+        
     }
     
     @FXML 
@@ -103,7 +123,13 @@ public class AdministrarAlumnosController implements Initializable {
     
     @FXML 
     private void eliminarRegistro(ActionEvent evento){
-        
+        Alumno alumno = tablaAlumnos.getSelectionModel().getSelectedItem();
+        AlumnoResource recurso = new AlumnoResource();
+        try {
+            recurso.eliminarAlumno(alumno);
+        } catch (Exception ex) {
+            Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
             
     private void setTabla(){
@@ -111,15 +137,18 @@ public class AdministrarAlumnosController implements Initializable {
         ObservableList lista = FXCollections.observableArrayList(recurso.visualizarRegistros());
         
         columnaNombre.setCellValueFactory(new PropertyValueFactory<Alumno, String>("nombre"));
-        columnaDireccion.setCellFactory(new PropertyValueFactory<Alumno, String>("direccion"));
-        columnaTelefono.setCellFactory(new PropertyValueFactory<Alumno, String>("telefono"));
-        
+        columnaCorreo.setCellValueFactory(new PropertyValueFactory<Alumno, String>("correo"));
+        columnaTelefono.setCellValueFactory(new PropertyValueFactory<Alumno, String>("telefono"));
         tablaAlumnos.setItems(lista);
         
     }
+    
+    private void setTabla(ObservableList lista){
+        tablaAlumnos.setItems(lista);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboBusqueda.getItems().addAll("Nombre","telefono");
+        comboBusqueda.getItems().addAll("Nombre","Telefono","Correo");
         setTabla();
     }
 }
