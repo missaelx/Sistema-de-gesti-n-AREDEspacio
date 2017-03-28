@@ -40,7 +40,7 @@ import recursos.AlumnoResource;
 public class AdministrarAlumnosController implements Initializable {
     
     @FXML 
-    private Button btnEliminar, btnInscribir, btnDetalles;
+    private Button btnEliminar, btnInscribir, btnDetalles, btnBuscar;
     @FXML 
     private ComboBox comboBusqueda;
     @FXML 
@@ -48,7 +48,7 @@ public class AdministrarAlumnosController implements Initializable {
     @FXML 
     private TableView<Alumno> tablaAlumnos;
     @FXML
-    private TableColumn columnaNombre, columnaApellidos, columnaCorreo, columnaTelefono;
+    private TableColumn columnaNombre, columnoApellidos, columnaCorreo, columnaTelefono;
     @FXML 
     private ImageView fotoAlumno;
     
@@ -115,7 +115,11 @@ public class AdministrarAlumnosController implements Initializable {
     
     @FXML 
     private void activarBusqueda(ActionEvent event){
+<<<<<<< HEAD
         System.out.println("si jala");
+=======
+        btnBuscar.setDisable(false);
+>>>>>>> 8875955ce563cfaff481bc76fea5d105d8f0a634
         campoBusqueda.setDisable(false);
     }
     @FXML 
@@ -139,10 +143,10 @@ public class AdministrarAlumnosController implements Initializable {
     private void setTabla(){
         AlumnoResource recurso = new AlumnoResource();        
         ObservableList lista = FXCollections.observableArrayList(recurso.visualizarRegistros());
-        columnaNombre.setCellValueFactory( new PropertyValueFactory<Alumno, String>("nombre"));
-        //columnaApellidos.setCellValueFactory( new PropertyValueFactory<Alumno, String>("apellidos"));
-        columnaCorreo.setCellValueFactory(new PropertyValueFactory<Alumno, String>("correo"));
-        columnaTelefono.setCellValueFactory(new PropertyValueFactory<Alumno, String>("telefono"));
+        columnaNombre.setCellValueFactory( new PropertyValueFactory<>("nombre"));
+        columnoApellidos.setCellValueFactory( new PropertyValueFactory<>("apellidos"));
+        columnaCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        columnaTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         tablaAlumnos.setItems(lista);
         
     }
@@ -152,7 +156,13 @@ public class AdministrarAlumnosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< HEAD
         comboBusqueda.getItems().addAll("Nombre","Telefono","Correo");
+=======
+        campoBusqueda.setDisable(true);
+        btnBuscar.setDisable(true);
+        comboBusqueda.getItems().addAll("Nombre","Correo");
+>>>>>>> 8875955ce563cfaff481bc76fea5d105d8f0a634
         setTabla();
     }
 }
