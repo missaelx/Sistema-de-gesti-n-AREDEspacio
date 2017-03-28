@@ -80,6 +80,7 @@ public class AdministrarAlumnosController implements Initializable {
 
             URL url = new File("src/miamifx/EditarAlumno.fxml").toURL();            
             AnchorPane root = cargador.load(url);
+            
             EditarAlumnoController editarAlumnoController = (EditarAlumnoController) cargador.getController();
             editarAlumnoController.setAlumno(alumno);
             Scene escena = new Scene(root);

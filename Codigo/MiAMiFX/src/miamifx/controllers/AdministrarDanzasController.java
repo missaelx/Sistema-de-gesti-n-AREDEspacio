@@ -46,7 +46,7 @@ public class AdministrarDanzasController implements Initializable {
             Stage crearDanza = new Stage();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
 
-            URL url = new File("src/miamifx/CrearDanzas.fxml").toURL();            
+            URL url = new File("src/miamifx/CrearDanza.fxml").toURL();            
             AnchorPane root = FXMLLoader.load(url);
             Scene escena = new Scene(root);
             crearDanza.setScene(escena);
