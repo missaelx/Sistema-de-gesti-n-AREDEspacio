@@ -78,10 +78,12 @@ public class AdministrarAlumnosController implements Initializable {
             FXMLLoader cargador = new FXMLLoader();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
 
-            URL url = new File("src/miamifx/EditarAlumno.fxml").toURL();            
+            URL url = new File("src/miamifx/EditarAlumno.fxml").toURL();  
+            EditarAlumnoController control = new EditarAlumnoController();
+            control.setAlumno(alumno);
             AnchorPane root = cargador.load(url);
-            EditarAlumnoController editarAlumnoController = (EditarAlumnoController) cargador.getController();
-            editarAlumnoController.setAlumno(alumno);
+            cargador.setController(control);
+            control.setCampos(alumno);
             Scene escena = new Scene(root);
             editarAlumno.setScene(escena);
             editarAlumno.show();
@@ -115,11 +117,7 @@ public class AdministrarAlumnosController implements Initializable {
     
     @FXML 
     private void activarBusqueda(ActionEvent event){
-<<<<<<< HEAD
-        System.out.println("si jala");
-=======
         btnBuscar.setDisable(false);
->>>>>>> 8875955ce563cfaff481bc76fea5d105d8f0a634
         campoBusqueda.setDisable(false);
     }
     @FXML 
@@ -156,13 +154,9 @@ public class AdministrarAlumnosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-<<<<<<< HEAD
-        comboBusqueda.getItems().addAll("Nombre","Telefono","Correo");
-=======
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre","Correo");
->>>>>>> 8875955ce563cfaff481bc76fea5d105d8f0a634
         setTabla();
     }
 }
