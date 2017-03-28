@@ -104,7 +104,7 @@ public class AdministrarAlumnosController implements Initializable {
            listaBusqueda = recurso.buscarAlumnoPorNombre(campoBusqueda.getText());
         }
         else if(comboBusqueda.getValue().toString().equals("Correo")){
-            listaBusqueda = recurso.buscarAlumnoPorNombre(campoBusqueda.getText());
+            listaBusqueda = recurso.buscarAlumnoPorCorreo(campoBusqueda.getText());
         }
         
         ObservableList lista = FXCollections.observableList(listaBusqueda);
