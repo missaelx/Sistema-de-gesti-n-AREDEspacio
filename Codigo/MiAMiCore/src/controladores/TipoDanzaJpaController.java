@@ -200,4 +200,11 @@ public class TipoDanzaJpaController implements Serializable {
         }
     }
     
+    public List<TipoDanza> getAllTipoDanzas(){
+        EntityManager em = getEntityManager();
+        List<TipoDanza> danza = (List<TipoDanza>) em.createNamedQuery("TipoDanza.findAll").getResultList();
+        em.close();
+        return danza;
+    }
+    
 }

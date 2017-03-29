@@ -9,9 +9,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,16 +22,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import modelo.TipoDanza;
+import recursos.DanzaResource;
 
 /**
  * FXML Controller class
@@ -40,6 +47,8 @@ public class AdministrarDanzasController implements Initializable {
     private TabPane pestañas;
     @FXML 
     private Button bNuevaDanza, bVerDetalles, bCrearGrupo, bEliminarDanza;
+    @FXML
+    private TableColumn columnaDanza, columnaMaestros, columnaHorario;
     @FXML
     private TableView<TipoDanza> tablaDanzas;
     
@@ -65,18 +74,16 @@ public class AdministrarDanzasController implements Initializable {
     @FXML 
     private void verDetalles(ActionEvent evento){
         try {
-            Stage editarAlumno = new Stage();
+            Stage editarDanzas = new Stage();
             TipoDanza danza = tablaDanzas.getSelectionModel().getSelectedItem();
             FXMLLoader cargador = new FXMLLoader();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
 
-            URL url = new File("src/miamifx/EditarAlumno.fxml").toURL();            
+            URL url = new File("src/miamifx/EditarDanza.fxml").toURL();            
             AnchorPane root = cargador.load(url);
-            EditarAlumnoController editarAlumnoController = (EditarAlumnoController) cargador.getController();
-            //editarAlumnoController.setAlumno(alumno);
             Scene escena = new Scene(root);
-            editarAlumno.setScene(escena);
-            editarAlumno.show();
+            editarDanzas.setScene(escena);
+            editarDanzas.show();
             
             
         } catch (IOException ex) {
@@ -84,14 +91,47 @@ public class AdministrarDanzasController implements Initializable {
         }
         
     }
+    
+    @FXML
+    private void setTabla(){
+        DanzaResource recurso = new DanzaResource();
+        
+        ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
+        columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        tablaDanzas.setItems(list);
+        
+        
+    }
+    
     @FXML 
     private void crearGrupo(ActionEvent evento){
-        
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setContentText("No funciona aun  D: ;)<-< ");
         
     }
     @FXML 
     private void eliminarDanza(ActionEvent evento){
-        
+        TipoDanza tipoDanza = tablaDanzas.getSelectionModel().getSelectedItem();
+        DanzaResource recurso = new DanzaResource();
+        try {
+            recurso.eliminarDanza(tipoDanza);
+        } catch (Exception ex) {
+            Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setTabla();
+    }
+    
+    @FXML
+    private void seSelecciono(){
+        if(tablaDanzas.getSelectionModel().getSelectedItem()!=null){
+            bVerDetalles.setDisable(false);
+            bEliminarDanza.setDisable(false);
+            bCrearGrupo.setDisable(false);
+        }else{
+            bVerDetalles.setDisable(true);
+            bEliminarDanza.setDisable(true);
+            bCrearGrupo.setDisable(true);
+        }
     }
     
     
@@ -104,6 +144,12 @@ public class AdministrarDanzasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        /*
+        bVerDetalles.setDisable(true);
+        bEliminarDanza.setDisable(true);
+        bCrearGrupo.setDisable(true);
+        */
+        setTabla();
     }    
     
 }
