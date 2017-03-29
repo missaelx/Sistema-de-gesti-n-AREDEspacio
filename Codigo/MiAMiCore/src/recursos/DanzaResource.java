@@ -47,7 +47,10 @@ public class DanzaResource {
         return danzaController.findTipoDanzaEntities();
     }
     
-    
+    public List<TipoDanza> visualizarRegistros() {
+        TipoDanzaJpaController tipoDanzasController = new TipoDanzaJpaController(emf);
+        return tipoDanzasController.getAllTipoDanzas();
+    }
     
     
     

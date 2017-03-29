@@ -13,9 +13,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import modelo.TipoDanza;
+import recursos.DanzaResource;
 
 /**
  * FXML Controller class
@@ -23,10 +25,7 @@ import modelo.TipoDanza;
  * @author AndrésRoberto
  */
 public class CrearDanzaController implements Initializable {
-<<<<<<< HEAD
     @FXML
-=======
->>>>>>> eeb483894afafb1b211cc23fa16ad00e77e50f0c
     private Button botonGuardar, botonCancelar, botonGuardarYCGrupo;
     @FXML
     private TextField tfNombreDanza, tfDescripcion;
@@ -47,10 +46,20 @@ public class CrearDanzaController implements Initializable {
     
     @FXML
     private void guardar(ActionEvent evento){
-        tipoDanza = new TipoDanza();
-        tipoDanza.setActivo(true);
-        tipoDanza.setNombre(tfNombreDanza.getText());
-        tipoDanza.setDescripcion(tfDescripcion.getText());
+        DanzaResource recurso = new DanzaResource();
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setContentText("Algunos campos se encuentan vacios, por favor ingresa la informacion completa");
+        if(tfNombreDanza.getText().isEmpty() || tfDescripcion.getText().isEmpty()){
+            alerta.show();
+            }else{
+            tipoDanza = new TipoDanza();
+            tipoDanza.setActivo(true);
+            tipoDanza.setNombre(tfNombreDanza.getText());
+            tipoDanza.setDescripcion(tfDescripcion.getText());
+            recurso.crearDanza(tipoDanza);
+        }
+        
+        
     }
     @FXML
     private void guardarYCGrupo(ActionEvent evento){
@@ -68,6 +77,11 @@ public class CrearDanzaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        /*
+        botonCancelar.setDisable(true);
+        botonGuardar.setDisable(true);
+        botonGuardarYCGrupo.setDisable(true);
+        */
     }    
     
 }
