@@ -87,7 +87,7 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
     
     @FXML 
     private void cancelar(ActionEvent event) throws MalformedURLException, IOException{
-        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        /*Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Confirmacion");
         alerta.setContentText("Esta seguro que desea cancelar la operacion?");
         
@@ -107,7 +107,9 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
             System.out.println(e.getMessage());
             
         }
+        */
         
+        btnCancelar.getScene().getWindow().hide();
         
     }
     @FXML
