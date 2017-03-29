@@ -8,6 +8,9 @@ package miamifx.controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,12 +75,13 @@ public class EditarAlumnoController implements Initializable {
     }
     public void setCampos(Alumno alumn){
         //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
-        this.campoCorreo.setPromptText(alumn.getCorreo());
-        this.campoNombre.setPromptText(alumn.getNombre());
-        this.campoFechaNacimiento.setPromptText(alumn.getFechaNacimiento().toString());
-        this.campoApellidos.setPromptText(alumn.getApellidos());
-        this.campoSangre.setPromptText(alumn.getTipoSangre());
-        this.campoNumero.setPromptText(alumn.getTelefono());
+        this.campoCorreo.setText(alumn.getCorreo());
+        this.campoNombre.setText(alumn.getNombre());
+        this.campoFechaNacimiento.setValue(Instant.ofEpochMilli(alumn.getFechaNacimiento().getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
+        
+        this.campoApellidos.setText(alumn.getApellidos());
+        this.campoSangre.setValue(alumn.getTipoSangre());
+        this.campoNumero.setText(alumn.getTelefono());
         //campoCorreo.setText("Correo de la bd");
     }
     @FXML 
@@ -87,6 +91,7 @@ public class EditarAlumnoController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        campoSangre.getItems().addAll("O-", "O+","A-","A+","B+","B-","AB+","AB-");
         if(alumno != null ){
             this.campoEmergencia.setText(alumno.getTelefonoEmergencia());
         this.campoCorreo.setText(alumno.getCorreo());
