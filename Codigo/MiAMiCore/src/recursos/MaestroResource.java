@@ -67,8 +67,8 @@ public class MaestroResource {
         return maestroController.getAllMaestros();
     }
     public List<Maestro> getMaestros(){
-        MaestroJpaController maestrosController = new MaestroJpaController(emf);
-        return maestrosController.findMaestroEntities();
+        MaestroJpaControllerExtended maestrosController = new MaestroJpaControllerExtended(emf);
+        return maestrosController.getAllMaestros();
     }
     
 }
