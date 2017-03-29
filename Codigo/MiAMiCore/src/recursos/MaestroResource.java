@@ -1,6 +1,7 @@
 package recursos;
 
 import controladores.MaestroJpaController;
+import controladores.MaestroJpaControllerExtended;
 import controladores.PagodesalarioJpaController;
 import controladores.PagodesalarioJpaControllerExtended;
 import controladores.exceptions.NonexistentEntityException;
@@ -51,16 +52,23 @@ public class MaestroResource {
         return maestrosController.findMaestro(id);
     }
     
+    public List<Maestro> buscarMaestroNombre(String nombre){
+        MaestroJpaControllerExtended MaestroController = new MaestroJpaControllerExtended(emf);
+        return MaestroController.getMaestroFromNombre(nombre);
+    }
     
     public List<Pagodesalario> getPagosDeSalario(int idMaestro){
         PagodesalarioJpaControllerExtended salarioController = new PagodesalarioJpaControllerExtended(emf);
         
         return salarioController.getPagoSalarioFromMaestro(idMaestro);
     }
-    
+    public List<Maestro> visualizarRegistros(){
+        MaestroJpaControllerExtended maestroController = new MaestroJpaControllerExtended(emf);
+        return maestroController.getAllMaestros();
+    }
     public List<Maestro> getMaestros(){
-        MaestroJpaController maestrosController = new MaestroJpaController(emf);
-        return maestrosController.findMaestroEntities();
+        MaestroJpaControllerExtended maestrosController = new MaestroJpaControllerExtended(emf);
+        return maestrosController.getAllMaestros();
     }
     
 }

@@ -55,26 +55,19 @@ public class EditarAlumnoController implements Initializable {
     
     @FXML
     private void editarDatos(ActionEvent event){
-        try {
-            Stage inscribirAlumno = new Stage();
-            FXMLLoader cargador = new FXMLLoader();
-            //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
-
-            URL url = new File("src/miamifx/RegistrarAlumno.fxml").toURL();            
-            AnchorPane root = cargador.load(url);
-            RegistrarAlumnoController registrarAlumnoController = (RegistrarAlumnoController) cargador.getController();
-            registrarAlumnoController.setAlumno(alumno);
-            Scene escena = new Scene(root);
-            inscribirAlumno.setScene(escena);
-            inscribirAlumno.show();
-            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.campoNumeroEmergencia.setDisable(false);
+        this.campoCorreo.setDisable(false);
+        this.campoNombre.setDisable(false);
+        this.campoFechaNacimiento.setDisable(false);
+        this.campoApellidos.setDisable(false);
+        this.campoSangre.setDisable(false);
+        this.campoNumero.setDisable(false);
     }
     public void setCampos(Alumno alumn){
+<<<<<<< HEAD
         
+=======
+>>>>>>> 3b3cdb4bc1979c69a59230f8a14fbac10052d395
 
         if(alumn != null){
             this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
@@ -88,6 +81,10 @@ public class EditarAlumnoController implements Initializable {
             System.out.println("alumno nulo");
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3b3cdb4bc1979c69a59230f8a14fbac10052d395
     }
     @FXML 
     private void cancelar(ActionEvent event){

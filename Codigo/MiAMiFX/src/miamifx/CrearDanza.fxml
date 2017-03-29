@@ -8,9 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="896.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.CrearDanzaController">
-    <stylesheets>
-        <URL value="@/Controladores/creardanza.css" />
-    </stylesheets>
+    
    <children>
       <TextField fx:id="tfNombreDanza" layoutX="279.0" layoutY="106.0" onKeyPressed="#tfNoVacio" prefHeight="36.0" prefWidth="264.0" />
       <Text layoutX="58.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de la danza" wrappingWidth="182.2213134765625">

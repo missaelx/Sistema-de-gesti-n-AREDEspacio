@@ -76,7 +76,7 @@ public class PrincipalController implements Initializable {
             URL urlAlumnos = new File("src/miamifx/AdministrarAlumnos.fxml").toURL();
             tabAlumnos.setContent((Node) FXMLLoader.load(urlAlumnos));
             
-            URL urlMaestros = new File("src/miamifx/AdministrarAlumnos.fxml").toURL();
+            URL urlMaestros = new File("src/miamifx/AdministrarMaestros.fxml").toURL();
             tabMaestros.setContent((Node) FXMLLoader.load(urlMaestros));
             
             URL urlDanzas = new File("src/miamifx/AdministrarDanzas.fxml").toURL();

@@ -29,10 +29,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "maestro")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Maestro.findAll", query = "SELECT m FROM Maestro m")
+    @NamedQuery(name = "Maestro.findAll", query = "SELECT m FROM Maestro m WHERE m.activo = 1" )
     , @NamedQuery(name = "Maestro.findById", query = "SELECT m FROM Maestro m WHERE m.id = :id")
     , @NamedQuery(name = "Maestro.findByNombre", query = "SELECT m FROM Maestro m WHERE m.nombre = :nombre")
     , @NamedQuery(name = "Maestro.findByApellidos", query = "SELECT m FROM Maestro m WHERE m.apellidos = :apellidos")
+    , @NamedQuery(name = "Maestro.findByNombreLike", query = "SELECT a FROM Maestro a WHERE ( (0 < LOCATE(:nombre, a.nombre)) OR (0 < LOCATE(:nombre, a.apellidos)) )AND a.activo = 1")
     , @NamedQuery(name = "Maestro.findByCorreo", query = "SELECT m FROM Maestro m WHERE m.correo = :correo")
     , @NamedQuery(name = "Maestro.findByTelefono", query = "SELECT m FROM Maestro m WHERE m.telefono = :telefono")
     , @NamedQuery(name = "Maestro.findByActivo", query = "SELECT m FROM Maestro m WHERE m.activo = :activo")})

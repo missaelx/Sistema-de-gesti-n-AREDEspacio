@@ -5,6 +5,7 @@
  */
 package miamifx.controllers;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +31,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import modelo.Alumno;
@@ -117,6 +120,11 @@ public class AdministrarAlumnosController implements Initializable {
         
     }
     
+    @FXML
+    private void activarBotones(){
+        this.btnDetalles.setDisable(false);
+        this.btnEliminar.setDisable(false);
+    }
     @FXML 
     private void activarBusqueda(ActionEvent event){
         btnBuscar.setDisable(false);
@@ -156,9 +164,17 @@ public class AdministrarAlumnosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre","Correo");
         setTabla();
+        
+        tablaAlumnos.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override 
+            public void handle (MouseEvent event ){
+                activarBotones();
+            }
+        });
     }
 }

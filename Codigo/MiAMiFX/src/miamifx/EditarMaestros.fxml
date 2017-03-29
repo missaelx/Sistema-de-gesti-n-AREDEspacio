@@ -6,25 +6,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="657.0" prefWidth="959.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="miamifx.controllers.EditarMaestrosController">
+<AnchorPane id="AnchorPane" prefHeight="478.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.EditarMaestrosController">
    <children>
-      <Label layoutX="523.0" layoutY="54.0" text="Danzas impartidas" />
-      <Button id="btnCancelar" fx:id="btnCancelar" cancelButton="true" layoutX="767.0" layoutY="508.0" mnemonicParsing="false" text="Cancelar" />
-      <Button id="btnGuardar" fx:id="btnEditar" layoutX="621.0" layoutY="508.0" mnemonicParsing="false" text="Editar" />
-      <TextField fx:id="campoTelefono" editable="false" layoutX="56.0" layoutY="422.0" />
-      <TextField fx:id="campoCorreo" editable="false" layoutX="56.0" layoutY="316.0" />
-      <TextField fx:id="campoApellido" editable="false" layoutX="56.0" layoutY="206.0" />
-      <TextField fx:id="campoNombre" editable="false" layoutX="56.0" layoutY="104.0" />
-      <Label layoutX="59.0" layoutY="367.0" text="Telefono" />
-      <VBox layoutX="523.0" layoutY="116.0" prefHeight="176.0" prefWidth="276.0">
+      <Label layoutX="334.0" layoutY="37.0" text="Danzas impartidas" />
+      <Button id="btnCancelar" fx:id="btnCancelar" cancelButton="true" layoutX="469.0" layoutY="429.0" mnemonicParsing="false" onAction="#cerrar" text="Cerrar" />
+      <Button id="btnGuardar" fx:id="btnEditar" layoutX="409.0" layoutY="429.0" mnemonicParsing="false" onAction="#editarInformacion" text="Editar" />
+      <TextField fx:id="campoTelefono" editable="false" layoutX="50.0" layoutY="324.0" />
+      <TextField fx:id="campoCorreo" editable="false" layoutX="50.0" layoutY="242.0" />
+      <TextField fx:id="campoApellido" editable="false" layoutX="50.0" layoutY="148.0" />
+      <TextField fx:id="campoNombre" editable="false" layoutX="50.0" layoutY="71.0" />
+      <Label layoutX="55.0" layoutY="288.0" text="Telefono" />
+      <VBox layoutX="363.0" layoutY="116.0" prefHeight="211.0" prefWidth="137.0">
          <children>
             <CheckBox disable="true" mnemonicParsing="false" text="Salsa" />
          </children>
       </VBox>
-      <Label layoutX="56.0" layoutY="257.0" text="Correo Electronico" />
-      <Label layoutX="57.0" layoutY="155.0" text="Apellidos" />
-      <Label layoutX="56.0" layoutY="54.0" text="Nombre" />
-      <Button fx:id="btnPagos" layoutX="59.0" layoutY="535.0" mnemonicParsing="false" text="Ver Historico de pagos" />
+      <Label layoutX="51.0" layoutY="198.0" text="Correo Electronico" />
+      <Label layoutX="54.0" layoutY="116.0" text="Apellidos" />
+      <Label layoutX="56.0" layoutY="37.0" text="Nombre" />
+      <Button fx:id="btnPagos" layoutX="56.0" layoutY="416.0" mnemonicParsing="false" text="Ver Historico de pagos" />
+      <Button fx:id="btnGuardar" layoutX="396.0" layoutY="429.0" mnemonicParsing="false" onAction="#guardarCambios" text="Guardar" />
    </children>
 </AnchorPane>
