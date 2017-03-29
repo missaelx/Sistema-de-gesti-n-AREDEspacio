@@ -57,10 +57,12 @@ public class AdministrarDanzasController implements Initializable {
         
         try {
             Stage crearDanza = new Stage();
-            //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/CrearDanza.fxml"));
 
-            URL url = new File("src/miamifx/CrearDanza.fxml").toURL();            
-            AnchorPane root = FXMLLoader.load(url);
+            //URL url = new File("src/miamifx/CrearDanza.fxml").toURL();            
+            AnchorPane root = cargador.load();
+            CrearDanzaController control = (CrearDanzaController) cargador.getController();
+            control.setControlador(this);
             Scene escena = new Scene(root);
             crearDanza.setScene(escena);
             crearDanza.show();
@@ -93,10 +95,9 @@ public class AdministrarDanzasController implements Initializable {
     }
     
     @FXML
-    private void setTabla(){
+    public void setTabla(){
         DanzaResource recurso = new DanzaResource();
-        
-        ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
+        ObservableList list = FXCollections.observableArrayList(recurso.getTiposDanza());
         columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tablaDanzas.setItems(list);
         
@@ -120,6 +121,7 @@ public class AdministrarDanzasController implements Initializable {
             Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
         }
         setTabla();
+        
     }
     
     @FXML

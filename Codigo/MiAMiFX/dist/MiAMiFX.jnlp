@@ -8,30 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-<<<<<<< HEAD
-    <jar href="MiAMiFX.jar" size="30619" download="eager" />
-    <jar href="lib\MiAMiCore.jar" size="203371" download="eager" />
+    <jar href="MiAMiFX.jar" size="37585" download="eager" />
+    <jar href="lib\MiAMiCore.jar" size="205271" download="eager" />
     <jar href="lib\eclipselink.jar" size="8384130" download="eager" />
     <jar href="lib\javax.persistence_2.1.0.v201304241213.jar" size="160564" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="827921" download="eager" />
     <jar href="lib\org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" size="1366247" download="eager" />
-=======
-<<<<<<< HEAD
-    <jar href="MiAMiFX.jar" size="28463" download="eager" />
-    <jar href="lib/MiAMiCore.jar" size="203183" download="eager" />
-    <jar href="lib/eclipselink.jar" size="8482035" download="eager" />
-    <jar href="lib/javax.persistence_2.1.0.v201304241213.jar" size="164637" download="eager" />
-    <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="834091" download="eager" />
-    <jar href="lib/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" size="1366247" download="eager" />
-=======
-    <jar href="MiAMiFX.jar" size="37234" download="eager" />
-    <jar href="lib\MiAMiCore.jar" size="205481" download="eager" />
-    <jar href="lib\eclipselink.jar" size="8478776" download="eager" />
-    <jar href="lib\javax.persistence_2.1.0.v201304241213.jar" size="164637" download="eager" />
-    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
-    <jar href="lib\org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" size="1366247" download="eager" />
->>>>>>> 3b3cdb4bc1979c69a59230f8a14fbac10052d395
->>>>>>> abb32ed82424db9efde27c16f347d60bfdd360ed
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="MiAMiFX" >
     <param name="requiredFXVersion" value="8.0+"/>

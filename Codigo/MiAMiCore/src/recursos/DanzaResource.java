@@ -38,8 +38,11 @@ public class DanzaResource {
         return true;
     }
     public boolean eliminarDanza(TipoDanza tipoDanza) throws NonexistentEntityException{
+        boolean resultado = true;
+        TipoDanzaJpaController maestroController = new TipoDanzaJpaController(emf);
         tipoDanza.setActivo(false);
-        return modificarDanza(tipoDanza);
+        modificarDanza(tipoDanza);
+        return resultado;
     }
     
     public List<TipoDanza> getTiposDanza(){

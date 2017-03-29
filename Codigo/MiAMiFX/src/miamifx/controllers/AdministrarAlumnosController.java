@@ -164,11 +164,7 @@ public class AdministrarAlumnosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-<<<<<<< HEAD
         comboBusqueda.getItems().addAll("Nombre","Telefono","Correo");
-=======
-
->>>>>>> abb32ed82424db9efde27c16f347d60bfdd360ed
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre","Correo");

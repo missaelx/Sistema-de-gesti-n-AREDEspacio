@@ -64,7 +64,6 @@ public class EditarAlumnoController implements Initializable {
         this.campoNumero.setDisable(false);
     }
     public void setCampos(Alumno alumn){
-<<<<<<< HEAD
         if(alumn != null){
         this.campoNumeroEmergencia.setPromptText(alumn.getTelefonoEmergencia());
         //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
@@ -87,9 +86,6 @@ public class EditarAlumnoController implements Initializable {
         this.campoSangre.setValue(alumn.getTipoSangre());
         this.campoNumero.setText(alumn.getTelefono());
         //campoCorreo.setText("Correo de la bd");
-=======
-
->>>>>>> abb32ed82424db9efde27c16f347d60bfdd360ed
         if(alumn != null){
             this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
             this.campoCorreo.setText(alumn.getCorreo());
@@ -101,10 +97,6 @@ public class EditarAlumnoController implements Initializable {
         }else{
             System.out.println("alumno nulo");
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> abb32ed82424db9efde27c16f347d60bfdd360ed
     }
     
     @FXML 
