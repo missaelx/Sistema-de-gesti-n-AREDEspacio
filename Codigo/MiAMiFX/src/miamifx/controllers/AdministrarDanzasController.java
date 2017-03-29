@@ -107,6 +107,7 @@ public class AdministrarDanzasController implements Initializable {
     private void crearGrupo(ActionEvent evento){
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setContentText("No funciona aun  D: ;)<-< ");
+        alerta.show();
         
     }
     @FXML 

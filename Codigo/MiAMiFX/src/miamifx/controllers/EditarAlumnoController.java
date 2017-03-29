@@ -74,7 +74,6 @@ public class EditarAlumnoController implements Initializable {
         }
     }
     public void setCampos(Alumno alumn){
-<<<<<<< HEAD
         if(alumn != null){
         this.campoNumeroEmergencia.setPromptText(alumn.getTelefonoEmergencia());
         //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
@@ -88,8 +87,6 @@ public class EditarAlumnoController implements Initializable {
             System.out.println("alumno nulo");
         }
         //campoCorreo.setText("Correo de la bd");
-=======
-<<<<<<< HEAD
         //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
         this.campoCorreo.setText(alumn.getCorreo());
         this.campoNombre.setText(alumn.getNombre());
@@ -99,7 +96,6 @@ public class EditarAlumnoController implements Initializable {
         this.campoSangre.setValue(alumn.getTipoSangre());
         this.campoNumero.setText(alumn.getTelefono());
         //campoCorreo.setText("Correo de la bd");
-=======
         if(alumn != null){
         this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
         this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
@@ -112,10 +108,8 @@ public class EditarAlumnoController implements Initializable {
         }else{
             System.out.println("alumno nulo");
         }
-
->>>>>>> 9a7e1d230a43ab4a9bbe0127cddf3361aa369f92
->>>>>>> ef82fa59c89add0b2357a2c716eb18f6a29f07b9
     }
+    
     @FXML 
     private void cancelar(ActionEvent event){
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
