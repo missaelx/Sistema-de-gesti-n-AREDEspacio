@@ -38,7 +38,7 @@ public class EditarAlumnoController implements Initializable {
     @FXML
     private Button btnEditar, btnCancelar, btnExaminar;
     @FXML
-    private TextField campoEmergencia, campoNumero, campoCorreo, campoNombre, campoApellidos;
+    private TextField campoNumeroEmergencia, campoNumero, campoCorreo, campoNombre, campoApellidos;
     @FXML 
     private DatePicker campoFechaNacimiento;
     @FXML
@@ -74,6 +74,7 @@ public class EditarAlumnoController implements Initializable {
         }
     }
     public void setCampos(Alumno alumn){
+<<<<<<< HEAD
         //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
         this.campoCorreo.setText(alumn.getCorreo());
         this.campoNombre.setText(alumn.getNombre());
@@ -83,6 +84,21 @@ public class EditarAlumnoController implements Initializable {
         this.campoSangre.setValue(alumn.getTipoSangre());
         this.campoNumero.setText(alumn.getTelefono());
         //campoCorreo.setText("Correo de la bd");
+=======
+        if(alumn != null){
+        this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
+        this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
+        this.campoCorreo.setText(alumn.getCorreo());
+        this.campoNombre.setText(alumn.getNombre());
+        this.campoFechaNacimiento.setPromptText(alumn.getFechaNacimiento().toString());
+        this.campoApellidos.setText(alumn.getApellidos());
+        this.campoSangre.setValue(alumn.getTipoSangre());
+        this.campoNumero.setText(alumn.getTelefono());
+        }else{
+            System.out.println("alumno nulo");
+        }
+
+>>>>>>> 9a7e1d230a43ab4a9bbe0127cddf3361aa369f92
     }
     @FXML 
     private void cancelar(ActionEvent event){
@@ -93,7 +109,7 @@ public class EditarAlumnoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         campoSangre.getItems().addAll("O-", "O+","A-","A+","B+","B-","AB+","AB-");
         if(alumno != null ){
-            this.campoEmergencia.setText(alumno.getTelefonoEmergencia());
+            this.campoNumeroEmergencia.setText(alumno.getTelefonoEmergencia());
         this.campoCorreo.setText(alumno.getCorreo());
         this.campoNombre.setText(alumno.getNombre());
         this.campoFechaNacimiento.setPromptText(alumno.getFechaNacimiento().toString());
