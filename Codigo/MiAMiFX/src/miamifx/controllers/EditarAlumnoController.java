@@ -71,14 +71,14 @@ public class EditarAlumnoController implements Initializable {
         }
     }
     public void setCampos(Alumno alumn){
-        /*this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
+        //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
         this.campoCorreo.setPromptText(alumn.getCorreo());
         this.campoNombre.setPromptText(alumn.getNombre());
         this.campoFechaNacimiento.setPromptText(alumn.getFechaNacimiento().toString());
         this.campoApellidos.setPromptText(alumn.getApellidos());
         this.campoSangre.setPromptText(alumn.getTipoSangre());
-        this.campoNumero.setPromptText(alumn.getTelefono());*/
-        campoCorreo.setText("Correo de la bd");
+        this.campoNumero.setPromptText(alumn.getTelefono());
+        //campoCorreo.setText("Correo de la bd");
     }
     @FXML 
     private void cancelar(ActionEvent event){
