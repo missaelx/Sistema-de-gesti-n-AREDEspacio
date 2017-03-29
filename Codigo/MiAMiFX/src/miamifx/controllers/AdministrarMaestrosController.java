@@ -42,17 +42,25 @@ import recursos.MaestroResource;
  */
 public class AdministrarMaestrosController implements Initializable {
 
-    @FXML 
+    @FXML
     private Button btnRegistrar, btnDetalles, btnEliminar;
     @FXML
-    private TableView <Maestro> tablaMaestros;
-    @FXML 
+    private TableView<Maestro> tablaMaestros;
+    @FXML
     private TableColumn columnaNombre, columnaApellidos, columnaCorreo;
     @FXML
     private TextField campoBusqueda;
-    
+
+    private boolean ventanaAbierta = false;
+
+    public void setVentana(boolean ventana) {
+        this.ventanaAbierta = ventana;
+    }
+
     @FXML
-    private void registrarMaestro(ActionEvent event) throws IOException{
+    private void registrarMaestro(ActionEvent event) throws IOException {
+        if (!ventanaAbierta) {
+            ventanaAbierta = true;
             Stage registrarMaestro = new Stage();
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/RegistrarMaestro.fxml"));
             AnchorPane root = cargador.load();
@@ -60,82 +68,92 @@ public class AdministrarMaestrosController implements Initializable {
             control.setContro(this);
             Scene escena = new Scene(root);
             registrarMaestro.setScene(escena);
+            registrarMaestro.setAlwaysOnTop(false);
             registrarMaestro.show();
+        }
+
     }
-    
-    @FXML 
-    private void eliminarRegistro(ActionEvent event){
+
+    @FXML
+    private void eliminarRegistro(ActionEvent event) {
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setContentText("Esta seguro que desea eliminar la seleccion?");
         confirmacion.setTitle("Confirmacion");
-        
-        if(confirmacion.showAndWait().get().equals(ButtonType.OK)){
+
+        if (confirmacion.showAndWait().get().equals(ButtonType.OK)) {
             try {
                 Maestro maestro = tablaMaestros.getSelectionModel().getSelectedItem();
                 MaestroResource recurso = new MaestroResource();
                 recurso.eliminarMaestro(maestro);
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(AdministrarMaestrosController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        setTabla();
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(AdministrarMaestrosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            setTabla();
         }
     }
-    
+
     @FXML
-    private void buscarMaestro(ActionEvent event){
+    private void buscarMaestro(ActionEvent event) {
         MaestroResource recurso = new MaestroResource();
         List<Maestro> listaResult = new ArrayList<>();
-        
+
         listaResult = recurso.buscarMaestroNombre(this.campoBusqueda.getText());
-        
+
         ObservableList lista = FXCollections.observableList(listaResult);
         tablaMaestros.setItems(lista);
     }
-    @FXML
-    private void verDetalles(){
-            try {
-            Stage editarAlumno = new Stage();
-            Maestro maestro = tablaMaestros.getSelectionModel().getSelectedItem();
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/EditarMaestros.fxml"));
 
-            AnchorPane root = cargador.load();
-            
-            EditarMaestrosController editarMaestrosController = (EditarMaestrosController) cargador.getController();
-            
-            editarMaestrosController.setAdministrar(this);
-            editarMaestrosController.setMaestro(maestro);
-            cargador.setController(editarMaestrosController);
-            editarMaestrosController.setCampos();
-            
-            Scene escena = new Scene(root);
-            editarAlumno.setScene(escena);
-            editarAlumno.show();
-        } catch (IOException ex) {
-            Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
+    @FXML
+    private void verDetalles() {
+        if (!ventanaAbierta && !tablaMaestros.getSelectionModel().getSelectedItem().equals(null)) {
+            ventanaAbierta=true;
+            try {
+                Stage editarAlumno = new Stage();
+                Maestro maestro = tablaMaestros.getSelectionModel().getSelectedItem();
+                FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/EditarMaestros.fxml"));
+
+                AnchorPane root = cargador.load();
+
+                EditarMaestrosController editarMaestrosController = (EditarMaestrosController) cargador.getController();
+
+                editarMaestrosController.setAdministrar(this);
+                editarMaestrosController.setMaestro(maestro);
+                cargador.setController(editarMaestrosController);
+                editarMaestrosController.setCampos();
+
+                Scene escena = new Scene(root);
+                editarAlumno.setScene(escena);
+                editarAlumno.setAlwaysOnTop(false);
+                editarAlumno.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-    
-    private void activarBotones(){
+
+    private void activarBotones() {
         this.btnDetalles.setDisable(false);
         this.btnEliminar.setDisable(false);
     }
-    public void setTabla(){
+
+    public void setTabla() {
         MaestroResource recurso = new MaestroResource();
         ObservableList lista = FXCollections.observableArrayList(recurso.getMaestros());
-        columnaNombre.setCellValueFactory( new PropertyValueFactory<>("nombre"));
-        columnaApellidos.setCellValueFactory( new PropertyValueFactory<>("apellidos"));
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
         columnaCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
         tablaMaestros.setItems(lista);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setTabla();
-        tablaMaestros.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            @Override 
-            public void handle (MouseEvent event ){
+        tablaMaestros.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
                 activarBotones();
             }
         });
-    }    
-    
+    }
+
 }

@@ -24,7 +24,7 @@
       <Label layoutX="51.0" layoutY="198.0" text="Correo Electronico" />
       <Label layoutX="54.0" layoutY="116.0" text="Apellidos" />
       <Label layoutX="56.0" layoutY="37.0" text="Nombre" />
-      <Button fx:id="btnPagos" layoutX="56.0" layoutY="416.0" mnemonicParsing="false" text="Ver Historico de pagos" />
+      <Button fx:id="btnPagos" layoutX="56.0" layoutY="416.0" mnemonicParsing="false" onAction="#visualizarPagos" text="Ver Historico de pagos" />
       <Button fx:id="btnGuardar" layoutX="396.0" layoutY="429.0" mnemonicParsing="false" onAction="#guardarCambios" text="Guardar" />
    </children>
 </AnchorPane>
