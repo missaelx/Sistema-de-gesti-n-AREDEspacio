@@ -25,10 +25,7 @@ import recursos.DanzaResource;
  * @author AndrésRoberto
  */
 public class CrearDanzaController implements Initializable {
-<<<<<<< HEAD
-=======
 
->>>>>>> 3b3cdb4bc1979c69a59230f8a14fbac10052d395
     @FXML
     private Button botonGuardar, botonCancelar, botonGuardarYCGrupo;
     @FXML

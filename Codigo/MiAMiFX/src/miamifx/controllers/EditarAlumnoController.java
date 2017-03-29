@@ -64,10 +64,6 @@ public class EditarAlumnoController implements Initializable {
         this.campoNumero.setDisable(false);
     }
     public void setCampos(Alumno alumn){
-<<<<<<< HEAD
-        
-=======
->>>>>>> 3b3cdb4bc1979c69a59230f8a14fbac10052d395
 
         if(alumn != null){
             this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
@@ -81,10 +77,6 @@ public class EditarAlumnoController implements Initializable {
             System.out.println("alumno nulo");
         }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3b3cdb4bc1979c69a59230f8a14fbac10052d395
     }
     @FXML 
     private void cancelar(ActionEvent event){
