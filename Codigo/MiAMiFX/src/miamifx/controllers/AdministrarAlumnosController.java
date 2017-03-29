@@ -120,7 +120,6 @@ public class AdministrarAlumnosController implements Initializable {
         
     }
     
-    @FXML
     private void activarBotones(){
         this.btnDetalles.setDisable(false);
         this.btnEliminar.setDisable(false);
@@ -164,17 +163,14 @@ public class AdministrarAlumnosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        comboBusqueda.getItems().addAll("Nombre","Telefono","Correo");
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre","Correo");
         setTabla();
         
-        tablaAlumnos.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            @Override 
-            public void handle (MouseEvent event ){
-                activarBotones();
-            }
+        tablaAlumnos.setOnMouseClicked((MouseEvent event) -> {
+            activarBotones();
         });
     }
 }

@@ -31,6 +31,7 @@ public class CrearDanzaController implements Initializable {
     @FXML
     private TextField tfNombreDanza, tfDescripcion;
     private TipoDanza tipoDanza;
+    private AdministrarDanzasController controlador;
     
     @FXML
     public void tfNoVacio(){
@@ -45,6 +46,8 @@ public class CrearDanzaController implements Initializable {
         ((Node)(evento.getSource())).getScene().getWindow().hide();
     }
     
+    
+    
     @FXML
     private void guardar(ActionEvent evento){
         DanzaResource recurso = new DanzaResource();
@@ -58,7 +61,10 @@ public class CrearDanzaController implements Initializable {
             tipoDanza.setNombre(tfNombreDanza.getText());
             tipoDanza.setDescripcion(tfDescripcion.getText());
             recurso.crearDanza(tipoDanza);
+            
         }
+        controlador.setTabla();
+        botonGuardar.getScene().getWindow().hide();
         
         
     }
@@ -84,6 +90,13 @@ public class CrearDanzaController implements Initializable {
         botonGuardarYCGrupo.setDisable(true);
         */
     }    
+
+    /**
+     * @param controlador the controlador to set
+     */
+    public void setControlador(AdministrarDanzasController controlador) {
+        this.controlador = controlador;
+    }
     
 }
 

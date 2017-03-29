@@ -36,7 +36,7 @@ import modelo.Alumno;
 public class EditarAlumnoController implements Initializable {
 
     @FXML
-    private Button btnEditar, btnCancelar, btnExaminar;
+    private Button btnEditar, btnCancelar;
     @FXML
     private TextField campoNumeroEmergencia, campoNumero, campoCorreo, campoNombre, campoApellidos;
     @FXML 
@@ -45,6 +45,8 @@ public class EditarAlumnoController implements Initializable {
     private ComboBox campoSangre;
     @FXML
     private ImageView imagenAlumno;
+    @FXML
+    private Button btnExaminarFoto;
     
     private Alumno alumno;
     
@@ -55,16 +57,39 @@ public class EditarAlumnoController implements Initializable {
     
     @FXML
     private void editarDatos(ActionEvent event){
-        this.campoNumeroEmergencia.setDisable(false);
-        this.campoCorreo.setDisable(false);
-        this.campoNombre.setDisable(false);
+        this.campoNumeroEmergencia.setEditable(true);
+        this.campoCorreo.setEditable(true);
+        this.campoNombre.setEditable(true);
+        this.campoFechaNacimiento.setEditable(true);
         this.campoFechaNacimiento.setDisable(false);
-        this.campoApellidos.setDisable(false);
+        this.campoApellidos.setEditable(true);
         this.campoSangre.setDisable(false);
-        this.campoNumero.setDisable(false);
+        this.campoNumero.setEditable(true);
+        this.btnExaminarFoto.setDisable(false);
     }
     public void setCampos(Alumno alumn){
-
+        if(alumn != null){
+        this.campoNumeroEmergencia.setPromptText(alumn.getTelefonoEmergencia());
+        //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
+        this.campoCorreo.setPromptText(alumn.getCorreo());
+        this.campoNombre.setPromptText(alumn.getNombre());
+        this.campoFechaNacimiento.setPromptText(alumn.getFechaNacimiento().toString());
+        this.campoApellidos.setPromptText(alumn.getApellidos());
+        this.campoSangre.setPromptText(alumn.getTipoSangre());
+        this.campoNumero.setPromptText(alumn.getTelefono());
+        }else{
+            System.out.println("alumno nulo");
+        }
+        //campoCorreo.setText("Correo de la bd");
+        //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
+        this.campoCorreo.setText(alumn.getCorreo());
+        this.campoNombre.setText(alumn.getNombre());
+        this.campoFechaNacimiento.setValue(Instant.ofEpochMilli(alumn.getFechaNacimiento().getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
+        
+        this.campoApellidos.setText(alumn.getApellidos());
+        this.campoSangre.setValue(alumn.getTipoSangre());
+        this.campoNumero.setText(alumn.getTelefono());
+        //campoCorreo.setText("Correo de la bd");
         if(alumn != null){
             this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
             this.campoCorreo.setText(alumn.getCorreo());
@@ -76,9 +101,8 @@ public class EditarAlumnoController implements Initializable {
         }else{
             System.out.println("alumno nulo");
         }
-
-
     }
+    
     @FXML 
     private void cancelar(ActionEvent event){
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
@@ -89,12 +113,13 @@ public class EditarAlumnoController implements Initializable {
         campoSangre.getItems().addAll("O-", "O+","A-","A+","B+","B-","AB+","AB-");
         if(alumno != null ){
             this.campoNumeroEmergencia.setText(alumno.getTelefonoEmergencia());
-        this.campoCorreo.setText(alumno.getCorreo());
-        this.campoNombre.setText(alumno.getNombre());
-        this.campoFechaNacimiento.setPromptText(alumno.getFechaNacimiento().toString());
-        this.campoApellidos.setText(alumno.getApellidos());
-        this.campoSangre.setPromptText(alumno.getTipoSangre());
-        this.campoNumero.setText(alumno.getTelefono());
+            this.campoCorreo.setText(alumno.getCorreo());
+            this.campoNombre.setText(alumno.getNombre());
+            this.campoFechaNacimiento.setPromptText(alumno.getFechaNacimiento().toString());
+            this.campoApellidos.setText(alumno.getApellidos());
+            this.campoSangre.setPromptText(alumno.getTipoSangre());
+            this.campoNumero.setText(alumno.getTelefono());
+            
         }
         
     }    
