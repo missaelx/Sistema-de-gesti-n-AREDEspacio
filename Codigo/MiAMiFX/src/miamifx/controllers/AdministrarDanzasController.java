@@ -22,11 +22,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import modelo.TipoDanza;
 
 /**
  * FXML Controller class
@@ -38,6 +40,8 @@ public class AdministrarDanzasController implements Initializable {
     private TabPane pestañas;
     @FXML 
     private Button bNuevaDanza, bVerDetalles, bCrearGrupo, bEliminarDanza;
+    @FXML
+    private TableView<TipoDanza> tablaDanzas;
     
     @FXML 
     public void nuevaDanza(ActionEvent evento) throws MalformedURLException, IOException{
@@ -46,7 +50,7 @@ public class AdministrarDanzasController implements Initializable {
             Stage crearDanza = new Stage();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
 
-            URL url = new File("src/miamifx/CrearDanzas.fxml").toURL();            
+            URL url = new File("src/miamifx/CrearDanza.fxml").toURL();            
             AnchorPane root = FXMLLoader.load(url);
             Scene escena = new Scene(root);
             crearDanza.setScene(escena);
@@ -60,7 +64,24 @@ public class AdministrarDanzasController implements Initializable {
     
     @FXML 
     private void verDetalles(ActionEvent evento){
-        
+        try {
+            Stage editarAlumno = new Stage();
+            TipoDanza danza = tablaDanzas.getSelectionModel().getSelectedItem();
+            FXMLLoader cargador = new FXMLLoader();
+            //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
+
+            URL url = new File("src/miamifx/EditarAlumno.fxml").toURL();            
+            AnchorPane root = cargador.load(url);
+            EditarAlumnoController editarAlumnoController = (EditarAlumnoController) cargador.getController();
+            //editarAlumnoController.setAlumno(alumno);
+            Scene escena = new Scene(root);
+            editarAlumno.setScene(escena);
+            editarAlumno.show();
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     @FXML 
