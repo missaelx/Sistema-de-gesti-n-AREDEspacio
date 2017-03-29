@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import modelo.TipoDanza;
 
 /**
  * FXML Controller class
@@ -22,31 +23,38 @@ import javafx.scene.control.TextField;
  * @author AndrésRoberto
  */
 public class CrearDanzaController implements Initializable {
-    
+    @FXML
     private Button botonGuardar, botonCancelar, botonGuardarYCGrupo;
-    private TextField tfNuevaDanza;
+    @FXML
+    private TextField tfNombreDanza, tfDescripcion;
+    private TipoDanza tipoDanza;
     
+    @FXML
     public void tfNoVacio(){
-        if(tfNuevaDanza.getText().isEmpty()){
+        if(tfNombreDanza.getText().isEmpty() || tfDescripcion.getText().isEmpty()){
             botonGuardar.setDisable(true);
             botonGuardarYCGrupo.setDisable(true);
         }else{ botonGuardar.setDisable(false); botonGuardarYCGrupo.setDisable(false);}
         
     }
-    
+    @FXML
     private void cancelar(ActionEvent evento){
         ((Node)(evento.getSource())).getScene().getWindow().hide();
-        
-        
-        
     }
     
-    
+    @FXML
     private void guardar(ActionEvent evento){
-        
+        tipoDanza = new TipoDanza();
+        tipoDanza.setActivo(true);
+        tipoDanza.setNombre(tfNombreDanza.getText());
+        tipoDanza.setDescripcion(tfDescripcion.getText());
     }
-    
+    @FXML
     private void guardarYCGrupo(ActionEvent evento){
+        tipoDanza = new TipoDanza();
+        tipoDanza.setActivo(true);
+        tipoDanza.setNombre(tfNombreDanza.getText());
+        tipoDanza.setDescripcion(tfDescripcion.getText());
         
     }
     
