@@ -16,15 +16,19 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import modelo.Alumno;
@@ -52,6 +56,8 @@ public class AdministrarMaestrosController implements Initializable {
             Stage registrarMaestro = new Stage();
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/RegistrarMaestro.fxml"));
             AnchorPane root = cargador.load();
+            RegistrarMaestroController control = (RegistrarMaestroController) cargador.getController();
+            control.setContro(this);
             Scene escena = new Scene(root);
             registrarMaestro.setScene(escena);
             registrarMaestro.show();
@@ -59,12 +65,19 @@ public class AdministrarMaestrosController implements Initializable {
     
     @FXML 
     private void eliminarRegistro(ActionEvent event){
-        try {
-            Maestro maestro = tablaMaestros.getSelectionModel().getSelectedItem();
-            MaestroResource recurso = new MaestroResource();
-            recurso.eliminarMaestro(maestro);
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setContentText("Esta seguro que desea eliminar la seleccion?");
+        confirmacion.setTitle("Confirmacion");
+        
+        if(confirmacion.showAndWait().get().equals(ButtonType.OK)){
+            try {
+                Maestro maestro = tablaMaestros.getSelectionModel().getSelectedItem();
+                MaestroResource recurso = new MaestroResource();
+                recurso.eliminarMaestro(maestro);
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(AdministrarMaestrosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setTabla();
         }
     }
     
@@ -73,7 +86,7 @@ public class AdministrarMaestrosController implements Initializable {
         MaestroResource recurso = new MaestroResource();
         List<Maestro> listaResult = new ArrayList<>();
         
-        listaResult = recurso.buscarMaestroPorNombre(campoBusqueda.getText());
+        listaResult = recurso.buscarMaestroNombre(this.campoBusqueda.getText());
         
         ObservableList lista = FXCollections.observableList(listaResult);
         tablaMaestros.setItems(lista);
@@ -89,6 +102,7 @@ public class AdministrarMaestrosController implements Initializable {
             
             EditarMaestrosController editarMaestrosController = (EditarMaestrosController) cargador.getController();
             
+            editarMaestrosController.setAdministrar(this);
             editarMaestrosController.setMaestro(maestro);
             cargador.setController(editarMaestrosController);
             editarMaestrosController.setCampos();
@@ -101,8 +115,7 @@ public class AdministrarMaestrosController implements Initializable {
         }
     }
     
-    @FXML 
-    private void activarBotones(ActionEvent event){
+    private void activarBotones(){
         this.btnDetalles.setDisable(false);
         this.btnEliminar.setDisable(false);
     }
@@ -116,7 +129,13 @@ public class AdministrarMaestrosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        setTabla();
+        tablaMaestros.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override 
+            public void handle (MouseEvent event ){
+                activarBotones();
+            }
+        });
     }    
     
 }

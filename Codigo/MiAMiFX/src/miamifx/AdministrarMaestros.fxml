@@ -10,7 +10,7 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="557.0" prefWidth="731.0" styleClass="mainFxmlClass">
          <children>
-            <TableView fx:id="tablaMaestros" layoutX="14.0" layoutY="98.0" onMouseClicked="#activarBotones" prefHeight="400.0" prefWidth="685.0">
+            <TableView fx:id="tablaMaestros" layoutX="14.0" layoutY="98.0" prefHeight="400.0" prefWidth="685.0">
                <columns>
                   <TableColumn fx:id="columnaNombre" prefWidth="243.0" text="Nombre" />
                   <TableColumn fx:id="columnaApellidos" minWidth="0.0" prefWidth="243.0" text="Apellidos" />

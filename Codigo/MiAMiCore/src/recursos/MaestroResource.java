@@ -52,7 +52,7 @@ public class MaestroResource {
         return maestrosController.findMaestro(id);
     }
     
-    public List<Maestro> buscarMaestroPorNombre(String nombre){
+    public List<Maestro> buscarMaestroNombre(String nombre){
         MaestroJpaControllerExtended MaestroController = new MaestroJpaControllerExtended(emf);
         return MaestroController.getMaestroFromNombre(nombre);
     }

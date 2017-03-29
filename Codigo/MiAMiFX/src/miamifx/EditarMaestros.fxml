@@ -9,8 +9,8 @@
 <AnchorPane id="AnchorPane" prefHeight="478.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.EditarMaestrosController">
    <children>
       <Label layoutX="334.0" layoutY="37.0" text="Danzas impartidas" />
-      <Button id="btnCancelar" fx:id="btnCancelar" cancelButton="true" layoutX="469.0" layoutY="429.0" mnemonicParsing="false" text="Cancelar" />
-      <Button id="btnGuardar" fx:id="btnEditar" layoutX="409.0" layoutY="429.0" mnemonicParsing="false" text="Editar" />
+      <Button id="btnCancelar" fx:id="btnCancelar" cancelButton="true" layoutX="469.0" layoutY="429.0" mnemonicParsing="false" onAction="#cerrar" text="Cerrar" />
+      <Button id="btnGuardar" fx:id="btnEditar" layoutX="409.0" layoutY="429.0" mnemonicParsing="false" onAction="#editarInformacion" text="Editar" />
       <TextField fx:id="campoTelefono" editable="false" layoutX="50.0" layoutY="324.0" />
       <TextField fx:id="campoCorreo" editable="false" layoutX="50.0" layoutY="242.0" />
       <TextField fx:id="campoApellido" editable="false" layoutX="50.0" layoutY="148.0" />
@@ -25,5 +25,6 @@
       <Label layoutX="54.0" layoutY="116.0" text="Apellidos" />
       <Label layoutX="56.0" layoutY="37.0" text="Nombre" />
       <Button fx:id="btnPagos" layoutX="56.0" layoutY="416.0" mnemonicParsing="false" text="Ver Historico de pagos" />
+      <Button fx:id="btnGuardar" layoutX="396.0" layoutY="429.0" mnemonicParsing="false" onAction="#guardarCambios" text="Guardar" />
    </children>
 </AnchorPane>

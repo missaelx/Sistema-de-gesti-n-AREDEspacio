@@ -17,7 +17,7 @@ public class MaestroJpaControllerExtended extends MaestroJpaController{
     }
     public List<Maestro> getMaestroFromNombre(String nombre){
         EntityManager em = getEntityManager();
-        List<Maestro> maestro = (List<Maestro>) em.createNamedQuery("Alumno.findByNombreLike").setParameter("nombre", nombre).getResultList();
+        List<Maestro> maestro = (List<Maestro>) em.createNamedQuery("Maestro.findByNombreLike").setParameter("nombre", nombre).getResultList();
         em.close();
         return maestro;
     }
