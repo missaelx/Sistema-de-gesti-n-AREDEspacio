@@ -119,10 +119,6 @@ public class AdministrarAlumnosController implements Initializable {
     
     @FXML 
     private void activarBusqueda(ActionEvent event){
-<<<<<<< HEAD
-        System.out.println("si jala");
-=======
->>>>>>> 9a7e1d230a43ab4a9bbe0127cddf3361aa369f92
         btnBuscar.setDisable(false);
         campoBusqueda.setDisable(false);
     }

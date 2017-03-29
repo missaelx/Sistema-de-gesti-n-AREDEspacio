@@ -74,31 +74,20 @@ public class EditarAlumnoController implements Initializable {
         }
     }
     public void setCampos(Alumno alumn){
-<<<<<<< HEAD
-        //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
-        this.campoCorreo.setText(alumn.getCorreo());
-        this.campoNombre.setText(alumn.getNombre());
-        this.campoFechaNacimiento.setValue(Instant.ofEpochMilli(alumn.getFechaNacimiento().getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
         
-        this.campoApellidos.setText(alumn.getApellidos());
-        this.campoSangre.setValue(alumn.getTipoSangre());
-        this.campoNumero.setText(alumn.getTelefono());
-        //campoCorreo.setText("Correo de la bd");
-=======
+
         if(alumn != null){
-        this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
-        this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
-        this.campoCorreo.setText(alumn.getCorreo());
-        this.campoNombre.setText(alumn.getNombre());
-        this.campoFechaNacimiento.setPromptText(alumn.getFechaNacimiento().toString());
-        this.campoApellidos.setText(alumn.getApellidos());
-        this.campoSangre.setValue(alumn.getTipoSangre());
-        this.campoNumero.setText(alumn.getTelefono());
+            this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
+            this.campoCorreo.setText(alumn.getCorreo());
+            this.campoNombre.setText(alumn.getNombre());
+            this.campoFechaNacimiento.setValue(Instant.ofEpochMilli(alumn.getFechaNacimiento().getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
+            this.campoApellidos.setText(alumn.getApellidos());
+            this.campoSangre.setValue(alumn.getTipoSangre());
+            this.campoNumero.setText(alumn.getTelefono());
         }else{
             System.out.println("alumno nulo");
         }
 
->>>>>>> 9a7e1d230a43ab4a9bbe0127cddf3361aa369f92
     }
     @FXML 
     private void cancelar(ActionEvent event){

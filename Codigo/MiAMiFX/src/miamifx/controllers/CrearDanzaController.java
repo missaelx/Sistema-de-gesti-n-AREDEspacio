@@ -23,10 +23,7 @@ import modelo.TipoDanza;
  * @author AndrésRoberto
  */
 public class CrearDanzaController implements Initializable {
-<<<<<<< HEAD
     @FXML
-=======
->>>>>>> eeb483894afafb1b211cc23fa16ad00e77e50f0c
     private Button botonGuardar, botonCancelar, botonGuardarYCGrupo;
     @FXML
     private TextField tfNombreDanza, tfDescripcion;
