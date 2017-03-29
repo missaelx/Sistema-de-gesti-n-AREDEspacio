@@ -8,6 +8,7 @@ package miamifx.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import modelo.Maestro;
 
 /**
  * FXML Controller class
@@ -16,9 +17,15 @@ import javafx.fxml.Initializable;
  */
 public class EditarMaestrosController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    private Maestro maestro;
+    
+    public void setMaestro(Maestro maestr){
+        this.maestro = maestr;
+    }
+    
+    public void setCampos(){
+        
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
