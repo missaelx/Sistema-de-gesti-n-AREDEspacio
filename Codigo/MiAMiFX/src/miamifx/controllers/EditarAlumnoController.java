@@ -71,25 +71,19 @@ public class EditarAlumnoController implements Initializable {
         }
     }
     public void setCampos(Alumno alumn){
-<<<<<<< HEAD
         if(alumn != null){
-        this.campoNumeroEmergencia.setPromptText(alumn.getTelefonoEmergencia());
-=======
-        //this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
->>>>>>> f39a9f3f2e5597bd697f365a3bc59a86c2bafaaa
-        this.campoCorreo.setPromptText(alumn.getCorreo());
-        this.campoNombre.setPromptText(alumn.getNombre());
+        this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
+        this.campoNumeroEmergencia.setText(alumn.getTelefonoEmergencia());
+        this.campoCorreo.setText(alumn.getCorreo());
+        this.campoNombre.setText(alumn.getNombre());
         this.campoFechaNacimiento.setPromptText(alumn.getFechaNacimiento().toString());
-        this.campoApellidos.setPromptText(alumn.getApellidos());
-        this.campoSangre.setPromptText(alumn.getTipoSangre());
-        this.campoNumero.setPromptText(alumn.getTelefono());
-<<<<<<< HEAD
+        this.campoApellidos.setText(alumn.getApellidos());
+        this.campoSangre.setValue(alumn.getTipoSangre());
+        this.campoNumero.setText(alumn.getTelefono());
         }else{
             System.out.println("alumno nulo");
         }
-=======
-        //campoCorreo.setText("Correo de la bd");
->>>>>>> f39a9f3f2e5597bd697f365a3bc59a86c2bafaaa
+
     }
     @FXML 
     private void cancelar(ActionEvent event){
