@@ -7,7 +7,10 @@ package miamifx.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -16,9 +19,11 @@ import javafx.fxml.Initializable;
  */
 public class AdministrarMaestrosController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML 
+    private Button btnRegistrar, btnDetalles, btnEliminar;
+    @FXML
+    private TableView tablaMaestros;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
