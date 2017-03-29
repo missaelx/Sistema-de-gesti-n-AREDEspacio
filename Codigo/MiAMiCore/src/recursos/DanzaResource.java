@@ -2,6 +2,7 @@ package recursos;
 
 import controladores.GrupoClaseJpaController;
 import controladores.TipoDanzaJpaController;
+import controladores.TipoDanzaJpaControllerExtended;
 import controladores.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
@@ -51,8 +52,8 @@ public class DanzaResource {
     }
     
     public List<TipoDanza> visualizarRegistros() {
-        TipoDanzaJpaController tipoDanzasController = new TipoDanzaJpaController(emf);
-        return tipoDanzasController.getAllTipoDanzas();
+        TipoDanzaJpaControllerExtended tipoDanzasController = new TipoDanzaJpaControllerExtended(emf);
+        return tipoDanzasController.getAll();
     }
     
     

@@ -36,7 +36,7 @@ import modelo.Alumno;
 public class EditarAlumnoController implements Initializable {
 
     @FXML
-    private Button btnEditar, btnCancelar, btnExaminar;
+    private Button btnEditar, btnCancelar;
     @FXML
     private TextField campoNumeroEmergencia, campoNumero, campoCorreo, campoNombre, campoApellidos;
     @FXML 
@@ -45,6 +45,8 @@ public class EditarAlumnoController implements Initializable {
     private ComboBox campoSangre;
     @FXML
     private ImageView imagenAlumno;
+    @FXML
+    private Button btnExaminarFoto;
     
     private Alumno alumno;
     
@@ -55,13 +57,15 @@ public class EditarAlumnoController implements Initializable {
     
     @FXML
     private void editarDatos(ActionEvent event){
-        this.campoNumeroEmergencia.setDisable(false);
-        this.campoCorreo.setDisable(false);
-        this.campoNombre.setDisable(false);
+        this.campoNumeroEmergencia.setEditable(true);
+        this.campoCorreo.setEditable(true);
+        this.campoNombre.setEditable(true);
+        this.campoFechaNacimiento.setEditable(true);
         this.campoFechaNacimiento.setDisable(false);
-        this.campoApellidos.setDisable(false);
+        this.campoApellidos.setEditable(true);
         this.campoSangre.setDisable(false);
-        this.campoNumero.setDisable(false);
+        this.campoNumero.setEditable(true);
+        this.btnExaminarFoto.setDisable(false);
     }
     public void setCampos(Alumno alumn){
         if(alumn != null){
@@ -109,12 +113,13 @@ public class EditarAlumnoController implements Initializable {
         campoSangre.getItems().addAll("O-", "O+","A-","A+","B+","B-","AB+","AB-");
         if(alumno != null ){
             this.campoNumeroEmergencia.setText(alumno.getTelefonoEmergencia());
-        this.campoCorreo.setText(alumno.getCorreo());
-        this.campoNombre.setText(alumno.getNombre());
-        this.campoFechaNacimiento.setPromptText(alumno.getFechaNacimiento().toString());
-        this.campoApellidos.setText(alumno.getApellidos());
-        this.campoSangre.setPromptText(alumno.getTipoSangre());
-        this.campoNumero.setText(alumno.getTelefono());
+            this.campoCorreo.setText(alumno.getCorreo());
+            this.campoNombre.setText(alumno.getNombre());
+            this.campoFechaNacimiento.setPromptText(alumno.getFechaNacimiento().toString());
+            this.campoApellidos.setText(alumno.getApellidos());
+            this.campoSangre.setPromptText(alumno.getTipoSangre());
+            this.campoNumero.setText(alumno.getTelefono());
+            
         }
         
     }    
