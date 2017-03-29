@@ -8,12 +8,48 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="MiAMiFX.jar" size="25877" download="eager" />
+=======
+<<<<<<< HEAD
+    <jar href="MiAMiFX.jar" size="26796" download="eager" />
+=======
+<<<<<<< HEAD
+    <jar href="MiAMiFX.jar" size="26287" download="eager" />
+=======
+<<<<<<< HEAD
+    <jar href="MiAMiFX.jar" size="20927" download="eager" />
+    <jar href="lib\MiAMiCore.jar" size="203208" download="eager" />
+    <jar href="lib\eclipselink.jar" size="8478776" download="eager" />
+    <jar href="lib\javax.persistence_2.1.0.v201304241213.jar" size="164637" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" size="1366247" download="eager" />
+=======
+<<<<<<< HEAD
+    <jar href="MiAMiFX.jar" size="26381" download="eager" />
+>>>>>>> 83c6bf1376a33b88435cca7e698a0918de564616
+    <jar href="lib\MiAMiCore.jar" size="202895" download="eager" />
+    <jar href="lib\eclipselink.jar" size="8384130" download="eager" />
+    <jar href="lib\javax.persistence_2.1.0.v201304241213.jar" size="160564" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="827921" download="eager" />
+    <jar href="lib\org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" size="1366247" download="eager" />
+<<<<<<< HEAD
+=======
+=======
+    <jar href="MiAMiFX.jar" size="26325" download="eager" />
+>>>>>>> 519f5b29daa39b5e8207f6bf1538c00b32727c0c
+>>>>>>> c4401e3562f26a4afb368c9926c0ae0960b6479f
     <jar href="lib/MiAMiCore.jar" size="203183" download="eager" />
     <jar href="lib/eclipselink.jar" size="8482035" download="eager" />
     <jar href="lib/javax.persistence_2.1.0.v201304241213.jar" size="164637" download="eager" />
     <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="834091" download="eager" />
     <jar href="lib/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" size="1366247" download="eager" />
+<<<<<<< HEAD
+=======
+>>>>>>> da8e5547bbec9ce83427bb7f2bd3c7743dc444af
+>>>>>>> e177dfa35272f1aea58d46a67353b0039e0c2f8b
+>>>>>>> 83c6bf1376a33b88435cca7e698a0918de564616
+>>>>>>> c4401e3562f26a4afb368c9926c0ae0960b6479f
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="MiAMiFX" >
     <param name="requiredFXVersion" value="8.0+"/>
