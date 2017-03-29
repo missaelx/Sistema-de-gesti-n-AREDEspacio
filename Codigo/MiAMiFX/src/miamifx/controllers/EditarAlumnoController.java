@@ -35,7 +35,7 @@ public class EditarAlumnoController implements Initializable {
     @FXML
     private Button btnEditar, btnCancelar, btnExaminar;
     @FXML
-    private TextField campoEmergencia, campoNumero, campoCorreo, campoNombre, campoApellidos;
+    private TextField campoNumeroEmergencia, campoNumero, campoCorreo, campoNombre, campoApellidos;
     @FXML 
     private DatePicker campoFechaNacimiento;
     @FXML
@@ -71,14 +71,17 @@ public class EditarAlumnoController implements Initializable {
         }
     }
     public void setCampos(Alumno alumn){
-        /*this.campoEmergencia.setPromptText(alumn.getTelefonoEmergencia());
+        if(alumn != null){
+        this.campoNumeroEmergencia.setPromptText(alumn.getTelefonoEmergencia());
         this.campoCorreo.setPromptText(alumn.getCorreo());
         this.campoNombre.setPromptText(alumn.getNombre());
         this.campoFechaNacimiento.setPromptText(alumn.getFechaNacimiento().toString());
         this.campoApellidos.setPromptText(alumn.getApellidos());
         this.campoSangre.setPromptText(alumn.getTipoSangre());
-        this.campoNumero.setPromptText(alumn.getTelefono());*/
-        campoCorreo.setText("Correo de la bd");
+        this.campoNumero.setPromptText(alumn.getTelefono());
+        }else{
+            System.out.println("alumno nulo");
+        }
     }
     @FXML 
     private void cancelar(ActionEvent event){
@@ -88,7 +91,7 @@ public class EditarAlumnoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if(alumno != null ){
-            this.campoEmergencia.setText(alumno.getTelefonoEmergencia());
+            this.campoNumeroEmergencia.setText(alumno.getTelefonoEmergencia());
         this.campoCorreo.setText(alumno.getCorreo());
         this.campoNombre.setText(alumno.getNombre());
         this.campoFechaNacimiento.setPromptText(alumno.getFechaNacimiento().toString());

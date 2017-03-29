@@ -22,7 +22,6 @@ import javafx.scene.control.TextField;
  * @author AndrésRoberto
  */
 public class CrearDanzaController implements Initializable {
-    
     private Button botonGuardar, botonCancelar, botonGuardarYCGrupo;
     private TextField tfNuevaDanza;
     
