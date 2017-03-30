@@ -61,10 +61,10 @@ public class CrearDanzaController implements Initializable {
             tipoDanza.setNombre(tfNombreDanza.getText());
             tipoDanza.setDescripcion(tfDescripcion.getText());
             recurso.crearDanza(tipoDanza);
+            controlador.setTabla();
+            botonGuardar.getScene().getWindow().hide();
             
         }
-        controlador.setTabla();
-        botonGuardar.getScene().getWindow().hide();
         
         
     }
