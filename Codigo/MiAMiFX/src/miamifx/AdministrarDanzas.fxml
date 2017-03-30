@@ -14,9 +14,9 @@
             <TableColumn fx:id="columnaHorario" prefWidth="205.66668701171875" text="Horario" />
          </columns>
       </TableView>
-      <Button fx:id="bNuevaDanza" layoutX="46.0" layoutY="537.0" mnemonicParsing="false" onAction="#nuevaDanza" prefHeight="25.0" prefWidth="119.0" text="Nueva Danza" />
-      <Button fx:id="bVerDetalles" disable="true" layoutX="171.0" layoutY="537.0" mnemonicParsing="false" onAction="#verDetalles" prefHeight="25.0" prefWidth="135.0" text="Ver detalles" />
-      <Button fx:id="bEliminarDanza" disable="true" layoutX="448.0" layoutY="537.0" mnemonicParsing="false" onAction="#eliminarDanza" prefHeight="25.0" prefWidth="100.0" text="Eliminar Danza" />
-      <Button fx:id="bCrearGrupo" disable="true" layoutX="319.0" layoutY="537.0" mnemonicParsing="false" onAction="#crearGrupo" prefHeight="25.0" prefWidth="119.0" text="Crear grupo" />
+      <Button fx:id="bNuevaDanza" layoutX="46.0" layoutY="537.0" mnemonicParsing="false" onAction="#nuevaDanza" prefHeight="25.0" prefWidth="120.0" text="Nueva Danza" />
+      <Button fx:id="bVerDetalles" disable="true" layoutX="172.0" layoutY="537.0" mnemonicParsing="false" onAction="#verDetalles" prefHeight="25.0" prefWidth="120.0" text="Ver detalles" />
+      <Button fx:id="bEliminarDanza" disable="true" layoutX="433.0" layoutY="537.0" mnemonicParsing="false" onAction="#eliminarDanza" prefHeight="25.0" prefWidth="110.0" text="Eliminar Danza" />
+      <Button fx:id="bCrearGrupo" disable="true" layoutX="298.0" layoutY="537.0" mnemonicParsing="false" onAction="#crearGrupo" prefHeight="25.0" prefWidth="120.0" text="Crear grupo" />
    </children>
 </AnchorPane>

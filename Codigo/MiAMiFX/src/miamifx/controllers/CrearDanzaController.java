@@ -32,64 +32,85 @@ public class CrearDanzaController implements Initializable {
     private TextField tfNombreDanza, tfDescripcion;
     private TipoDanza tipoDanza;
     private AdministrarDanzasController controlador;
-    
+
     @FXML
-    public void tfNoVacio(){
-        if(tfNombreDanza.getText().isEmpty() || tfDescripcion.getText().isEmpty()){
+    public void tfNoVacio() {
+        if (tfNombreDanza.getText().isEmpty() || tfDescripcion.getText().isEmpty()) {
             botonGuardar.setDisable(true);
             botonGuardarYCGrupo.setDisable(true);
-        }else{ botonGuardar.setDisable(false); botonGuardarYCGrupo.setDisable(false);}
-        
-    }
-    @FXML
-    private void cancelar(ActionEvent evento){
-        ((Node)(evento.getSource())).getScene().getWindow().hide();
-    }
-    
-    
-    
-    @FXML
-    private void guardar(ActionEvent evento){
-        DanzaResource recurso = new DanzaResource();
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setContentText("Algunos campos se encuentan vacios, por favor ingresa la informacion completa");
-        if(tfNombreDanza.getText().isEmpty() || tfDescripcion.getText().isEmpty()){
-            alerta.show();
-            }else{
-            tipoDanza = new TipoDanza();
-            tipoDanza.setActivo(true);
-            tipoDanza.setNombre(tfNombreDanza.getText());
-            tipoDanza.setDescripcion(tfDescripcion.getText());
-            recurso.crearDanza(tipoDanza);
-            controlador.setTabla();
-            botonGuardar.getScene().getWindow().hide();
-            
+        } else {
+            botonGuardar.setDisable(false);
+            botonGuardarYCGrupo.setDisable(false);
         }
-        
-        
+
     }
+
+    public void añadirLimiteTexto(final TextField tf, final int maxLength) {
+        tf.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+                if (tf.getText().length() > maxLength) {
+                    String s = tf.getText().substring(0, maxLength);
+                    tf.setText(s);
+                }
+            }
+        });
+    }
+
     @FXML
-    private void guardarYCGrupo(ActionEvent evento){
+    private void cancelar(ActionEvent evento) {
+        ((Node) (evento.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void guardar(ActionEvent evento) {
+        try {
+            DanzaResource recurso = new DanzaResource();
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setContentText("Algunos campos se encuentan vacios, por favor ingresa la informacion completa");
+            if (tfNombreDanza.getText().isEmpty() || tfDescripcion.getText().isEmpty()) {
+                alerta.show();
+            } else {
+                tipoDanza = new TipoDanza();
+                tipoDanza.setActivo(true);
+                tipoDanza.setNombre(tfNombreDanza.getText());
+                tipoDanza.setDescripcion(tfDescripcion.getText());
+                recurso.crearDanza(tipoDanza);
+                controlador.setTabla();
+                botonGuardar.getScene().getWindow().hide();
+
+            }
+        } catch (Exception e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.show();
+
+        }
+
+    }
+
+    @FXML
+    private void guardarYCGrupo(ActionEvent evento) {
         tipoDanza = new TipoDanza();
         tipoDanza.setActivo(true);
         tipoDanza.setNombre(tfNombreDanza.getText());
         tipoDanza.setDescripcion(tfDescripcion.getText());
-        
+
     }
-    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        añadirLimiteTexto(tfNombreDanza, 45);
+        añadirLimiteTexto(tfDescripcion, 45);
+
         /*
         botonCancelar.setDisable(true);
         botonGuardar.setDisable(true);
         botonGuardarYCGrupo.setDisable(true);
-        */
-    }    
+         */
+    }
 
     /**
      * @param controlador the controlador to set
@@ -97,7 +118,7 @@ public class CrearDanzaController implements Initializable {
     public void setControlador(AdministrarDanzasController controlador) {
         this.controlador = controlador;
     }
-    
+
 }
 
 /*tfNuevaDanza.textProperty().addListener(new ChangeListener<String>(){
@@ -106,4 +127,4 @@ public class CrearDanzaController implements Initializable {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-        */
+ */
