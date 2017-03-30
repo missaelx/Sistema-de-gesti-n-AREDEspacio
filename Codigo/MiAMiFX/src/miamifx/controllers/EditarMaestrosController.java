@@ -41,40 +41,56 @@ public class EditarMaestrosController implements Initializable {
 
     private Maestro maestro;
     private AdministrarMaestrosController administrar;
-    
-    @FXML 
+
+    @FXML
     private Button btnEditar, btnCancelar, btnPagos, btnGuardar;
-    
+
     @FXML
     private TextField campoNombre, campoApellido, campoTelefono, campoCorreo;
-    
-    public void setMaestro(Maestro maestr){
+
+    public void setMaestro(Maestro maestr) {
         this.maestro = maestr;
     }
-    
-    public void setAdministrar(AdministrarMaestrosController control){
+
+    public void setAdministrar(AdministrarMaestrosController control) {
         this.administrar = control;
     }
-    
-    @FXML 
-    private void cerrar(ActionEvent event){
+
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches() && email.length() <= 254;
+    }
+
+    public boolean isValidPhoneNumber(String phone) {
+        String regexStr = "^[0-9]*$";
+        return phone.matches(regexStr) && phone.length() <= 22;
+    }
+
+    public boolean isValidName(String name) {
+        return name.matches("([a-z]|[A-Z]|\\s)+") && name.length() <= 45;
+    }
+
+    @FXML
+    private void cerrar(ActionEvent event) {
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setContentText("Desea cancelar la edicion?");
         confirmacion.setTitle("Confirmacion");
-        if(btnCancelar.getText().equals("Cancelar")){
-            if(confirmacion.showAndWait().get().equals(ButtonType.OK)){
+        if (btnCancelar.getText().equals("Cancelar")) {
+            if (confirmacion.showAndWait().get().equals(ButtonType.OK)) {
                 administrar.setVentana(false);
                 btnCancelar.getScene().getWindow().hide();
-            }else{
+            } else {
                 confirmacion.close();
             }
-        }        
+        }
         administrar.setVentana(false);
         btnCancelar.getScene().getWindow().hide();
     }
-    
+
     @FXML
-    private void editarInformacion(){
+    private void editarInformacion() {
         btnEditar.setVisible(false);
         btnGuardar.setVisible(true);
         btnCancelar.setText("Cancelar");
@@ -83,43 +99,61 @@ public class EditarMaestrosController implements Initializable {
         this.campoTelefono.setEditable(true);
         this.campoCorreo.setEditable(true);
     }
-    
+
     @FXML
-    private void guardarCambios(ActionEvent event){
+    private void guardarCambios(ActionEvent event) {
         MaestroResource recurso = new MaestroResource();
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        
-        if(!this.maestro.getNombre().equals(this.campoNombre.getText())){
+        if (isValidName(campoNombre.getText())) {
             maestro.setNombre(this.campoNombre.getText());
-        }
-        if(!this.maestro.getApellidos().equals(this.campoApellido.getText())){
-            maestro.setApellidos(this.campoApellido.getText());
-        }
-        if(!this.maestro.getTelefono().equals(this.campoTelefono.getText())){
-            maestro.setTelefono(this.campoTelefono.getText());
-        }
-        if(!this.maestro.getCorreo().equals(this.campoCorreo.getText())){
-            maestro.setCorreo(this.campoCorreo.getText());
-        }
-        try {
-            if(recurso.modificarMaestro(maestro)){
-                alerta.setTitle("Transaccion exitosa");
-                alerta.setContentText("Los datos se modificaron exitosamente.");
-                alerta.show();
+            if (isValidName(campoApellido.getText())) {
+                maestro.setApellidos(this.campoApellido.getText());
+                if (isValidPhoneNumber(campoTelefono.getText())) {
+                    maestro.setTelefono(this.campoTelefono.getText());
+                    if (isValidEmailAddress(campoCorreo.getText())) {
+                        maestro.setCorreo(this.campoCorreo.getText());
+                        try {
+                            if (recurso.modificarMaestro(maestro)) {
+                                alerta.setTitle("Transaccion exitosa");
+                                alerta.setContentText("Los datos se modificaron exitosamente.");
+                                alerta.showAndWait();
+                                administrar.setTabla();
+                                administrar.setVentana(false);
+                                btnGuardar.getScene().getWindow().hide();
+                            }
+                        } catch (NonexistentEntityException ex) {
+                            Logger.getLogger(EditarMaestrosController.class.getName()).log(Level.SEVERE, null, ex);
+                            alerta.setTitle("Transaccion nula");
+                            alerta.setContentText("La transaccion no se pudo llevar a cabo. Porfavor intenta de nuevo. Si el problema persiste acude al administrador");
+                            alerta.show();
+                        }
+                    }else{
+                        mostrarAlerta("Formato incorrecto de correo electronico, por favor ingresa un correo electronico valido");
+                    }
+                } else {
+                    mostrarAlerta("Numero de telefono invalido. Por favor ingresa un numero telefonico que incluya solo numeros (0-9)");
+                }
+
+            } else {
+
+                mostrarAlerta("Apellido invalido, por favor ingresa un nombre que solo incluya letras (a-z)");
             }
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(EditarMaestrosController.class.getName()).log(Level.SEVERE, null, ex);
-            alerta.setTitle("Transaccion nula");
-            alerta.setContentText("La transaccion no se pudo llevar a cabo. Porfavor intenta de nuevo. Si el problema persiste acude al administrador");
-            alerta.show();
+
+        } else {
+            mostrarAlerta("Nombre invalido, por favor ingresa un nombre que solo incluya letras (a-z)");
         }
-        administrar.setTabla();
-        administrar.setVentana(false);
-        btnGuardar.getScene().getWindow().hide();
+
     }
-    
+
+    private void mostrarAlerta(String alerta) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informacion invalida");
+        alert.setContentText(alerta);
+        alert.showAndWait();
+    }
+
     @FXML
-    private void visualizarPagos(ActionEvent event){
+    private void visualizarPagos(ActionEvent event) {
         Stage pagos = new Stage();
         MaestroResource recurso = new MaestroResource();
         GridPane root = new GridPane();
@@ -128,18 +162,18 @@ public class EditarMaestrosController implements Initializable {
         TableColumn fecha = new TableColumn("Fecha");
         TableColumn descripcion = new TableColumn("Descripcion");
         Button btnCerrar = new Button("Cerrar");
-        
-        btnCerrar.setOnAction(new EventHandler<ActionEvent>(){
+
+        btnCerrar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 btnCerrar.getScene().getWindow().hide();
             }
         });
         ObservableList lista = FXCollections.observableArrayList(recurso.getPagosDeSalario(maestro.getId()));
-        
-        monto.setCellValueFactory( new PropertyValueFactory<>("monto"));
-        fecha.setCellValueFactory( new PropertyValueFactory<>("fecha"));
-        descripcion.setCellValueFactory( new PropertyValueFactory<>("descripcion"));
+
+        monto.setCellValueFactory(new PropertyValueFactory<>("monto"));
+        fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        descripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tablaPagos.getColumns().addAll(monto, fecha, descripcion);
         tablaPagos.setItems(lista);
         btnCerrar.setPadding(new Insets(5));
@@ -152,19 +186,20 @@ public class EditarMaestrosController implements Initializable {
         Scene escena = new Scene(root);
         pagos.setScene(escena);
         pagos.show();
-        
-        
+
     }
-    public void setCampos(){
+
+    public void setCampos() {
         this.campoNombre.setText(maestro.getNombre());
         this.campoApellido.setText(maestro.getApellidos());
         this.campoTelefono.setText(maestro.getTelefono());
         this.campoCorreo.setText(maestro.getCorreo());
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btnGuardar.setVisible(false);
-        
-    }    
-    
+
+    }
+
 }

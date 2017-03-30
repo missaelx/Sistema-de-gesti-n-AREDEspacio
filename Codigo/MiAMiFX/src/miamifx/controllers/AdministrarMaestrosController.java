@@ -147,6 +147,7 @@ public class AdministrarMaestrosController implements Initializable {
     }
 
     public void setTabla() {
+        tablaMaestros.refresh();
         MaestroResource recurso = new MaestroResource();
         ObservableList lista = FXCollections.observableArrayList(recurso.getMaestros());
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
