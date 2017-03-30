@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="MiAMiFX.jar" size="50376" download="eager" />
+    <jar href="MiAMiFX.jar" size="68444" download="eager" />
     <jar href="lib/MiAMiCore.jar" size="207763" download="eager" />
     <jar href="lib/eclipselink.jar" size="8482035" download="eager" />
     <jar href="lib/javax.persistence_2.1.0.v201304241213.jar" size="164637" download="eager" />
