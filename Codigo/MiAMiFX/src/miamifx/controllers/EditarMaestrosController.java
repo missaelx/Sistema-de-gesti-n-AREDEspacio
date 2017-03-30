@@ -137,6 +137,7 @@ public class EditarMaestrosController implements Initializable {
             }
         });
         ObservableList lista = FXCollections.observableArrayList(recurso.getPagosDeSalario(maestro.getId()));
+        
         monto.setCellValueFactory( new PropertyValueFactory<>("monto"));
         fecha.setCellValueFactory( new PropertyValueFactory<>("fecha"));
         descripcion.setCellValueFactory( new PropertyValueFactory<>("descripcion"));
