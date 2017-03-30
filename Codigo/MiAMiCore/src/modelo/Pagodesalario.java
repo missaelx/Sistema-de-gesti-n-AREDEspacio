@@ -6,6 +6,8 @@
 package modelo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,6 +47,21 @@ public class Pagodesalario implements Serializable {
     @JoinColumn(name = "idmaestro", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Maestro idmaestro;
+
+    public String getDescripcion() {
+        return idegreso.getDescripcion();
+    }
+
+    public BigDecimal getMonto() {
+        return idegreso.getMonto();
+    }
+
+    public Date getFecha() {
+        return idegreso.getFecha();
+    }
+    
+    
+    
 
     public Pagodesalario() {
     }
