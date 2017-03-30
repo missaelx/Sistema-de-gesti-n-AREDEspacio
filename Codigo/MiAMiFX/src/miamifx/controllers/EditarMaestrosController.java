@@ -66,7 +66,7 @@ public class EditarMaestrosController implements Initializable {
                 administrar.setVentana(false);
                 btnCancelar.getScene().getWindow().hide();
             }else{
-                
+                confirmacion.close();
             }
         }        
         administrar.setVentana(false);
@@ -78,7 +78,6 @@ public class EditarMaestrosController implements Initializable {
         btnEditar.setVisible(false);
         btnGuardar.setVisible(true);
         btnCancelar.setText("Cancelar");
-        btnCancelar.setCancelButton(true);
         this.campoNombre.setEditable(true);
         this.campoApellido.setEditable(true);
         this.campoTelefono.setEditable(true);

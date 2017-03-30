@@ -8,7 +8,10 @@ package miamifx.controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,6 +33,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -63,13 +67,19 @@ public class AdministrarAlumnosController implements Initializable {
             Stage inscribirAlumno = new Stage();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
 
-            URL url = new File("src/miamifx/RegistrarAlumno.fxml").toURL();            
-            AnchorPane root = FXMLLoader.load(url);
+            //URL url = new File("src/miamifx/RegistrarAlumno.fxml").toURL();            
+            //AnchorPane root = FXMLLoader.load(url);
+            //Scene escena = new Scene(root);
+            //inscribirAlumno.setScene(escena);
+            //inscribirAlumno.show();
+            
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
+            AnchorPane root = cargador.load();
+            RegistrarAlumnoController control = (RegistrarAlumnoController) cargador.getController();
+            control.setControlPadre(this);
             Scene escena = new Scene(root);
             inscribirAlumno.setScene(escena);
             inscribirAlumno.show();
-            
-            
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -79,7 +89,7 @@ public class AdministrarAlumnosController implements Initializable {
     private void verDetalles(ActionEvent event){
         try {
             Stage editarAlumno = new Stage();
-            Alumno alumno = tablaAlumnos.getSelectionModel().getSelectedItem();
+            Alumno alumno = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/EditarAlumno.fxml"));
             
             
@@ -90,6 +100,7 @@ public class AdministrarAlumnosController implements Initializable {
             editarAlumnoController.setAlumno(alumno);
             cargador.setController(editarAlumnoController);
             editarAlumnoController.setCampos(alumno);
+            editarAlumnoController.setControlPadre(this);
             
             Scene escena = new Scene(root);
             editarAlumno.setScene(escena);
@@ -147,7 +158,8 @@ public class AdministrarAlumnosController implements Initializable {
         setTabla();
     }
             
-    private void setTabla(){
+    public void setTabla(){
+        tablaAlumnos.refresh();
         AlumnoResource recurso = new AlumnoResource();        
         ObservableList lista = FXCollections.observableArrayList(recurso.visualizarRegistros());
         columnaNombre.setCellValueFactory( new PropertyValueFactory<>("nombre"));
@@ -163,7 +175,6 @@ public class AdministrarAlumnosController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboBusqueda.getItems().addAll("Nombre","Telefono","Correo");
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre","Correo");
@@ -171,6 +182,30 @@ public class AdministrarAlumnosController implements Initializable {
         
         tablaAlumnos.setOnMouseClicked((MouseEvent event) -> {
             activarBotones();
+            Alumno alumnoSeleccionado = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
+            if(alumnoSeleccionado.getFoto() != "" && alumnoSeleccionado.getFoto() != null){
+                Image image = null;
+                File file;
+                try {
+                    file = new File(alumnoSeleccionado.getFoto());
+                    image = new Image(file.toURI().toURL().toExternalForm());
+                    fotoAlumno.setImage(image);
+                } catch (MalformedURLException ex) {
+                    System.out.println("Ruta incorrecta");
+                }
+            } else {
+                Path currentRelativePath = Paths.get("");
+                String currentPath = currentRelativePath.toAbsolutePath().toString();
+                String dfu = currentPath+ "/USERSPICTURES/userDefault.png";
+                File file = new File(dfu);
+                try {
+                    Image image = new Image(file.toURI().toURL().toExternalForm());
+                    fotoAlumno.setImage(image);
+                } catch (MalformedURLException ex1) {
+                    Logger.getLogger(EditarAlumnoController.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            
+            }
         });
     }
 }

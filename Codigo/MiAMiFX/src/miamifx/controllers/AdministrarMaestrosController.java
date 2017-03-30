@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,6 +63,10 @@ public class AdministrarMaestrosController implements Initializable {
         if (!ventanaAbierta) {
             ventanaAbierta = true;
             Stage registrarMaestro = new Stage();
+            registrarMaestro.setOnCloseRequest(Event ->{
+                ventanaAbierta = false;
+                registrarMaestro.close();
+        });
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/RegistrarMaestro.fxml"));
             AnchorPane root = cargador.load();
             RegistrarMaestroController control = (RegistrarMaestroController) cargador.getController();
@@ -89,6 +94,8 @@ public class AdministrarMaestrosController implements Initializable {
                 Logger.getLogger(AdministrarMaestrosController.class.getName()).log(Level.SEVERE, null, ex);
             }
             setTabla();
+        }else{
+            confirmacion.close();
         }
     }
 
@@ -108,7 +115,10 @@ public class AdministrarMaestrosController implements Initializable {
         if (!ventanaAbierta && !tablaMaestros.getSelectionModel().getSelectedItem().equals(null)) {
             ventanaAbierta=true;
             try {
-                Stage editarAlumno = new Stage();
+                Stage editarMaestro = new Stage();
+                editarMaestro.setOnCloseRequest(Event ->{
+                    ventanaAbierta = false;
+                });
                 Maestro maestro = tablaMaestros.getSelectionModel().getSelectedItem();
                 FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/EditarMaestros.fxml"));
 
@@ -122,9 +132,9 @@ public class AdministrarMaestrosController implements Initializable {
                 editarMaestrosController.setCampos();
 
                 Scene escena = new Scene(root);
-                editarAlumno.setScene(escena);
-                editarAlumno.setAlwaysOnTop(false);
-                editarAlumno.show();
+                editarMaestro.setScene(escena);
+                editarMaestro.setAlwaysOnTop(false);
+                editarMaestro.show();
             } catch (IOException ex) {
                 Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -154,6 +164,7 @@ public class AdministrarMaestrosController implements Initializable {
                 activarBotones();
             }
         });
+        this.campoBusqueda.setPromptText("Ingrese nombre del maestro");
     }
 
 }
