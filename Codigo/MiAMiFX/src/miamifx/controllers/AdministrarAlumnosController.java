@@ -159,6 +159,7 @@ public class AdministrarAlumnosController implements Initializable {
     }
             
     public void setTabla(){
+        tablaAlumnos.refresh();
         AlumnoResource recurso = new AlumnoResource();        
         ObservableList lista = FXCollections.observableArrayList(recurso.visualizarRegistros());
         columnaNombre.setCellValueFactory( new PropertyValueFactory<>("nombre"));

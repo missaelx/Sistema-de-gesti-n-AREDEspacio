@@ -23,7 +23,7 @@
       <Label layoutX="291.0" layoutY="234.0" text="Tipo de Sangre" />
       <ComboBox id="campoTipoSangre" fx:id="campoSangre" editable="true" layoutX="287.0" layoutY="263.0" prefWidth="150.0" />
       <Label layoutX="513.0" layoutY="135.0" text="Fecha de nacimiento" />
-      <DatePicker id="campoFecha" fx:id="campoFechaNacimiento" layoutX="507.0" layoutY="178.0" promptText="01/01/1990" />
+      <DatePicker id="campoFecha" fx:id="campoFechaNacimiento" editable="false" layoutX="507.0" layoutY="178.0" promptText="01/01/1990" />
       <Label layoutX="288.0" layoutY="327.0" text="Numero de Emergencia" />
       <TextField id="campoFacebook" fx:id="campoEmergencia" layoutX="288.0" layoutY="362.0" promptText="Ej. 2281013201" />
       <Label layoutX="75.0" layoutY="53.0" text="Fotografía" />

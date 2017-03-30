@@ -142,8 +142,35 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
         java.util.Date fecha = new Date();
         AlumnoResource recurso = new AlumnoResource();
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setContentText("Algunos campos se encuentan vacios, por favor ingresa la informacion completa");
         
+        String erroresEntradas = "";
+        boolean error = false;
+        
+        if(!isValidName(campoNombre.getText())){
+            erroresEntradas += "Nombre incorrecto\n";
+            error = true;
+        }
+            
+        if(!isValidName(campoApellidos.getText())){
+            error = true;
+            erroresEntradas += "Apellidos incorrecto\n";
+        }
+            
+        if(!isValidEmailAddress(campoCorreo.getText())){
+            error = true;
+            erroresEntradas += "Correo no valido\n";
+        }
+            
+        if(!isValidPhoneNumber(campoEmergencia.getText())){
+            error = true;
+            erroresEntradas += "Numero de emergencia invalido\n";
+        }
+            
+        if(!isValidPhoneNumber(campoNumero.getText())){
+            error = true;
+            erroresEntradas += "Numero de telefono invalido\n";     
+        }
+            
         if(
                 campoNombre.getText().equals("") || 
                 campoApellidos.getText().equals("") ||
@@ -153,8 +180,15 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
                 campoFechaNacimiento.getValue() == null ||
                 campoEmergencia.getText().equals(""))
         {
-            alerta.show();
-        } else {
+            erroresEntradas += "Algunos campos se encuentan vacios";
+            error = true;
+        } 
+        
+        if(error){
+            alerta.setContentText(erroresEntradas);
+            alerta.showAndWait();
+        }
+        else {
             alumno.setActivo(true);
             alumno.setApellidos(campoApellidos.getText());
             alumno.setNombre(campoNombre.getText());
@@ -200,10 +234,11 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
         DateFormat df = new SimpleDateFormat("MM-dd-yyyyHH:mm:ss");
         Date today = Calendar.getInstance().getTime();
         String imageUploadDate = df.format(today);
+        String destinyPath = "";
         
-        String destinyPath = currentPath + "/USERSPICTURES/" + "user_pic" + imageUploadDate + this.pathImgValidaTemporal.substring(this.pathImgValidaTemporal.length()-4);
         
         if(this.pathImgValidaTemporal != null){
+            destinyPath = currentPath + "/USERSPICTURES/" + "user_pic" + imageUploadDate + this.pathImgValidaTemporal.substring(this.pathImgValidaTemporal.length()-4);
             try {
                 Path source = Paths.get(this.pathImgValidaTemporal);
                 Path dest = Paths.get(destinyPath);
@@ -240,4 +275,18 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
         controlador = screenParent;
     }
     
+    //funciones de verificacion
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches() && email.length() <= 254;
+    }
+    public boolean isValidPhoneNumber(String phone) {
+        String regexStr = "^[0-9]*$";
+        return phone.matches(regexStr) && phone.length() <= 22;
+    }
+    public boolean isValidName(String name){
+        return name.matches("[a-zA-Z]+") && name.length() <= 45;
+    }
 }

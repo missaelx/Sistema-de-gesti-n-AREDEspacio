@@ -82,7 +82,6 @@ public class EditarAlumnoController implements Initializable {
         this.campoNumeroEmergencia.setEditable(true);
         this.campoCorreo.setEditable(true);
         this.campoNombre.setEditable(true);
-        this.campoFechaNacimiento.setEditable(true);
         this.campoFechaNacimiento.setDisable(false);
         this.campoApellidos.setEditable(true);
         this.campoSangre.setDisable(false);
@@ -94,9 +93,37 @@ public class EditarAlumnoController implements Initializable {
     }
     @FXML
     public void guardarCambiosUsuario(){
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setContentText("Algunos campos se encuentan vacios, por favor ingresa la informacion completa");
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
         
+        //alerta.setContentText("Algunos campos se encuentan vacios, por favor ingresa la informacion completa");
+       String erroresEntradas = "";
+        boolean error = false;
+        
+        if(!isValidName(campoNombre.getText())){
+            erroresEntradas += "Nombre incorrecto\n";
+            error = true;
+        }
+            
+        if(!isValidName(campoApellidos.getText())){
+            error = true;
+            erroresEntradas += "Apellidos incorrecto\n";
+        }
+            
+        if(!isValidEmailAddress(campoCorreo.getText())){
+            error = true;
+            erroresEntradas += "Correo no valido\n";
+        }
+            
+        if(!isValidPhoneNumber(campoNumeroEmergencia.getText())){
+            error = true;
+            erroresEntradas += "Numero de emergencia invalido\n";
+        }
+            
+        if(!isValidPhoneNumber(campoNumero.getText())){
+            error = true;
+            erroresEntradas += "Numero de telefono invalido\n";     
+        }
+            
         if(
                 campoNombre.getText().equals("") || 
                 campoApellidos.getText().equals("") ||
@@ -106,8 +133,15 @@ public class EditarAlumnoController implements Initializable {
                 campoFechaNacimiento.getValue() == null ||
                 campoNumeroEmergencia.getText().equals(""))
         {
-            alerta.show();
-        } else {
+            erroresEntradas += "Algunos campos se encuentan vacios";
+            error = true;
+        } 
+        
+        if(error){
+            alerta.setContentText(erroresEntradas);
+            alerta.showAndWait();
+        } 
+       else {
             this.alumno.setNombre(this.campoNombre.getText());
             this.alumno.setApellidos(this.campoApellidos.getText());
             this.alumno.setCorreo(this.campoCorreo.getText());
@@ -245,7 +279,21 @@ public class EditarAlumnoController implements Initializable {
             return null; //porque no se ha seleccionado una imagen
         }
         return destinyPath;
-        
+    }
+    
+    //funciones de verificacion
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
+    public boolean isValidPhoneNumber(String phone) {
+        String regexStr = "^[0-9]*$";
+        return phone.matches(regexStr) && phone.length() <= 22;
+    }
+    public boolean isValidName(String name){
+        return name.matches("[a-zA-Z]+");
     }
     
 }

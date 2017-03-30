@@ -19,8 +19,5 @@ public class TipoDanzaJpaControllerExtended extends TipoDanzaJpaController{
         em.close();
         return danzas;
     }
-<<<<<<< HEAD
- 
-=======
->>>>>>> f117d7195ccd3cdab792a3d9f915b45bd8916ea7
+
 }
