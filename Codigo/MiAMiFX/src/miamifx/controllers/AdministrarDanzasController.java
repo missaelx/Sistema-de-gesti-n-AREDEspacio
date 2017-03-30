@@ -108,7 +108,13 @@ public class AdministrarDanzasController implements Initializable {
     @FXML 
     private void crearGrupo(ActionEvent evento){
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setContentText("No funciona aun  D: ;)<-< ");
+        alerta.setContentText("No funciona aun  D: \n       '\\\n" +
+"       _\\______\n" +
+"         /        \\========\n" +
+"  ____|__________\\_____\n" +
+" / ___________________ \\\n" +
+" \\/ _===============_ \\/\n" +
+"     -===============-");
         alerta.show();
         
     }
@@ -133,7 +139,7 @@ public class AdministrarDanzasController implements Initializable {
     @FXML
     private void seSelecciono(){
         if(tablaDanzas.getSelectionModel().getSelectedItem()!=null){
-            bVerDetalles.setDisable(false);
+            //bVerDetalles.setDisable(false);
             bEliminarDanza.setDisable(false);
             bCrearGrupo.setDisable(false);
         }else{
