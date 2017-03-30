@@ -5,15 +5,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import modelo.TipoDanza;
 
-/**
- *
- * @author macbookpro
- */
+
 public class TipoDanzaJpaControllerExtended extends TipoDanzaJpaController{
     
     public TipoDanzaJpaControllerExtended(EntityManagerFactory emf) {
         super(emf);
     }
+
     
     public List<TipoDanza> getAll(){
         EntityManager em = getEntityManager();
@@ -21,5 +19,8 @@ public class TipoDanzaJpaControllerExtended extends TipoDanzaJpaController{
         em.close();
         return danzas;
     }
+<<<<<<< HEAD
  
+=======
+>>>>>>> f117d7195ccd3cdab792a3d9f915b45bd8916ea7
 }

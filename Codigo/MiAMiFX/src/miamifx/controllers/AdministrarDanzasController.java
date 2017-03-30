@@ -24,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -97,7 +98,7 @@ public class AdministrarDanzasController implements Initializable {
     @FXML
     public void setTabla(){
         DanzaResource recurso = new DanzaResource();
-        ObservableList list = FXCollections.observableArrayList(recurso.getTiposDanza());
+        ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
         columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tablaDanzas.setItems(list);
         
@@ -113,14 +114,19 @@ public class AdministrarDanzasController implements Initializable {
     }
     @FXML 
     private void eliminarDanza(ActionEvent evento){
-        TipoDanza tipoDanza = tablaDanzas.getSelectionModel().getSelectedItem();
-        DanzaResource recurso = new DanzaResource();
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setContentText("Esta seguro que desea eliminar la seleccion?");
+        confirmacion.setTitle("Confirmacion");
+        if(confirmacion.showAndWait().get().equals(ButtonType.OK)){
         try {
+            TipoDanza tipoDanza = tablaDanzas.getSelectionModel().getSelectedItem();
+            DanzaResource recurso = new DanzaResource();
             recurso.eliminarDanza(tipoDanza);
         } catch (Exception ex) {
             Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
         }
         setTabla();
+        }
         
     }
     
