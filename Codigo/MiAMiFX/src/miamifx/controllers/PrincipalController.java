@@ -38,36 +38,6 @@ public class PrincipalController implements Initializable {
     @FXML
     private ImageView promociones, aredEspacioImagen;
     
-    @FXML 
-    private void inscribirAlumno(ActionEvent evento){
-        try {
-            Stage inscribirAlumno = new Stage();
-            //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
-
-            URL url = new File("src/miamifx/RegistrarAlumno.fxml").toURL();            
-            AnchorPane root = FXMLLoader.load(url);
-            Scene escena = new Scene(root);
-            inscribirAlumno.setScene(escena);
-            inscribirAlumno.show();
-            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        /*try{
-            Tab nuevaPestana = new Tab("Registro de alumno");
-            nuevaPestana.setStyle("-fx-background-color: #2f2");
-            pestañas.getTabs().add(nuevaPestana);
-            URL url = new File("src/miamifx/RegistrarAlumno.fxml").toURL();
-            nuevaPestana.setContent((Node) FXMLLoader.load(url));
-            }catch(IOException e){
-            e.printStackTrace();
-            }*/
-    }
-    @FXML 
-    private void seleccionarFoto(ActionEvent evento){
-        System.out.println("nada");
-    }
 
     
     @Override
