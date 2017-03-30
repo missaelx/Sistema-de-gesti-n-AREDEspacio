@@ -1,0 +1,10 @@
+diff a/Codigo/MiAMiCore/src/controladores/TipoDanzaJpaControllerExtended.java b/Codigo/MiAMiCore/src/controladores/TipoDanzaJpaControllerExtended.java	(rejected hunks)
+@@ -19,8 +19,4 @@
+         em.close();
+         return danzas;
+     }
+-<<<<<<< HEAD
+- 
+-=======
+->>>>>>> f117d7195ccd3cdab792a3d9f915b45bd8916ea7
+ }

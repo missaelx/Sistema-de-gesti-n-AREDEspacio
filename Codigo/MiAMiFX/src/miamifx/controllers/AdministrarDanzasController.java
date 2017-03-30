@@ -122,8 +122,8 @@ public class AdministrarDanzasController implements Initializable {
             TipoDanza tipoDanza = tablaDanzas.getSelectionModel().getSelectedItem();
             DanzaResource recurso = new DanzaResource();
             recurso.eliminarDanza(tipoDanza);
-        } catch (Exception ex) {
-            Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, e);
         }
         setTabla();
         }
