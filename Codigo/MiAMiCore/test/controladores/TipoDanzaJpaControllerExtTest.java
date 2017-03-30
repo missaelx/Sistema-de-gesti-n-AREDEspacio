@@ -32,9 +32,9 @@ public class TipoDanzaJpaControllerExtTest {
     public void testGetALLNull(){
         System.out.println("Obtener Todas las danzas lista nula");
         TipoDanzaJpaControllerExtended instancia = new TipoDanzaJpaControllerExtended(emf);
-        List<TipoDanza> espResultado = listaDeDanzas;
+        List<TipoDanza> espResultado = null;
         //List<TipoDanza> resultado = instancia.getAll();
-        List<TipoDanza> resultado = null;
+        List<TipoDanza> resultado = listaDeDanzas;
         assertEquals(espResultado, resultado);
     }
     
@@ -43,7 +43,7 @@ public class TipoDanzaJpaControllerExtTest {
         System.out.println("Obtener Todas las danzas lista con danzas");
         TipoDanzaJpaControllerExtended instancia = new TipoDanzaJpaControllerExtended(emf);
         DanzaResource recurso = new DanzaResource();
-        List<TipoDanza> espResultado = recurso.visualizarRegistros();;
+        List<TipoDanza> espResultado = recurso.visualizarRegistros();
         List<TipoDanza> resultado = instancia.getAll();
         assertEquals(espResultado, resultado);
     }

@@ -40,7 +40,7 @@ public class CrearDanzaController implements Initializable {
             botonGuardarYCGrupo.setDisable(true);
         } else {
             botonGuardar.setDisable(false);
-            botonGuardarYCGrupo.setDisable(false);
+            //botonGuardarYCGrupo.setDisable(false);
         }
 
     }
@@ -55,6 +55,10 @@ public class CrearDanzaController implements Initializable {
                 }
             }
         });
+    }
+    
+    public void soloNumerosTexto(){
+        //tfDescripcion.setTextFormatter(value);
     }
 
     @FXML

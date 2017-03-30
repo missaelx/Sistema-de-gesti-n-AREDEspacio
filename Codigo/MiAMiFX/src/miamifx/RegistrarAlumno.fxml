@@ -8,10 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="contenedor" prefHeight="532.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.RegistrarAlumnoController">
+<AnchorPane id="contenedor" prefHeight="532.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.RegistrarAlumnoController">
    <children>
-      <Button id="btnGuardar" fx:id="btnGuardar" layoutX="481.0" layoutY="454.0" mnemonicParsing="false" onAction="#registrarAlumno" prefHeight="47.0" prefWidth="167.0" text="Guardar" />
-      <Button fx:id="btnCancelar" cancelButton="true" layoutX="372.0" layoutY="466.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="35.0" prefWidth="84.0" text="Cancelar" />
+      <Button id="btnGuardar" fx:id="btnGuardar" layoutX="288.0" layoutY="428.0" mnemonicParsing="false" onAction="#registrarAlumno" prefHeight="50.0" prefWidth="150.0" text="Guardar" />
+      <Button fx:id="btnCancelar" cancelButton="true" layoutX="463.0" layoutY="433.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="40.0" prefWidth="100.0" text="Cancelar" />
       <Label layoutX="288.0" layoutY="53.0" text="Nombre" />
       <TextField id="campoNombre" fx:id="campoNombre" layoutX="288.0" layoutY="88.0" promptText="Ej. Juan Luis" />
       <Label layoutX="507.0" layoutY="53.0" text="Apellidos" />
