@@ -186,21 +186,25 @@ public class EditarAlumnoController implements Initializable {
         chooser.getExtensionFilters().add(fileExtensions);
         File file = chooser.showOpenDialog(new Stage());
         
-        if(file.length() > 2000000){ //no fotos de mas de dos megas
-            Alert confirmacion = new Alert(Alert.AlertType.WARNING);
-            confirmacion.setContentText("La imagen tiene un tamaño mayor a 2MB, elija otra");
-            confirmacion.setTitle("Imagen muy grande");
-            confirmacion.showAndWait();
-        } else {
-            try {
-                String imageUrl = file.toURI().toURL().toExternalForm();
-                Image image = new Image(imageUrl);
-                imgAlumno.setImage(image);
-                pathImgValidaTemporal = file.getAbsolutePath();
-            } catch (MalformedURLException ex) {
-                Logger.getLogger(RegistrarAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
+        if(file != null){
+            if(file.length() > 2000000){ //no fotos de mas de dos megas
+                Alert confirmacion = new Alert(Alert.AlertType.WARNING);
+                confirmacion.setContentText("La imagen tiene un tamaño mayor a 2MB, elija otra");
+                confirmacion.setTitle("Imagen muy grande");
+                confirmacion.showAndWait();
+            } else {
+                try {
+                    String imageUrl = file.toURI().toURL().toExternalForm();
+                    Image image = new Image(imageUrl);
+                    imgAlumno.setImage(image);
+                    pathImgValidaTemporal = file.getAbsolutePath();
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(RegistrarAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
+        
+            
     }
     public void setCampos(Alumno alumn){
         if(alumn != null){
