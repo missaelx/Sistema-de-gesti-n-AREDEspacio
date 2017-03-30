@@ -9,10 +9,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarAlumnosController">
+<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarAlumnosController">
    <children>
-      <TextField fx:id="campoBusqueda" layoutX="286.0" layoutY="29.0" onAction="#buscarAlumno" prefHeight="27.0" prefWidth="239.0" />
-      <Button fx:id="btnBuscar" layoutX="534.0" layoutY="30.0" mnemonicParsing="false" onAction="#buscarAlumno" text="Buscar" />
+      <TextField fx:id="campoBusqueda" layoutX="316.0" layoutY="29.0" onAction="#buscarAlumno" prefHeight="27.0" prefWidth="239.0" />
+      <Button fx:id="btnBuscar" layoutX="564.0" layoutY="30.0" mnemonicParsing="false" onAction="#buscarAlumno" text="Buscar" />
       <TableView fx:id="tablaAlumnos" layoutX="33.0" layoutY="77.0" prefHeight="437.0" prefWidth="601.0">
         <columns>
           <TableColumn fx:id="columnaNombre" prefWidth="144.0" text="Nombre" />
