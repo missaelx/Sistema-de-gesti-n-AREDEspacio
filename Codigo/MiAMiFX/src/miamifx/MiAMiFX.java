@@ -37,6 +37,7 @@ public class MiAMiFX extends Application {
         Scene scene = new Scene(root);
  
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
         
         /*ControPantallas control = new ControPantallas();
