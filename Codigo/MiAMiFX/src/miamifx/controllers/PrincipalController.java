@@ -43,13 +43,13 @@ public class PrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            URL urlAlumnos = new File("src/miamifx/AdministrarAlumnos.fxml").toURL();
+            URL urlAlumnos = new File("src/miamifx/interfaces/AdministrarAlumnos.fxml").toURL();
             tabAlumnos.setContent((Node) FXMLLoader.load(urlAlumnos));
             
-            URL urlMaestros = new File("src/miamifx/AdministrarMaestros.fxml").toURL();
+            URL urlMaestros = new File("src/miamifx/interfaces/AdministrarMaestros.fxml").toURL();
             tabMaestros.setContent((Node) FXMLLoader.load(urlMaestros));
             
-            URL urlDanzas = new File("src/miamifx/AdministrarDanzas.fxml").toURL();
+            URL urlDanzas = new File("src/miamifx/interfaces/AdministrarDanzas.fxml").toURL();
             tabDanzas.setContent((Node) FXMLLoader.load(urlDanzas));
             
         } catch (IOException ex) {

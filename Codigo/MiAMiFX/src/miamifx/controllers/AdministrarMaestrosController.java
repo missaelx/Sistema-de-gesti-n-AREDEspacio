@@ -67,7 +67,7 @@ public class AdministrarMaestrosController implements Initializable {
                 ventanaAbierta = false;
                 registrarMaestro.close();
         });
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/RegistrarMaestro.fxml"));
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/RegistrarMaestro.fxml"));
             AnchorPane root = cargador.load();
             RegistrarMaestroController control = (RegistrarMaestroController) cargador.getController();
             control.setContro(this);
@@ -120,7 +120,7 @@ public class AdministrarMaestrosController implements Initializable {
                     ventanaAbierta = false;
                 });
                 Maestro maestro = tablaMaestros.getSelectionModel().getSelectedItem();
-                FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/EditarMaestros.fxml"));
+                FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/EditarMaestros.fxml"));
 
                 AnchorPane root = cargador.load();
 

@@ -73,7 +73,7 @@ public class AdministrarAlumnosController implements Initializable {
             //inscribirAlumno.setScene(escena);
             //inscribirAlumno.show();
             
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/RegistrarAlumno.fxml"));
             AnchorPane root = cargador.load();
             RegistrarAlumnoController control = (RegistrarAlumnoController) cargador.getController();
             control.setControlPadre(this);
@@ -90,7 +90,7 @@ public class AdministrarAlumnosController implements Initializable {
         try {
             Stage editarAlumno = new Stage();
             Alumno alumno = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/EditarAlumno.fxml"));
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/EditarAlumno.fxml"));
             
             
             AnchorPane root = cargador.load();

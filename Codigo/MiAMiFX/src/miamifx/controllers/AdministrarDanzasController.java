@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,22 +18,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import modelo.TipoDanza;
 import recursos.DanzaResource;
 
@@ -58,7 +51,7 @@ public class AdministrarDanzasController implements Initializable {
         
         try {
             Stage crearDanza = new Stage();
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/CrearDanza.fxml"));
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearDanza.fxml"));
 
             //URL url = new File("src/miamifx/CrearDanza.fxml").toURL();            
             AnchorPane root = cargador.load();
@@ -82,7 +75,7 @@ public class AdministrarDanzasController implements Initializable {
             FXMLLoader cargador = new FXMLLoader();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
 
-            URL url = new File("src/miamifx/EditarDanza.fxml").toURL();            
+            URL url = new File("src/miamifx/interfaces/EditarDanza.fxml").toURL();
             AnchorPane root = cargador.load(url);
             Scene escena = new Scene(root);
             editarDanzas.setScene(escena);
