@@ -1,3 +1,6 @@
+
+/Codigo/MiAMiFX/out
+/Codigo/MiAMiFX/build
 /Codigo/MiAMiCore/nbproject/private/
 /Codigo/MiAMiFX/nbproject/private/
 /Codigo/MiAMiCore/build/
@@ -7,6 +10,7 @@
 /Codigo/DRedhilosHolaMundo/build/
 /Codigo/DRedPelotas/nbproject/private/
 /Codigo/DRedPelotas/build/
+.*/build/.*
 <<<<<<< HEAD
 /Codigo/MiAMiFX/build/
 /Codigo/MiAMiFX/dist/

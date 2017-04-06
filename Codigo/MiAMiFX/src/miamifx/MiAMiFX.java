@@ -23,11 +23,7 @@ import javafx.stage.Stage;
  * @author macbookpro
  */
 public class MiAMiFX extends Application {
-    
-    public static String escenaRegistrarAlumno = "RegistrarAlumno.fxml";
-    public static String idRegistrarAlumno = "RegistrarAlumno";
-    public static String escenaPrincipal = "Principal.fxml";
-    
+
     
     @Override
     public void start(Stage primaryStage) throws IOException {
