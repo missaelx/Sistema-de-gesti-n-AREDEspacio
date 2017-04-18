@@ -41,6 +41,12 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "GrupoClase.findByFechaTermino", query = "SELECT g FROM GrupoClase g WHERE g.fechaTermino = :fechaTermino")})
 public class GrupoClase implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "porcentaje_ganancia_maestro")
+    private float porcentajeGananciaMaestro;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoClase")
+    private List<Mensualidad> mensualidadList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -192,6 +198,23 @@ public class GrupoClase implements Serializable {
     @Override
     public String toString() {
         return "modelo.GrupoClase[ id=" + id + " ]";
+    }
+
+    public float getPorcentajeGananciaMaestro() {
+        return porcentajeGananciaMaestro;
+    }
+
+    public void setPorcentajeGananciaMaestro(float porcentajeGananciaMaestro) {
+        this.porcentajeGananciaMaestro = porcentajeGananciaMaestro;
+    }
+
+    @XmlTransient
+    public List<Mensualidad> getMensualidadList() {
+        return mensualidadList;
+    }
+
+    public void setMensualidadList(List<Mensualidad> mensualidadList) {
+        this.mensualidadList = mensualidadList;
     }
     
 }

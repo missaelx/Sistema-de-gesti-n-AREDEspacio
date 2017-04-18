@@ -31,6 +31,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Mensualidad.findById", query = "SELECT m FROM Mensualidad m WHERE m.id = :id")})
 public class Mensualidad implements Serializable {
 
+    @JoinColumn(name = "idGrupoClase", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private GrupoClase idGrupoClase;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -98,6 +102,14 @@ public class Mensualidad implements Serializable {
     @Override
     public String toString() {
         return "modelo.Mensualidad[ id=" + id + " ]";
+    }
+
+    public GrupoClase getIdGrupoClase() {
+        return idGrupoClase;
+    }
+
+    public void setIdGrupoClase(GrupoClase idGrupoClase) {
+        this.idGrupoClase = idGrupoClase;
     }
     
 }
