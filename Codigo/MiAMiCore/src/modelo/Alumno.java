@@ -49,6 +49,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Alumno.findByDiapago", query = "SELECT a FROM Alumno a WHERE a.diapago = :diapago")})
 public class Alumno implements Serializable {
 
+    @Column(name = "fecha_inscripcion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaInscripcion;
+
     @Column(name = "foto")
     private String foto;
 
@@ -260,6 +264,14 @@ public class Alumno implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public Date getFechaInscripcion() {
+        return fechaInscripcion;
+    }
+
+    public void setFechaInscripcion(Date fechaInscripcion) {
+        this.fechaInscripcion = fechaInscripcion;
     }
     
 }

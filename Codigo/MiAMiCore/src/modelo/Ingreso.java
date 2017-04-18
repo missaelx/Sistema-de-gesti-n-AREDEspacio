@@ -16,6 +16,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -39,6 +41,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Ingreso.findByDescripcion", query = "SELECT i FROM Ingreso i WHERE i.descripcion = :descripcion")
     , @NamedQuery(name = "Ingreso.findByFecha", query = "SELECT i FROM Ingreso i WHERE i.fecha = :fecha")})
 public class Ingreso implements Serializable {
+
+    @JoinColumn(name = "idPromocion", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Promociones idPromocion;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -147,6 +153,14 @@ public class Ingreso implements Serializable {
     @Override
     public String toString() {
         return "modelo.Ingreso[ id=" + id + " ]";
+    }
+
+    public Promociones getIdPromocion() {
+        return idPromocion;
+    }
+
+    public void setIdPromocion(Promociones idPromocion) {
+        this.idPromocion = idPromocion;
     }
     
 }
