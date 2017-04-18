@@ -19,8 +19,11 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+<<<<<<< HEAD
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+=======
+>>>>>>> d92dd4e08fa7375bd67979a21ee71fbd5161f071
 
 /**
  * FXML Controller class
