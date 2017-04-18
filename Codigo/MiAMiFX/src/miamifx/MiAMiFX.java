@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package miamifx;
-import miamifx.ControlPantalla.ControPantallas;
-import miamifx.ControlPantalla.ControladorPantallas;
+
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

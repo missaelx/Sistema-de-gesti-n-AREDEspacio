@@ -7,7 +7,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="896.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarDanzasController">
    <children>
-      <TableView fx:id="tablaDanzas" layoutX="46.0" layoutY="31.0" onMouseClicked="#seSelecciono" prefHeight="486.0" prefWidth="720.0">
+      <TableView fx:id="tablaDanzas" layoutX="46.0" layoutY="31.0" onMouseClicked="#seSelecciono" prefHeight="208.0" prefWidth="770.0">
          <columns>
             <TableColumn fx:id="columnaDanza" prefWidth="228.00003051757812" text="Danza" />
             <TableColumn fx:id="columnaMaestros" minWidth="0.0" prefWidth="285.33331298828125" text="Maestros" />
@@ -18,5 +18,11 @@
       <Button fx:id="bVerDetalles" disable="true" layoutX="172.0" layoutY="537.0" mnemonicParsing="false" onAction="#verDetalles" prefHeight="25.0" prefWidth="120.0" text="Ver detalles" />
       <Button fx:id="bCrearGrupo" disable="true" layoutX="298.0" layoutY="537.0" mnemonicParsing="false" onAction="#crearGrupo" prefHeight="25.0" prefWidth="120.0" text="Crear grupo" />
       <Button fx:id="bEliminarDanza" disable="true" layoutX="433.0" layoutY="537.0" mnemonicParsing="false" onAction="#eliminarDanza" prefHeight="25.0" prefWidth="110.0" text="Eliminar Danza" />
+      <TableView fx:id="tablaDanzas1" layoutX="46.0" layoutY="250.0" onMouseClicked="#seSelecciono" prefHeight="277.0" prefWidth="770.0">
+         <columns>
+            <TableColumn fx:id="columnaDanza1" prefWidth="228.00003051757812" text="Maestro" />
+            <TableColumn fx:id="columnaMaestros1" minWidth="0.0" prefWidth="490.0" text="Horario" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
