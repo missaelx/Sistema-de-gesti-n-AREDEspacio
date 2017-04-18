@@ -3,7 +3,6 @@ package miamifx.controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import miamifx.ControlPantalla.ControladorPantallas;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -49,7 +48,7 @@ import recursos.DanzaResource;
  *
  * @author Miguel Acosta
  */
-public class RegistrarAlumnoController implements Initializable, ControladorPantallas {
+public class RegistrarAlumnoController implements Initializable {
 
     
     @FXML
@@ -66,8 +65,7 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
     private Stage contenedor;
     private Alumno alumno;
     private String pathImgValidaTemporal;
-    
-    ControladorPantallas controlador;
+
     
     private AdministrarAlumnosController controlPadre;
 
@@ -274,11 +272,7 @@ public class RegistrarAlumnoController implements Initializable, ControladorPant
         }
     }    
 
-    @Override
-    public void setScreenParent(ControladorPantallas screenParent) {
-        controlador = screenParent;
-    }
-    
+
     //funciones de verificacion
     public boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";

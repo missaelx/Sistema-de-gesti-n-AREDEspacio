@@ -34,7 +34,7 @@ public class PrincipalController implements Initializable {
     @FXML 
     private TabPane pestañas;
     @FXML 
-    private Tab tabInicio, tabAlumnos, tabMaestros, tabDanzas;
+    private Tab tabInicio, tabAlumnos, tabMaestros, tabDanzas, tabPromociones;
     @FXML
     private ImageView promociones, aredEspacioImagen;
     
@@ -51,6 +51,10 @@ public class PrincipalController implements Initializable {
             
             URL urlDanzas = new File("src/miamifx/interfaces/AdministrarDanzas.fxml").toURL();
             tabDanzas.setContent((Node) FXMLLoader.load(urlDanzas));
+
+            URL urlPromociones = new File("src/miamifx/interfaces/AdministrarPromociones.fxml").toURL();
+            tabPromociones.setContent((Node) FXMLLoader.load(urlPromociones));
+
             
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);

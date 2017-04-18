@@ -1,17 +1,17 @@
 package miamifx.controllers;
 
+import controladores.PromocionesJpaController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.Button;
 import modelo.Promociones;
-
-import javax.swing.text.TableView;
-import java.awt.*;
+import javafx.scene.control.TableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Miguel Acosta on 04/04/2017.
+ * @author Created by Miguel Acosta on 04/04/2017.
  */
 public class AdministrarPromocionesController implements Initializable {
 
@@ -20,8 +20,11 @@ public class AdministrarPromocionesController implements Initializable {
     @FXML
     private Button btnCrear, btnEliminar;
     @FXML
-    private javafx.scene.control.TableView<Promociones> tablaPromociones;
+    private TableView<Promociones> tablaPromociones;
 
+    private void setTabla(){
+        //PromocionesJpaController recurso = new PromocionesJpaController();
+    }
 
 
     @Override
