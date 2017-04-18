@@ -265,11 +265,11 @@ public class EditarAlumnoController implements Initializable {
         Path currentRelativePath = Paths.get("");
         String currentPath = currentRelativePath.toAbsolutePath().toString();
 
-        DateFormat df = new SimpleDateFormat("MM-dd-yyyyHH:mm:ss");
+        DateFormat df = new SimpleDateFormat("MM-dd-yyyy-HH_mm_ss");
         Date today = Calendar.getInstance().getTime();
         String imageUploadDate = df.format(today);
         
-        String destinyPath = currentPath + "/USERSPICTURES/" + "user_pic" + imageUploadDate + this.pathImgValidaTemporal.substring(this.pathImgValidaTemporal.length()-4);
+        String destinyPath = currentPath + "/USERSPICTURES/" + "user_pic_" + imageUploadDate + this.pathImgValidaTemporal.substring(this.pathImgValidaTemporal.length()-4);
         
         if(this.pathImgValidaTemporal != null){
             try {
