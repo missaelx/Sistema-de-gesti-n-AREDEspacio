@@ -21,8 +21,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import miamifx.ControlPantalla.ControPantallas;
-import miamifx.ControlPantalla.ControladorPantallas;
 
 /**
  * FXML Controller class
