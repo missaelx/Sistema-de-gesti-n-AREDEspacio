@@ -21,7 +21,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+<<<<<<< HEAD
 
+=======
+=======
+<<<<<<< HEAD
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+=======
+>>>>>>> d92dd4e08fa7375bd67979a21ee71fbd5161f071
+>>>>>>> bc70413286845b3606b5099ae7f2057330a6b366
+>>>>>>> 3ad68d6a33b295d8b8c2f7e709d2af9a4cdf1c47
 
 /**
  * FXML Controller class
