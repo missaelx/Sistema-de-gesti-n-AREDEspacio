@@ -21,6 +21,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *

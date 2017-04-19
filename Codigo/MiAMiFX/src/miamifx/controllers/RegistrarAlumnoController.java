@@ -233,7 +233,7 @@ public class RegistrarAlumnoController implements Initializable {
         Path currentRelativePath = Paths.get("");
         String currentPath = currentRelativePath.toAbsolutePath().toString();
 
-        DateFormat df = new SimpleDateFormat("MM-dd-yyyyHH:mm:ss");
+        DateFormat df = new SimpleDateFormat("MM-dd-yyyy-HH_mm_ss");
         Date today = Calendar.getInstance().getTime();
         String imageUploadDate = df.format(today);
         String destinyPath = "";
