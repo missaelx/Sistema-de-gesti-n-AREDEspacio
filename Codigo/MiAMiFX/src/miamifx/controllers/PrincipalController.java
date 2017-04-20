@@ -23,10 +23,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-<<<<<<< HEAD
-
-=======
->>>>>>> f094d8ad1a69cacb0c7eeb972f60b4bad6f40abf
 
 /**
  * FXML Controller class
