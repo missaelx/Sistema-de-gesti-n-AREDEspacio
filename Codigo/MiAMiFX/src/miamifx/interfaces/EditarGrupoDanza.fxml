@@ -1,83 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTimePicker?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="896.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.CrearGrupoDeDanzaController">
+<AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="896.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.EditarGrupoDanzaController">
    <stylesheets>
       <URL value="@/Controladores/creargrupodedanza.css" />
    </stylesheets>
    <children>
-      <Label layoutX="445.0" layoutY="15.0" prefHeight="51.0" prefWidth="313.0" text="#Nombre de la Danza#" textAlignment="CENTER">
+      <Label layoutX="267.0" layoutY="35.0" prefHeight="51.0" prefWidth="313.0" text="#Nombre de la Danza#" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ComboBox layoutX="161.0" layoutY="128.0" prefWidth="150.0" />
-      <Label layoutX="212.0" layoutY="99.0" text="Maestro">
+      <ComboBox layoutX="91.0" layoutY="128.0" prefWidth="150.0" />
+      <Label layoutX="152.0" layoutY="99.0" text="Maestro">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="352.0" layoutY="100.0" text="Lunes">
+      <Label layoutX="352.0" layoutY="99.0" text="Lunes">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="352.0" layoutY="140.0" text="Martes">
+      <TextField layoutX="420.0" layoutY="97.0" />
+      <Label layoutX="352.0" layoutY="139.0" text="Martes">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="352.0" layoutY="180.0" text="Miercoles">
+      <TextField layoutX="420.0" layoutY="137.0" />
+      <Label layoutX="352.0" layoutY="179.0" text="Miercoles">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="352.0" layoutY="220.0" text="Jueves">
+      <TextField layoutX="420.0" layoutY="177.0" />
+      <Label layoutX="352.0" layoutY="219.0" text="Jueves">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="352.0" layoutY="260.0" text="Viernes">
+      <TextField layoutX="420.0" layoutY="217.0" />
+      <Label layoutX="352.0" layoutY="259.0" text="Viernes">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="663.0" layoutY="70.0" text="Salida">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="352.0" layoutY="300.0" text="Sabado">
+      <TextField layoutX="420.0" layoutY="257.0" />
+      <Label layoutX="352.0" layoutY="299.0" text="Sabado">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="473.0" layoutY="70.0" text="Entrada">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
+      <TextField layoutX="420.0" layoutY="297.0" />
       <Button layoutX="420.0" layoutY="350.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="140.0" text="Guardar" visible="false" />
-      <Button layoutX="420.0" layoutY="350.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="140.0" text="Editar" />
       <Button layoutX="580.0" layoutY="350.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="110.0" text="Cancelar" />
-      <JFXTimePicker disable="true" layoutX="430.0" layoutY="96.0" />
-      <JFXTimePicker disable="true" layoutX="430.0" layoutY="135.0" />
-      <JFXTimePicker disable="true" layoutX="430.0" layoutY="175.0" />
-      <JFXTimePicker disable="true" layoutX="430.0" layoutY="215.0" />
-      <JFXTimePicker disable="true" layoutX="430.0" layoutY="255.0" />
-      <JFXTimePicker disable="true" layoutX="430.0" layoutY="295.0" />
-      <JFXTimePicker disable="true" layoutX="620.0" layoutY="95.0" />
-      <JFXTimePicker disable="true" layoutX="620.0" layoutY="135.0" />
-      <JFXTimePicker disable="true" layoutX="620.0" layoutY="175.0" />
-      <JFXTimePicker disable="true" layoutX="620.0" layoutY="215.0" />
-      <JFXTimePicker disable="true" layoutX="620.0" layoutY="255.0" />
-      <JFXTimePicker disable="true" layoutX="620.0" layoutY="295.0" />
+      <Button layoutX="420.0" layoutY="350.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="140.0" text="Editar" />
    </children>
 </AnchorPane>

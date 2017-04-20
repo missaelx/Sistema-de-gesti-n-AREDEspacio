@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarAlumnosController">
+<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarAlumnosController">
    <children>
       <TextField fx:id="campoBusqueda" layoutX="316.0" layoutY="29.0" onAction="#buscarAlumno" prefHeight="27.0" prefWidth="239.0" />
       <Button fx:id="btnBuscar" layoutX="564.0" layoutY="30.0" mnemonicParsing="false" onAction="#buscarAlumno" text="Buscar" />
@@ -21,11 +21,12 @@
           <TableColumn fx:id="columnaCorreo" minWidth="0.0" prefWidth="188.0" text="Correo" />
         </columns>
       </TableView>
-      <Button fx:id="btnInscribir" layoutX="33.0" layoutY="524.0" mnemonicParsing="false" onAction="#inscribirAlumno" prefHeight="20.0" prefWidth="150.0" text="Inscribir " />
+      <Button fx:id="btnRegistrar" layoutX="33.0" layoutY="524.0" mnemonicParsing="false" onAction="#registrarAlumno" prefHeight="20.0" prefWidth="150.0" text="Registrar" />
       <Button fx:id="btnDetalles" disable="true" layoutX="195.0" layoutY="524.0" mnemonicParsing="false" onAction="#verDetalles" prefHeight="20.0" prefWidth="130.0" text="Ver detalles" />
       <Button fx:id="btnEliminar" disable="true" layoutX="334.0" layoutY="524.0" mnemonicParsing="false" onAction="#eliminarRegistro" prefHeight="20.0" prefWidth="110.0" text="Eliminar " />
       <ImageView fx:id="fotoAlumno" fitHeight="213.0" fitWidth="196.0" layoutX="655.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true" />
       <ComboBox fx:id="comboBusqueda" layoutX="33.0" layoutY="30.0" onAction="#activarBusqueda" promptText="Selecciona el método de busqueda" />
       <Label layoutX="722.0" layoutY="138.0" text="Fotografía" />
+      <Button fx:id="btnPagar" layoutX="465.0" layoutY="524.0" mnemonicParsing="false" onAction="#pagarCuota" text="Inscribir" />
    </children>
 </AnchorPane>
