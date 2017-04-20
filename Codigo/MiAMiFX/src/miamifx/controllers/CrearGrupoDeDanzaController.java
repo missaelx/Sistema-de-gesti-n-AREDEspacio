@@ -15,13 +15,12 @@ import javafx.fxml.Initializable;
  * @author AndrésRoberto
  */
 public class CrearGrupoDeDanzaController implements Initializable {
+    
+    
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }
