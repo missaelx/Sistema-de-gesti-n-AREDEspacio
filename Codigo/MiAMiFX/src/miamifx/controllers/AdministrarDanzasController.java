@@ -42,9 +42,9 @@ public class AdministrarDanzasController implements Initializable {
     @FXML 
     private Button bNuevaDanza, bVerDetalles, bCrearGrupo, bEliminarDanza;
     @FXML
-    private TableColumn columnaDanza, columnaDescripcion, columnaMaestros, columnaHorario;
+    private TableColumn columnaDanza, columnaMaestros, columnaHorario;
     @FXML
-    private TableView<TipoDanza> tablaDanzas, tablaGrupoDanzas;
+    private TableView<TipoDanza> tablaDanzas;
     
     @FXML 
     public void nuevaDanza(ActionEvent evento) throws MalformedURLException, IOException{
