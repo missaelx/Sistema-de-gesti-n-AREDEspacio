@@ -29,6 +29,6 @@
       <Button fx:id="btnEditar" layoutX="309.0" layoutY="430.0" mnemonicParsing="false" onAction="#editarDatos" prefHeight="45.0" prefWidth="150.0" text="Editar" />
       <Button fx:id="btnCancelar" layoutX="482.0" layoutY="434.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="40.0" prefWidth="100.0" text="Cerrar" />
       <ImageView fx:id="imgAlumno" fitHeight="187.0" fitWidth="167.0" layoutX="16.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnGuardar" layoutX="526.0" layoutY="423.0" mnemonicParsing="false" onAction="#guardarCambiosUsuario" prefHeight="62.0" prefWidth="167.0" text="Guardar cambios" visible="false" />
+      <Button fx:id="btnGuardar" layoutX="309.0" layoutY="430.0" mnemonicParsing="false" onAction="#guardarCambiosUsuario" prefHeight="45.0" prefWidth="150.0" text="Guardar cambios" visible="false" />
    </children>
 </AnchorPane>
