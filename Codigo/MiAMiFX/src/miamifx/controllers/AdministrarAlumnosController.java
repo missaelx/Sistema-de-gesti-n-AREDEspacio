@@ -47,8 +47,8 @@ import recursos.AlumnoResource;
  * @author Miguel Acosta
  */
 public class AdministrarAlumnosController implements Initializable {
-    
-    @FXML 
+
+    @FXML
     private Button btnEliminar, btnInscribir, btnDetalles, btnBuscar;
     @FXML 
     private ComboBox comboBusqueda;
@@ -62,9 +62,9 @@ public class AdministrarAlumnosController implements Initializable {
     private ImageView fotoAlumno;
     
     @FXML
-    private void inscribirAlumno(ActionEvent event){
+    private void registrarAlumno(ActionEvent event){
         try {
-            Stage inscribirAlumno = new Stage();
+            Stage registrarAlumno = new Stage();
             //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
 
             //URL url = new File("src/miamifx/RegistrarAlumno.fxml").toURL();            
@@ -78,8 +78,8 @@ public class AdministrarAlumnosController implements Initializable {
             RegistrarAlumnoController control = (RegistrarAlumnoController) cargador.getController();
             control.setControlPadre(this);
             Scene escena = new Scene(root);
-            inscribirAlumno.setScene(escena);
-            inscribirAlumno.show();
+            registrarAlumno.setScene(escena);
+            registrarAlumno.show();
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -130,6 +130,7 @@ public class AdministrarAlumnosController implements Initializable {
         
         
     }
+
     
     private void activarBotones(){
         this.btnDetalles.setDisable(false);
@@ -207,5 +208,21 @@ public class AdministrarAlumnosController implements Initializable {
             
             }
         });
+    }
+
+    public void pagarCuota(ActionEvent actionEvent) {
+        /*try {
+            Stage PagarCuota = new Stage();
+
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/pagarCuota.fxml"));
+            AnchorPane root = cargador.load();
+            RegistrarAlumnoController control = (RegistrarAlumnoController) cargador.getController();
+            control.setControlPadre(this);
+            Scene escena = new Scene(root);
+            registrarAlumno.setScene(escena);
+            registrarAlumno.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
     }
 }
