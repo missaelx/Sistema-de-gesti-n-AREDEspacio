@@ -23,10 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-<<<<<<< HEAD
-=======
 
->>>>>>> 297b7fecd34501928896da7765dcb58234328faf
 
 /**
  * FXML Controller class
@@ -62,6 +59,7 @@ public class PrincipalController implements Initializable {
             
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         
         
