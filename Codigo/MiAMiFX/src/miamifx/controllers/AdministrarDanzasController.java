@@ -37,18 +37,19 @@ import recursos.DanzaResource;
  * @author AndrésRoberto
  */
 public class AdministrarDanzasController implements Initializable {
-    @FXML 
+
+    @FXML
     private TabPane pestañas;
-    @FXML 
+    @FXML
     private Button bNuevaDanza, bVerDetalles, bCrearGrupo, bEliminarDanza;
     @FXML
     private TableColumn columnaDanza, columnaMaestros, columnaHorario;
     @FXML
     private TableView<TipoDanza> tablaDanzas;
-    
-    @FXML 
-    public void nuevaDanza(ActionEvent evento) throws MalformedURLException, IOException{
-        
+
+    @FXML
+    public void nuevaDanza(ActionEvent evento) throws MalformedURLException, IOException {
+
         try {
             Stage crearDanza = new Stage();
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearDanza.fxml"));
@@ -60,15 +61,14 @@ public class AdministrarDanzasController implements Initializable {
             Scene escena = new Scene(root);
             crearDanza.setScene(escena);
             crearDanza.show();
-            
-            
+
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
     }
-    
-    @FXML 
-    private void verDetalles(ActionEvent evento){
+
+    @FXML
+    private void verDetalles(ActionEvent evento) {
         try {
             Stage editarDanzas = new Stage();
             TipoDanza danza = tablaDanzas.getSelectionModel().getSelectedItem();
@@ -80,86 +80,92 @@ public class AdministrarDanzasController implements Initializable {
             Scene escena = new Scene(root);
             editarDanzas.setScene(escena);
             editarDanzas.show();
-            
-            
+
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
+
     @FXML
-    public void setTabla(){
+    public void setTabla() {
         DanzaResource recurso = new DanzaResource();
         ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
         columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tablaDanzas.setItems(list);
-        
-        
+
     }
-    
-    @FXML 
-    private void crearGrupo(ActionEvent evento){
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setContentText("No funciona aun  D: \n       '\\\n" +
-"       _\\______\n" +
-"         /        \\========\n" +
-"  ____|__________\\_____\n" +
-" / ___________________ \\\n" +
-" \\/ _===============_ \\/\n" +
-"     -===============-");
-        alerta.show();
-        
+
+    @FXML
+    private void crearGrupo(ActionEvent evento) {
+        try {
+            Stage crearGrupoDanza = new Stage();
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearGrupoDeDanza.fxml"));
+
+            //URL url = new File("src/miamifx/CrearDanza.fxml").toURL();            
+            AnchorPane root = cargador.load();
+            CrearDanzaController control = (CrearDanzaController) cargador.getController();
+            control.setControlador(this);
+            Scene escena = new Scene(root);
+            crearGrupoDanza.setScene(escena);
+            crearGrupoDanza.show();
+
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    @FXML 
-    private void eliminarDanza(ActionEvent evento){
+
+    @FXML
+    private void eliminarDanza(ActionEvent evento) {
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setContentText("Esta seguro que desea eliminar la seleccion?");
         confirmacion.setTitle("Confirmacion");
-        if(confirmacion.showAndWait().get().equals(ButtonType.OK)){
-        try {
-            TipoDanza tipoDanza = tablaDanzas.getSelectionModel().getSelectedItem();
-            DanzaResource recurso = new DanzaResource();
-            recurso.eliminarDanza(tipoDanza);
-        } catch (Exception e) {
-            Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, e);
+        if (confirmacion.showAndWait().get().equals(ButtonType.OK)) {
+            try {
+                TipoDanza tipoDanza = tablaDanzas.getSelectionModel().getSelectedItem();
+                DanzaResource recurso = new DanzaResource();
+                recurso.eliminarDanza(tipoDanza);
+            } catch (Exception e) {
+                Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, e);
+            }
+            setTabla();
         }
-        setTabla();
-        }
-        
+
     }
-    
+
     @FXML
-    private void seSelecciono(){
-        if(tablaDanzas.getSelectionModel().getSelectedItem()!=null){
+    private void seSelecciono() {
+        if (tablaDanzas.getSelectionModel().getSelectedItem() != null) {
             //bVerDetalles.setDisable(false);
             bEliminarDanza.setDisable(false);
             bCrearGrupo.setDisable(false);
-        }else{
+        } else {
             bVerDetalles.setDisable(true);
             bEliminarDanza.setDisable(true);
             bCrearGrupo.setDisable(true);
         }
     }
-    
-    
-    
-    
-    
+
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. "No funciona aun D: \n '\\\n" + "
+     * _\\______\n" + " / \\========\n" + " ____|__________\\_____\n" + " /
+     * ___________________ \\\n" + " \\/ _===============_ \\/\n" + "
+     * -===============-"
+     *
+     *
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         /*
         bVerDetalles.setDisable(true);
         bEliminarDanza.setDisable(true);
         bCrearGrupo.setDisable(true);
-        */
+         */
         setTabla();
-    }    
-    
+    }
+
 }
 
 
