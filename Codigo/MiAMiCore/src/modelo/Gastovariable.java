@@ -6,6 +6,8 @@
 package modelo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -60,6 +62,28 @@ public class Gastovariable implements Serializable {
     public void setIdEgreso(Egreso idEgreso) {
         this.idEgreso = idEgreso;
     }
+    
+    //setters y getters para el rellenado de columnas
+    
+    public String getDescripcion(){
+        return this.idEgreso.getDescripcion();
+    }
+    public void setDescripcion(String descripcion){
+        this.idEgreso.setDescripcion(descripcion);
+    }
+    public BigDecimal getMonto(){
+        return this.idEgreso.getMonto();
+    }
+    public void setMonto(BigDecimal monto){
+        this.idEgreso.setMonto(monto);
+    }
+    public Date getFecha(){
+        return this.idEgreso.getFecha();
+    }
+    public void setFecha(Date fecha){
+        this.idEgreso.setFecha(fecha);
+    }
+    
 
     @Override
     public int hashCode() {
