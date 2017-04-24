@@ -28,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import modelo.GrupoClase;
 import modelo.TipoDanza;
 import recursos.DanzaResource;
 
@@ -43,9 +44,12 @@ public class AdministrarDanzasController implements Initializable {
     @FXML
     private Button bNuevaDanza, bVerDetalles, bCrearGrupo, bEliminarDanza;
     @FXML
-    private TableColumn columnaDanza, columnaMaestros, columnaHorario;
+    private TableColumn columnaDanza, columnaMaestros, columnaHorario, columnaDescripcion;
     @FXML
     private TableView<TipoDanza> tablaDanzas;
+    @FXML
+    private TableView<GrupoClase> tablaGrupos;
+    
 
     @FXML
     public void nuevaDanza(ActionEvent evento) throws MalformedURLException, IOException {
@@ -92,6 +96,7 @@ public class AdministrarDanzasController implements Initializable {
         DanzaResource recurso = new DanzaResource();
         ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
         columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tablaDanzas.setItems(list);
 
     }
@@ -100,12 +105,15 @@ public class AdministrarDanzasController implements Initializable {
     private void crearGrupo(ActionEvent evento) {
         try {
             Stage crearGrupoDanza = new Stage();
+            TipoDanza tipoDanza = tablaDanzas.getSelectionModel().getSelectedItem();
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearGrupoDeDanza.fxml"));
 
             //URL url = new File("src/miamifx/CrearDanza.fxml").toURL();            
             AnchorPane root = cargador.load();
-            CrearDanzaController control = (CrearDanzaController) cargador.getController();
+            CrearGrupoDeDanzaController control = (CrearGrupoDeDanzaController) cargador.getController();
             control.setControlador(this);
+            control.setTipoDazanza(tipoDanza);
+            control.setTituloNombreDanza();
             Scene escena = new Scene(root);
             crearGrupoDanza.setScene(escena);
             crearGrupoDanza.show();

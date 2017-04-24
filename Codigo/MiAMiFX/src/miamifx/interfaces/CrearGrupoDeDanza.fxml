@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTimePicker?>
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="896.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.CrearGrupoDeDanzaController">
-    <stylesheets>
-        <URL value="@/Controladores/creargrupodedanza.css" />
-    </stylesheets>
    <children>
-      <Label layoutX="445.0" layoutY="15.0" prefHeight="51.0" prefWidth="313.0" text="#Nombre de la Danza#" textAlignment="CENTER">
+      <Label fx:id="nombreDanza" layoutX="445.0" layoutY="15.0" prefHeight="51.0" prefWidth="313.0" text="#Nombre de la Danza#" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
@@ -64,19 +62,27 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="420.0" layoutY="350.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="140.0" text="Guardar" />
-      <Button layoutX="580.0" layoutY="350.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="110.0" text="Cancelar" />
-      <JFXTimePicker layoutX="430.0" layoutY="96.0" />
-      <JFXTimePicker layoutX="430.0" layoutY="135.0" />
-      <JFXTimePicker layoutX="430.0" layoutY="175.0" />
-      <JFXTimePicker layoutX="430.0" layoutY="215.0" />
-      <JFXTimePicker layoutX="430.0" layoutY="255.0" />
-      <JFXTimePicker layoutX="430.0" layoutY="295.0" />
-      <JFXTimePicker layoutX="620.0" layoutY="95.0" />
-      <JFXTimePicker layoutX="620.0" layoutY="135.0" />
-      <JFXTimePicker layoutX="620.0" layoutY="175.0" />
-      <JFXTimePicker layoutX="620.0" layoutY="215.0" />
-      <JFXTimePicker layoutX="620.0" layoutY="255.0" />
-      <JFXTimePicker layoutX="620.0" layoutY="295.0" />
+      <Button fx:id="botonGuardar" disable="true" layoutX="420.0" layoutY="350.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="140.0" text="Guardar" />
+      <Button fx:id="botonCancelar" layoutX="580.0" layoutY="350.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="20.0" prefWidth="110.0" text="Cancelar" />
+      <JFXTimePicker fx:id="entradaLunes" layoutX="430.0" layoutY="96.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="entradaMartes" layoutX="430.0" layoutY="135.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="entradaMiercoles" layoutX="430.0" layoutY="175.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="entradaJueves" layoutX="430.0" layoutY="215.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="entradaViernes" layoutX="430.0" layoutY="255.0" />
+      <JFXTimePicker fx:id="entradaSabado" layoutX="430.0" layoutY="295.0" />
+      <JFXTimePicker fx:id="salidaLunes" layoutX="620.0" layoutY="95.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="salidaMartes" layoutX="620.0" layoutY="135.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="salidaMiercoles" layoutX="620.0" layoutY="175.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="salidaJueves" layoutX="620.0" layoutY="215.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="salidaViernes" layoutX="620.0" layoutY="255.0" />
+      <JFXTimePicker fx:id="salidaSabado" layoutX="620.0" layoutY="295.0" />
+      <Label layoutX="192.0" layoutY="181.0" text="Costo Mensual">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="161.0" layoutY="210.0" />
+      <Spinner layoutX="190.0" layoutY="292.0" prefHeight="25.0" prefWidth="92.0" />
+      <Label layoutX="224.0" layoutY="263.0" text="Label" />
    </children>
 </AnchorPane>
