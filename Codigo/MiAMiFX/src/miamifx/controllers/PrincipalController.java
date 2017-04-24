@@ -33,6 +33,9 @@ public class PrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            URL urlInicio = new File("src/miamifx/interfaces/Inicio.fxml").toURL();
+            tabInicio.setContent((Node) FXMLLoader.load(urlInicio));
+            
             URL urlAlumnos = new File("src/miamifx/interfaces/AdministrarAlumnos.fxml").toURL();
             tabAlumnos.setContent((Node) FXMLLoader.load(urlAlumnos));
             
