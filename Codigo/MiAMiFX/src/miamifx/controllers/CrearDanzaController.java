@@ -5,17 +5,24 @@
  */
 package miamifx.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import modelo.TipoDanza;
 import recursos.DanzaResource;
 
@@ -32,6 +39,7 @@ public class CrearDanzaController implements Initializable {
     private TextField tfNombreDanza, tfDescripcion;
     private TipoDanza tipoDanza;
     private AdministrarDanzasController controlador;
+    
 
     @FXML
     public void tfNoVacio() {
@@ -40,7 +48,7 @@ public class CrearDanzaController implements Initializable {
             botonGuardarYCGrupo.setDisable(true);
         } else {
             botonGuardar.setDisable(false);
-            //botonGuardarYCGrupo.setDisable(false);
+            botonGuardarYCGrupo.setDisable(false);
         }
 
     }
@@ -94,10 +102,29 @@ public class CrearDanzaController implements Initializable {
 
     @FXML
     private void guardarYCGrupo(ActionEvent evento) {
+        DanzaResource recurso = new DanzaResource();
         tipoDanza = new TipoDanza();
         tipoDanza.setActivo(true);
         tipoDanza.setNombre(tfNombreDanza.getText());
         tipoDanza.setDescripcion(tfDescripcion.getText());
+        recurso.crearDanza(tipoDanza);
+        controlador.setTabla();
+        botonGuardarYCGrupo.getScene().getWindow().hide();
+        try {
+            Stage crearGrupoDanza = new Stage();
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearGrupoDeDanza.fxml"));
+            CrearGrupoDeDanzaController crearGrupoDeDanzaControl = (CrearGrupoDeDanzaController) cargador.getController();
+            AnchorPane root = cargador.load();
+            CrearGrupoDeDanzaController control = (CrearGrupoDeDanzaController) cargador.getController();
+            control.setTipoDazanza(tipoDanza);
+            control.setTituloNombreDanza();
+            Scene escena = new Scene(root);
+            crearGrupoDanza.setScene(escena);
+            crearGrupoDanza.show();
+
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
