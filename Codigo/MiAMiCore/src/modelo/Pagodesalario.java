@@ -60,6 +60,10 @@ public class Pagodesalario implements Serializable {
         return idegreso.getFecha();
     }
     
+    public String getMaestro(){
+        return this.idmaestro.getNombre() + " " + this.idmaestro.getApellidos();
+    }
+    
     
     
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package miamifx.controllers;
 
 
@@ -35,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -182,34 +178,42 @@ public class AdministrarAlumnosController implements Initializable {
         setTabla();
         
         tablaAlumnos.setOnMouseClicked((MouseEvent event) -> {
-            activarBotones();
-            Alumno alumnoSeleccionado = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
-            if(alumnoSeleccionado.getFoto() != "" && alumnoSeleccionado.getFoto() != null){
-                Image image = null;
-                File file;
-                try {
-                    file = new File(alumnoSeleccionado.getFoto());
-                    image = new Image(file.toURI().toURL().toExternalForm());
-                    fotoAlumno.setImage(image);
-                } catch (MalformedURLException ex) {
-                    System.out.println("Ruta incorrecta");
-                }
-            } else {
-                Path currentRelativePath = Paths.get("");
-                String currentPath = currentRelativePath.toAbsolutePath().toString();
-                String dfu = currentPath+ "/USERSPICTURES/userDefault.png";
-                File file = new File(dfu);
-                try {
-                    Image image = new Image(file.toURI().toURL().toExternalForm());
-                    fotoAlumno.setImage(image);
-                } catch (MalformedURLException ex1) {
-                    Logger.getLogger(EditarAlumnoController.class.getName()).log(Level.SEVERE, null, ex1);
-                }
-            
-            }
+            onTableSelection();
+        });
+        
+        tablaAlumnos.setOnKeyReleased((KeyEvent event) -> {
+            onTableSelection();
         });
     }
 
+    public void onTableSelection(){
+        activarBotones();
+        Alumno alumnoSeleccionado = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
+        if(alumnoSeleccionado.getFoto() != "" && alumnoSeleccionado.getFoto() != null){
+            Image image = null;
+            File file;
+            try {
+                file = new File(alumnoSeleccionado.getFoto());
+                image = new Image(file.toURI().toURL().toExternalForm());
+                fotoAlumno.setImage(image);
+            } catch (MalformedURLException ex) {
+                System.out.println("Ruta incorrecta");
+            }
+        } else {
+            Path currentRelativePath = Paths.get("");
+            String currentPath = currentRelativePath.toAbsolutePath().toString();
+            String dfu = currentPath+ "/USERSPICTURES/userDefault.png";
+            File file = new File(dfu);
+            try {
+                Image image = new Image(file.toURI().toURL().toExternalForm());
+                fotoAlumno.setImage(image);
+            } catch (MalformedURLException ex1) {
+                Logger.getLogger(EditarAlumnoController.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+
+        }
+    }
+    
     public void pagarCuota(ActionEvent actionEvent) {
         /*try {
             Stage PagarCuota = new Stage();
