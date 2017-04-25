@@ -10,8 +10,7 @@
       <TableView fx:id="tablaDanzas" layoutX="46.0" layoutY="31.0" onMouseClicked="#seSelecciono" prefHeight="208.0" prefWidth="770.0">
          <columns>
             <TableColumn fx:id="columnaDanza" prefWidth="228.00003051757812" text="Danza" />
-            <TableColumn fx:id="columnaMaestros" minWidth="0.0" prefWidth="285.33331298828125" text="Maestros" />
-            <TableColumn fx:id="columnaHorario" prefWidth="205.66668701171875" text="Horario" />
+            <TableColumn fx:id="columnaDescripcion" minWidth="0.0" prefWidth="538.6666870117188" text="Descripción" />
          </columns>
       </TableView>
       <Button fx:id="bNuevaDanza" layoutX="46.0" layoutY="537.0" mnemonicParsing="false" onAction="#nuevaDanza" prefHeight="25.0" prefWidth="120.0" text="Nueva Danza" />
@@ -20,8 +19,16 @@
       <Button fx:id="bEliminarDanza" disable="true" layoutX="433.0" layoutY="537.0" mnemonicParsing="false" onAction="#eliminarDanza" prefHeight="25.0" prefWidth="110.0" text="Eliminar Danza" />
       <TableView fx:id="tablaDanzas1" layoutX="46.0" layoutY="250.0" onMouseClicked="#seSelecciono" prefHeight="277.0" prefWidth="770.0">
          <columns>
-            <TableColumn fx:id="columnaDanza1" prefWidth="228.00003051757812" text="Maestro" />
-            <TableColumn fx:id="columnaMaestros1" minWidth="0.0" prefWidth="490.0" text="Horario" />
+            <TableColumn fx:id="columnaMaestros" prefWidth="234.33334350585938" text="Maestro" />
+            <TableColumn fx:id="columnaHorario" minWidth="0.0" prefWidth="534.0" resizable="false" text="Horario">
+               <columns>
+                  <TableColumn prefWidth="89.0" text="Lunes" />
+                  <TableColumn prefWidth="89.0" text="Martes" />
+                  <TableColumn prefWidth="89.0" text="Miercoles" />
+                  <TableColumn prefWidth="89.0" text="Jueves" />
+                  <TableColumn prefWidth="89.0" text="Viernes" />
+                  <TableColumn minWidth="15.0" prefWidth="89.0" text="Sabado" />
+               </columns></TableColumn>
          </columns>
       </TableView>
    </children>

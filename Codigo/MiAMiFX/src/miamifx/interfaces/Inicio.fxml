@@ -18,15 +18,15 @@
             <Image url="@../../img/Logo.png" />
          </image>
       </ImageView>
-      <Accordion layoutX="138.0" layoutY="314.0" prefHeight="133.0" prefWidth="569.0">
+      <Accordion layoutX="138.0" layoutY="257.0" prefHeight="190.0" prefWidth="569.0">
         <panes>
           <TitledPane animated="false" text="Mensualidades próximas">
                <content>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0">
                      <content>
-                        <VBox prefHeight="84.0" prefWidth="553.0">
+                        <VBox prefHeight="118.0" prefWidth="553.0">
                            <children>
-                              <TableView prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="119.0" prefWidth="553.0">
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="Nombre" />
                                   <TableColumn prefWidth="75.0" text="Fecha de pago de mensualidad" />
@@ -41,11 +41,11 @@
                   </ScrollPane>
                </content>
           </TitledPane>
-          <TitledPane animated="false" prefHeight="92.0" prefWidth="569.0" text="Reinscripciones próximas">
+          <TitledPane animated="false" prefHeight="130.0" prefWidth="569.0" text="Reinscripciones próximas">
                <content>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0">
                      <content>
-                        <VBox prefHeight="83.0" prefWidth="553.0">
+                        <VBox prefHeight="132.0" prefWidth="553.0">
                            <children>
                               <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>

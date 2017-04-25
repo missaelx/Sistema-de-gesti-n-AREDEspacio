@@ -28,7 +28,9 @@ import javafx.stage.Stage;
 import modelo.Maestro;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
 import javafx.stage.WindowEvent;
 import recursos.MaestroResource;
 
@@ -155,6 +157,8 @@ public class EditarMaestrosController implements Initializable {
     @FXML
     private void visualizarPagos(ActionEvent event) {
         Stage pagos = new Stage();
+        pagos.setResizable(false);
+        
         MaestroResource recurso = new MaestroResource();
         GridPane root = new GridPane();
         TableView tablaPagos = new TableView();
@@ -162,6 +166,7 @@ public class EditarMaestrosController implements Initializable {
         TableColumn fecha = new TableColumn("Fecha");
         TableColumn descripcion = new TableColumn("Descripcion");
         Button btnCerrar = new Button("Cerrar");
+        btnCerrar.setMinWidth(100);
 
         btnCerrar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -185,6 +190,9 @@ public class EditarMaestrosController implements Initializable {
         root.getChildren().addAll(tablaPagos, btnCerrar);
         Scene escena = new Scene(root);
         pagos.setScene(escena);
+        pagos.initModality(Modality.WINDOW_MODAL);
+        pagos.initOwner(
+        ((Node)event.getSource()).getScene().getWindow() );
         pagos.show();
 
     }
