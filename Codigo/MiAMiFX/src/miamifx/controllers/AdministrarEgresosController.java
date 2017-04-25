@@ -1,18 +1,24 @@
 package miamifx.controllers;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -20,7 +26,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import modelo.Alumno;
 import modelo.Egreso;
 import modelo.Gastovariable;
 import modelo.Pagodesalario;
@@ -138,23 +148,24 @@ public class AdministrarEgresosController implements Initializable {
     
     @FXML
     public void OnRegistrarPagoSalario(ActionEvent event){
-        EgresosResource recurso = new EgresosResource();
-        Pagodesalario pago = new Pagodesalario();
-        Egreso monto = new Egreso();
-        monto.setFecha(new Date());
-        monto.setMonto(new BigDecimal(1001.21));
-        
-        pago.setIdegreso(monto);
-        
-        if(!recurso.registrarPagoSalario(pago)){
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error al registrar pago");
-            alert.setHeaderText("Hubo un error al contactar con la base de datos");
-            alert.setContentText("Error");
-            alert.showAndWait();
-        } else {
-            
+        Stage registrarPagoSalarioStage = new Stage();
+        FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/RegistrarPagoSalario.fxml"));
+        AnchorPane root = null;
+        try {
+             root = cargador.load();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error al buscar el FXML");
         }
+        
+        Scene escena = new Scene(root);
+        
+        registrarPagoSalarioStage.setScene(escena);
+        registrarPagoSalarioStage.initModality(Modality.WINDOW_MODAL);
+        registrarPagoSalarioStage.initOwner(
+        ((Node)event.getSource()).getScene().getWindow() );
+        registrarPagoSalarioStage.setResizable(false);
+        registrarPagoSalarioStage.show();
             
         
     }
