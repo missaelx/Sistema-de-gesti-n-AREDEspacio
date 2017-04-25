@@ -48,15 +48,15 @@ public class RegistrarPagoSalarioController implements Initializable {
     
     private void inicializarControles(){
         MaestroResource maestroRecurso = new MaestroResource();
-        
         ObservableList<Maestro> observableList = FXCollections.observableList(maestroRecurso.visualizarRegistros());
         cmbEmpleado.setItems( observableList );
-        
-        
         cmbEmpleado.getSelectionModel().selectFirst();
         datePickerFechaPago.setValue(LocalDate.now());
         
-        
+        buscarSalarioRecomendado();
+    }
+    private void buscarSalarioRecomendado(){
+        //TODO 
     }
     
     

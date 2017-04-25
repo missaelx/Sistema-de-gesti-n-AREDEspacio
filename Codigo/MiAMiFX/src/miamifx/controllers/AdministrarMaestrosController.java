@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package miamifx.controllers;
 
 import controladores.exceptions.NonexistentEntityException;
@@ -16,11 +11,11 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -31,8 +26,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import modelo.Alumno;
 import modelo.Maestro;
 import recursos.MaestroResource;
 
@@ -66,14 +61,17 @@ public class AdministrarMaestrosController implements Initializable {
             registrarMaestro.setOnCloseRequest(Event ->{
                 ventanaAbierta = false;
                 registrarMaestro.close();
-        });
+            });
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/RegistrarMaestro.fxml"));
             AnchorPane root = cargador.load();
             RegistrarMaestroController control = (RegistrarMaestroController) cargador.getController();
             control.setContro(this);
             Scene escena = new Scene(root);
             registrarMaestro.setScene(escena);
-            registrarMaestro.setAlwaysOnTop(false);
+            registrarMaestro.initModality(Modality.WINDOW_MODAL);
+            registrarMaestro.initOwner(
+            ((Node)event.getSource()).getScene().getWindow() );
+            registrarMaestro.setResizable(false);
             registrarMaestro.show();
         }
 
@@ -111,7 +109,7 @@ public class AdministrarMaestrosController implements Initializable {
     }
 
     @FXML
-    private void verDetalles() {
+    private void verDetalles(ActionEvent event) {
         if (!ventanaAbierta && !tablaMaestros.getSelectionModel().getSelectedItem().equals(null)) {
             ventanaAbierta=true;
             try {
@@ -133,7 +131,10 @@ public class AdministrarMaestrosController implements Initializable {
 
                 Scene escena = new Scene(root);
                 editarMaestro.setScene(escena);
-                editarMaestro.setAlwaysOnTop(false);
+                editarMaestro.initModality(Modality.WINDOW_MODAL);
+                editarMaestro.initOwner(
+                ((Node)event.getSource()).getScene().getWindow() );
+                editarMaestro.setResizable(false);
                 editarMaestro.show();
             } catch (IOException ex) {
                 Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
