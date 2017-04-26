@@ -12,9 +12,9 @@
    <children>
       <Label layoutX="49.0" layoutY="42.0" text="Filtrar por fecha:" />
       <DatePicker fx:id="datePickerSalarioInicio" editable="false" layoutX="257.0" layoutY="37.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
-      <DatePicker fx:id="datePickerSalarioFin" editable="false" layoutX="543.0" layoutY="37.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
+      <DatePicker fx:id="datePickerSalarioFin" editable="false" layoutX="528.0" layoutY="37.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
       <Label layoutX="208.0" layoutY="42.0" text="Inicio:" />
-      <Label layoutX="509.0" layoutY="42.0" text="Fin:" />
+      <Label layoutX="494.0" layoutY="42.0" text="Fin:" />
       <TableView fx:id="tableEgresos" layoutX="26.0" layoutY="373.0" prefHeight="170.0" prefWidth="831.0">
         <columns>
           <TableColumn fx:id="colEgresoMonto" prefWidth="419.0" text="Monto" />
@@ -38,7 +38,7 @@
       </TableView>
       <Label layoutX="49.0" layoutY="340.0" text="Filtrar por fecha:" />
       <DatePicker fx:id="datePickerEgresoInicio" editable="false" layoutX="257.0" layoutY="335.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
-      <DatePicker fx:id="datePickerEgresoFin" editable="false" layoutX="543.0" layoutY="335.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
+      <DatePicker fx:id="datePickerEgresoFin" editable="false" layoutX="529.0" layoutY="335.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
       <Label layoutX="208.0" layoutY="340.0" text="Inicio:" />
       <Label layoutX="384.0" layoutY="12.0" prefHeight="22.0" prefWidth="142.0" text="Pagos salariales">
          <font>
@@ -51,10 +51,11 @@
          </font>
       </Label>
       <Button fx:id="btnRegistrarPagoSalario" layoutX="33.0" layoutY="257.0" mnemonicParsing="false" onAction="#OnRegistrarPagoSalario" text="Registrar pago de salario" />
-      <Button fx:id="btnEditarPagoSalario" layoutX="228.0" layoutY="257.0" mnemonicParsing="false" text="Editar pago de salario" />
-      <Button fx:id="btnEliminarPagoSalario" layoutX="407.0" layoutY="257.0" mnemonicParsing="false" text="Eliminar pago de salario" />
-      <Button fx:id="btnRegistrarEgreso" layoutX="33.0" layoutY="550.0" mnemonicParsing="false" text="Registrar egreso" />
-      <Button fx:id="btnEditarEgreso" layoutX="176.0" layoutY="550.0" mnemonicParsing="false" text="Editar egreso" />
-      <Button fx:id="btnEliminarEgreso" layoutX="304.0" layoutY="550.0" mnemonicParsing="false" text="Eliminar egreso" />
+      <Button fx:id="btnEliminarPagoSalario" layoutX="239.0" layoutY="257.0" mnemonicParsing="false" text="Eliminar pago de salario" />
+      <Button fx:id="btnRegistrarEgreso" layoutX="33.0" layoutY="550.0" mnemonicParsing="false" onAction="#onRegistrarEgreso" text="Registrar egreso" />
+      <Button fx:id="btnEliminarEgreso" layoutX="176.0" layoutY="550.0" mnemonicParsing="false" text="Eliminar egreso" />
+      <Label layoutX="499.0" layoutY="340.0" text="Fin:" />
+      <Button fx:id="btnVerTodosSalario" layoutX="760.0" layoutY="37.0" mnemonicParsing="false" text="Ver todos" />
+      <Button fx:id="btnVerTodosEgresos" layoutX="760.0" layoutY="335.0" mnemonicParsing="false" text="Ver todos" />
    </children>
 </AnchorPane>

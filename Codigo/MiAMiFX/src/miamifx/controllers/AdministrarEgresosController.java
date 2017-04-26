@@ -48,9 +48,9 @@ public class AdministrarEgresosController implements Initializable {
     private TableColumn colEgresoMonto, colEgresoDescripcion, colEgresoFecha;
     
     @FXML
-    private Button btnRegistrarPagoSalario, btnEditarPagoSalario, btnEliminarPagoSalario;
+    private Button btnRegistrarPagoSalario, btnEliminarPagoSalario;
     @FXML
-    private Button btnRegistrarEgreso, btnEditarEgreso, btnEliminarEgreso;
+    private Button btnRegistrarEgreso, btnEliminarEgreso;
 
     private EgresosResource recursoEgresos;
             
@@ -68,6 +68,11 @@ public class AdministrarEgresosController implements Initializable {
         tableSalarios.refresh();
         ObservableList lista = FXCollections.observableArrayList(recursoEgresos.getPagosSalariales());
         tableSalarios.setItems(lista);
+    }
+    public void actualizarTablaEgresos(){
+        tableEgresos.refresh();
+        ObservableList lista = FXCollections.observableArrayList(recursoEgresos.getEgresosVariables());
+        tableEgresos.setItems(lista);
     }
     public void setTablaSalario(){
         ObservableList lista = FXCollections.observableArrayList(recursoEgresos.getPagosSalariales());
@@ -150,6 +155,9 @@ public class AdministrarEgresosController implements Initializable {
             System.out.println("Error al buscar el FXML");
         }
         
+        RegistrarPagoSalarioController controlHijo = (RegistrarPagoSalarioController) cargador.getController();
+        controlHijo.setControladorPadre(this);
+        
         Scene escena = new Scene(root);
         
         registrarPagoSalarioStage.setScene(escena);
@@ -159,6 +167,32 @@ public class AdministrarEgresosController implements Initializable {
         registrarPagoSalarioStage.setResizable(false);
         registrarPagoSalarioStage.show();
             
+        
+    }
+    
+    @FXML
+    public void onRegistrarEgreso(ActionEvent event){
+        Stage registrarEgresoStage = new Stage();
+        FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/RegistrarEgresoVariable.fxml"));
+        AnchorPane root = null;
+        try {
+             root = cargador.load();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error al buscar el FXML");
+        }
+        
+        RegistrarEgresoVariableController controlHijo = (RegistrarEgresoVariableController) cargador.getController();
+        controlHijo.setControladorPadre(this);
+        
+        Scene escena = new Scene(root);
+        
+        registrarEgresoStage.setScene(escena);
+        registrarEgresoStage.initModality(Modality.WINDOW_MODAL);
+        registrarEgresoStage.initOwner(
+        ((Node)event.getSource()).getScene().getWindow() );
+        registrarEgresoStage.setResizable(false);
+        registrarEgresoStage.show();
         
     }
 }

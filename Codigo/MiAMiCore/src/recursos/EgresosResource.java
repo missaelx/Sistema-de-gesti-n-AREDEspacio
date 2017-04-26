@@ -48,4 +48,30 @@ public class EgresosResource {
         
         return resultado;
     }
+    
+    public boolean registrarEgreso(Gastovariable pago){
+        boolean resultado = true;
+        
+        GastovariableJpaController controlador = new GastovariableJpaController(emf);
+        EgresoJpaController controladorEgreso = new EgresoJpaController(emf);
+        
+        Egreso egreso = pago.getIdEgreso();
+        try{
+            controladorEgreso.create(egreso);
+        } catch(Exception e){
+            System.out.println("Linea 62");
+            System.out.println(e.getMessage());
+        }
+        
+        
+        
+        try {
+            controlador.create(pago);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    }
 }
