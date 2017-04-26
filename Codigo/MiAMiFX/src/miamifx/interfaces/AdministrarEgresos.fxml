@@ -51,9 +51,9 @@
          </font>
       </Label>
       <Button fx:id="btnRegistrarPagoSalario" layoutX="33.0" layoutY="257.0" mnemonicParsing="false" onAction="#OnRegistrarPagoSalario" text="Registrar pago de salario" />
-      <Button fx:id="btnEliminarPagoSalario" layoutX="239.0" layoutY="257.0" mnemonicParsing="false" text="Eliminar pago de salario" />
+      <Button fx:id="btnEliminarPagoSalario" layoutX="239.0" layoutY="257.0" mnemonicParsing="false" onAction="#onEliminarSalarioClick" text="Eliminar pago de salario" />
       <Button fx:id="btnRegistrarEgreso" layoutX="33.0" layoutY="550.0" mnemonicParsing="false" onAction="#onRegistrarEgreso" text="Registrar egreso" />
-      <Button fx:id="btnEliminarEgreso" layoutX="176.0" layoutY="550.0" mnemonicParsing="false" text="Eliminar egreso" />
+      <Button fx:id="btnEliminarEgreso" layoutX="176.0" layoutY="550.0" mnemonicParsing="false" onAction="#onEliminarEgresoClick" text="Eliminar egreso" />
       <Label layoutX="499.0" layoutY="340.0" text="Fin:" />
       <Button fx:id="btnVerTodosSalario" layoutX="760.0" layoutY="37.0" mnemonicParsing="false" text="Ver todos" />
       <Button fx:id="btnVerTodosEgresos" layoutX="760.0" layoutY="335.0" mnemonicParsing="false" text="Ver todos" />

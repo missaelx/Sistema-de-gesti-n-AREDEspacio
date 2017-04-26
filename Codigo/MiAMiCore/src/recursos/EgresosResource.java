@@ -4,6 +4,7 @@ import controladores.EgresoJpaController;
 import controladores.GastovariableJpaController;
 import controladores.PagodesalarioJpaController;
 import controladores.exceptions.IllegalOrphanException;
+import controladores.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,5 +74,43 @@ public class EgresosResource {
         }
         
         return resultado;
+    }
+    
+    public boolean eliminarPagoSalario(Pagodesalario pago){
+        Egreso egreso = pago.getIdegreso();
+        PagodesalarioJpaController controladorSalario = new PagodesalarioJpaController(emf);
+        EgresoJpaController controladorEgreso = new EgresoJpaController(emf);
+        
+        boolean result = true;
+        
+        try{
+            controladorSalario.destroy(pago.getId());
+            pago.setIdegreso(null);
+            egreso.setPagodesalario(null);
+            controladorEgreso.destroy(egreso.getId());
+        } catch (IllegalOrphanException | NonexistentEntityException ex) {
+            System.out.println(ex.getMessage());
+            result = false;
+        }
+        return result;
+    }
+
+    public boolean eliminarEgreso(Gastovariable pago) {
+        Egreso egreso = pago.getIdEgreso();
+        GastovariableJpaController controladorGasto = new GastovariableJpaController(emf);
+        EgresoJpaController controladorEgreso = new EgresoJpaController(emf);
+        
+        boolean result = true;
+        
+        try{
+            controladorGasto.destroy(pago.getId());
+            pago.setIdEgreso(null);
+            egreso.setPagodesalario(null);
+            controladorEgreso.destroy(egreso.getId());
+        } catch (IllegalOrphanException | NonexistentEntityException ex) {
+            System.out.println(ex.getMessage());
+            result = false;
+        }
+        return result;
     }
 }

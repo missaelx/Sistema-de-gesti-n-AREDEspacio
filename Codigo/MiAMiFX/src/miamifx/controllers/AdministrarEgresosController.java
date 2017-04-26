@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -15,7 +16,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -194,5 +198,63 @@ public class AdministrarEgresosController implements Initializable {
         registrarEgresoStage.setResizable(false);
         registrarEgresoStage.show();
         
+    }
+    
+    @FXML
+    public void onEliminarSalarioClick(ActionEvent event){
+        Alert alert = null;
+        if(tableSalarios.getSelectionModel().isEmpty()){ //retorna true si no se ha seleccionado ninguna fila
+            alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Selecciona un pago");
+            alert.setHeaderText("No se ha seleccionado ninguna fila de la tabla");
+            alert.setContentText("Selecciona la fila correspondiente al pago que deseas eliminar");
+
+            alert.showAndWait();
+        } else {
+            alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirma la eliminación del registro");
+            alert.setHeaderText("Se eliminará por completo el pago");
+            alert.setContentText("Se eliminará por completo el registro del pago, ¿Desea continiar?");
+
+            Optional<ButtonType> op = alert.showAndWait();
+            if (op.get() == ButtonType.OK){
+                EgresosResource egresosRecurso = new EgresosResource();
+                Pagodesalario pago = (Pagodesalario) tableSalarios.getSelectionModel().getSelectedItem();
+                
+                if(!egresosRecurso.eliminarPagoSalario(pago)){
+                    System.out.println("Un error ocurrio");
+                }
+                actualizarTablaSalario();
+            }
+        }
+    }
+    
+    @FXML
+    private void onEliminarEgresoClick(){
+        Alert alert = null;
+        if(tableEgresos.getSelectionModel().isEmpty()){ //retorna true si no se ha seleccionado ninguna fila
+            alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Selecciona un pago");
+            alert.setHeaderText("No se ha seleccionado ninguna fila de la tabla");
+            alert.setContentText("Selecciona la fila correspondiente al pago que deseas eliminar");
+
+            alert.showAndWait();
+        } else {
+            alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirma la eliminación del registro");
+            alert.setHeaderText("Se eliminará por completo el egreso");
+            alert.setContentText("Se eliminará por completo el registro del egreso, ¿Desea continiar?");
+
+            Optional<ButtonType> op = alert.showAndWait();
+            if (op.get() == ButtonType.OK){
+                EgresosResource egresosRecurso = new EgresosResource();
+                Gastovariable pago = (Gastovariable) tableEgresos.getSelectionModel().getSelectedItem();
+                
+                if(!egresosRecurso.eliminarEgreso(pago)){
+                    System.out.println("Un error ocurrio");
+                }
+                actualizarTablaEgresos();
+            }
+        }
     }
 }
