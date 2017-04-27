@@ -33,6 +33,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Alumno;
 import recursos.AlumnoResource;
@@ -61,13 +62,6 @@ public class AdministrarAlumnosController implements Initializable {
     private void registrarAlumno(ActionEvent event){
         try {
             Stage registrarAlumno = new Stage();
-            //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
-
-            //URL url = new File("src/miamifx/RegistrarAlumno.fxml").toURL();            
-            //AnchorPane root = FXMLLoader.load(url);
-            //Scene escena = new Scene(root);
-            //inscribirAlumno.setScene(escena);
-            //inscribirAlumno.show();
             
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/RegistrarAlumno.fxml"));
             AnchorPane root = cargador.load();
@@ -75,6 +69,10 @@ public class AdministrarAlumnosController implements Initializable {
             control.setControlPadre(this);
             Scene escena = new Scene(root);
             registrarAlumno.setScene(escena);
+            registrarAlumno.initModality(Modality.WINDOW_MODAL);
+            registrarAlumno.initOwner(
+            ((Node)event.getSource()).getScene().getWindow() );
+            registrarAlumno.setResizable(false);
             registrarAlumno.show();
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,6 +98,10 @@ public class AdministrarAlumnosController implements Initializable {
             
             Scene escena = new Scene(root);
             editarAlumno.setScene(escena);
+            editarAlumno.initModality(Modality.WINDOW_MODAL);
+            editarAlumno.initOwner(
+            ((Node)event.getSource()).getScene().getWindow() );
+            editarAlumno.setResizable(false);
             editarAlumno.show();
         } catch (IOException ex) {
             Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
