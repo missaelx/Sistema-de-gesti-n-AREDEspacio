@@ -77,11 +77,7 @@ public class CrearGrupoDeDanzaController implements Initializable {
             botonGuardar.setDisable(false);
         }else{botonGuardar.setDisable(true);}
         
-<<<<<<< Updated upstream
-=======
-        Horario clase = new Horario();
-        //clase.setHorafinal(entrada);
->>>>>>> Stashed changes
+        //Horario clase = new Horario();
     }
     
     @FXML

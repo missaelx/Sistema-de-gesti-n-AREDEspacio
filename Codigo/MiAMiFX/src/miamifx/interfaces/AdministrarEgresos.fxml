@@ -55,9 +55,11 @@
       <Button fx:id="btnRegistrarEgreso" layoutX="33.0" layoutY="550.0" mnemonicParsing="false" onAction="#onRegistrarEgreso" text="Registrar egreso" />
       <Button fx:id="btnEliminarEgreso" layoutX="176.0" layoutY="550.0" mnemonicParsing="false" onAction="#onEliminarEgresoClick" text="Eliminar egreso" />
       <Label layoutX="436.0" layoutY="340.0" text="Fin:" />
-      <Button fx:id="btnVerTodosSalario" layoutX="769.0" layoutY="37.0" mnemonicParsing="false" text="Ver todos" />
-      <Button fx:id="btnVerTodosEgresos" layoutX="769.0" layoutY="335.0" mnemonicParsing="false" text="Ver todos" />
+      <Button fx:id="btnVerTodosSalario" layoutX="769.0" layoutY="37.0" mnemonicParsing="false" onAction="#onVerTodosSalariosClick" text="Ver todos" />
+      <Button fx:id="btnVerTodosEgresos" layoutX="769.0" layoutY="335.0" mnemonicParsing="false" onAction="#onVerTodosEgresosClick" text="Ver todos" />
       <Button layoutX="684.0" layoutY="37.0" mnemonicParsing="false" onAction="#onBuscarSalarios" text="Buscar" />
       <Button layoutX="684.0" layoutY="335.0" mnemonicParsing="false" onAction="#onBuscarEgresos" text="Buscar" />
+      <Button layoutX="307.0" layoutY="550.0" mnemonicParsing="false" onAction="#onSumaEgresosClick" text="Ver suma de los egresos actuales" />
+      <Button layoutX="431.0" layoutY="257.0" mnemonicParsing="false" onAction="#onSumaSalariosClick" text="Ver suma de los salarios actuales" />
    </children>
 </AnchorPane>
