@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Gastovariable.findAll", query = "SELECT g FROM Gastovariable g")
+    , @NamedQuery(name = "Gastovariable.findEntreFechas", query = "SELECT g FROM Gastovariable g WHERE g.idEgreso.fecha >= :inicio and g.idEgreso.fecha <= :fin")
     , @NamedQuery(name = "Gastovariable.findById", query = "SELECT g FROM Gastovariable g WHERE g.id = :id")})
 public class Gastovariable implements Serializable {
 

@@ -2,9 +2,11 @@ package recursos;
 
 import controladores.EgresoJpaController;
 import controladores.GastovariableJpaController;
+import controladores.GastovariableJpaControllerExtended;
 import controladores.PagodesalarioJpaController;
 import controladores.exceptions.IllegalOrphanException;
 import controladores.exceptions.NonexistentEntityException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,5 +114,10 @@ public class EgresosResource {
             result = false;
         }
         return result;
+    }
+    
+    public List<Gastovariable> getEgresosEntreFechas(Date inicio, Date fin){
+        GastovariableJpaControllerExtended controlador = new GastovariableJpaControllerExtended(emf);
+        return controlador.getEgresosPorFechas(inicio, fin);
     }
 }
