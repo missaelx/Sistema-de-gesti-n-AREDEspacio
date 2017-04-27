@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -259,52 +255,6 @@ public class AdministrarEgresosController implements Initializable {
                 }
                 actualizarTablaEgresos();
             }
-        }
-    }
-    
-    @FXML
-    private void onBuscarSalarios(ActionEvent event){
-        LocalDate dateInicio = datePickerSalarioInicio.getValue();
-        LocalDate dateFin = datePickerSalarioFin.getValue();
-        
-        Date inicio = Date.from(dateInicio.atStartOfDay(ZoneId.systemDefault()).toInstant());;
-        Date fin = Date.from(dateFin.atStartOfDay(ZoneId.systemDefault()).toInstant());;;
-        
-        
-        if(dateInicio.compareTo(dateFin)  <= 0){ // Inicio <= Fin
-            EgresosResource egresosRecurso = new EgresosResource();
-            List<Gastovariable> listaResultado = egresosRecurso.getEgresosEntreFechas(inicio, fin);
-            
-            tableSalarios.refresh();
-            ObservableList lista = FXCollections.observableArrayList(listaResultado);
-            tableSalarios.setItems(lista);
-        } else {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setTitle("Error en las fechas seleccionadas");
-            alert.setHeaderText("Selecciona otra fecha");
-            alert.setContentText("Las fecha de fin es menor a la de inicio, corrige para continuar");
-            alert.show();
-        }
-    }
-    
-    @FXML
-    private void onBuscarEgresos(ActionEvent event){
-        LocalDate dateInicio = datePickerEgresoInicio.getValue();
-        LocalDate dateFin = datePickerEgresoFin.getValue();
-        
-        Date inicio = Date.from(dateInicio.atStartOfDay(ZoneId.systemDefault()).toInstant());;
-        Date fin = Date.from(dateFin.atStartOfDay(ZoneId.systemDefault()).toInstant());;;
-        
-        if(dateInicio.compareTo(dateFin)  <= 0){ // Inicio <= Fin
-            
-            
-            
-        } else {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setTitle("Error en las fechas seleccionadas");
-            alert.setHeaderText("Selecciona otra fecha");
-            alert.setContentText("Las fecha de fin es menor a la de inicio, corrige para continuar");
-            alert.show();
         }
     }
 }
