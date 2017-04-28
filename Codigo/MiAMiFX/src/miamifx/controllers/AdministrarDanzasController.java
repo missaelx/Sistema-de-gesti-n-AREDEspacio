@@ -154,6 +154,14 @@ public class AdministrarDanzasController implements Initializable {
             bCrearGrupo.setDisable(true);
         }
     }
+    
+    private void setTablaGrupoDanzas(){
+        DanzaResource recurso = new DanzaResource();
+        ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistrosGClase());
+        columnaMaestros.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        tablaDanzas.setItems(list);
+    }
 
     /**
      * Initializes the controller class. "No funciona aun D: \n '\\\n" + "

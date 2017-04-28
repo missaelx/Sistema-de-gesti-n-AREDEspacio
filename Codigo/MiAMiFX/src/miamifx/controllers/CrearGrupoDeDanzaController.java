@@ -3,7 +3,9 @@ package miamifx.controllers;
 import com.jfoenix.controls.JFXTimePicker;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -129,14 +131,42 @@ public class CrearGrupoDeDanzaController implements Initializable {
 
     }
 
-    private void setHorario(LocalTime entrada, LocalTime salida) {
-        
+    public Horario setHorario(LocalTime entrada, LocalTime salida,String dia) {
+        //entrada.atDate(LocalDate.now());
+        Date provisionalEntrada,provisionalSalida;
+        provisionalEntrada = new Date(1970,1,1,entrada.getHour(),entrada.getMinute());
+        provisionalSalida = new Date(1970,1,1,salida.getHour(),salida.getMinute());
         Horario clase = new Horario();
-<<<<<<< HEAD
-        //clase.setHorafinal(entrada);
-=======
-        clase.setHorafinal(entrada);
->>>>>>> 442846ac0ba7ed6c101dcbd1065aa37de4e9a9df
+        clase.setHorainicio(provisionalEntrada);
+        clase.setHorafinal(provisionalSalida);
+        clase.setDia(dia);
+        return clase;
+
+    }
+    private void setListaHorario(){
+        if (!entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)) {
+            horario.add(setHorario(entradaLunes.getValue(), salidaLunes.getValue(), "lun"));
+        }
+        if (!entradaMartes.getValue().equals(null) && !salidaMartes.getValue().equals(null)) {
+            horario.add(setHorario(entradaMartes.getValue(), salidaMartes.getValue(), "mar"));
+        }
+        if (!entradaMiercoles.getValue().equals(null) && !salidaMiercoles.getValue().equals(null)) {
+            horario.add(setHorario(entradaMiercoles.getValue(), salidaMiercoles.getValue(), "mie"));
+        }
+        if (!entradaJueves.getValue().equals(null) && !salidaJueves.getValue().equals(null)) {
+            horario.add(setHorario(entradaJueves.getValue(), salidaJueves.getValue(), "jue"));
+        }
+        if (!entradaViernes.getValue().equals(null) && !salidaViernes.getValue().equals(null)) {
+            horario.add(setHorario(entradaViernes.getValue(), salidaViernes.getValue(), "vie"));
+        }
+        if (!entradaSabado.getValue().equals(null) && !salidaSabado.getValue().equals(null)) {
+            horario.add(setHorario(entradaSabado.getValue(), salidaSabado.getValue(), "sab"));
+        }
+    }
+    
+    private BigDecimal setCosto(String costo){
+        BigDecimal costoMensual = new BigDecimal(costo);
+        return costoMensual;
     }
 
     @FXML
@@ -146,10 +176,11 @@ public class CrearGrupoDeDanzaController implements Initializable {
         grupoDanza = new GrupoClase();
         grupoDanza.setActivo(true);
         grupoDanza.setIdTipoDanza(tipoDanza);
-        //grupoDanza.setCostoMensual(costoMensual.gett);
         grupoDanza.setIdMaestro(listaCBmaestros.getSelectionModel().getSelectedItem());
+        setListaHorario();
         grupoDanza.setHorarioList(horario);
-        //grupoDanza.setDescripcion(tfDescripcion.getText());
+        grupoDanza.setCostoMensual(setCosto(costoMensual.getText()));
+        grupoDanza.setPorcentajeGananciaMaestro(0);
         recurso.crearGrupoClase(grupoDanza);
         controlador.setTabla();
         botonGuardar.getScene().getWindow().hide();
