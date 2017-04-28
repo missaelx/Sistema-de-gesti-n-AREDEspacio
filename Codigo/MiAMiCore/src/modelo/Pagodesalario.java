@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Pagodesalario.findAll", query = "SELECT p FROM Pagodesalario p")
     , @NamedQuery(name = "Pagodesalario.findById", query = "SELECT p FROM Pagodesalario p WHERE p.id = :id")
+    , @NamedQuery(name = "Pagodesalario.findEntreFechas", query = "SELECT p FROM Pagodesalario p WHERE p.idegreso.fecha >= :inicio and p.idegreso.fecha <= :fin")
     , @NamedQuery(name = "Pagodesalario.findByMaestro", query = "SELECT p FROM Pagodesalario p WHERE p.idmaestro.id = :idmaestro")})
 public class Pagodesalario implements Serializable {
 

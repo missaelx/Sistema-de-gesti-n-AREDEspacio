@@ -1,9 +1,15 @@
 package miamifx.controllers;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -256,5 +262,117 @@ public class AdministrarEgresosController implements Initializable {
                 actualizarTablaEgresos();
             }
         }
+    }
+    
+    @FXML
+    private void onBuscarSalarios(ActionEvent event){
+        LocalDate dateInicio = datePickerSalarioInicio.getValue();
+        LocalDate dateFin = datePickerSalarioFin.getValue();
+        
+        if(dateInicio == null || dateFin == null){
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Falta alguna fecha por seleccionar");
+            alert.setHeaderText("Selecciona una fecha de inicio y fin");
+            alert.setContentText("Las fecha de fin o de inicio no se han definido, corrige para continuar");
+            alert.show();
+        } else {
+            Date inicio = Date.from(dateInicio.atStartOfDay(ZoneId.systemDefault()).toInstant());;
+            Date fin = Date.from(dateFin.atStartOfDay(ZoneId.systemDefault()).toInstant());;;
+
+
+            if(dateInicio.compareTo(dateFin)  <= 0){ // Inicio <= Fin
+                EgresosResource egresosRecurso = new EgresosResource();
+                List<Pagodesalario> listaResultado = egresosRecurso.getSalariosEntreFechas(inicio, fin);
+
+                tableSalarios.refresh();
+                ObservableList lista = FXCollections.observableArrayList(listaResultado);
+                tableSalarios.setItems(lista);
+            } else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Error en las fechas seleccionadas");
+                alert.setHeaderText("Selecciona otra fecha");
+                alert.setContentText("Las fecha de fin es menor a la de inicio, corrige para continuar");
+                alert.show();
+            }
+        }
+    }
+    
+    @FXML
+    private void onBuscarEgresos(ActionEvent event){
+        LocalDate dateInicio = datePickerEgresoInicio.getValue();
+        LocalDate dateFin = datePickerEgresoFin.getValue();
+        
+        if(dateInicio == null || dateFin == null){
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Falta alguna fecha por seleccionar");
+            alert.setHeaderText("Selecciona una fecha de inicio y fin");
+            alert.setContentText("Las fecha de fin o de inicio no se han definido, corrige para continuar");
+            alert.show();
+        } else {
+            Date inicio = Date.from(dateInicio.atStartOfDay(ZoneId.systemDefault()).toInstant());;
+            Date fin = Date.from(dateFin.atStartOfDay(ZoneId.systemDefault()).toInstant());;;
+
+            if(dateInicio.compareTo(dateFin)  <= 0){ // Inicio <= Fin
+
+                EgresosResource egresosRecurso = new EgresosResource();
+                List<Gastovariable> listaResultado = egresosRecurso.getEgresosEntreFechas(inicio, fin);
+
+                tableEgresos.refresh();
+                ObservableList lista = FXCollections.observableArrayList(listaResultado);
+                tableEgresos.setItems(lista);
+
+            } else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Error en las fechas seleccionadas");
+                alert.setHeaderText("Selecciona otra fecha");
+                alert.setContentText("Las fecha de fin es menor a la de inicio, corrige para continuar");
+                alert.show();
+            }
+        }
+            
+    }
+    
+    @FXML
+    public void onVerTodosSalariosClick(ActionEvent event){
+        this.datePickerSalarioInicio.setValue(null);
+        this.datePickerSalarioFin.setValue(null);
+        actualizarTablaSalario();
+    }
+    
+    @FXML
+    public void onVerTodosEgresosClick(ActionEvent event){
+        this.datePickerEgresoInicio.setValue(null);
+        this.datePickerEgresoFin.setValue(null);
+        actualizarTablaEgresos();
+    }
+    
+    @FXML
+    public void onSumaEgresosClick(ActionEvent event){
+        List<Gastovariable> gastos = tableEgresos.getItems();
+        BigDecimal suma = new BigDecimal(0);
+        for(Gastovariable e: gastos){
+            suma = suma.add(e.getMonto());
+        }
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Cuentas");
+        alert.setHeaderText("Suma de los egresos variables");
+        alert.setContentText("La suma de los egresos variables registrados es: " + suma);
+        alert.show();
+    }
+    
+    @FXML
+    public void onSumaSalariosClick(ActionEvent event){
+        List<Pagodesalario> gastos= tableSalarios.getItems();
+        BigDecimal suma = new BigDecimal(0);
+        
+        for(Pagodesalario e: gastos){
+            suma = suma.add(e.getMonto());
+        }
+        
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Cuentas");
+        alert.setHeaderText("Suma de los salarios");
+        alert.setContentText("La suma de los pagos registrados es: " + suma);
+        alert.show();
     }
 }
