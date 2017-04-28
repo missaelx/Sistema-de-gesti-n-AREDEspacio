@@ -23,6 +23,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
 /**
  * @author Created by Miguel Acosta on 04/04/2017.
@@ -36,21 +38,25 @@ public class AdministrarPromocionesController implements Initializable {
     @FXML
     private TableView<Promociones> tablaPromociones;
 
-    private void setTabla(){
+    public void setTabla(){
         tablaPromociones.refresh();
         PromocionesResource recurso = new PromocionesResource();
-        ObservableList lista = FXCollections.observableArrayList(recurso.getAll());
+        ObservableList lista = FXCollections.observableArrayList(recurso.getActivos());
         columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
-        columnaDescuento.setCellValueFactory(new PropertyValueFactory<>("porcentaje_descuento"));
-        columnaAplica.setCellValueFactory(new PropertyValueFactory<>("aplica_para"));
+        columnaDescuento.setCellValueFactory(new PropertyValueFactory<>("porcentajeDescuento"));
+        columnaAplica.setCellValueFactory(new PropertyValueFactory<>("aplicaPara"));
+        tablaPromociones.setItems(lista);
     }
 
     @FXML
     private void crearPromocion(ActionEvent actionEvent){
         try {
             Stage promocion = new Stage();
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearPomocion.fxml"));
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearPromocion.fxml"));
+            CrearPromocionController control = (CrearPromocionController) cargador.getController();
             AnchorPane root = cargador.load();
+            cargador.setController(control);
+            control.setControlPadre(this);
             Scene escena = new Scene(root);
             promocion.setScene(escena);
             promocion.show();
@@ -68,16 +74,28 @@ public class AdministrarPromocionesController implements Initializable {
         if (confirmacion.showAndWait().get().equals(ButtonType.OK)) {
             Promociones promociones = tablaPromociones.getSelectionModel().getSelectedItem();
             PromocionesResource recurso = new PromocionesResource();
-            recurso.eliminarPromocion(promociones);
+            try {
+                recurso.eliminarPromocion(promociones);
+            } catch (Exception ex) {
+                Logger.getLogger(AdministrarPromocionesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             setTabla();
         }else{
             confirmacion.close();
         }
+        setTabla();
     }
 
 
     @Override
         public void initialize(URL location, ResourceBundle resources) {
-            setTabla();
+        btnEliminar.setDisable(true);
+        tablaPromociones.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btnEliminar.setDisable(false);
+            }
+        });
+        setTabla();
         }
 }

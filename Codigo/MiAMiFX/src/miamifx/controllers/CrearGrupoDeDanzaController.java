@@ -132,11 +132,8 @@ public class CrearGrupoDeDanzaController implements Initializable {
     private void setHorario(LocalTime entrada, LocalTime salida) {
         
         Horario clase = new Horario();
-<<<<<<< HEAD
         //clase.setHorafinal(entrada);
-=======
-        clase.setHorafinal(entrada);
->>>>>>> 442846ac0ba7ed6c101dcbd1065aa37de4e9a9df
+        //clase.setHorafinal(entrada);
     }
 
     @FXML
