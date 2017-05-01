@@ -1,6 +1,5 @@
 package miamifx.controllers;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -47,22 +46,22 @@ public class AdministrarAlumnosController implements Initializable {
 
     @FXML
     private Button btnEliminar, btnInscribir, btnDetalles, btnBuscar;
-    @FXML 
+    @FXML
     private ComboBox comboBusqueda;
-    @FXML 
+    @FXML
     private TextField campoBusqueda;
-    @FXML 
+    @FXML
     private TableView<Alumno> tablaAlumnos;
     @FXML
     private TableColumn columnaNombre, columnoApellidos, columnaCorreo, columnaTelefono;
-    @FXML 
-    private ImageView fotoAlumno;
-    
     @FXML
-    private void registrarAlumno(ActionEvent event){
+    private ImageView fotoAlumno;
+
+    @FXML
+    private void registrarAlumno(ActionEvent event) {
         try {
             Stage registrarAlumno = new Stage();
-            
+
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/RegistrarAlumno.fxml"));
             AnchorPane root = cargador.load();
             RegistrarAlumnoController control = (RegistrarAlumnoController) cargador.getController();
@@ -71,82 +70,79 @@ public class AdministrarAlumnosController implements Initializable {
             registrarAlumno.setScene(escena);
             registrarAlumno.initModality(Modality.WINDOW_MODAL);
             registrarAlumno.initOwner(
-            ((Node)event.getSource()).getScene().getWindow() );
+                    ((Node) event.getSource()).getScene().getWindow());
             registrarAlumno.setResizable(false);
             registrarAlumno.show();
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    @FXML 
-    private void verDetalles(ActionEvent event){
+
+    @FXML
+    private void verDetalles(ActionEvent event) {
         try {
             Stage editarAlumno = new Stage();
             Alumno alumno = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/EditarAlumno.fxml"));
-            
-            
+
             AnchorPane root = cargador.load();
-            
+
             EditarAlumnoController editarAlumnoController = (EditarAlumnoController) cargador.getController();
-            
+
             editarAlumnoController.setAlumno(alumno);
             cargador.setController(editarAlumnoController);
             editarAlumnoController.setCampos(alumno);
             editarAlumnoController.setControlPadre(this);
-            
+
             Scene escena = new Scene(root);
             editarAlumno.setScene(escena);
             editarAlumno.initModality(Modality.WINDOW_MODAL);
             editarAlumno.initOwner(
-            ((Node)event.getSource()).getScene().getWindow() );
+                    ((Node) event.getSource()).getScene().getWindow());
             editarAlumno.setResizable(false);
             editarAlumno.show();
         } catch (IOException ex) {
             Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
-    private void buscarAlumno(ActionEvent event){        
+    private void buscarAlumno(ActionEvent event) {
         AlumnoResource recurso = new AlumnoResource();
         //ObservableList lista = FXCollections.observableArrayList();
-        
-        
+
         List<Alumno> listaBusqueda = new ArrayList<>();
-        
-        if(comboBusqueda.getValue().toString().equals("Nombre")){
-           listaBusqueda = recurso.buscarAlumnoPorNombre(campoBusqueda.getText());
-        }
-        else if(comboBusqueda.getValue().toString().equals("Correo")){
+
+        if (comboBusqueda.getValue().toString().equals("Nombre")) {
+            listaBusqueda = recurso.buscarAlumnoPorNombre(campoBusqueda.getText());
+        } else if (comboBusqueda.getValue().toString().equals("Correo")) {
             listaBusqueda = recurso.buscarAlumnoPorCorreo(campoBusqueda.getText());
         }
-        
+
         ObservableList lista = FXCollections.observableList(listaBusqueda);
         tablaAlumnos.setItems(lista);
-        
-        
+
     }
 
-    
-    private void activarBotones(){
+    private void activarBotones() {
         this.btnDetalles.setDisable(false);
         this.btnEliminar.setDisable(false);
+        this.btnInscribir.setDisable(false);
     }
-    @FXML 
-    private void activarBusqueda(ActionEvent event){
+
+    @FXML
+    private void activarBusqueda(ActionEvent event) {
         btnBuscar.setDisable(false);
         campoBusqueda.setDisable(false);
     }
-    @FXML 
-    private void editarDatos(ActionEvent event){
-        
-        
+
+    @FXML
+    private void editarDatos(ActionEvent event) {
+
     }
-    
-    @FXML 
-    private void eliminarRegistro(ActionEvent evento){
+
+    @FXML
+    private void eliminarRegistro(ActionEvent evento) {
         Alumno alumno = tablaAlumnos.getSelectionModel().getSelectedItem();
         AlumnoResource recurso = new AlumnoResource();
         try {
@@ -156,42 +152,43 @@ public class AdministrarAlumnosController implements Initializable {
         }
         setTabla();
     }
-            
-    public void setTabla(){
+
+    public void setTabla() {
         tablaAlumnos.refresh();
-        AlumnoResource recurso = new AlumnoResource();        
+        AlumnoResource recurso = new AlumnoResource();
         ObservableList lista = FXCollections.observableArrayList(recurso.visualizarRegistros());
-        columnaNombre.setCellValueFactory( new PropertyValueFactory<>("nombre"));
-        columnoApellidos.setCellValueFactory( new PropertyValueFactory<>("apellidos"));
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnoApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
         columnaCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
         columnaTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         tablaAlumnos.setItems(lista);
-        
+
     }
-    
-    private void setTabla(ObservableList lista){
+
+    private void setTabla(ObservableList lista) {
         tablaAlumnos.setItems(lista);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
-        comboBusqueda.getItems().addAll("Nombre","Correo");
+        comboBusqueda.getItems().addAll("Nombre", "Correo");
         setTabla();
-        
+
         tablaAlumnos.setOnMouseClicked((MouseEvent event) -> {
             onTableSelection();
         });
-        
+
         tablaAlumnos.setOnKeyReleased((KeyEvent event) -> {
             onTableSelection();
         });
     }
 
-    public void onTableSelection(){
+    public void onTableSelection() {
         activarBotones();
         Alumno alumnoSeleccionado = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
-        if(alumnoSeleccionado.getFoto() != "" && alumnoSeleccionado.getFoto() != null){
+        if (alumnoSeleccionado.getFoto() != "" && alumnoSeleccionado.getFoto() != null) {
             Image image = null;
             File file;
             try {
@@ -204,7 +201,7 @@ public class AdministrarAlumnosController implements Initializable {
         } else {
             Path currentRelativePath = Paths.get("");
             String currentPath = currentRelativePath.toAbsolutePath().toString();
-            String dfu = currentPath+ "/USERSPICTURES/userDefault.png";
+            String dfu = currentPath + "/USERSPICTURES/userDefault.png";
             File file = new File(dfu);
             try {
                 Image image = new Image(file.toURI().toURL().toExternalForm());
@@ -215,20 +212,16 @@ public class AdministrarAlumnosController implements Initializable {
 
         }
     }
-    
-    public void pagarCuota(ActionEvent actionEvent) {
-        /*try {
-            Stage PagarCuota = new Stage();
 
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/pagarCuota.fxml"));
-            AnchorPane root = cargador.load();
-            RegistrarAlumnoController control = (RegistrarAlumnoController) cargador.getController();
-            control.setControlPadre(this);
-            Scene escena = new Scene(root);
-            registrarAlumno.setScene(escena);
-            registrarAlumno.show();
-        } catch (IOException ex) {
-            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+    public void pagarCuota(ActionEvent actionEvent) throws IOException {
+        Stage pagarCuota = new Stage();
+        FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/PagarCuota.fxml"));
+        //pagarCuotaController control = (pagarCuotaController) cargador.getController();
+        AnchorPane root = cargador.load();
+        //cargador.setController(control);
+        //control.setControlPadre(this);
+        Scene escena = new Scene(root);
+        pagarCuota.setScene(escena);
+        pagarCuota.show();
     }
 }

@@ -23,6 +23,12 @@ public class CrearPromocionController implements Initializable {
     @FXML
     private TextArea campoDescripcion;
 
+    private AdministrarPromocionesController controlPadre;
+
+    public void setControlPadre(AdministrarPromocionesController controlPadre){
+        this.controlPadre = controlPadre;
+    }
+
 
     @FXML
     private void cancelar(ActionEvent actionEvent) {
@@ -69,6 +75,7 @@ public class CrearPromocionController implements Initializable {
                 }
             }
         }
+        controlPadre.setTabla();
     }
 
     public boolean isValidPhoneNumber(String phone) {
@@ -82,7 +89,7 @@ public class CrearPromocionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        comboTipoPromocion.getItems().addAll("Inscripcion", "Mensualidad");
     }
 
 }

@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Promociones.findAll", query = "SELECT p FROM Promociones p")
+        ,@NamedQuery(name = "promociones.findByActivo", query = "SELECT p FROM Promociones p WHERE p.activo = 1 ")
     , @NamedQuery(name = "Promociones.findById", query = "SELECT p FROM Promociones p WHERE p.id = :id")
     , @NamedQuery(name = "Promociones.findByTitulo", query = "SELECT p FROM Promociones p WHERE p.titulo = :titulo")
     , @NamedQuery(name = "Promociones.findByDescripcion", query = "SELECT p FROM Promociones p WHERE p.descripcion = :descripcion")
@@ -137,7 +138,7 @@ public class Promociones implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Promociones[ id=" + id + " ]";
+        return this.titulo;
     }
 
     public boolean getActivo() {
