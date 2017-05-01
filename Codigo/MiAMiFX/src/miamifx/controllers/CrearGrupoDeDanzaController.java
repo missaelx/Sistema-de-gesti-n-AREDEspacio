@@ -77,7 +77,6 @@ public class CrearGrupoDeDanzaController implements Initializable {
             botonGuardar.setDisable(false);
         }else{botonGuardar.setDisable(true);}
         
-        //Horario clase = new Horario();
     }
     
     @FXML
