@@ -4,6 +4,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import modelo.Promociones;
 import controladores.PromocionesJpaController;
+import controladores.PromocionesJpaControllerExtended;
+import controladores.MaestroJpaController;
 import java.util.List;
 
 /**
@@ -24,8 +26,9 @@ public class  PromocionesResource {
         return result;
     }
     
-    public boolean eliminarPromocion (Promociones promocion){
-        
+    public boolean eliminarPromocion (Promociones promocion) throws Exception{
+        promocion.setActivo(false);
+        editarPromocion(promocion);
         return true;
     }
     
@@ -33,6 +36,24 @@ public class  PromocionesResource {
         PromocionesJpaController promoController = new PromocionesJpaController(emf);
         promoController.edit(promocion);
         return true;
+    }
+
+    public List<Promociones> getActivos(){
+        PromocionesJpaControllerExtended promoController = new PromocionesJpaControllerExtended(emf);
+        List<Promociones> promos = promoController.getPromocionesActivas();
+        return promos;
+    }
+
+    public List<Promociones> getPromoMensualidad(){
+        PromocionesJpaControllerExtended contro = new PromocionesJpaControllerExtended(emf);
+        List<Promociones> promo = contro.getPromocionesMensualidad();
+        return promo;
+    }
+    
+    public List<Promociones> getPromoInscripcion(){
+        PromocionesJpaControllerExtended contro = new PromocionesJpaControllerExtended(emf);
+        List<Promociones> promo = contro.getPromocionesInscripcion();
+        return promo;
     }
     
     public List<Promociones> getAll(){

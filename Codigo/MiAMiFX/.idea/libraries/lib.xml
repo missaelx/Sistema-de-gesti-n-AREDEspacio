@@ -6,6 +6,7 @@
       <root url="jar://$PROJECT_DIR$/dist/lib/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar!/" />
       <root url="jar://$PROJECT_DIR$/dist/lib/MiAMiCore.jar!/" />
       <root url="jar://$PROJECT_DIR$/dist/lib/eclipselink.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Librerias externas/jfoenix.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
