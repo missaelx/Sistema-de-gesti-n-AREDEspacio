@@ -23,8 +23,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
+import modelo.Gastovariable;
 
 /**
  * @author Created by Miguel Acosta on 04/04/2017.
@@ -43,7 +47,20 @@ public class AdministrarPromocionesController implements Initializable {
         PromocionesResource recurso = new PromocionesResource();
         ObservableList lista = FXCollections.observableArrayList(recurso.getActivos());
         columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
-        columnaDescuento.setCellValueFactory(new PropertyValueFactory<>("porcentajeDescuento"));
+        //por miguel
+        //columnaDescuento.setCellValueFactory(new PropertyValueFactory<>("porcentajeDescuento"));
+        columnaDescuento.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Promociones, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<Promociones, String> promocion) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    property.setValue(promocion.getValue().getPorcentajeDescuento() + "%");
+                    return property;
+                }
+            }
+        );
+        
+        
         columnaAplica.setCellValueFactory(new PropertyValueFactory<>("aplicaPara"));
         tablaPromociones.setItems(lista);
     }

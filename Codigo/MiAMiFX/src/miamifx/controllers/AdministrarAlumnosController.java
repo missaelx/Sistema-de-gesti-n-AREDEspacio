@@ -191,7 +191,7 @@ public class AdministrarAlumnosController implements Initializable {
     public void onTableSelection() {
         activarBotones();
         Alumno alumnoSeleccionado = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
-        if (alumnoSeleccionado.getFoto() != "" && alumnoSeleccionado.getFoto() != null) {
+        if (!"".equals(alumnoSeleccionado.getFoto()) && alumnoSeleccionado.getFoto() != null) {
             Image image = null;
             File file;
             try {
