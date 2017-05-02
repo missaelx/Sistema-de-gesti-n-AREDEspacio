@@ -229,6 +229,7 @@ public class AdministrarAlumnosController implements Initializable {
         control.setAlumno((Alumno) tablaAlumnos.getSelectionModel().getSelectedItem());
         control.setInscripcionEnable();
         control.setFechaPago();
+        control.setCantidadPago();
         Scene escena = new Scene(root);
         pagarCuota.setScene(escena);
         pagarCuota.show();
