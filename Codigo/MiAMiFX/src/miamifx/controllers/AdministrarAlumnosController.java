@@ -45,7 +45,7 @@ import recursos.AlumnoResource;
 public class AdministrarAlumnosController implements Initializable {
 
     @FXML
-    private Button btnEliminar, btnInscribir, btnDetalles, btnBuscar;
+    private Button btnEliminar, btnPagar, btnDetalles, btnBuscar;
     @FXML
     private ComboBox comboBusqueda;
     @FXML
@@ -127,7 +127,7 @@ public class AdministrarAlumnosController implements Initializable {
     private void activarBotones() {
         this.btnDetalles.setDisable(false);
         this.btnEliminar.setDisable(false);
-        this.btnInscribir.setDisable(false);
+        this.btnPagar.setDisable(false);
     }
 
     @FXML
@@ -173,6 +173,7 @@ public class AdministrarAlumnosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
+        btnPagar.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre", "Correo");
         setTabla();
 
@@ -209,17 +210,24 @@ public class AdministrarAlumnosController implements Initializable {
             } catch (MalformedURLException ex1) {
                 Logger.getLogger(EditarAlumnoController.class.getName()).log(Level.SEVERE, null, ex1);
             }
-
+        }
+        if(alumnoSeleccionado.getFechaInscripcion()!=null){
+            btnPagar.setText("Pagar Mensualidad");
+        }else{
+            btnPagar.setText("Inscribir");
         }
     }
 
     public void pagarCuota(ActionEvent actionEvent) throws IOException {
         Stage pagarCuota = new Stage();
         FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/PagarCuota.fxml"));
-        //pagarCuotaController control = (pagarCuotaController) cargador.getController();
         AnchorPane root = cargador.load();
-        //cargador.setController(control);
-        //control.setControlPadre(this);
+        pagarCuotaController control = (pagarCuotaController) cargador.getController();
+        cargador.setController(control);
+        control.setControlPadre(this);
+        control.setAlumno((Alumno) tablaAlumnos.getSelectionModel().getSelectedItem());
+        control.setInscripcionEnable();
+        control.setFechaPago();
         Scene escena = new Scene(root);
         pagarCuota.setScene(escena);
         pagarCuota.show();
