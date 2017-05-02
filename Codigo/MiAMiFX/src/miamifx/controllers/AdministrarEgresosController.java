@@ -356,7 +356,7 @@ public class AdministrarEgresosController implements Initializable {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Cuentas");
         alert.setHeaderText("Suma de los egresos variables");
-        alert.setContentText("La suma de los egresos variables registrados es: " + suma);
+        alert.setContentText("La suma de los egresos variables registrados es: $" + suma);
         alert.show();
     }
     
@@ -372,7 +372,7 @@ public class AdministrarEgresosController implements Initializable {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Cuentas");
         alert.setHeaderText("Suma de los salarios");
-        alert.setContentText("La suma de los pagos registrados es: " + suma);
+        alert.setContentText("La suma de los pagos registrados es: $" + suma);
         alert.show();
     }
 }

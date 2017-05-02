@@ -1,5 +1,6 @@
 package controladores;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,4 +42,15 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
         em.close();
         return alumno;
     }
+    
+    public List<Alumno> getProximasReinscripciones(Date inicio, Date fin){
+        EntityManager em = getEntityManager();
+        List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findReinscripcionesProximas")
+                .setParameter("inicio", inicio)
+                .setParameter("fin", fin)
+                .getResultList();
+        em.close();
+        return alumno;
+    }
+    
 }

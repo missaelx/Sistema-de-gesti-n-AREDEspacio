@@ -4,6 +4,8 @@ import controladores.AlumnoJpaController;
 import controladores.AlumnoJpaControllerExtended;
 import controladores.exceptions.IllegalOrphanException;
 import controladores.exceptions.NonexistentEntityException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,5 +67,19 @@ public class AlumnoResource {
     public List<Alumno> buscarAlumnoPorCorreo(String correo){
         AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
         return alumnosController.getAlumnoFromCorreo(correo);
+    }
+    
+    public List<Alumno> buscarProximasReinscripciones(Date diaActual){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(diaActual);
+        cal.add(Calendar.DATE, -5);
+        
+        Date inicio = cal.getTime();
+        cal.add(Calendar.DATE, 10);
+        Date fin = cal.getTime();
+        
+        AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
+        
+        return alumnosController.getProximasReinscripciones(inicio, fin);
     }
 }

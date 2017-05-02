@@ -1,8 +1,14 @@
 package miamifx.controllers;
 
 import java.net.URL;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
+import modelo.Alumno;
+import recursos.AlumnoResource;
 
 /**
  * FXML Controller class
@@ -11,12 +17,16 @@ import javafx.fxml.Initializable;
  */
 public class InicioController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private TableView tableReinscripciones;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        AlumnoResource recursoAlumnos = new AlumnoResource();
+        List<Alumno> listaAlumnos = recursoAlumnos.buscarProximasReinscripciones(new Date());
+        
+        System.out.println("Hola");
+        
+    }
     
 }
