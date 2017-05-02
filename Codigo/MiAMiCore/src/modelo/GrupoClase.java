@@ -77,6 +77,7 @@ public class GrupoClase implements Serializable {
     @JoinColumn(name = "idTipoDanza", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private TipoDanza idTipoDanza;
+    //@JoinColumn(name = "")
 
     public GrupoClase() {
     }

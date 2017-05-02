@@ -47,7 +47,7 @@ public class CrearGrupoDeDanzaController implements Initializable {
     @FXML
     private TextField costoMensual;
     @FXML
-    private Spinner porcentajeMaestro;
+    private Spinner<Float> porcentajeMaestro;
 
     private TipoDanza tipoDanza;
     private GrupoClase grupoDanza;
@@ -82,7 +82,7 @@ public class CrearGrupoDeDanzaController implements Initializable {
     }
 
     @FXML
-    public void horaClaseCompleta() {
+    public void horasClaseCompletas() {
         if (entradaLunes.getValue().equals(null) || salidaLunes.getValue().equals(null)) {
             botonGuardar.setDisable(true);
         }
@@ -168,19 +168,19 @@ public class CrearGrupoDeDanzaController implements Initializable {
         BigDecimal costoMensual = new BigDecimal(costo);
         return costoMensual;
     }
-
+// falta el spiinner de porcentaje, como setear elvalor y como 
     @FXML
     private void guardar(ActionEvent evento) {
         DanzaResource recurso = new DanzaResource();
-
+        
         grupoDanza = new GrupoClase();
         grupoDanza.setActivo(true);
         grupoDanza.setIdTipoDanza(tipoDanza);
         grupoDanza.setIdMaestro(listaCBmaestros.getSelectionModel().getSelectedItem());
         setListaHorario();
         grupoDanza.setHorarioList(horario);
-        grupoDanza.setCostoMensual(setCosto(costoMensual.getText()));
-        grupoDanza.setPorcentajeGananciaMaestro(0);
+        grupoDanza.setCostoMensual(setCosto(costoMensual.getText()));//bigdecimal
+        grupoDanza.setPorcentajeGananciaMaestro(porcentajeMaestro.getValue());//float
         recurso.crearGrupoClase(grupoDanza);
         controlador.setTabla();
         botonGuardar.getScene().getWindow().hide();

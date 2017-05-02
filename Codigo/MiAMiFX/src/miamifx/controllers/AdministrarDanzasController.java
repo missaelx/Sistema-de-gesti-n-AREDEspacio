@@ -44,7 +44,8 @@ public class AdministrarDanzasController implements Initializable {
     @FXML
     private Button bNuevaDanza, bVerDetalles, bCrearGrupo, bEliminarDanza;
     @FXML
-    private TableColumn columnaDanza, columnaMaestros, columnaHorario, columnaDescripcion;
+    private TableColumn columnaDanza, columnaMaestros, columnaDescripcion, columnaLun, columnaMar
+            , columnaMie, columnaJue, columnaVie, columnaSab;
     @FXML
     private TableView<TipoDanza> tablaDanzas;
     @FXML
@@ -158,9 +159,10 @@ public class AdministrarDanzasController implements Initializable {
     private void setTablaGrupoDanzas(){
         DanzaResource recurso = new DanzaResource();
         ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistrosGClase());
-        columnaMaestros.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        tablaDanzas.setItems(list);
+        columnaMaestros.setCellValueFactory(new PropertyValueFactory<>("idMaestro"));
+        columnaLun.setCellValueFactory(new PropertyValueFactory<>("dia"));
+        
+        tablaGrupos.setItems(list);
     }
 
     /**
