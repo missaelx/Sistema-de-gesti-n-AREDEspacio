@@ -77,16 +77,6 @@ public class CrearGrupoDeDanzaController implements Initializable {
         if(!entradaSabado.getValue().equals(null) && !salidaSabado.getValue().equals(null)){
             botonGuardar.setDisable(false);
         }else{botonGuardar.setDisable(true);}
-        
-<<<<<<< HEAD
-
-        Horario clase = new Horario();
-        //clase.setHorafinal(entrada);
-        //clase.setHorafinal(entrada);
-
-        //Horario clase = new Horario();
-=======
->>>>>>> 8686b53aef155b91903e04c30215f66e0b9ae513
     }
     
     @FXML

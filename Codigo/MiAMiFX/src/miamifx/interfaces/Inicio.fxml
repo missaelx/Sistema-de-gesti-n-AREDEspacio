@@ -48,10 +48,10 @@
                      <content>
                         <VBox prefHeight="118.0" prefWidth="553.0">
                            <children>
-                              <TableView prefHeight="119.0" prefWidth="553.0">
+                              <TableView fx:id="tableMensualidades" prefHeight="119.0" prefWidth="553.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Nombre" />
-                                  <TableColumn prefWidth="75.0" text="Fecha de pago de mensualidad" />
+                                  <TableColumn fx:id="colMensualidadesNombre" prefWidth="75.0" text="Nombre" />
+                                  <TableColumn fx:id="colMensualidadesFecha" prefWidth="75.0" text="Fecha de pago de mensualidad" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -71,8 +71,8 @@
                            <children>
                               <TableView fx:id="tableReinscripciones" prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Nombre" />
-                                  <TableColumn prefWidth="75.0" text="Fecha de reinscripción" />
+                                  <TableColumn fx:id="colResinscripcionNombre" prefWidth="75.0" text="Nombre" />
+                                  <TableColumn fx:id="colResinscripcionFecha" prefWidth="75.0" text="Fecha de reinscripción" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

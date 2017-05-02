@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TemporalType;
 import modelo.Alumno;
 
 /**
@@ -46,8 +47,18 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
     public List<Alumno> getProximasReinscripciones(Date inicio, Date fin){
         EntityManager em = getEntityManager();
         List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findReinscripcionesProximas")
-                .setParameter("inicio", inicio)
-                .setParameter("fin", fin)
+                .setParameter("inicio", inicio, TemporalType.DATE)
+                .setParameter("fin", fin, TemporalType.DATE)
+                .getResultList();
+        em.close();
+        return alumno;
+    }
+
+    public List<Alumno> getProximasMensualidades(Date inicio, Date fin) {
+        EntityManager em = getEntityManager();
+        List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findMensualidadesProximas")
+                .setParameter("inicio", inicio, TemporalType.DATE)
+                .setParameter("fin", fin, TemporalType.DATE)
                 .getResultList();
         em.close();
         return alumno;

@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -218,7 +219,7 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
-    public void pagarCuota(ActionEvent actionEvent) throws IOException {
+    public void pagarCuota(ActionEvent actionEvent) throws IOException, ParseException {
         Stage pagarCuota = new Stage();
         FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/PagarCuota.fxml"));
         AnchorPane root = cargador.load();

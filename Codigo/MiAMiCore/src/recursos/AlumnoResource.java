@@ -82,4 +82,18 @@ public class AlumnoResource {
         
         return alumnosController.getProximasReinscripciones(inicio, fin);
     }
+    
+    public List<Alumno> buscarProximasMensualidades(Date diaActual){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(diaActual);
+        cal.add(Calendar.DATE, -5);
+        
+        Date inicio = cal.getTime();
+        cal.add(Calendar.DATE, 10);
+        Date fin = cal.getTime();
+        
+        AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
+        
+        return alumnosController.getProximasMensualidades(inicio, fin);
+    }
 }
