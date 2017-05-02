@@ -14,22 +14,24 @@
          </columns>
       </TableView>
       <Button fx:id="bNuevaDanza" layoutX="46.0" layoutY="537.0" mnemonicParsing="false" onAction="#nuevaDanza" prefHeight="25.0" prefWidth="120.0" text="Nueva Danza" />
-      <Button fx:id="bVerDetalles" disable="true" layoutX="172.0" layoutY="537.0" mnemonicParsing="false" onAction="#verDetalles" prefHeight="25.0" prefWidth="120.0" text="Ver detalles" />
-      <Button fx:id="bCrearGrupo" disable="true" layoutX="298.0" layoutY="537.0" mnemonicParsing="false" onAction="#crearGrupo" prefHeight="25.0" prefWidth="120.0" text="Crear grupo" />
+      <Button fx:id="bListaAlumnos" disable="true" layoutX="663.0" layoutY="537.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Lista de Alumos" />
+      <Button fx:id="bCrearGrupo" disable="true" layoutX="172.0" layoutY="537.0" mnemonicParsing="false" onAction="#crearGrupo" prefHeight="25.0" prefWidth="120.0" text="Crear grupo" />
       <Button fx:id="bEliminarDanza" disable="true" layoutX="433.0" layoutY="537.0" mnemonicParsing="false" onAction="#eliminarDanza" prefHeight="25.0" prefWidth="110.0" text="Eliminar Danza" />
-      <TableView fx:id="tablaDanzas1" layoutX="46.0" layoutY="250.0" onMouseClicked="#seSelecciono" prefHeight="277.0" prefWidth="770.0">
+      <TableView fx:id="tablaDanzas1" layoutX="46.0" layoutY="250.0" onMouseClicked="#seSelecciono2" prefHeight="277.0" prefWidth="770.0">
          <columns>
             <TableColumn fx:id="columnaMaestros" prefWidth="234.33334350585938" text="Maestro" />
             <TableColumn fx:id="columnaHorario" minWidth="0.0" prefWidth="534.0" resizable="false" text="Horario">
                <columns>
-                  <TableColumn prefWidth="89.0" text="Lunes" />
-                  <TableColumn prefWidth="89.0" text="Martes" />
-                  <TableColumn prefWidth="89.0" text="Miercoles" />
-                  <TableColumn prefWidth="89.0" text="Jueves" />
-                  <TableColumn prefWidth="89.0" text="Viernes" />
-                  <TableColumn minWidth="15.0" prefWidth="89.0" text="Sabado" />
+                  <TableColumn fx:id="columnaLun" prefWidth="89.0" text="Lunes" />
+                  <TableColumn fx:id="columnaMar" prefWidth="89.0" text="Martes" />
+                  <TableColumn fx:id="columnaMie" prefWidth="89.0" text="Miercoles" />
+                  <TableColumn fx:id="columnaJue" prefWidth="89.0" text="Jueves" />
+                  <TableColumn fx:id="columnaVie" prefWidth="89.0" text="Viernes" />
+                  <TableColumn fx:id="columnaSab" minWidth="15.0" prefWidth="89.0" text="Sabado" />
                </columns></TableColumn>
          </columns>
       </TableView>
+      <Button fx:id="bEliminarGrupo" disable="true" layoutX="555.0" layoutY="537.0" mnemonicParsing="false" onAction="#eliminarGrupo" text="Eliminar Grupo" />
+      <Button fx:id="bVerDetalles" disable="true" layoutX="300.0" layoutY="537.0" mnemonicParsing="false" onAction="#VerDetalles" prefHeight="25.0" prefWidth="120.0" text="Editar Danza" />
    </children>
 </AnchorPane>
