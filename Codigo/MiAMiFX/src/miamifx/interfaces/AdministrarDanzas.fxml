@@ -22,12 +22,12 @@
             <TableColumn fx:id="columnaMaestros" prefWidth="234.33334350585938" text="Maestro" />
             <TableColumn fx:id="columnaHorario" minWidth="0.0" prefWidth="534.0" resizable="false" text="Horario">
                <columns>
-                  <TableColumn prefWidth="89.0" text="Lunes" />
-                  <TableColumn prefWidth="89.0" text="Martes" />
-                  <TableColumn prefWidth="89.0" text="Miercoles" />
-                  <TableColumn prefWidth="89.0" text="Jueves" />
-                  <TableColumn prefWidth="89.0" text="Viernes" />
-                  <TableColumn minWidth="15.0" prefWidth="89.0" text="Sabado" />
+                  <TableColumn fx:id="columnaLun" prefWidth="89.0" text="Lunes" />
+                  <TableColumn fx:id="columnaMar" prefWidth="89.0" text="Martes" />
+                  <TableColumn fx:id="columnaMie" prefWidth="89.0" text="Miercoles" />
+                  <TableColumn fx:id="columnaJue" prefWidth="89.0" text="Jueves" />
+                  <TableColumn fx:id="columnaVie" prefWidth="89.0" text="Viernes" />
+                  <TableColumn fx:id="columnaSab" minWidth="15.0" prefWidth="89.0" text="Sabado" />
                </columns></TableColumn>
          </columns>
       </TableView>

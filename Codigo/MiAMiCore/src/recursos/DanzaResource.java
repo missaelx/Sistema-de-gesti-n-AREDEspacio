@@ -1,6 +1,7 @@
 package recursos;
 
 import controladores.GrupoClaseJpaController;
+import controladores.GrupoClaseJpaControllerExtended;
 import controladores.TipoDanzaJpaController;
 import controladores.TipoDanzaJpaControllerExtended;
 import controladores.exceptions.NonexistentEntityException;
@@ -54,6 +55,11 @@ public class DanzaResource {
     public List<TipoDanza> visualizarRegistros() {
         TipoDanzaJpaControllerExtended tipoDanzasController = new TipoDanzaJpaControllerExtended(emf);
         return tipoDanzasController.getAll();
+    }
+    
+    public List<GrupoClase> visualizarRegistrosGClase(){
+        GrupoClaseJpaControllerExtended grupoclasesController = new GrupoClaseJpaControllerExtended(emf);
+        return grupoclasesController.getAll();
     }
     
     

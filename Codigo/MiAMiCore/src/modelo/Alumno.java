@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.io.Serializable;
@@ -34,8 +29,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "alumno")
 @XmlRootElement
-@NamedQueries({
+@NamedQueries({ 
     @NamedQuery(name = "Alumno.findAll", query = "SELECT a FROM Alumno a WHERE a.activo = 1")
+        
+    //, @NamedQuery(name = "Alumno.findReinscripcionesProximas", query = "SELECT a FROM Alumno a WHERE a.fechaInscripcion BETWEEN :inicio AND :fin")
+    //, @NamedQuery(name = "Alumno.findMensualidadesProximas", query = "SELECT a FROM Alumno a WHERE a.diapago BETWEEN :inicio AND :fin")
+    , @NamedQuery(name = "Alumno.findReinscripcionesProximas", query = "SELECT a FROM Alumno a WHERE a.fechaInscripcion BETWEEN :inicio AND :fin AND a.activo =1")
+    , @NamedQuery(name = "Alumno.findMensualidadesProximas", query = "SELECT a FROM Alumno a WHERE a.diapago BETWEEN :inicio AND :fin and a.activo = 1")
+        
     , @NamedQuery(name = "Alumno.findById", query = "SELECT a FROM Alumno a WHERE a.id = :id")
     , @NamedQuery(name = "Alumno.findByCorreo", query = "SELECT a FROM Alumno a WHERE (0 < LOCATE(:correo, a.correo)) AND a.activo = 1")
     , @NamedQuery(name = "Alumno.findByFechaNacimiento", query = "SELECT a FROM Alumno a WHERE a.fechaNacimiento = :fechaNacimiento")
