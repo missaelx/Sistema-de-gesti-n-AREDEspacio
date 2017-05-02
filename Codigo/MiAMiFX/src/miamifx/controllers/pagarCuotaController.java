@@ -1,10 +1,13 @@
 package miamifx.controllers;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,8 +18,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import modelo.Alumno;
+import modelo.GrupoClase;
+import modelo.Ingreso;
 import modelo.Promociones;
 import recursos.AlumnoResource;
+import recursos.IngresoResource;
 import recursos.PromocionesResource;
 
 /**
@@ -30,7 +36,9 @@ public class pagarCuotaController implements Initializable {
     @FXML
     private ComboBox promociones;
     @FXML
-    private Label textCantidadPago,textFechaPago;
+    private Label textFechaPago;
+    @FXML
+    private TextField campoCantidad;
     @FXML
     private CheckBox activarPromo;
     @FXML
@@ -50,29 +58,62 @@ public class pagarCuotaController implements Initializable {
     
     @FXML 
     private void pagarCuota(ActionEvent event) throws Exception{
+        Alert Alerta = new Alert(Alert.AlertType.INFORMATION);
+        Alerta.setTitle("Transaccion exitosa");
+        BigDecimal pago = new BigDecimal(campoCantidad.getText());
         Date fecha = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha);
+        Ingreso ingreso = new Ingreso();
+        IngresoResource recursoIngreso = new IngresoResource();
+        ingreso.setFecha(fecha);
+        ingreso.setMonto(pago);
+        if(promociones.getValue()!=null){
+            ingreso.setIdPromocion((Promociones) promociones.getValue());
+        }
         AlumnoResource recurso = new AlumnoResource();
         if(opcInscripcion.isSelected()){
-            alumno.setFechaInscripcion(fecha);
-            recurso.modificarAlumno(alumno);
+            ingreso.setDescripcion("Inscripcion");
+            calendar.add(Calendar.YEAR, 1);
+            alumno.setFechaInscripcion(calendar.getTime());
+            if(recurso.modificarAlumno(alumno) && recursoIngreso.registrarIngreso(ingreso)){
+                Alerta.setContentText("La inscripcion se ha llevado a cabo exitosamente");
+            }else{
+                Alerta.setAlertType(Alert.AlertType.ERROR);
+                Alerta.setContentText("Hubo un error, por favor intente de nuevo");
+            }
         }else{
             if(opcMensualidad.isSelected()){
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(fecha);
+                ingreso.setDescripcion("mensualidad");
                 calendar.add(Calendar.MONTH, 1);
                 alumno.setDiapago(calendar.getTime());
-                recurso.modificarAlumno(alumno);
+                if(recurso.modificarAlumno(alumno) && recursoIngreso.registrarIngreso(ingreso)){
+                    Alerta.setContentText("La mensualidad ha sido pagada exitosamente");
+                }else{
+                    Alerta.setAlertType(Alert.AlertType.ERROR);
+                    Alerta.setContentText("Hubo un error, por favor intente de nuevo");
+                }
             }
         }
+        Alerta.show();
         controlPadre.setTabla();
         btnPagar.getScene().getWindow().hide();
     }
 
+    private BigDecimal calcularPago(){
+        BigDecimal mensualidad = new BigDecimal(0);
+        List<GrupoClase> clases = alumno.getGrupoClaseList();
+        for(GrupoClase clase: clases){
+           mensualidad = mensualidad.add(clase.getCostoMensual());
+        }
+        return mensualidad;
+    }
+    
     @FXML
     private void setCantidadPago(ActionEvent event){
         double pago=0;
         if(opcMensualidad.isSelected()){
-            pago=500;
+            pago= calcularPago().doubleValue();
         }else{
             if(opcInscripcion.isSelected())
             pago=400;
@@ -82,16 +123,16 @@ public class pagarCuotaController implements Initializable {
             double porcentajeDescuento = promocion.getPorcentajeDescuento();
             double descuento = porcentajeDescuento/100*pago;
             double total = pago - descuento;
-            textCantidadPago.setText(String.valueOf(total));
+            campoCantidad.setText(String.valueOf(total));
         }
 
     }
 
-    private void setCantidadPago(){
-        double pago=500;
+    public void setCantidadPago(){
+        double pago=calcularPago().doubleValue();
         if(opcInscripcion.isSelected())
             pago=400;
-        textCantidadPago.setText(String.valueOf(pago));
+        campoCantidad.setText(String.valueOf(pago));
     }
     @FXML
     private void cancelar(ActionEvent event){
@@ -114,6 +155,7 @@ public class pagarCuotaController implements Initializable {
             promociones.setDisable(false);
         }else{
             promociones.setDisable(true);
+            setCantidadPago();
         }
     }
     
@@ -169,7 +211,7 @@ public class pagarCuotaController implements Initializable {
         setPromociones();
         opcMensualidad.setSelected(true);
         setOpciones();
-        setCantidadPago();        
+              
         
     }
 }
