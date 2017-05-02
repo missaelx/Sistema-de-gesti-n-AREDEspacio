@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="896.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarDanzasController">
+<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="896.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarDanzasController">
    <children>
       <TableView fx:id="tablaDanzas" layoutX="46.0" layoutY="31.0" onMouseClicked="#seSelecciono" prefHeight="208.0" prefWidth="770.0">
          <columns>
@@ -32,6 +32,6 @@
          </columns>
       </TableView>
       <Button fx:id="bEliminarGrupo" disable="true" layoutX="555.0" layoutY="537.0" mnemonicParsing="false" onAction="#eliminarGrupo" text="Eliminar Grupo" />
-      <Button fx:id="bVerDetalles" disable="true" layoutX="300.0" layoutY="537.0" mnemonicParsing="false" onAction="#VerDetalles" prefHeight="25.0" prefWidth="120.0" text="Editar Danza" />
+      <Button fx:id="bVerDetalles" disable="true" layoutX="300.0" layoutY="537.0" mnemonicParsing="false" onAction="#verDetalles" prefHeight="25.0" prefWidth="120.0" text="Editar Danza" />
    </children>
 </AnchorPane>

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,10 +21,13 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import modelo.Alumno;
 import modelo.Egreso;
+import modelo.GrupoClase;
 import modelo.Maestro;
 import modelo.Pagodesalario;
 import recursos.EgresosResource;
+import recursos.GrupoClaseResource;
 import recursos.MaestroResource;
 
 /**
@@ -73,7 +77,29 @@ public class RegistrarPagoSalarioController implements Initializable {
         buscarSalarioRecomendado();
     }
     private void buscarSalarioRecomendado(){
-        //TODO 
+        Maestro maestroSeleccionado = cmbEmpleado.getValue();
+        int idMaestroSeleccionado = maestroSeleccionado.getId();
+        
+        GrupoClaseResource recursoGrupos = new GrupoClaseResource();
+        List<GrupoClase> listaGrupos = recursoGrupos.getClasesImpartidasPorMaestro(idMaestroSeleccionado);
+        
+        BigDecimal suma = new BigDecimal(0);
+        
+        for(GrupoClase g: listaGrupos){
+            BigDecimal costo = g.getCostoMensual();
+            float porcentajeDelMaestro = g.getPorcentajeGananciaMaestro() / 100;
+            BigDecimal gananciaPorAlumno = costo.divide(BigDecimal.valueOf(porcentajeDelMaestro));
+            
+            List<Alumno> alumnoDeClase = g.getAlumnoList();
+            
+            for(Alumno a : alumnoDeClase){
+                if(a.getDiapago().getMonth() == new Date().getMonth()){ //preguntamos si ha pagado el mes pasado (se denota porque la fecha de pago esta en el mes actual)
+                    suma = suma.add(gananciaPorAlumno);
+                }
+            }
+        }
+        
+        txtMonto.setText(suma.toString());
     }
     
     
