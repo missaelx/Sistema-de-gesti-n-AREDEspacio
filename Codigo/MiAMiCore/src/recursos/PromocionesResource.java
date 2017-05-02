@@ -43,6 +43,18 @@ public class  PromocionesResource {
         List<Promociones> promos = promoController.getPromocionesActivas();
         return promos;
     }
+
+    public List<Promociones> getPromoMensualidad(){
+        PromocionesJpaControllerExtended contro = new PromocionesJpaControllerExtended(emf);
+        List<Promociones> promo = contro.getPromocionesMensualidad();
+        return promo;
+    }
+    
+    public List<Promociones> getPromoInscripcion(){
+        PromocionesJpaControllerExtended contro = new PromocionesJpaControllerExtended(emf);
+        List<Promociones> promo = contro.getPromocionesInscripcion();
+        return promo;
+    }
     
     public List<Promociones> getAll(){
         

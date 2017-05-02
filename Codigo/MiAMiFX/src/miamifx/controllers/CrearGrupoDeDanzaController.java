@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import modelo.GrupoClase;
+import modelo.Horario;
 import modelo.TipoDanza;
 import recursos.DanzaResource;
 
@@ -77,13 +78,12 @@ public class CrearGrupoDeDanzaController implements Initializable {
             botonGuardar.setDisable(false);
         }else{botonGuardar.setDisable(true);}
         
-<<<<<<< HEAD
+
         Horario clase = new Horario();
         //clase.setHorafinal(entrada);
         //clase.setHorafinal(entrada);
-=======
+
         //Horario clase = new Horario();
->>>>>>> e4f5166d32a43dd209de3fbe350a7e5eeb6652b0
     }
     
     @FXML

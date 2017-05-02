@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Promociones.findAll", query = "SELECT p FROM Promociones p")
+        ,@NamedQuery(name = "promociones.findByMensualidad", query = "SELECT p FROM Promociones p WHERE p.aplicaPara = 'MENSUALIDAD' AND p.activo= 1 ")
+        ,@NamedQuery(name = "promociones.findByInscripcion", query = "SELECT p FROM Promociones p WHERE p.aplicaPara  = 'INSCRIPCION' AND p.activo= 1 ")
         ,@NamedQuery(name = "promociones.findByActivo", query = "SELECT p FROM Promociones p WHERE p.activo = 1 ")
     , @NamedQuery(name = "Promociones.findById", query = "SELECT p FROM Promociones p WHERE p.id = :id")
     , @NamedQuery(name = "Promociones.findByTitulo", query = "SELECT p FROM Promociones p WHERE p.titulo = :titulo")

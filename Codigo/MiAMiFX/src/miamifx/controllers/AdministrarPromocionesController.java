@@ -53,8 +53,8 @@ public class AdministrarPromocionesController implements Initializable {
         try {
             Stage promocion = new Stage();
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearPromocion.fxml"));
-            CrearPromocionController control = (CrearPromocionController) cargador.getController();
             AnchorPane root = cargador.load();
+            CrearPromocionController control = (CrearPromocionController) cargador.getController();
             cargador.setController(control);
             control.setControlPadre(this);
             Scene escena = new Scene(root);

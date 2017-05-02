@@ -133,6 +133,7 @@ public class AdministrarEgresosController implements Initializable {
                     return property;
                 }
             }
+
         );
         colEgresoDescripcion.setCellValueFactory( new PropertyValueFactory<>("descripcion"));
         //colEgresoFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
