@@ -79,11 +79,12 @@ public class AdministrarDanzasController implements Initializable {
         try {
             Stage editarDanzas = new Stage();
             TipoDanza danza = tablaDanzas.getSelectionModel().getSelectedItem();
-            FXMLLoader cargador = new FXMLLoader();
-            //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
-
-            URL url = new File("src/miamifx/interfaces/EditarDanza.fxml").toURL();
-            AnchorPane root = cargador.load(url);
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/EditarDanza.fxml"));            
+            AnchorPane root = cargador.load();
+            EditarDanzaController control = (EditarDanzaController) cargador.getController();
+            control.setControlador(this);
+            control.setTipoDanza(danza);
+            control.setCampos(danza);
             Scene escena = new Scene(root);
             editarDanzas.setScene(escena);
             editarDanzas.show();
@@ -100,6 +101,7 @@ public class AdministrarDanzasController implements Initializable {
         ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
         columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        tablaDanzas.refresh();
         tablaDanzas.setItems(list);
 
     }

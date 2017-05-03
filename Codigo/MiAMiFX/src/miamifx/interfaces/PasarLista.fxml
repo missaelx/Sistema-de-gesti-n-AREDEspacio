@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.validation.*?>
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarAlumnosController">
+   <children>
+      <TableView fx:id="tablaAlumnos" layoutX="33.0" layoutY="112.0" prefHeight="419.0" prefWidth="776.0">
+         <columns>
+            <TableColumn fx:id="columnaNombre" prefWidth="542.0" text="Nombre" />
+            <TableColumn fx:id="columnaAsistencia" prefWidth="233.0" text="Asistencia" />
+         </columns>
+      </TableView>
+      <DatePicker fx:id="datePicker" layoutX="547.0" layoutY="43.0" showWeekNumbers="true" />
+      <Label layoutX="370.0" layoutY="49.0" text="Fecha de registro" />
+      <JFXButton fx:id="btnGuardar" buttonType="RAISED" layoutX="731.0" layoutY="555.0" ripplerFill="#12e860" text="Guardar" />
+      <JFXButton fx:id="btnCancelar" layoutX="632.0" layoutY="555.0" ripplerFill="#e51212" text="Cancelar" />
+   </children>
+</AnchorPane>

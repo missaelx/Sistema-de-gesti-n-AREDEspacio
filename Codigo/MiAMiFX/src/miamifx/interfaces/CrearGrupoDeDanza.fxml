@@ -16,7 +16,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <ComboBox layoutX="161.0" layoutY="128.0" prefWidth="150.0" />
+      <ComboBox fx:id="listaCBmaestros" layoutX="161.0" layoutY="128.0" prefWidth="150.0" />
       <Label layoutX="212.0" layoutY="99.0" text="Maestro">
          <font>
             <Font size="14.0" />
@@ -64,25 +64,25 @@
       </Label>
       <Button fx:id="botonGuardar" disable="true" layoutX="420.0" layoutY="350.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="140.0" text="Guardar" />
       <Button fx:id="botonCancelar" layoutX="580.0" layoutY="350.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="20.0" prefWidth="110.0" text="Cancelar" />
-      <JFXTimePicker fx:id="entradaLunes" layoutX="430.0" layoutY="96.0" onAction="#horaClaseComplta" />
-      <JFXTimePicker fx:id="entradaMartes" layoutX="430.0" layoutY="135.0" onAction="#horaClaseComplta" />
-      <JFXTimePicker fx:id="entradaMiercoles" layoutX="430.0" layoutY="175.0" onAction="#horaClaseComplta" />
-      <JFXTimePicker fx:id="entradaJueves" layoutX="430.0" layoutY="215.0" onAction="#horaClaseComplta" />
-      <JFXTimePicker fx:id="entradaViernes" layoutX="430.0" layoutY="255.0" />
-      <JFXTimePicker fx:id="entradaSabado" layoutX="430.0" layoutY="295.0" />
-      <JFXTimePicker fx:id="salidaLunes" layoutX="620.0" layoutY="95.0" onAction="#horaClaseComplta" />
-      <JFXTimePicker fx:id="salidaMartes" layoutX="620.0" layoutY="135.0" onAction="#horaClaseComplta" />
-      <JFXTimePicker fx:id="salidaMiercoles" layoutX="620.0" layoutY="175.0" onAction="#horaClaseComplta" />
-      <JFXTimePicker fx:id="salidaJueves" layoutX="620.0" layoutY="215.0" onAction="#horaClaseComplta" />
-      <JFXTimePicker fx:id="salidaViernes" layoutX="620.0" layoutY="255.0" />
-      <JFXTimePicker fx:id="salidaSabado" layoutX="620.0" layoutY="295.0" />
+      <JFXTimePicker fx:id="entradaLunes" defaultColor="#7b7f7f" layoutX="430.0" layoutY="96.0" onKeyReleased="#horaClaseComplta" />
+      <JFXTimePicker fx:id="entradaMartes" defaultColor="#7b7f7f" layoutX="430.0" layoutY="135.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="entradaMiercoles" defaultColor="#7b7f7f" layoutX="430.0" layoutY="175.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="entradaJueves" defaultColor="#7b7f7f" layoutX="430.0" layoutY="215.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="entradaViernes" defaultColor="#7b7f7f" layoutX="430.0" layoutY="255.0" />
+      <JFXTimePicker fx:id="entradaSabado" defaultColor="#7b7f7f" layoutX="430.0" layoutY="295.0" />
+      <JFXTimePicker fx:id="salidaLunes" defaultColor="#7b7f7f" layoutX="620.0" layoutY="95.0" onKeyReleased="#horaClaseComplta" />
+      <JFXTimePicker fx:id="salidaMartes" defaultColor="#7b7f7f" layoutX="620.0" layoutY="135.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="salidaMiercoles" defaultColor="#7b7f7f" layoutX="620.0" layoutY="175.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="salidaJueves" defaultColor="#7b7f7f" layoutX="620.0" layoutY="215.0" onAction="#horaClaseComplta" />
+      <JFXTimePicker fx:id="salidaViernes" defaultColor="#7b7f7f" layoutX="620.0" layoutY="255.0" />
+      <JFXTimePicker fx:id="salidaSabado" defaultColor="#7b7f7f" layoutX="620.0" layoutY="295.0" />
       <Label layoutX="192.0" layoutY="181.0" text="Costo Mensual">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="161.0" layoutY="210.0" />
-      <Spinner layoutX="190.0" layoutY="292.0" prefHeight="25.0" prefWidth="92.0" />
+      <TextField fx:id="costoMensual" layoutX="161.0" layoutY="210.0" text="1250" />
+      <Spinner fx:id="porcentajeMaestro" editable="true" layoutX="190.0" layoutY="292.0" prefHeight="25.0" prefWidth="92.0" />
       <Label layoutX="224.0" layoutY="263.0" text="Label" />
    </children>
 </AnchorPane>

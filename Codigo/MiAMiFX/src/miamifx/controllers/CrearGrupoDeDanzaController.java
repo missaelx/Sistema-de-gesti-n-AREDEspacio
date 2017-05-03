@@ -8,6 +8,8 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,12 +19,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import modelo.GrupoClase;
 import modelo.Horario;
 import modelo.Maestro;
 import modelo.TipoDanza;
 import recursos.DanzaResource;
+import recursos.MaestroResource;
 
 /**
  * FXML Controller class
@@ -30,12 +34,12 @@ import recursos.DanzaResource;
  * @author AndrésRoberto
  */
 public class CrearGrupoDeDanzaController implements Initializable {
-    
+
     @FXML
     private Button botonGuardar, botonCancelar;
     @FXML
-    private JFXTimePicker entradaLunes,salidaLunes,entradaMartes,salidaMartes,entradaMiercoles,salidaMiercoles,entradaJueves,salidaJueves,
-            entradaViernes,salidaViernes,entradaSabado,salidaSabado;
+    private JFXTimePicker entradaLunes, salidaLunes, entradaMartes, salidaMartes, entradaMiercoles, salidaMiercoles, entradaJueves, salidaJueves,
+            entradaViernes, salidaViernes, entradaSabado, salidaSabado;
     @FXML
     private Label nombreDanza;
 
@@ -44,61 +48,101 @@ public class CrearGrupoDeDanzaController implements Initializable {
     @FXML
     private TextField costoMensual;
     @FXML
-    private Spinner<Float> porcentajeMaestro;
+    private Spinner<Integer> porcentajeMaestro;
     private TipoDanza tipoDanza;
     private GrupoClase grupoDanza;
     private AdministrarDanzasController controlador;
-    private List <Horario> horario;
+    private List<Horario> horario;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        setCBoxMaestros();
+        setSpinnerPorcentaje();
+    }
+
+    private void setCBoxMaestros() {
+        MaestroResource maestroRecurso = new MaestroResource();
+        ObservableList<Maestro> observableList = FXCollections.observableList(maestroRecurso.visualizarRegistros());
+        listaCBmaestros.setItems(observableList);
+        listaCBmaestros.getSelectionModel().selectFirst();
+    }
+
+    private void setSpinnerPorcentaje() {
+        SpinnerValueFactory svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100,20,1);
+        porcentajeMaestro = new Spinner();
+        porcentajeMaestro.setValueFactory(svf);
+        porcentajeMaestro.setEditable(true);
         
     }
-    public void setTipoDazanza(TipoDanza tipoDanza){
+    public boolean sonNumeros(String numeros){
+        String formato = "^[0-9]*$";
+        return numeros.matches(formato) && numeros.length() <= 12;
+    }
+
+    public void setTipoDazanza(TipoDanza tipoDanza) {
         this.tipoDanza = tipoDanza;
-        
+
     }
-    public void setTituloNombreDanza(){
+
+    public void setTituloNombreDanza() {
         nombreDanza.setText(tipoDanza.getNombre());
     }
-    
+
     public void setControlador(AdministrarDanzasController controlador) {
         this.controlador = controlador;
     }
-    
+
     @FXML
     private void cancelar(ActionEvent evento) {
         ((Node) (evento.getSource())).getScene().getWindow().hide();
     }
-    public void horaClaseComplta(){
-        if(!entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)){
+
+    public void horaClaseComplta() {
+        //if
+        //if (!entradaLunes.getValue().equals(null)){boolean eL = true; }else{ eL=false;}
+        //if (!salidaLunes.getValue().equals(null)) {boolean sL = true;}else{sL = false;}
+        //if (eL && sL){botonGuardar.setDisable(false);}else{botonGuardar.setDisable(true);}
+        if (!entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)) {
+            //&& !entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)
             botonGuardar.setDisable(false);
-        }else{botonGuardar.setDisable(true);}
-        if(!entradaMartes.getValue().equals(null) && !salidaMartes.getValue().equals(null)){
+        } else {
+            botonGuardar.setDisable(true);
+        }
+        if (!entradaMartes.getValue().equals(null) && !salidaMartes.getValue().equals(null)) {
             botonGuardar.setDisable(false);
-        }else{botonGuardar.setDisable(true);}
-        if(!entradaMiercoles.getValue().equals(null) && !salidaMiercoles.getValue().equals(null)){
+        } else {
+            botonGuardar.setDisable(true);
+        }
+        if (!entradaMiercoles.getValue().equals(null) && !salidaMiercoles.getValue().equals(null)) {
             botonGuardar.setDisable(false);
-        }else{botonGuardar.setDisable(true);}
-        if(!entradaJueves.getValue().equals(null) && !salidaJueves.getValue().equals(null)){
+        } else {
+            botonGuardar.setDisable(true);
+        }
+        if (!entradaJueves.getValue().equals(null) && !salidaJueves.getValue().equals(null)) {
             botonGuardar.setDisable(false);
-        }else{botonGuardar.setDisable(true);}
-        if(!entradaViernes.getValue().equals(null) && !salidaViernes.getValue().equals(null)){
+        } else {
+            botonGuardar.setDisable(true);
+        }
+        if (!entradaViernes.getValue().equals(null) && !salidaViernes.getValue().equals(null)) {
             botonGuardar.setDisable(false);
-        }else{botonGuardar.setDisable(true);}
-        if(!entradaSabado.getValue().equals(null) && !salidaSabado.getValue().equals(null)){
+        } else {
+            botonGuardar.setDisable(true);
+        }
+        if (!entradaSabado.getValue().equals(null) && !salidaSabado.getValue().equals(null)) {
             botonGuardar.setDisable(false);
-        }else{botonGuardar.setDisable(true);}
+        } else {
+            botonGuardar.setDisable(true);
+        }
     }
 
-    public Horario setHorario(LocalTime entrada, LocalTime salida,String dia) {
+    public Horario setHorario(LocalTime entrada, LocalTime salida, String dia) {
         //entrada.atDate(LocalDate.now());
-        Date provisionalEntrada,provisionalSalida;
-        provisionalEntrada = new Date(1970,1,1,entrada.getHour(),entrada.getMinute());
-        provisionalSalida = new Date(1970,1,1,salida.getHour(),salida.getMinute());
+        Date provisionalEntrada, provisionalSalida;
+        provisionalEntrada = new Date(1970, 1, 1, entrada.getHour(), entrada.getMinute());
+        provisionalSalida = new Date(1970, 1, 1, salida.getHour(), salida.getMinute());
         Horario clase = new Horario();
         clase.setHorainicio(provisionalEntrada);
         clase.setHorafinal(provisionalSalida);
@@ -106,7 +150,8 @@ public class CrearGrupoDeDanzaController implements Initializable {
         return clase;
 
     }
-    private void setListaHorario(){
+
+    private void setListaHorario() {
         if (!entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)) {
             horario.add(setHorario(entradaLunes.getValue(), salidaLunes.getValue(), "lun"));
         }
@@ -126,16 +171,17 @@ public class CrearGrupoDeDanzaController implements Initializable {
             horario.add(setHorario(entradaSabado.getValue(), salidaSabado.getValue(), "sab"));
         }
     }
-    
-    private BigDecimal setCosto(String costo){
+
+    private BigDecimal setCosto(String costo) {
         BigDecimal costoMensual = new BigDecimal(costo);
         return costoMensual;
     }
 // falta el spiinner de porcentaje, como setear elvalor y como 
+
     @FXML
     private void guardar(ActionEvent evento) {
         DanzaResource recurso = new DanzaResource();
-        
+
         grupoDanza = new GrupoClase();
         grupoDanza.setActivo(true);
         grupoDanza.setIdTipoDanza(tipoDanza);
@@ -148,5 +194,5 @@ public class CrearGrupoDeDanzaController implements Initializable {
         controlador.setTabla();
         botonGuardar.getScene().getWindow().hide();
     }
-    
+
 }
