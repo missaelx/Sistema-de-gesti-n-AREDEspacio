@@ -1,5 +1,6 @@
 package miamifx.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -24,6 +25,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -45,20 +47,27 @@ import recursos.AlumnoResource;
  */
 public class AdministrarAlumnosController implements Initializable {
 
+    private Button btnEliminar;
+
     @FXML
-    private Button btnEliminar, btnPagar, btnDetalles, btnBuscar;
-    @FXML
+    private Button btnPagar, btnDetalles, btnBuscar;
     private ComboBox comboBusqueda;
-    @FXML
     private TextField campoBusqueda;
     @FXML
     private TableView<Alumno> tablaAlumnos;
+    private TableColumn columnaNombre;
     @FXML
-    private TableColumn columnaNombre, columnoApellidos, columnaCorreo, columnaTelefono;
-    @FXML
+    private TableColumn columnoApellidos, columnaCorreo, columnaTelefono;
     private ImageView fotoAlumno;
-
     @FXML
+    private TableColumn<?, ?> columnaAsistencia;
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private JFXButton btnGuardar;
+    @FXML
+    private JFXButton btnCancelar;
+
     private void registrarAlumno(ActionEvent event) {
         try {
             Stage registrarAlumno = new Stage();
@@ -79,7 +88,6 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
-    @FXML
     private void verDetalles(ActionEvent event) {
         try {
             Stage editarAlumno = new Stage();
@@ -107,7 +115,6 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
-    @FXML
     private void buscarAlumno(ActionEvent event) {
         AlumnoResource recurso = new AlumnoResource();
         //ObservableList lista = FXCollections.observableArrayList();
@@ -131,18 +138,12 @@ public class AdministrarAlumnosController implements Initializable {
         this.btnPagar.setDisable(false);
     }
 
-    @FXML
     private void activarBusqueda(ActionEvent event) {
         btnBuscar.setDisable(false);
         campoBusqueda.setDisable(false);
     }
 
-    @FXML
-    private void editarDatos(ActionEvent event) {
 
-    }
-
-    @FXML
     private void eliminarRegistro(ActionEvent evento) {
         Alumno alumno = tablaAlumnos.getSelectionModel().getSelectedItem();
         AlumnoResource recurso = new AlumnoResource();
@@ -190,7 +191,7 @@ public class AdministrarAlumnosController implements Initializable {
     public void onTableSelection() {
         activarBotones();
         Alumno alumnoSeleccionado = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
-        if (alumnoSeleccionado.getFoto() != "" && alumnoSeleccionado.getFoto() != null) {
+        if (!"".equals(alumnoSeleccionado.getFoto()) && alumnoSeleccionado.getFoto() != null) {
             Image image = null;
             File file;
             try {

@@ -27,7 +27,7 @@
       </TableView>
       <TableView fx:id="tableSalarios" layoutX="26.0" layoutY="78.0" prefHeight="170.0" prefWidth="831.0">
         <columns>
-          <TableColumn fx:id="colSalarioMaestro" prefWidth="75.0" text="Maestro" />
+          <TableColumn fx:id="colSalarioMaestro" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Maestro" />
           <TableColumn fx:id="colSalarioMonto" prefWidth="75.0" text="Monto" />
             <TableColumn fx:id="colSalarioDescripcion" prefWidth="75.0" text="Descripción" />
             <TableColumn fx:id="colSalarioFecha" prefWidth="75.0" text="Fecha" />

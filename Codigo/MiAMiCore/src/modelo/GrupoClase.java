@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.io.Serializable;
@@ -27,13 +22,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author macbookpro
+ * @author Missael Hernandez Rosado
  */
 @Entity
 @Table(name = "grupoClase")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "GrupoClase.findAll", query = "SELECT g FROM GrupoClase g WHERE g.activo = 1")
+        , @NamedQuery(name = "GrupoClase.findByMaestro", query = "SELECT g FROM GrupoClase g WHERE g.idMaestro.id = :idMaestro and g.activo = 1")
     , @NamedQuery(name = "GrupoClase.findById", query = "SELECT g FROM GrupoClase g WHERE g.id = :id")
     , @NamedQuery(name = "GrupoClase.findByActivo", query = "SELECT g FROM GrupoClase g WHERE g.activo = :activo")
     , @NamedQuery(name = "GrupoClase.findByCostoMensual", query = "SELECT g FROM GrupoClase g WHERE g.costoMensual = :costoMensual")
