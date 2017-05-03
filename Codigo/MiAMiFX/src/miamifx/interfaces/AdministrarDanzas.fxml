@@ -32,6 +32,6 @@
          </columns>
       </TableView>
       <Button fx:id="bEliminarGrupo" disable="true" layoutX="555.0" layoutY="537.0" mnemonicParsing="false" onAction="#eliminarGrupo" text="Eliminar Grupo" />
-      <Button fx:id="bVerDetalles" disable="true" layoutX="300.0" layoutY="537.0" mnemonicParsing="false" onAction="#VerDetalles" prefHeight="25.0" prefWidth="120.0" text="Editar Danza" />
+      <Button fx:id="bVerDetalles" disable="true" layoutX="300.0" layoutY="537.0" mnemonicParsing="false" onAction="#verDetalles" prefHeight="25.0" prefWidth="120.0" text="Editar Danza" />
    </children>
 </AnchorPane>

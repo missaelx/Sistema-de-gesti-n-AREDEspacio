@@ -25,6 +25,6 @@
       <ImageView fx:id="fotoAlumno" fitHeight="213.0" fitWidth="196.0" layoutX="655.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true" />
       <ComboBox fx:id="comboBusqueda" layoutX="33.0" layoutY="30.0" onAction="#activarBusqueda" promptText="Selecciona el método de busqueda" />
       <Label layoutX="722.0" layoutY="138.0" text="Fotografía" />
-      <Button layoutX="414.0" layoutY="524.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cerrar" />
+      <Button fx:id="bCerrar" layoutX="414.0" layoutY="524.0" mnemonicParsing="false" onAction="#cerrar" prefHeight="25.0" prefWidth="120.0" text="Cerrar" />
    </children>
 </AnchorPane>
