@@ -51,10 +51,13 @@ public class AdministrarAlumnosController implements Initializable {
 
     @FXML
     private Button btnPagar, btnDetalles, btnBuscar;
+    @FXML
     private ComboBox comboBusqueda;
+    @FXML
     private TextField campoBusqueda;
     @FXML
     private TableView<Alumno> tablaAlumnos;
+    @FXML
     private TableColumn columnaNombre;
     @FXML
     private TableColumn columnoApellidos, columnaCorreo, columnaTelefono;
@@ -68,6 +71,7 @@ public class AdministrarAlumnosController implements Initializable {
     @FXML
     private JFXButton btnCancelar;
 
+    @FXML
     private void registrarAlumno(ActionEvent event) {
         try {
             Stage registrarAlumno = new Stage();
@@ -88,6 +92,7 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
+    @FXML
     private void verDetalles(ActionEvent event) {
         try {
             Stage editarAlumno = new Stage();
@@ -115,6 +120,7 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
+    @FXML
     private void buscarAlumno(ActionEvent event) {
         AlumnoResource recurso = new AlumnoResource();
         //ObservableList lista = FXCollections.observableArrayList();
@@ -138,12 +144,14 @@ public class AdministrarAlumnosController implements Initializable {
         this.btnPagar.setDisable(false);
     }
 
+    @FXML
     private void activarBusqueda(ActionEvent event) {
         btnBuscar.setDisable(false);
         campoBusqueda.setDisable(false);
     }
 
 
+    @FXML
     private void eliminarRegistro(ActionEvent evento) {
         Alumno alumno = tablaAlumnos.getSelectionModel().getSelectedItem();
         AlumnoResource recurso = new AlumnoResource();

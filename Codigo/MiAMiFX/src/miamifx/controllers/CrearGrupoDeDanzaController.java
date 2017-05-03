@@ -101,7 +101,12 @@ public class CrearGrupoDeDanzaController implements Initializable {
     }
 
     public void horaClaseComplta() {
+        //if
+        //if (!entradaLunes.getValue().equals(null)){boolean eL = true; }else{ eL=false;}
+        //if (!salidaLunes.getValue().equals(null)) {boolean sL = true;}else{sL = false;}
+        //if (eL && sL){botonGuardar.setDisable(false);}else{botonGuardar.setDisable(true);}
         if (!entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)) {
+            //&& !entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)
             botonGuardar.setDisable(false);
         } else {
             botonGuardar.setDisable(true);
