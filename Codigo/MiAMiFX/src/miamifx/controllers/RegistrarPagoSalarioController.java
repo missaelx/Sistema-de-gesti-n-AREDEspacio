@@ -1,6 +1,7 @@
 package miamifx.controllers;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -88,8 +89,12 @@ public class RegistrarPagoSalarioController implements Initializable {
         for(GrupoClase g: listaGrupos){
             BigDecimal costo = g.getCostoMensual();
             float porcentajeDelMaestro = g.getPorcentajeGananciaMaestro() / 100;
-            BigDecimal gananciaPorAlumno = costo.divide(BigDecimal.valueOf(porcentajeDelMaestro));
-            
+            BigDecimal gananciaPorAlumno = new BigDecimal(0);
+            try{
+                 gananciaPorAlumno = costo.multiply(BigDecimal.valueOf(porcentajeDelMaestro));
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
             List<Alumno> alumnoDeClase = g.getAlumnoList();
             
             for(Alumno a : alumnoDeClase){
@@ -99,6 +104,7 @@ public class RegistrarPagoSalarioController implements Initializable {
             }
         }
         
+        suma = suma.setScale(2, RoundingMode.HALF_UP);
         txtMonto.setText(suma.toString());
     }
     
@@ -130,6 +136,10 @@ public class RegistrarPagoSalarioController implements Initializable {
         }
     }
     
+    @FXML
+    public void onSeleccionEmpleado(ActionEvent event){
+        buscarSalarioRecomendado();
+    }
     
     
 }
