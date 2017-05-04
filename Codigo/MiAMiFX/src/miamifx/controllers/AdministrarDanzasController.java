@@ -4,10 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import modelo.GrupoClase;
 import modelo.Horario;
 import modelo.TipoDanza;
@@ -205,10 +210,131 @@ public class AdministrarDanzasController implements Initializable {
     
     private void setTablaGrupoDanzas(){
         DanzaResource recurso = new DanzaResource();
-        ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistrosGClase());
-        List<Horario> horario;
-        columnaMaestros.setCellValueFactory(new PropertyValueFactory<>("idMaestro"));
-        columnaLun.setCellValueFactory(new PropertyValueFactory<>("dia"));
+        List<GrupoClase> llista = recurso.visualizarRegistrosGClase();
+        
+        ObservableList list = FXCollections.observableArrayList(llista);
+        
+        columnaMaestros.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    if(grupo.getValue().getIdMaestro() != null)
+                        property.setValue(grupo.getValue().getIdMaestro().getNombre() + " " + grupo.getValue().getIdMaestro().getApellidos());
+                    else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaLun.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "lun");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaMar.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "mar");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaMie.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "mie");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaJue.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "jue");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaVie.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "vie");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaSab.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "sab");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
         
         tablaGrupos.setItems(list);
     }
@@ -224,14 +350,18 @@ public class AdministrarDanzasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        /*
-        bVerDetalles.setDisable(true);
-        bEliminarDanza.setDisable(true);
-        bCrearGrupo.setDisable(true);
-         */
+        setTablaGrupoDanzas();
         setTabla();
     }
 
+    
+    private Horario getHorarioFromDia(List<Horario> lista, String diaEnum){
+        for(Horario h: lista){
+            if(h.getDia().equals(diaEnum)) return h;
+        }
+
+        return null;
+    }
 }
 
 
