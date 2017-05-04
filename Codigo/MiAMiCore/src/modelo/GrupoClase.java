@@ -63,7 +63,7 @@ public class GrupoClase implements Serializable {
     private String fechaTermino;
     @ManyToMany(mappedBy = "grupoClaseList")
     private List<Alumno> alumnoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoClase")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "idGrupoClase")
     private List<Horario> horarioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoClase")
     private List<Asistencia> asistenciaList;

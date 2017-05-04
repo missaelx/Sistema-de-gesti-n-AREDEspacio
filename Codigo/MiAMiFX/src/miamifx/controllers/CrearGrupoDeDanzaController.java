@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import modelo.GrupoClase;
 import modelo.Horario;
 import modelo.Maestro;
@@ -49,10 +51,10 @@ public class CrearGrupoDeDanzaController implements Initializable {
     private TextField costoMensual;
     @FXML
     private Spinner<Integer> porcentajeMaestro;
+    
     private TipoDanza tipoDanza;
-    private GrupoClase grupoDanza;
     private AdministrarDanzasController controlador;
-    private List<Horario> horario;
+    
 
     /**
      * Initializes the controller class.
@@ -72,9 +74,7 @@ public class CrearGrupoDeDanzaController implements Initializable {
 
     private void setSpinnerPorcentaje() {
         SpinnerValueFactory svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100,20,1);
-        porcentajeMaestro = new Spinner();
         porcentajeMaestro.setValueFactory(svf);
-        porcentajeMaestro.setEditable(true);
         
     }
     public boolean sonNumeros(String numeros){
@@ -84,7 +84,6 @@ public class CrearGrupoDeDanzaController implements Initializable {
 
     public void setTipoDazanza(TipoDanza tipoDanza) {
         this.tipoDanza = tipoDanza;
-
     }
 
     public void setTituloNombreDanza() {
@@ -95,50 +94,105 @@ public class CrearGrupoDeDanzaController implements Initializable {
         this.controlador = controlador;
     }
 
-    @FXML
-    private void cancelar(ActionEvent evento) {
-        ((Node) (evento.getSource())).getScene().getWindow().hide();
+    
+
+    public boolean verificarHorasFromUsuario() {
+        //para ver si se verifican las entradas con las salidas
+        boolean bandLunes = false, bandMartes  = false, bandMiercoles = false, bandJueves = false, bandViernes = false, bandSabado = false;
+        //verificamos existencias del par de horas, es decir si existen las dos o si ninguna existe
+        if((entradaLunes.getValue() != null && salidaLunes.getValue() != null) || 
+                (entradaLunes.getValue() == null && salidaLunes.getValue() == null)){
+            if(entradaLunes.getValue() != null)
+                bandLunes = true;
+        } else {
+            return false;
+        }
+        
+        if((entradaMartes.getValue() != null && salidaMartes.getValue() != null) || 
+                (entradaMartes.getValue() == null && salidaMartes.getValue() == null)){
+            if(entradaMartes.getValue() != null)
+                bandMartes = true;
+        } else {
+            return false;
+        }
+        
+        if((entradaMiercoles.getValue() != null && salidaMiercoles.getValue() != null) || 
+                (entradaMiercoles.getValue() == null && salidaMiercoles.getValue() == null)){
+            if(entradaMiercoles.getValue() != null)
+                bandMiercoles = true;
+        } else {
+            return false;
+        }
+        
+        if((entradaJueves.getValue() != null && salidaJueves.getValue() != null) || 
+                (entradaJueves.getValue() == null && salidaJueves.getValue() == null)){
+            if(entradaJueves.getValue() != null)
+                bandJueves = true;
+        } else {
+            return false;
+        }
+        
+        if((entradaViernes.getValue() != null && salidaViernes.getValue() != null) || 
+                (entradaViernes.getValue() == null && salidaViernes.getValue() == null)){
+            if(entradaViernes.getValue() != null)
+                bandViernes = true;
+        } else {
+            return false;
+        }
+        
+        if((entradaSabado.getValue() != null && salidaSabado.getValue() != null) || 
+                (entradaSabado.getValue() == null && salidaSabado.getValue() == null)){
+            if(entradaSabado.getValue() != null)
+                bandSabado = true;
+        } else {
+            return false;
+        }
+        
+        //verificamos que la hora de entrada sea menor a la salida
+        if(bandLunes){
+            if(entradaLunes.getValue().compareTo(salidaLunes.getValue()) >= 0){
+                return false;
+            }
+        }
+        
+        if(bandMartes){
+            if(entradaMartes.getValue().compareTo(salidaMartes.getValue()) >= 0){
+                return false;
+            }
+        }
+        
+        if(bandMiercoles){
+            if(entradaMiercoles.getValue().compareTo(salidaMiercoles.getValue()) >= 0){
+                return false;
+            }
+        }
+        
+        if(bandJueves){
+            if(entradaJueves.getValue().compareTo(salidaJueves.getValue()) >= 0){
+                return false;
+            }
+        }
+        
+        if(bandViernes){
+            if(entradaViernes.getValue().compareTo(salidaViernes.getValue()) >= 0){
+                return false;
+            }
+        }
+        
+        if(bandSabado){
+            if(entradaSabado.getValue().compareTo(salidaSabado.getValue()) >= 0){
+                return false;
+            }
+        }
+        
+        //si ninguna hora se ha seleccionado
+        if(!bandLunes && !bandMartes  && !bandMiercoles && !bandJueves && !bandViernes && !bandSabado){
+            return false;
+        }
+        return true;
     }
 
-    public void horaClaseComplta() {
-        //if
-        //if (!entradaLunes.getValue().equals(null)){boolean eL = true; }else{ eL=false;}
-        //if (!salidaLunes.getValue().equals(null)) {boolean sL = true;}else{sL = false;}
-        //if (eL && sL){botonGuardar.setDisable(false);}else{botonGuardar.setDisable(true);}
-        if (!entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)) {
-            //&& !entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)
-            botonGuardar.setDisable(false);
-        } else {
-            botonGuardar.setDisable(true);
-        }
-        if (!entradaMartes.getValue().equals(null) && !salidaMartes.getValue().equals(null)) {
-            botonGuardar.setDisable(false);
-        } else {
-            botonGuardar.setDisable(true);
-        }
-        if (!entradaMiercoles.getValue().equals(null) && !salidaMiercoles.getValue().equals(null)) {
-            botonGuardar.setDisable(false);
-        } else {
-            botonGuardar.setDisable(true);
-        }
-        if (!entradaJueves.getValue().equals(null) && !salidaJueves.getValue().equals(null)) {
-            botonGuardar.setDisable(false);
-        } else {
-            botonGuardar.setDisable(true);
-        }
-        if (!entradaViernes.getValue().equals(null) && !salidaViernes.getValue().equals(null)) {
-            botonGuardar.setDisable(false);
-        } else {
-            botonGuardar.setDisable(true);
-        }
-        if (!entradaSabado.getValue().equals(null) && !salidaSabado.getValue().equals(null)) {
-            botonGuardar.setDisable(false);
-        } else {
-            botonGuardar.setDisable(true);
-        }
-    }
-
-    public Horario setHorario(LocalTime entrada, LocalTime salida, String dia) {
+    public Horario LocalTimeToHorario(LocalTime entrada, LocalTime salida, String dia, GrupoClase Grupo) {
         //entrada.atDate(LocalDate.now());
         Date provisionalEntrada, provisionalSalida;
         provisionalEntrada = new Date(1970, 1, 1, entrada.getHour(), entrada.getMinute());
@@ -147,52 +201,68 @@ public class CrearGrupoDeDanzaController implements Initializable {
         clase.setHorainicio(provisionalEntrada);
         clase.setHorafinal(provisionalSalida);
         clase.setDia(dia);
+        clase.setIdGrupoClase(Grupo);
         return clase;
 
     }
 
-    private void setListaHorario() {
-        if (!entradaLunes.getValue().equals(null) && !salidaLunes.getValue().equals(null)) {
-            horario.add(setHorario(entradaLunes.getValue(), salidaLunes.getValue(), "lun"));
+    private List<Horario> getListaHorario(GrupoClase clase) {
+        List<Horario> horario = new ArrayList<>();
+        if (entradaLunes.getValue() != null && salidaLunes.getValue() != null) {
+            horario.add(LocalTimeToHorario(entradaLunes.getValue(), salidaLunes.getValue(), "lun", clase));
         }
-        if (!entradaMartes.getValue().equals(null) && !salidaMartes.getValue().equals(null)) {
-            horario.add(setHorario(entradaMartes.getValue(), salidaMartes.getValue(), "mar"));
+        if (entradaMartes.getValue() != null && salidaMartes.getValue() != null) {
+            horario.add(LocalTimeToHorario(entradaMartes.getValue(), salidaMartes.getValue(), "mar", clase));
         }
-        if (!entradaMiercoles.getValue().equals(null) && !salidaMiercoles.getValue().equals(null)) {
-            horario.add(setHorario(entradaMiercoles.getValue(), salidaMiercoles.getValue(), "mie"));
+        if (entradaMiercoles.getValue() != null && salidaMiercoles.getValue() != null) {
+            horario.add(LocalTimeToHorario(entradaMiercoles.getValue(), salidaMiercoles.getValue(), "mie", clase));
         }
-        if (!entradaJueves.getValue().equals(null) && !salidaJueves.getValue().equals(null)) {
-            horario.add(setHorario(entradaJueves.getValue(), salidaJueves.getValue(), "jue"));
+        if (entradaJueves.getValue() != null && salidaJueves.getValue() != null) {
+            horario.add(LocalTimeToHorario(entradaJueves.getValue(), salidaJueves.getValue(), "jue", clase));
         }
-        if (!entradaViernes.getValue().equals(null) && !salidaViernes.getValue().equals(null)) {
-            horario.add(setHorario(entradaViernes.getValue(), salidaViernes.getValue(), "vie"));
+        if (entradaViernes.getValue() != null && salidaViernes.getValue() != null) {
+            horario.add(LocalTimeToHorario(entradaViernes.getValue(), salidaViernes.getValue(), "vie", clase));
         }
-        if (!entradaSabado.getValue().equals(null) && !salidaSabado.getValue().equals(null)) {
-            horario.add(setHorario(entradaSabado.getValue(), salidaSabado.getValue(), "sab"));
+        if (entradaSabado.getValue() != null && salidaSabado.getValue() != null) {
+            horario.add(LocalTimeToHorario(entradaSabado.getValue(), salidaSabado.getValue(), "sab", clase));
         }
-    }
-
-    private BigDecimal setCosto(String costo) {
-        BigDecimal costoMensual = new BigDecimal(costo);
-        return costoMensual;
+        
+        return horario;
     }
 // falta el spiinner de porcentaje, como setear elvalor y como 
 
     @FXML
     private void guardar(ActionEvent evento) {
         DanzaResource recurso = new DanzaResource();
-
-        grupoDanza = new GrupoClase();
-        grupoDanza.setActivo(true);
-        grupoDanza.setIdTipoDanza(tipoDanza);
-        grupoDanza.setIdMaestro(listaCBmaestros.getSelectionModel().getSelectedItem());
-        setListaHorario();
-        grupoDanza.setHorarioList(horario);
-        grupoDanza.setCostoMensual(setCosto(costoMensual.getText()));//bigdecimal
-        grupoDanza.setPorcentajeGananciaMaestro(porcentajeMaestro.getValue());//float
-        recurso.crearGrupoClase(grupoDanza);
-        controlador.setTabla();
-        botonGuardar.getScene().getWindow().hide();
+        if(!verificarHorasFromUsuario()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error en los horarios definidos");
+            alert.setContentText("Posiblemente no has seleccionado un horario, o los horarios de entrada son mayores a los de salida");
+            alert.setHeaderText("Horarios mal formulados");
+            alert.show();
+        } else {
+            GrupoClase grupoDanza = new GrupoClase();
+            grupoDanza.setActivo(true);
+            grupoDanza.setIdTipoDanza(tipoDanza);
+            grupoDanza.setIdMaestro(listaCBmaestros.getSelectionModel().getSelectedItem());
+            grupoDanza.setHorarioList(getListaHorario(grupoDanza));
+            grupoDanza.setCostoMensual(new BigDecimal(costoMensual.getText()));//bigdecimal
+            grupoDanza.setPorcentajeGananciaMaestro(porcentajeMaestro.getValue());//float
+            recurso.crearGrupoClase(grupoDanza);
+            controlador.setTabla();
+            botonGuardar.getScene().getWindow().hide();
+        }
     }
-
+    
+    @FXML
+    private void cancelar(ActionEvent evento) {
+        ((Node) (evento.getSource())).getScene().getWindow().hide();
+    }
+    
+    @FXML
+    public void setTimeToNull(KeyEvent event){
+        JFXTimePicker pickerEditado = (JFXTimePicker) event.getSource();
+        pickerEditado.setValue(null);
+        System.out.println("setTimeToNull");
+    }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package miamifx.controllers;
 
 import java.io.File;
@@ -240,18 +235,3 @@ public class AdministrarDanzasController implements Initializable {
 }
 
 
-/*final Tab pestañaCrearDanzas = new Tab("Crear Danza " + (pestañas.getTabs().size() + 1));
-        pestañas.getTabs().add(pestañaCrearDanzas);
-        pestañas.getSelectionModel().select(pestañaCrearDanzas);
-        URL url = new File("src/miamifx/CrearDanza.fxml").toURL();
-        pestañaCrearDanzas.setContent((Node)  FXMLLoader.load(url));
-        
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CrearDanza.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("Crear Danza");
-            stage.setScene(new Scene(root1));  
-            stage.show();
-        */
