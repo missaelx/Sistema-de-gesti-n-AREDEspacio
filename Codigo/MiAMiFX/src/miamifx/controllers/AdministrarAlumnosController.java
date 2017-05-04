@@ -51,23 +51,18 @@ public class AdministrarAlumnosController implements Initializable {
 
     @FXML
     private Button btnPagar, btnDetalles, btnBuscar;
+    @FXML
     private ComboBox comboBusqueda;
+    @FXML
     private TextField campoBusqueda;
     @FXML
     private TableView<Alumno> tablaAlumnos;
-    private TableColumn columnaNombre;
     @FXML
-    private TableColumn columnoApellidos, columnaCorreo, columnaTelefono;
+    private TableColumn columnoApellidos, columnaCorreo, columnaTelefono, columnaNombre;
     private ImageView fotoAlumno;
+    
+    
     @FXML
-    private TableColumn<?, ?> columnaAsistencia;
-    @FXML
-    private DatePicker datePicker;
-    @FXML
-    private JFXButton btnGuardar;
-    @FXML
-    private JFXButton btnCancelar;
-
     private void registrarAlumno(ActionEvent event) {
         try {
             Stage registrarAlumno = new Stage();
@@ -88,6 +83,7 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
+    @FXML
     private void verDetalles(ActionEvent event) {
         try {
             Stage editarAlumno = new Stage();
@@ -115,6 +111,7 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
+    @FXML
     private void buscarAlumno(ActionEvent event) {
         AlumnoResource recurso = new AlumnoResource();
         //ObservableList lista = FXCollections.observableArrayList();
@@ -138,12 +135,14 @@ public class AdministrarAlumnosController implements Initializable {
         this.btnPagar.setDisable(false);
     }
 
+    @FXML
     private void activarBusqueda(ActionEvent event) {
         btnBuscar.setDisable(false);
         campoBusqueda.setDisable(false);
     }
 
 
+    @FXML
     private void eliminarRegistro(ActionEvent evento) {
         Alumno alumno = tablaAlumnos.getSelectionModel().getSelectedItem();
         AlumnoResource recurso = new AlumnoResource();
@@ -220,7 +219,8 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
-    public void pagarCuota(ActionEvent actionEvent) throws IOException, ParseException {
+    @FXML
+    private void pagarCuota(ActionEvent actionEvent) throws IOException, ParseException {
         Stage pagarCuota = new Stage();
         FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/PagarCuota.fxml"));
         AnchorPane root = cargador.load();
