@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package miamifx.controllers;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import modelo.GrupoClase;
 import modelo.Horario;
 import modelo.TipoDanza;
@@ -79,11 +79,12 @@ public class AdministrarDanzasController implements Initializable {
         try {
             Stage editarDanzas = new Stage();
             TipoDanza danza = tablaDanzas.getSelectionModel().getSelectedItem();
-            FXMLLoader cargador = new FXMLLoader();
-            //FXMLLoader cargador = javafx.fxml.FXMLLoader.load(getClass().getClassLoader().getResource("miamifx/RegistrarAlumno.fxml"));
-
-            URL url = new File("src/miamifx/interfaces/EditarDanza.fxml").toURL();
-            AnchorPane root = cargador.load(url);
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/EditarDanza.fxml"));            
+            AnchorPane root = cargador.load();
+            EditarDanzaController control = (EditarDanzaController) cargador.getController();
+            control.setControlador(this);
+            control.setTipoDanza(danza);
+            control.setCampos(danza);
             Scene escena = new Scene(root);
             editarDanzas.setScene(escena);
             editarDanzas.show();
@@ -100,6 +101,7 @@ public class AdministrarDanzasController implements Initializable {
         ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
         columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        tablaDanzas.refresh();
         tablaDanzas.setItems(list);
 
     }
@@ -208,10 +210,131 @@ public class AdministrarDanzasController implements Initializable {
     
     private void setTablaGrupoDanzas(){
         DanzaResource recurso = new DanzaResource();
-        ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistrosGClase());
-        List<Horario> horario;
-        columnaMaestros.setCellValueFactory(new PropertyValueFactory<>("idMaestro"));
-        columnaLun.setCellValueFactory(new PropertyValueFactory<>("dia"));
+        List<GrupoClase> llista = recurso.visualizarRegistrosGClase();
+        
+        ObservableList list = FXCollections.observableArrayList(llista);
+        
+        columnaMaestros.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    if(grupo.getValue().getIdMaestro() != null)
+                        property.setValue(grupo.getValue().getIdMaestro().getNombre() + " " + grupo.getValue().getIdMaestro().getApellidos());
+                    else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaLun.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "lun");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaMar.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "mar");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaMie.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "mie");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaJue.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "jue");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaVie.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "vie");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
+        
+        columnaSab.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    Horario horario = getHorarioFromDia(grupo.getValue().getHorarioList(), "sab");
+                    
+                    if(horario != null){
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm a");
+                        property.setValue(dateFormat.format(horario.getHorainicio()) + " - " + dateFormat.format(horario.getHorafinal()));
+                    }else
+                        property.setValue("-");
+                    return property;
+                }
+            }
+        );
         
         tablaGrupos.setItems(list);
     }
@@ -227,29 +350,18 @@ public class AdministrarDanzasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        /*
-        bVerDetalles.setDisable(true);
-        bEliminarDanza.setDisable(true);
-        bCrearGrupo.setDisable(true);
-         */
+        setTablaGrupoDanzas();
         setTabla();
     }
 
+    
+    private Horario getHorarioFromDia(List<Horario> lista, String diaEnum){
+        for(Horario h: lista){
+            if(h.getDia().equals(diaEnum)) return h;
+        }
+
+        return null;
+    }
 }
 
 
-/*final Tab pestañaCrearDanzas = new Tab("Crear Danza " + (pestañas.getTabs().size() + 1));
-        pestañas.getTabs().add(pestañaCrearDanzas);
-        pestañas.getSelectionModel().select(pestañaCrearDanzas);
-        URL url = new File("src/miamifx/CrearDanza.fxml").toURL();
-        pestañaCrearDanzas.setContent((Node)  FXMLLoader.load(url));
-        
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CrearDanza.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("Crear Danza");
-            stage.setScene(new Scene(root1));  
-            stage.show();
-        */

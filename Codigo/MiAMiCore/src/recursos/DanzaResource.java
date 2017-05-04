@@ -2,6 +2,7 @@ package recursos;
 
 import controladores.GrupoClaseJpaController;
 import controladores.GrupoClaseJpaControllerExtended;
+import controladores.HorarioJpaController;
 import controladores.TipoDanzaJpaController;
 import controladores.TipoDanzaJpaControllerExtended;
 import controladores.exceptions.NonexistentEntityException;
@@ -11,6 +12,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import modelo.GrupoClase;
+import modelo.Horario;
 import modelo.TipoDanza;
 
 /**
@@ -66,7 +68,20 @@ public class DanzaResource {
     
     public boolean crearGrupoClase(GrupoClase grupo){
         GrupoClaseJpaController grupoController = new GrupoClaseJpaController(emf);
+        HorarioJpaController controladorHorarios = new HorarioJpaController(emf);
+        
+        
+        List<Horario> listaHorarios = grupo.getHorarioList();
+        grupo.setHorarioList(null);
+        
+        
         grupoController.create(grupo);
+        
+        
+        for(Horario h: listaHorarios){
+            controladorHorarios.create(h);
+        }
+        
         return true;
     }
     

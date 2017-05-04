@@ -26,7 +26,9 @@ public class GrupoClaseJpaControllerExtended extends GrupoClaseJpaController{
     
     public List<GrupoClase> getGruposFromMaestro(int idMaestro){
         EntityManager em = getEntityManager();
-        List<GrupoClase> grupoClase = (List<GrupoClase>) em.createNamedQuery("GrupoClase.findByMaestro").getResultList();
+        List<GrupoClase> grupoClase = (List<GrupoClase>) em.createNamedQuery("GrupoClase.findByMaestro")
+                .setParameter("idMaestro", idMaestro)
+                .getResultList();
         em.close();
         return grupoClase;
     }
