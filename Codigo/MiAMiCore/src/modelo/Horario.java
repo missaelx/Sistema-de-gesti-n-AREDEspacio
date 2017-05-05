@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.io.Serializable;
@@ -32,6 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h")
     , @NamedQuery(name = "Horario.findById", query = "SELECT h FROM Horario h WHERE h.id = :id")
+        , @NamedQuery(name = "Horario.findClaseHoy", query = "SELECT h FROM Horario h WHERE h.dia = :dia and h.idGrupoClase.activo = 1")
     , @NamedQuery(name = "Horario.findByDia", query = "SELECT h FROM Horario h WHERE h.dia = :dia")
     , @NamedQuery(name = "Horario.findByHorainicio", query = "SELECT h FROM Horario h WHERE h.horainicio = :horainicio")
     , @NamedQuery(name = "Horario.findByHorafinal", query = "SELECT h FROM Horario h WHERE h.horafinal = :horafinal")})

@@ -26,11 +26,11 @@
                      <content>
                         <VBox prefHeight="108.0" prefWidth="550.0">
                            <children>
-                              <TableView prefHeight="108.0" prefWidth="531.0">
+                              <TableView fx:id="tableClasesHoy" prefHeight="108.0" prefWidth="531.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Grupo" />
-                                  <TableColumn prefWidth="75.0" text="Maestro" />
-                                    <TableColumn prefWidth="75.0" text="Horario" />
+                                  <TableColumn fx:id="colClasesGrupo" prefWidth="75.0" text="Grupo" />
+                                  <TableColumn fx:id="colClasesMaestro" prefWidth="75.0" text="Maestro" />
+                                    <TableColumn fx:id="colClasesHorario" prefWidth="75.0" text="Horario" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

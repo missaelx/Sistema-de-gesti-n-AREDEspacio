@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "GrupoClase.findAll", query = "SELECT g FROM GrupoClase g WHERE g.activo = 1")
         , @NamedQuery(name = "GrupoClase.findByMaestro", query = "SELECT g FROM GrupoClase g WHERE g.idMaestro.id = :idMaestro and g.activo = 1")
         , @NamedQuery(name = "GrupoClase.findByTipoDanza", query = "SELECT g FROM GrupoClase g WHERE g.idTipoDanza.id = :idTipoDanza and g.activo =1")
+        //, @NamedQuery(name = "GrupoClase.findClaseDeHoy", query = "SELECT g FROM GrupoClase g WHERE g. and g.activo =1")
     , @NamedQuery(name = "GrupoClase.findById", query = "SELECT g FROM GrupoClase g WHERE g.id = :id")
     , @NamedQuery(name = "GrupoClase.findByActivo", query = "SELECT g FROM GrupoClase g WHERE g.activo = :activo")
     , @NamedQuery(name = "GrupoClase.findByCostoMensual", query = "SELECT g FROM GrupoClase g WHERE g.costoMensual = :costoMensual")
