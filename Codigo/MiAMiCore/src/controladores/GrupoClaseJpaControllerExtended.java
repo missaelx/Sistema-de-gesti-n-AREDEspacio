@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import modelo.GrupoClase;
+import modelo.TipoDanza;
 
 /**
  *
@@ -28,6 +29,15 @@ public class GrupoClaseJpaControllerExtended extends GrupoClaseJpaController{
         EntityManager em = getEntityManager();
         List<GrupoClase> grupoClase = (List<GrupoClase>) em.createNamedQuery("GrupoClase.findByMaestro")
                 .setParameter("idMaestro", idMaestro)
+                .getResultList();
+        em.close();
+        return grupoClase;
+    }
+    
+    public List<GrupoClase> findGrupoPorTipoDanza(TipoDanza tipo){
+        EntityManager em = getEntityManager();
+        List<GrupoClase> grupoClase = (List<GrupoClase>) em.createNamedQuery("GrupoClase.findByTipoDanza")
+                .setParameter("idTipoDanza", tipo.getId())
                 .getResultList();
         em.close();
         return grupoClase;

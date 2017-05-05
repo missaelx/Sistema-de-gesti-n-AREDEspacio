@@ -21,4 +21,9 @@ public class GrupoClaseResource {
         return controlador.getGruposFromMaestro(idMaestro);
     }
     
+    public GrupoClase getGrupoClasePorId(Integer id){
+        GrupoClaseJpaControllerExtended controlador = new GrupoClaseJpaControllerExtended(emf);
+        return controlador.findGrupoClase(id);
+    }
+    
 }

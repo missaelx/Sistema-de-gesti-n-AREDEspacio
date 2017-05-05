@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     //, @NamedQuery(name = "Alumno.findMensualidadesProximas", query = "SELECT a FROM Alumno a WHERE a.diapago BETWEEN :inicio AND :fin")
     , @NamedQuery(name = "Alumno.findReinscripcionesProximas", query = "SELECT a FROM Alumno a WHERE a.fechaInscripcion BETWEEN :inicio AND :fin AND a.activo =1")
     , @NamedQuery(name = "Alumno.findMensualidadesProximas", query = "SELECT a FROM Alumno a WHERE a.diapago BETWEEN :inicio AND :fin and a.activo = 1")
+    , @NamedQuery(name = "Alumno.findNoInscritosAGrupo", query = "SELECT a FROM Alumno a WHERE :grupo NOT MEMBER OF a.grupoClaseList and a.activo = 1")    
         
     , @NamedQuery(name = "Alumno.findById", query = "SELECT a FROM Alumno a WHERE a.id = :id")
     , @NamedQuery(name = "Alumno.findByCorreo", query = "SELECT a FROM Alumno a WHERE (0 < LOCATE(:correo, a.correo)) AND a.activo = 1")
@@ -92,7 +93,7 @@ public class Alumno implements Serializable {
     @JoinTable(name = "alumno_grupo_aux", joinColumns = {
         @JoinColumn(name = "idalumno", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "idclase", referencedColumnName = "id")})
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE})
     private List<GrupoClase> grupoClaseList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idalumno")
     private List<Mensualidad> mensualidadList;

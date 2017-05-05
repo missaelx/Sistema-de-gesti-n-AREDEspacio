@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TemporalType;
 import modelo.Alumno;
+import modelo.GrupoClase;
 
 /**
  *
@@ -59,6 +60,15 @@ public class AlumnoJpaControllerExtended extends AlumnoJpaController{
         List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findMensualidadesProximas")
                 .setParameter("inicio", inicio, TemporalType.DATE)
                 .setParameter("fin", fin, TemporalType.DATE)
+                .getResultList();
+        em.close();
+        return alumno;
+    }
+    
+    public List<Alumno> getAlumnosNoInscritosAGrupo(GrupoClase grupo){
+        EntityManager em = getEntityManager();
+        List<Alumno> alumno = (List<Alumno>) em.createNamedQuery("Alumno.findNoInscritosAGrupo")
+                .setParameter("grupo", grupo)
                 .getResultList();
         em.close();
         return alumno;

@@ -108,5 +108,11 @@ public class DanzaResource {
         GrupoClaseJpaController grupoController = new GrupoClaseJpaController(emf);
         return grupoController.findGrupoClase(idGrupo);
     }
+
+    public List<GrupoClase> visualizarRegistrosGClase(TipoDanza tipoDanza) {
+        GrupoClaseJpaControllerExtended grupoController = new GrupoClaseJpaControllerExtended(emf);
+        return grupoController.findGrupoPorTipoDanza(tipoDanza);
+    }
+
     
 }

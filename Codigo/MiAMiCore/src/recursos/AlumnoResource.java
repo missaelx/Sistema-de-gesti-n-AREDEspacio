@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import modelo.Alumno;
+import modelo.GrupoClase;
 
 
 /**
@@ -95,5 +96,26 @@ public class AlumnoResource {
         AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
         
         return alumnosController.getProximasMensualidades(inicio, fin);
+    }
+    
+    public List<Alumno> visualizarRegistrosNoInscritosAGrupo(GrupoClase grupo){
+        AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
+        return alumnosController.getAlumnosNoInscritosAGrupo(grupo);
+    }
+
+    public boolean inscribirAGrupo(Alumno a, GrupoClase grupoSeleccionado) {
+        AlumnoJpaControllerExtended alumnosController = new AlumnoJpaControllerExtended(emf);
+        
+        a.getGrupoClaseList().add(grupoSeleccionado);
+        a.setGrupoClaseList(a.getGrupoClaseList());
+        
+        try {
+            alumnosController.edit(a);
+        } catch (NonexistentEntityException ex) {
+            return false;
+        } catch (Exception ex) {
+            return false;
+        }
+        return true;
     }
 }

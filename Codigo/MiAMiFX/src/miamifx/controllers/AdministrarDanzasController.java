@@ -26,6 +26,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -95,16 +96,7 @@ public class AdministrarDanzasController implements Initializable {
 
     }
 
-    @FXML
-    public void setTabla() {
-        DanzaResource recurso = new DanzaResource();
-        ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
-        columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        tablaDanzas.refresh();
-        tablaDanzas.setItems(list);
-
-    }
+    
 
     @FXML
     private void crearGrupo(ActionEvent evento) {
@@ -128,16 +120,20 @@ public class AdministrarDanzasController implements Initializable {
         }
 
     }
+    
     @FXML
-    private void VerListaAlumnos(ActionEvent evento){
+    private void verListaAlumnos(ActionEvent evento){
         try {
             Stage verListaAlumnos = new Stage();
             GrupoClase grupoDanza = tablaGrupos.getSelectionModel().getSelectedItem();
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/ListaAlumnos.fxml")); 
+            
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/VerListaAlumnoGrupo.fxml")); 
             AnchorPane root = cargador.load();
-            ListaAlumnosController control = (ListaAlumnosController) cargador.getController();
-            control.setControlador(this);
-            control.setGrupoDanza(grupoDanza);
+            VerListaAlumnoGrupoController control = (VerListaAlumnoGrupoController) cargador.getController();
+            
+            control.setControladorPadre(this);
+            control.setGrupoSeleccionado(grupoDanza);
+            
             Scene escena = new Scene(root);
             verListaAlumnos.setScene(escena);
             verListaAlumnos.show();
@@ -167,6 +163,14 @@ public class AdministrarDanzasController implements Initializable {
     
     @FXML
     private void eliminarGrupo(ActionEvent evento){
+        if(tablaGrupos.getSelectionModel().getSelectedItem() == null){
+            Alert confirmacion = new Alert(Alert.AlertType.WARNING);
+            confirmacion.setContentText("No se ha seleccionado un grupo que eliminar");
+            confirmacion.setTitle("Grupo no seleccionado");
+            confirmacion.setHeaderText("Selecciona un grupo");
+            confirmacion.show();
+            return;
+        }
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setContentText("Esta seguro que desea eliminar la seleccion?");
         confirmacion.setTitle("Confirmacion");
@@ -178,39 +182,33 @@ public class AdministrarDanzasController implements Initializable {
             } catch (Exception e) {
                 Logger.getLogger(AdministrarAlumnosController.class.getName()).log(Level.SEVERE, null, e);
             }
-            setTablaGrupoDanzas();
+            
+            
+            setTablaGrupoDanzas(tablaDanzas.getSelectionModel().getSelectedItem());
         }
     }
 
+
     @FXML
-    private void seSelecciono() {
-        if (tablaDanzas.getSelectionModel().getSelectedItem() != null) {
-            bVerDetalles.setDisable(false);
-            bEliminarDanza.setDisable(false);
-            bCrearGrupo.setDisable(false);
-        } else {
-            bVerDetalles.setDisable(true);
-            bEliminarDanza.setDisable(true);
-            bCrearGrupo.setDisable(true);
-        }
+    public void onTableDanzaSelect(MouseEvent event){
+        setTablaGrupoDanzas(tablaDanzas.getSelectionModel().getSelectedItem());
     }
     
     @FXML
-    private void seSelecciono2(){
-        if (tablaDanzas.getSelectionModel().getSelectedItem() != null) {
-            
-            bEliminarGrupo.setDisable(false);
-            bListaAlumnos.setDisable(false);
-        } else {
-            
-            bEliminarGrupo.setDisable(true);
-            bListaAlumnos.setDisable(true);
-        }
-    }
-    
-    private void setTablaGrupoDanzas(){
+    public void setTabla() {
         DanzaResource recurso = new DanzaResource();
-        List<GrupoClase> llista = recurso.visualizarRegistrosGClase();
+        ObservableList list = FXCollections.observableArrayList(recurso.visualizarRegistros());
+        columnaDanza.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        tablaDanzas.refresh();
+        tablaDanzas.setItems(list);
+
+    }
+    
+    private void setTablaGrupoDanzas(TipoDanza tipoDanza){
+        if(tipoDanza == null) return;
+        DanzaResource recurso = new DanzaResource();
+        List<GrupoClase> llista = recurso.visualizarRegistrosGClase(tipoDanza);
         
         ObservableList list = FXCollections.observableArrayList(llista);
         
@@ -336,6 +334,7 @@ public class AdministrarDanzasController implements Initializable {
             }
         );
         
+        tablaGrupos.refresh();
         tablaGrupos.setItems(list);
     }
 
@@ -350,7 +349,7 @@ public class AdministrarDanzasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        setTablaGrupoDanzas();
+        setTablaGrupoDanzas(tablaDanzas.getSelectionModel().getSelectedItem());
         setTabla();
     }
 
