@@ -58,18 +58,9 @@ public class AdministrarAlumnosController implements Initializable {
     @FXML
     private TableView<Alumno> tablaAlumnos;
     @FXML
-    private TableColumn columnaNombre;
+    private TableColumn columnoApellidos, columnaCorreo, columnaTelefono, columnaNombre;
     @FXML
-    private TableColumn columnoApellidos, columnaCorreo, columnaTelefono;
     private ImageView fotoAlumno;
-    @FXML
-    private TableColumn<?, ?> columnaAsistencia;
-    @FXML
-    private DatePicker datePicker;
-    @FXML
-    private JFXButton btnGuardar;
-    @FXML
-    private JFXButton btnCancelar;
 
     @FXML
     private void registrarAlumno(ActionEvent event) {
@@ -228,7 +219,8 @@ public class AdministrarAlumnosController implements Initializable {
         }
     }
 
-    public void pagarCuota(ActionEvent actionEvent) throws IOException, ParseException {
+    @FXML
+    private void pagarCuota(ActionEvent actionEvent) throws IOException, ParseException {
         Stage pagarCuota = new Stage();
         FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/PagarCuota.fxml"));
         AnchorPane root = cargador.load();
