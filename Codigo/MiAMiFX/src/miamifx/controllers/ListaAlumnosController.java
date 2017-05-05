@@ -6,6 +6,7 @@
 package miamifx.controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -19,8 +20,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -29,6 +32,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import modelo.Alumno;
 import modelo.GrupoClase;
 import recursos.AlumnoResource;
@@ -74,6 +79,23 @@ public class ListaAlumnosController implements Initializable {
         ObservableList lista = FXCollections.observableList(listaBusqueda);
         tablaAlumnos.setItems(lista);
 
+    }
+    
+    @FXML 
+    private void registrarAsistencia(ActionEvent event){
+        Stage registrarAsistencia = new Stage();
+        FXMLLoader cargador = new FXMLLoader (getClass().getClassLoader().getResource("miamifx/interfaces/PasarLista.fxml"));
+        try {
+            AnchorPane root = cargador.load();
+            PasarListaController controller = cargador.getController();
+        controller.setClase(grupoDanza);
+        registrarAsistencia.setScene(new Scene(root));
+        registrarAsistencia.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ListaAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
     
     @FXML

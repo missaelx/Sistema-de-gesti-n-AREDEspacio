@@ -57,29 +57,12 @@ public class AdministrarAlumnosController implements Initializable {
     private TextField campoBusqueda;
     @FXML
     private TableView<Alumno> tablaAlumnos;
-<<<<<<< HEAD
-=======
-    @FXML
-    private TableColumn columnaNombre;
->>>>>>> 5dc0ddf757022f515e8fc1ff22afddc0b110cf29
     @FXML
     private TableColumn columnoApellidos, columnaCorreo, columnaTelefono, columnaNombre;
+    @FXML
     private ImageView fotoAlumno;
-    
-    
-    @FXML
-<<<<<<< HEAD
-=======
-    private TableColumn<?, ?> columnaAsistencia;
-    @FXML
-    private DatePicker datePicker;
-    @FXML
-    private JFXButton btnGuardar;
-    @FXML
-    private JFXButton btnCancelar;
 
     @FXML
->>>>>>> 5dc0ddf757022f515e8fc1ff22afddc0b110cf29
     private void registrarAlumno(ActionEvent event) {
         try {
             Stage registrarAlumno = new Stage();
