@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
@@ -33,8 +34,10 @@ public class VerListaAlumnoGrupoController implements Initializable {
     @FXML
     private TableView tableAlumnos;
     @FXML
+    private Button btnPasarLista;
+    @FXML
     TableColumn columNombre;
-    
+
     private GrupoClase grupoSeleccionado;
     private AdministrarDanzasController controladorPadre;
 
@@ -45,7 +48,6 @@ public class VerListaAlumnoGrupoController implements Initializable {
     public void setControladorPadre(AdministrarDanzasController controladorPadre) {
         this.controladorPadre = controladorPadre;
     }
-    
 
     public GrupoClase getGrupoSeleccionado() {
         return grupoSeleccionado;
@@ -55,41 +57,58 @@ public class VerListaAlumnoGrupoController implements Initializable {
         this.grupoSeleccionado = grupoSeleccionado;
         setTabla();
     }
-    
-    public void setTabla(){
+
+    public void setTabla() {
         columNombre.setCellValueFactory(
-            new Callback<TableColumn.CellDataFeatures<Alumno, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<Alumno, String> alumno) {
-                    SimpleStringProperty property = new SimpleStringProperty();
-                    property.setValue(alumno.getValue().getNombre() + " " + alumno.getValue().getApellidos());
-                    return property;
-                }
+                new Callback<TableColumn.CellDataFeatures<Alumno, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Alumno, String> alumno) {
+                SimpleStringProperty property = new SimpleStringProperty();
+                property.setValue(alumno.getValue().getNombre() + " " + alumno.getValue().getApellidos());
+                return property;
             }
-        
+        }
         );
         tableAlumnos.refresh();
-        
+
         GrupoClaseResource recursoGrupo = new GrupoClaseResource();
         grupoSeleccionado = recursoGrupo.getGrupoClasePorId(grupoSeleccionado.getId());
-        
+
         ObservableList lista = FXCollections.observableArrayList(grupoSeleccionado.getAlumnoList());
-        
+
         tableAlumnos.setItems(lista);
     }
-    
+
     @FXML
-    public void onAgregarAlumnoAGrupo(ActionEvent event){
+    public void pasarLista(ActionEvent event) {
+
+        try {
+            Stage registrarAsistencia = new Stage();
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/PasarLista.fxml"));
+            AnchorPane root = cargador.load();
+            PasarListaController controller = cargador.getController();
+            controller.setClase(grupoSeleccionado);
+            controller.setListaAsistencia();
+            registrarAsistencia.setScene(new Scene(root));
+            registrarAsistencia.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(ListaAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    public void onAgregarAlumnoAGrupo(ActionEvent event) {
         try {
             Stage verListaAlumnos = new Stage();
-            
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/AgregarAlumnoAGrupo.fxml")); 
+
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/AgregarAlumnoAGrupo.fxml"));
             AnchorPane root = cargador.load();
             AgregarAlumnoAGrupoController control = (AgregarAlumnoAGrupoController) cargador.getController();
-            
+
             control.setControladorPadre(this);
             control.setGrupoSeleccionado(grupoSeleccionado);
-            
+
             Scene escena = new Scene(root);
             verListaAlumnos.setScene(escena);
             verListaAlumnos.show();
@@ -98,10 +117,10 @@ public class VerListaAlumnoGrupoController implements Initializable {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    
+
+    }
+
 }

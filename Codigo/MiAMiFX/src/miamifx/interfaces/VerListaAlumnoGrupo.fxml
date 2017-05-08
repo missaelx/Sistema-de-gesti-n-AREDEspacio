@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -7,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="428.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.VerListaAlumnoGrupoController">
+<AnchorPane id="AnchorPane" prefHeight="428.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.VerListaAlumnoGrupoController">
    <children>
       <Label layoutX="189.0" layoutY="20.0" text="Alumnos inscritos a la clase">
          <font>
@@ -24,6 +28,6 @@
       </TableView>
       <Button layoutX="35.0" layoutY="387.0" mnemonicParsing="false" onAction="#onAgregarAlumnoAGrupo" text="Agregar alumno" />
       <Button layoutX="171.0" layoutY="387.0" mnemonicParsing="false" text="Quitar alumno" />
-      <Button layoutX="297.0" layoutY="388.0" mnemonicParsing="false" text="Pasar lista" />
+      <Button fx:id="btnPasarLista" layoutX="297.0" layoutY="388.0" mnemonicParsing="false" onAction="#pasarLista" text="Pasar lista" />
    </children>
 </AnchorPane>

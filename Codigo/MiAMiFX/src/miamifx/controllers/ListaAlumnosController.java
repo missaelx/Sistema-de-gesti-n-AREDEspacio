@@ -44,7 +44,7 @@ import recursos.AlumnoResource;
  * @author AndrésRoberto
  */
 public class ListaAlumnosController implements Initializable {
-    
+
     @FXML
     private ComboBox comboBusqueda;
     @FXML
@@ -56,13 +56,11 @@ public class ListaAlumnosController implements Initializable {
     @FXML
     private ImageView fotoAlumno;
     @FXML
-    private Button bAgregar, bEliminar, bAsistencia,bCerrar;
+    private Button bAgregar, bEliminar, bAsistencia, bCerrar;
     private GrupoClase grupoDanza;
     private List<Alumno> listaAlumnos;
     private AdministrarDanzasController controlador;
-    
-    
-    
+
     @FXML
     private void buscarAlumno(ActionEvent event) {
         AlumnoResource recurso = new AlumnoResource();
@@ -80,30 +78,30 @@ public class ListaAlumnosController implements Initializable {
         tablaAlumnos.setItems(lista);
 
     }
-    
-    @FXML 
-    private void registrarAsistencia(ActionEvent event){
-        Stage registrarAsistencia = new Stage();
-        FXMLLoader cargador = new FXMLLoader (getClass().getClassLoader().getResource("miamifx/interfaces/PasarLista.fxml"));
+
+    @FXML
+    private void registrarAsistencia(ActionEvent event) {
+
         try {
+            Stage registrarAsistencia = new Stage();
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/PasarLista.fxml"));
             AnchorPane root = cargador.load();
             PasarListaController controller = cargador.getController();
-        controller.setClase(grupoDanza);
-        registrarAsistencia.setScene(new Scene(root));
-        registrarAsistencia.show();
+            controller.setClase(grupoDanza);
+            registrarAsistencia.setScene(new Scene(root));
+            registrarAsistencia.show();
         } catch (IOException ex) {
             Logger.getLogger(ListaAlumnosController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
-    
+
     @FXML
     private void activarBusqueda(ActionEvent event) {
         //btnBuscar.setDisable(false);
         campoBusqueda.setDisable(false);
     }
-    
+
     public void setTablaAgregar() {
         tablaAlumnos.refresh();
         AlumnoResource recurso = new AlumnoResource();
@@ -114,31 +112,32 @@ public class ListaAlumnosController implements Initializable {
         tablaAlumnos.setItems(lista);
 
     }
-    
+
     public void setTabla() {
         tablaAlumnos.refresh();
         AlumnoResource recurso = new AlumnoResource();
         //ObservableList lista
     }
-    
+
     private void activarBotones() {
         this.bEliminar.setDisable(false);
         this.bCerrar.setDisable(false);
-        
+
     }
-    
+
     public void setControlador(AdministrarDanzasController controlador) {
         this.controlador = controlador;
     }
-    public void setGrupoDanza(GrupoClase grupoDanza){
+
+    public void setGrupoDanza(GrupoClase grupoDanza) {
         this.grupoDanza = grupoDanza;
     }
+
     @FXML
     private void cerrar(ActionEvent evento) {
         ((Node) (evento.getSource())).getScene().getWindow().hide();
     }
-    
-    
+
     public void onTableSelection() {
         activarBotones();
         Alumno alumnoSeleccionado = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
@@ -165,17 +164,15 @@ public class ListaAlumnosController implements Initializable {
             }
         }
     }
-    
-    public void agregarAlumnoALista(){
+
+    public void agregarAlumnoALista() {
         grupoDanza.getAlumnoList().add(tablaAlumnos.getSelectionModel().getSelectedItem());
-        
+
     }
-    
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }

@@ -8,6 +8,7 @@ package miamifx.controllers;
 import com.jfoenix.controls.JFXButton;
 import controladores.AsistenciaJpaController;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -17,16 +18,20 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 import modelo.Alumno;
 import modelo.Asistencia;
@@ -45,13 +50,14 @@ public class PasarListaController implements Initializable {
    @FXML
    private VBox boxAlumnos;
    @FXML
-   private Label txtNombreGrupo;
+   private Text txtNombreGrupo;
+   
    @FXML
-   private JFXButton btnGuardar, btnCancelar;
+   private Button btnGuardar, btnCancelar;
    @FXML
    private DatePicker datePicker;
    
-   private HashMap <Integer, CheckBox> asistenciaAlumnos;
+   private HashMap <Integer, CheckBox> asistenciaAlumnos = new HashMap();
    
    private GrupoClase clase;
    
@@ -73,6 +79,8 @@ public class PasarListaController implements Initializable {
                recursoAsistencia.registrarAsistencia(asistencia);
            }
        });
+       btnGuardar.getScene().getWindow().hide();
+       
    }
    
    @FXML
@@ -91,9 +99,11 @@ public class PasarListaController implements Initializable {
         List<Alumno> lista = clase.getAlumnoList();
         int id =0;
         for(Alumno alumno:lista){
-            CheckBox check = new CheckBox(alumno.getNombre() + alumno.getApellidos());
+            CheckBox check = new CheckBox(alumno.getNombre() + " " +alumno.getApellidos());
             asistenciaAlumnos.put(alumno.getId(), check);
+            Separator separador = new Separator();
             boxAlumnos.getChildren().add(check);
+            boxAlumnos.getChildren().add(separador);
         }
        
    }
@@ -106,7 +116,8 @@ public class PasarListaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        datePicker.setValue(LocalDate.now());
+        boxAlumnos.setPadding(new Insets(10, 10, 10, 10));
     }    
     
 }
