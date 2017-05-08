@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.io.Serializable;
@@ -28,6 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Mensualidad.findAll", query = "SELECT m FROM Mensualidad m")
+        , @NamedQuery(name = "Mensualidad.findEntreFechas", query = "SELECT m FROM Mensualidad m WHERE m.idingreso.fecha >= :inicio and m.idingreso.fecha <= :fin")
     , @NamedQuery(name = "Mensualidad.findById", query = "SELECT m FROM Mensualidad m WHERE m.id = :id")})
 public class Mensualidad implements Serializable {
 

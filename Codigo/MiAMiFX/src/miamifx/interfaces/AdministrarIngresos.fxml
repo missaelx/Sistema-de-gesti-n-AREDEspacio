@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="591.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.AdministrarIngresosController">
+    <children>
+      <Label layoutX="32.0" layoutY="42.0" text="Filtrar por fecha:" />
+      <DatePicker fx:id="datePickerMensualidadInicio" editable="false" layoutX="208.0" layoutY="37.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
+      <DatePicker fx:id="datePickerMensualidadFin" editable="false" layoutX="465.0" layoutY="37.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
+      <Label layoutX="159.0" layoutY="42.0" text="Inicio:" />
+      <Label layoutX="431.0" layoutY="42.0" text="Fin:" />
+      <TableView fx:id="tableInscripciones" layoutX="26.0" layoutY="373.0" prefHeight="170.0" prefWidth="831.0">
+        <columns>
+            <TableColumn fx:id="colInscripcionAlumno" prefWidth="75.0" text="Alumno" />
+          <TableColumn fx:id="colInscripcionMonto" prefWidth="419.0" text="Monto" />
+          <TableColumn fx:id="colInscripcionDescripcion" prefWidth="410.0" text="Descripción" />
+            <TableColumn fx:id="colInscripcionFecha" prefWidth="75.0" text="Fecha" />
+            <TableColumn fx:id="colInscripcionPromocion" prefWidth="75.0" text="Promoción aplicada" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TableView fx:id="tableMensualidades" layoutX="26.0" layoutY="78.0" prefHeight="170.0" prefWidth="831.0">
+        <columns>
+          <TableColumn fx:id="colMensualidadAlumno" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Alumno" />
+            <TableColumn fx:id="colMensualidadMaestro" prefWidth="75.0" text="Maestro" />
+            <TableColumn fx:id="colMensualidadDanza" prefWidth="75.0" text="Tipo danza" />
+          <TableColumn fx:id="colMensualidadMonto" prefWidth="75.0" text="Monto" />
+            <TableColumn fx:id="colMensualidadDescripcion" prefWidth="75.0" text="Descripción" />
+            <TableColumn fx:id="colMensualidadFecha" prefWidth="75.0" text="Fecha" />
+            <TableColumn fx:id="colMensualidadPromocion" prefWidth="75.0" text="Promoción aplicada" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Label layoutX="32.0" layoutY="340.0" text="Filtrar por fecha:" />
+      <DatePicker fx:id="datePickerInscripcionesInicio" editable="false" layoutX="208.0" layoutY="335.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
+      <DatePicker fx:id="datePickerInscripcionesFin" editable="false" layoutX="466.0" layoutY="335.0" prefHeight="27.0" prefWidth="198.0" showWeekNumbers="true" />
+      <Label layoutX="159.0" layoutY="340.0" text="Inicio:" />
+      <Label layoutX="384.0" layoutY="12.0" prefHeight="22.0" prefWidth="142.0" text="Mensualidades">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="380.0" layoutY="303.0" prefHeight="22.0" prefWidth="113.0" text="Inscripciones">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button layoutX="33.0" layoutY="257.0" mnemonicParsing="false" onAction="#OnRegistrarPagoMensualidad" text="Registrar pago de mensualidad" />
+      <Button layoutX="267.0" layoutY="257.0" mnemonicParsing="false" onAction="#onEliminarMensualidad" text="Eliminar pago de mensualidad" />
+      <Button fx:id="btnRegistrarEgreso" layoutX="33.0" layoutY="550.0" mnemonicParsing="false" onAction="#onRegistrarInscripciones" text="Registrar inscripción" />
+      <Button layoutX="199.0" layoutY="550.0" mnemonicParsing="false" onAction="#onEliminarInscripciones" text="Eliminar inscripción" />
+      <Label layoutX="436.0" layoutY="340.0" text="Fin:" />
+      <Button fx:id="btnVerTodosSalario" layoutX="769.0" layoutY="37.0" mnemonicParsing="false" onAction="#onVerTodosMensualidad" text="Ver todos" />
+      <Button layoutX="769.0" layoutY="335.0" mnemonicParsing="false" onAction="#onVerTodosInscripciones" text="Ver todos" />
+      <Button layoutX="684.0" layoutY="37.0" mnemonicParsing="false" onAction="#onBuscarMensualidad" text="Buscar" />
+      <Button layoutX="684.0" layoutY="335.0" mnemonicParsing="false" onAction="#onBuscarInscripciones" text="Buscar" />
+      <Button layoutX="365.0" layoutY="550.0" mnemonicParsing="false" onAction="#onSumaInscripciones" text="Ver suma de las inscripciones actuales" />
+      <Button layoutX="509.0" layoutY="257.0" mnemonicParsing="false" onAction="#onSumaMensualidades" text="Ver suma de los pagos de mensualidad actuales" />
+    </children>
+</AnchorPane>
