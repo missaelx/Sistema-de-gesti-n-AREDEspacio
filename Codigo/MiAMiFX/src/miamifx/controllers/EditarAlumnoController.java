@@ -23,6 +23,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +34,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -40,6 +45,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modelo.Alumno;
 import recursos.AlumnoResource;
+import recursos.AsistenciaResource;
 
 /**
  * FXML Controller class
@@ -76,6 +82,21 @@ public class EditarAlumnoController implements Initializable {
         this.alumno = alumn;
     }
     
+    @FXML
+    private void verAsistencia(ActionEvent event){
+        Date fecha = new Date();
+        Stage Asistencias = new Stage();
+        AnchorPane root = new AnchorPane();
+        TableView tablaAsist = new TableView();
+        TableColumn columnaFecha = new TableColumn("Fecha");
+        TableColumn columnaClase = new TableColumn("Clase");
+        Button cerrar = new Button("Cerrar");
+        AsistenciaResource recurso = new AsistenciaResource();
+        ObservableList lista = FXCollections.observableArrayList(recurso.buscarAsistenciasAlumno(alumno, fecha));
+        
+        columnaFecha.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        
+    }
     
     @FXML
     private void editarDatos(ActionEvent event){

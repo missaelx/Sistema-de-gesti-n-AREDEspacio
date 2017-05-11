@@ -90,7 +90,7 @@ public class PasarListaController implements Initializable {
         confirmacion.setTitle("Cancelar Registro");
 
         if (confirmacion.showAndWait().get().equals(ButtonType.OK)) {
-            btnCancelar.getScene().getWindow().hide();
+            btnGuardar.getScene().getWindow().hide();
         }
 
    }

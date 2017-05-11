@@ -47,10 +47,8 @@ import recursos.AlumnoResource;
  */
 public class AdministrarAlumnosController implements Initializable {
 
-    private Button btnEliminar;
-
     @FXML
-    private Button btnPagar, btnDetalles, btnBuscar;
+    private Button btnPagar, btnDetalles, btnBuscar, btnEliminar;
     @FXML
     private ComboBox comboBusqueda;
     @FXML
