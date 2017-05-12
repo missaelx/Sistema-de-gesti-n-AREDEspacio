@@ -18,19 +18,19 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="82.0" layoutY="56.0" text="Alumno:" />
-      <Label layoutX="86.0" layoutY="152.0" text="Monto:" />
-      <Label layoutX="20.0" layoutY="101.0" text="Aplicar promoción:" />
-      <Label layoutX="87.0" layoutY="195.0" text="Fecha:" />
+      <Label layoutX="82.0" layoutY="66.0" text="Alumno:" />
+      <Label layoutX="86.0" layoutY="162.0" text="Monto:" />
+      <Label layoutX="20.0" layoutY="111.0" text="Aplicar promoción:" />
+      <Label layoutX="87.0" layoutY="205.0" text="Fecha:" />
       <Label layoutX="59.0" layoutY="240.0" text="Descripción:" />
-      <ComboBox layoutX="163.0" layoutY="51.0" prefHeight="27.0" prefWidth="217.0" />
-      <ComboBox layoutX="192.0" layoutY="94.0" prefHeight="27.0" prefWidth="188.0" />
-      <TextField layoutX="192.0" layoutY="145.0" prefHeight="27.0" prefWidth="188.0" />
-      <Label layoutX="170.0" layoutY="149.0" text="\$" />
-      <DatePicker layoutX="163.0" layoutY="190.0" prefHeight="27.0" prefWidth="217.0" />
+      <ComboBox layoutX="163.0" layoutY="61.0" prefHeight="27.0" prefWidth="217.0" />
+      <ComboBox disable="true" layoutX="192.0" layoutY="104.0" prefHeight="27.0" prefWidth="188.0" />
+      <TextField layoutX="192.0" layoutY="155.0" prefHeight="27.0" prefWidth="188.0" />
+      <Label layoutX="170.0" layoutY="159.0" text="\$" />
+      <DatePicker editable="false" layoutX="163.0" layoutY="200.0" prefHeight="27.0" prefWidth="217.0" />
       <TextArea layoutX="37.0" layoutY="266.0" prefHeight="164.0" prefWidth="344.0" />
-      <CheckBox layoutX="164.0" layoutY="99.0" mnemonicParsing="false" />
-      <Button defaultButton="true" layoutX="257.0" layoutY="440.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" text="Registrar" />
+      <CheckBox layoutX="164.0" layoutY="109.0" mnemonicParsing="false" />
+      <Button defaultButton="true" disable="true" layoutX="257.0" layoutY="440.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" text="Registrar" />
       <Button cancelButton="true" layoutX="150.0" layoutY="440.0" mnemonicParsing="false" text="Cancelar" />
    </children>
 </AnchorPane>

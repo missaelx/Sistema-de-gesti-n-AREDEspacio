@@ -23,15 +23,15 @@
       <Label layoutX="87.0" layoutY="212.0" text="Fecha:" />
       <Label layoutX="75.0" layoutY="61.0" text="Alumno:" />
       <Label layoutX="13.0" layoutY="138.0" text="Aplicar promoción:" />
-      <ComboBox layoutX="144.0" layoutY="56.0" prefHeight="27.0" prefWidth="249.0" />
-      <ComboBox layoutX="144.0" layoutY="96.0" prefHeight="27.0" prefWidth="249.0" />
-      <ComboBox layoutX="179.0" layoutY="133.0" prefHeight="27.0" prefWidth="214.0" />
-      <CheckBox layoutX="151.0" layoutY="137.0" mnemonicParsing="false" />
-      <TextField layoutX="179.0" layoutY="174.0" prefHeight="27.0" prefWidth="214.0" />
-      <DatePicker layoutX="144.0" layoutY="208.0" prefHeight="27.0" prefWidth="249.0" />
-      <TextArea layoutX="12.0" layoutY="269.0" prefHeight="135.0" prefWidth="385.0" />
+      <ComboBox fx:id="cmbAlumno" layoutX="144.0" layoutY="56.0" prefHeight="27.0" prefWidth="249.0" />
+      <ComboBox fx:id="cmbClase" layoutX="144.0" layoutY="96.0" onAction="#onPromocionClaseChange" prefHeight="27.0" prefWidth="249.0" />
+      <ComboBox fx:id="cmbPromocion" disable="true" layoutX="179.0" layoutY="133.0" onAction="#onPromocionClaseChange" prefHeight="27.0" prefWidth="214.0" />
+      <CheckBox fx:id="checkBoxPromocion" layoutX="151.0" layoutY="137.0" mnemonicParsing="false" onAction="#onPromocionCheck" />
+      <TextField fx:id="txtMonto" layoutX="179.0" layoutY="174.0" prefHeight="27.0" prefWidth="214.0" />
+      <DatePicker fx:id="datePickerFecha" editable="false" layoutX="144.0" layoutY="208.0" prefHeight="27.0" prefWidth="249.0" />
+      <TextArea fx:id="txtDescripcion" layoutX="12.0" layoutY="269.0" prefHeight="135.0" prefWidth="385.0" />
       <Label layoutX="160.0" layoutY="178.0" text="\$" />
-      <Button defaultButton="true" layoutX="210.0" layoutY="428.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="93.0" text="Guardar" />
+      <Button fx:id="btnGuardar" defaultButton="true" disable="true" layoutX="210.0" layoutY="428.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="93.0" text="Guardar" />
       <Button cancelButton="true" layoutX="108.0" layoutY="428.0" mnemonicParsing="false" text="Cancelar" />
    </children>
 </AnchorPane>

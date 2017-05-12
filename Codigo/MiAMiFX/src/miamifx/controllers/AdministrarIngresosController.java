@@ -102,7 +102,7 @@ public class AdministrarIngresosController implements Initializable {
         }
         
         RegistrarPagoMensualidadController controlHijo = (RegistrarPagoMensualidadController) cargador.getController();
-        //controlHijo.setControladorPadre(this);
+        controlHijo.setControladorPadre(this);
         
         Scene escena = new Scene(root);
         
@@ -193,7 +193,27 @@ public class AdministrarIngresosController implements Initializable {
     }
     @FXML
     private void onRegistrarInscripciones(ActionEvent event){
+        Stage registrarInscripcionStage = new Stage();
+        FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/RegistrarPagoInscripcion.fxml"));
+        AnchorPane root = null;
+        try {
+             root = cargador.load();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error al buscar el FXML");
+        }
         
+        RegistrarPagoInscripcionController controlHijo = (RegistrarPagoInscripcionController) cargador.getController();
+        //controlHijo.setControladorPadre(this);
+        
+        Scene escena = new Scene(root);
+        
+        registrarInscripcionStage.setScene(escena);
+        registrarInscripcionStage.initModality(Modality.WINDOW_MODAL);
+        registrarInscripcionStage.initOwner(
+        ((Node)event.getSource()).getScene().getWindow() );
+        registrarInscripcionStage.setResizable(false);
+        registrarInscripcionStage.show();
     }
     @FXML
     private void onEliminarInscripciones(ActionEvent event){
