@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="418.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="miamifx.controllers.RegistrarPagoInscripcionController">
+   <children>
+      <Label layoutX="92.0" layoutY="14.0" text="Registrar pago de inscripción">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="82.0" layoutY="56.0" text="Alumno:" />
+      <Label layoutX="86.0" layoutY="152.0" text="Monto:" />
+      <Label layoutX="20.0" layoutY="101.0" text="Aplicar promoción:" />
+      <Label layoutX="87.0" layoutY="195.0" text="Fecha:" />
+      <Label layoutX="59.0" layoutY="240.0" text="Descripción:" />
+      <ComboBox layoutX="163.0" layoutY="51.0" prefHeight="27.0" prefWidth="217.0" />
+      <ComboBox layoutX="192.0" layoutY="94.0" prefHeight="27.0" prefWidth="188.0" />
+      <TextField layoutX="192.0" layoutY="145.0" prefHeight="27.0" prefWidth="188.0" />
+      <Label layoutX="170.0" layoutY="149.0" text="\$" />
+      <DatePicker layoutX="163.0" layoutY="190.0" prefHeight="27.0" prefWidth="217.0" />
+      <TextArea layoutX="37.0" layoutY="266.0" prefHeight="164.0" prefWidth="344.0" />
+      <CheckBox layoutX="164.0" layoutY="99.0" mnemonicParsing="false" />
+      <Button defaultButton="true" layoutX="257.0" layoutY="440.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" text="Registrar" />
+      <Button cancelButton="true" layoutX="150.0" layoutY="440.0" mnemonicParsing="false" text="Cancelar" />
+   </children>
+</AnchorPane>

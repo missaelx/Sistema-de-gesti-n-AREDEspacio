@@ -79,7 +79,7 @@ public class IngresosResource {
         return resultado;
     }
     
-    public boolean eliminarPagoSalario(Mensualidad pago){
+    public boolean eliminarMensualidad(Mensualidad pago){
         Ingreso ingreso = pago.getIdingreso();
         MensualidadJpaController controladorMensualidad = new MensualidadJpaController(emf);
         IngresoJpaController controladorIngreso = new IngresoJpaController(emf);
@@ -125,5 +125,11 @@ public class IngresosResource {
     public List<Mensualidad> getMensualidadesEntreFechas(Date inicio, Date fin){
         MensualidadJpaControllerExtended controlador = new MensualidadJpaControllerExtended(emf);
         return controlador.getMensualidadesEntreFechas(inicio, fin);
+    }
+    
+    public boolean registrarIngreso(Ingreso ingreso){
+        IngresoJpaController controller = new IngresoJpaController(emf);
+        controller.create(ingreso);
+        return true;
     }
 }
