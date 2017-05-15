@@ -45,7 +45,7 @@ public class AdministrarIngresosController implements Initializable {
     @FXML
     private TableView tableMensualidades, tableInscripciones;
     @FXML
-    private TableColumn colMensualidadAlumno, colMensualidadMonto, colMensualidadDescripcion, colMensualidadFecha, colMensualidadPromocion, colMensualidadMaestro, colMensualidadDanza;
+    private TableColumn colMensualidadAlumno, colMensualidadMonto, colMensualidadDescripcion, colMensualidadFecha, colMensualidadPromocion;
     @FXML
     private TableColumn colInscripcionAlumno, colInscripcionMonto, colInscripcionDescripcion, colInscripcionFecha, colInscripcionPromocion;
     
@@ -115,6 +115,16 @@ public class AdministrarIngresosController implements Initializable {
     }
     @FXML
     private void onEliminarMensualidad(ActionEvent event){
+        Mensualidad mensualidadSeleccionada = (Mensualidad) tableMensualidades.getSelectionModel().getSelectedItem();
+        if(mensualidadSeleccionada == null){
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Selecciona un elemento de la tabla antes");
+            alert.setHeaderText("No se ha seleccionado ningún registro");
+            alert.setContentText("Selecciona un registro para continuar");
+            alert.show();
+            return;
+        }
+        
         Alert alerta = new Alert(AlertType.CONFIRMATION);
         alerta.setTitle("Eliminar mensualidad");
         alerta.setHeaderText("Esta seguro(a) de eliminar el registro de la mensualidad");
@@ -122,10 +132,11 @@ public class AdministrarIngresosController implements Initializable {
         if(alerta.showAndWait().get().equals(ButtonType.OK)){
             IngresosResource recursoIngresos = new IngresosResource();
             Alert eliminado = new Alert(AlertType.INFORMATION);
-            if(recursoIngresos.eliminarMensualidad((Mensualidad) tableMensualidades.getSelectionModel().getSelectedItem())){
+            if(recursoIngresos.eliminarMensualidad(mensualidadSeleccionada)){
                 eliminado.setTitle("Pago eliminado correctamente");
                 eliminado.setHeaderText("Se ha eliminado el pago");
                 eliminado.show();
+                setTableMensualidad();
             } else {
                 eliminado.setTitle("Conexión perdida con la base de datos");
                 eliminado.setHeaderText("No se ha eliminado el pago");
@@ -217,6 +228,17 @@ public class AdministrarIngresosController implements Initializable {
     }
     @FXML
     private void onEliminarInscripciones(ActionEvent event){
+        Inscripcion inscripcionSeleccionada = (Inscripcion) tableInscripciones.getSelectionModel().getSelectedItem();
+        if(inscripcionSeleccionada == null){
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Selecciona un elemento de la tabla antes");
+            alert.setHeaderText("No se ha seleccionado ningún registro");
+            alert.setContentText("Selecciona un registro para continuar");
+            alert.show();
+            return;
+        }
+        
+        
         Alert alerta = new Alert(AlertType.CONFIRMATION);
         alerta.setTitle("Eliminar inscripción");
         alerta.setHeaderText("Esta seguro(a) de eliminar el registro de la inscripción");
@@ -224,7 +246,7 @@ public class AdministrarIngresosController implements Initializable {
         if(alerta.showAndWait().get().equals(ButtonType.OK)){
             IngresosResource recursoIngresos = new IngresosResource();
             Alert eliminado = new Alert(AlertType.INFORMATION);
-            if(recursoIngresos.eliminarInscripcion((Inscripcion) tableInscripciones.getSelectionModel().getSelectedItem())){
+            if(recursoIngresos.eliminarInscripcion(inscripcionSeleccionada)){
                 eliminado.setTitle("Pago eliminado correctamente");
                 eliminado.setHeaderText("Se ha eliminado el pago");
                 eliminado.show();
@@ -276,30 +298,6 @@ public class AdministrarIngresosController implements Initializable {
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Mensualidad, String> mensualidad) {
                     SimpleStringProperty property = new SimpleStringProperty();
                     property.setValue(mensualidad.getValue().getIdalumno().getNombre() + " " + mensualidad.getValue().getIdalumno().getApellidos());
-                    return property;
-                }
-            }
-        );
-        
-        colMensualidadMaestro.setCellValueFactory(
-            new Callback<TableColumn.CellDataFeatures<Mensualidad, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<Mensualidad, String> mensualidad) {
-                    SimpleStringProperty property = new SimpleStringProperty();
-                    //property.setValue(mensualidad.getValue().getIdGrupoClase().getIdMaestro().getNombre() + " " + mensualidad.getValue().getIdGrupoClase().getIdMaestro().getApellidos());
-                    property.setValue("Por hacer");
-                    return property;
-                }
-            }
-        );
-        
-        colMensualidadDanza.setCellValueFactory(
-            new Callback<TableColumn.CellDataFeatures<Mensualidad, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<Mensualidad, String> mensualidad) {
-                    SimpleStringProperty property = new SimpleStringProperty();
-                    //property.setValue(mensualidad.getValue().getIdGrupoClase().getIdTipoDanza().getNombre());
-                    property.setValue("Por hacer");
                     return property;
                 }
             }

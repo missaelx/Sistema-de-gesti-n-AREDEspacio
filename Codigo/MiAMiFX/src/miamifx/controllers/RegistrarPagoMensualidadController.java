@@ -5,6 +5,8 @@ import java.math.RoundingMode;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.localDate;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,9 +31,12 @@ import javafx.scene.control.TextField;
 import javafx.util.Callback;
 import modelo.Alumno;
 import modelo.GrupoClase;
+import modelo.Ingreso;
+import modelo.Mensualidad;
 import modelo.Promociones;
 import recursos.AlumnoResource;
 import recursos.DanzaResource;
+import recursos.IngresosResource;
 import recursos.PromocionesResource;
 
 /**
@@ -58,11 +63,9 @@ public class RegistrarPagoMensualidadController implements Initializable {
     private TableColumn colMaestro, colTipoDanza;
 
     private AdministrarIngresosController controladorPadre;
-
     public AdministrarIngresosController getControladorPadre() {
         return controladorPadre;
     }
-
     public void setControladorPadre(AdministrarIngresosController controladorPadre) {
         this.controladorPadre = controladorPadre;
         inicializarControles();
@@ -196,6 +199,50 @@ public class RegistrarPagoMensualidadController implements Initializable {
         alert.setContentText("¿Realmente desea salir?");
         if(alert.showAndWait().get().equals(ButtonType.OK)){
             ((Node)event.getSource()).getScene().getWindow().hide();
+        }
+    }
+    
+    @FXML
+    public void registrarPagoMensualidad(ActionEvent event){
+        BigDecimal monto;
+        try{
+            monto = new BigDecimal(txtMonto.getText());
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Monto no valido");
+            alert.setHeaderText("El número escrito en monto en incorrecto");
+            alert.setContentText("Modifica el monto por un número valido para continuar");
+            alert.show();
+            return;
+        }
+        
+        
+        Ingreso ingreso = new Ingreso();
+        ingreso.setDescripcion(txtDescripcion.getText());
+        ingreso.setFecha(Date.from(datePickerFecha.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        ingreso.setIdPromocion((Promociones) cmbPromocion.getSelectionModel().getSelectedItem());
+        ingreso.setMonto(monto);
+        
+        Mensualidad mensualidad = new Mensualidad();
+        mensualidad.setGrupoClaseList((List<GrupoClase>)tableClases.getItems());
+        mensualidad.setIdalumno((Alumno)cmbAlumno.getSelectionModel().getSelectedItem());
+        mensualidad.setIdingreso(ingreso);
+        
+        IngresosResource recursoIngresos = new IngresosResource();
+        if(recursoIngresos.registrarPagoMensualidad(mensualidad)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Mensualidad registrada");
+            alert.setHeaderText("Se ha guardado el registro correctamente");
+            alert.setContentText("El pago de la mensualidad ha sido guardado");
+            alert.show();
+            controladorPadre.setTableMensualidad();
+            ((Node)event.getSource()).getScene().getWindow().hide();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Problema al conectar con la base de datos");
+            alert.setHeaderText("Hubo un error al conectar con la base de datos");
+            alert.setContentText("Contácta con tu administrador del sistema");
+            alert.show();
         }
     }
 }
