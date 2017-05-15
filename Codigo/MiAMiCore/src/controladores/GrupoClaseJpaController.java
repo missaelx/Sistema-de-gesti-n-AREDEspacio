@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controladores;
 
 import controladores.exceptions.IllegalOrphanException;
@@ -17,6 +22,7 @@ import javax.persistence.EntityManagerFactory;
 import modelo.Horario;
 import modelo.Asistencia;
 import modelo.GrupoClase;
+import modelo.Mensualidad;
 
 /**
  *
@@ -42,6 +48,9 @@ public class GrupoClaseJpaController implements Serializable {
         }
         if (grupoClase.getAsistenciaList() == null) {
             grupoClase.setAsistenciaList(new ArrayList<Asistencia>());
+        }
+        if (grupoClase.getMensualidadList() == null) {
+            grupoClase.setMensualidadList(new ArrayList<Mensualidad>());
         }
         EntityManager em = null;
         try {
@@ -75,6 +84,12 @@ public class GrupoClaseJpaController implements Serializable {
                 attachedAsistenciaList.add(asistenciaListAsistenciaToAttach);
             }
             grupoClase.setAsistenciaList(attachedAsistenciaList);
+            List<Mensualidad> attachedMensualidadList = new ArrayList<Mensualidad>();
+            for (Mensualidad mensualidadListMensualidadToAttach : grupoClase.getMensualidadList()) {
+                mensualidadListMensualidadToAttach = em.getReference(mensualidadListMensualidadToAttach.getClass(), mensualidadListMensualidadToAttach.getId());
+                attachedMensualidadList.add(mensualidadListMensualidadToAttach);
+            }
+            grupoClase.setMensualidadList(attachedMensualidadList);
             em.persist(grupoClase);
             if (idMaestro != null) {
                 idMaestro.getGrupoClaseList().add(grupoClase);
@@ -106,6 +121,15 @@ public class GrupoClaseJpaController implements Serializable {
                     oldIdGrupoClaseOfAsistenciaListAsistencia = em.merge(oldIdGrupoClaseOfAsistenciaListAsistencia);
                 }
             }
+            for (Mensualidad mensualidadListMensualidad : grupoClase.getMensualidadList()) {
+                GrupoClase oldIdGrupoClaseOfMensualidadListMensualidad = mensualidadListMensualidad.getIdGrupoClase();
+                mensualidadListMensualidad.setIdGrupoClase(grupoClase);
+                mensualidadListMensualidad = em.merge(mensualidadListMensualidad);
+                if (oldIdGrupoClaseOfMensualidadListMensualidad != null) {
+                    oldIdGrupoClaseOfMensualidadListMensualidad.getMensualidadList().remove(mensualidadListMensualidad);
+                    oldIdGrupoClaseOfMensualidadListMensualidad = em.merge(oldIdGrupoClaseOfMensualidadListMensualidad);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -130,6 +154,8 @@ public class GrupoClaseJpaController implements Serializable {
             List<Horario> horarioListNew = grupoClase.getHorarioList();
             List<Asistencia> asistenciaListOld = persistentGrupoClase.getAsistenciaList();
             List<Asistencia> asistenciaListNew = grupoClase.getAsistenciaList();
+            List<Mensualidad> mensualidadListOld = persistentGrupoClase.getMensualidadList();
+            List<Mensualidad> mensualidadListNew = grupoClase.getMensualidadList();
             List<String> illegalOrphanMessages = null;
             for (Horario horarioListOldHorario : horarioListOld) {
                 if (!horarioListNew.contains(horarioListOldHorario)) {
@@ -145,6 +171,14 @@ public class GrupoClaseJpaController implements Serializable {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
                     illegalOrphanMessages.add("You must retain Asistencia " + asistenciaListOldAsistencia + " since its idGrupoClase field is not nullable.");
+                }
+            }
+            for (Mensualidad mensualidadListOldMensualidad : mensualidadListOld) {
+                if (!mensualidadListNew.contains(mensualidadListOldMensualidad)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain Mensualidad " + mensualidadListOldMensualidad + " since its idGrupoClase field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
@@ -179,6 +213,13 @@ public class GrupoClaseJpaController implements Serializable {
             }
             asistenciaListNew = attachedAsistenciaListNew;
             grupoClase.setAsistenciaList(asistenciaListNew);
+            List<Mensualidad> attachedMensualidadListNew = new ArrayList<Mensualidad>();
+            for (Mensualidad mensualidadListNewMensualidadToAttach : mensualidadListNew) {
+                mensualidadListNewMensualidadToAttach = em.getReference(mensualidadListNewMensualidadToAttach.getClass(), mensualidadListNewMensualidadToAttach.getId());
+                attachedMensualidadListNew.add(mensualidadListNewMensualidadToAttach);
+            }
+            mensualidadListNew = attachedMensualidadListNew;
+            grupoClase.setMensualidadList(mensualidadListNew);
             grupoClase = em.merge(grupoClase);
             if (idMaestroOld != null && !idMaestroOld.equals(idMaestroNew)) {
                 idMaestroOld.getGrupoClaseList().remove(grupoClase);
@@ -230,6 +271,17 @@ public class GrupoClaseJpaController implements Serializable {
                     }
                 }
             }
+            for (Mensualidad mensualidadListNewMensualidad : mensualidadListNew) {
+                if (!mensualidadListOld.contains(mensualidadListNewMensualidad)) {
+                    GrupoClase oldIdGrupoClaseOfMensualidadListNewMensualidad = mensualidadListNewMensualidad.getIdGrupoClase();
+                    mensualidadListNewMensualidad.setIdGrupoClase(grupoClase);
+                    mensualidadListNewMensualidad = em.merge(mensualidadListNewMensualidad);
+                    if (oldIdGrupoClaseOfMensualidadListNewMensualidad != null && !oldIdGrupoClaseOfMensualidadListNewMensualidad.equals(grupoClase)) {
+                        oldIdGrupoClaseOfMensualidadListNewMensualidad.getMensualidadList().remove(mensualidadListNewMensualidad);
+                        oldIdGrupoClaseOfMensualidadListNewMensualidad = em.merge(oldIdGrupoClaseOfMensualidadListNewMensualidad);
+                    }
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -273,6 +325,13 @@ public class GrupoClaseJpaController implements Serializable {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This GrupoClase (" + grupoClase + ") cannot be destroyed since the Asistencia " + asistenciaListOrphanCheckAsistencia + " in its asistenciaList field has a non-nullable idGrupoClase field.");
+            }
+            List<Mensualidad> mensualidadListOrphanCheck = grupoClase.getMensualidadList();
+            for (Mensualidad mensualidadListOrphanCheckMensualidad : mensualidadListOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This GrupoClase (" + grupoClase + ") cannot be destroyed since the Mensualidad " + mensualidadListOrphanCheckMensualidad + " in its mensualidadList field has a non-nullable idGrupoClase field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

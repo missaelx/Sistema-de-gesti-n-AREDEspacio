@@ -6,7 +6,6 @@
 package controladores;
 
 import controladores.exceptions.NonexistentEntityException;
-import controladores.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -33,7 +32,7 @@ public class GastovariableJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Gastovariable gastovariable) throws PreexistingEntityException, Exception {
+    public void create(Gastovariable gastovariable) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -49,11 +48,6 @@ public class GastovariableJpaController implements Serializable {
                 idEgreso = em.merge(idEgreso);
             }
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findGastovariable(gastovariable.getId()) != null) {
-                throw new PreexistingEntityException("Gastovariable " + gastovariable + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();

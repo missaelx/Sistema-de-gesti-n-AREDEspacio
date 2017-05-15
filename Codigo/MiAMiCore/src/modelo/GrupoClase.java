@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -39,11 +40,15 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "GrupoClase.findByFechaTermino", query = "SELECT g FROM GrupoClase g WHERE g.fechaTermino = :fechaTermino")})
 public class GrupoClase implements Serializable {
 
+    @JoinTable(name = "mensualidad_grupoclase_aux", joinColumns = {
+        @JoinColumn(name = "id_grupo_clase", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_mensualidad", referencedColumnName = "id")})
+    @ManyToMany
+    private List<Mensualidad> mensualidadList;
+
     @Basic(optional = false)
     @Column(name = "porcentaje_ganancia_maestro")
     private float porcentajeGananciaMaestro;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoClase")
-    private List<Mensualidad> mensualidadList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -215,5 +220,4 @@ public class GrupoClase implements Serializable {
     public void setMensualidadList(List<Mensualidad> mensualidadList) {
         this.mensualidadList = mensualidadList;
     }
-    
 }

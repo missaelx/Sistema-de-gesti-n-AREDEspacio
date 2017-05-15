@@ -7,15 +7,17 @@ package controladores;
 
 import controladores.exceptions.NonexistentEntityException;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import modelo.Alumno;
 import modelo.Ingreso;
+import modelo.GrupoClase;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import modelo.Mensualidad;
 
 /**
@@ -34,6 +36,9 @@ public class MensualidadJpaController implements Serializable {
     }
 
     public void create(Mensualidad mensualidad) {
+        if (mensualidad.getGrupoClaseList() == null) {
+            mensualidad.setGrupoClaseList(new ArrayList<GrupoClase>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -48,6 +53,17 @@ public class MensualidadJpaController implements Serializable {
                 idingreso = em.getReference(idingreso.getClass(), idingreso.getId());
                 mensualidad.setIdingreso(idingreso);
             }
+            GrupoClase idGrupoClase = mensualidad.getIdGrupoClase();
+            if (idGrupoClase != null) {
+                idGrupoClase = em.getReference(idGrupoClase.getClass(), idGrupoClase.getId());
+                mensualidad.setIdGrupoClase(idGrupoClase);
+            }
+            List<GrupoClase> attachedGrupoClaseList = new ArrayList<GrupoClase>();
+            for (GrupoClase grupoClaseListGrupoClaseToAttach : mensualidad.getGrupoClaseList()) {
+                grupoClaseListGrupoClaseToAttach = em.getReference(grupoClaseListGrupoClaseToAttach.getClass(), grupoClaseListGrupoClaseToAttach.getId());
+                attachedGrupoClaseList.add(grupoClaseListGrupoClaseToAttach);
+            }
+            mensualidad.setGrupoClaseList(attachedGrupoClaseList);
             em.persist(mensualidad);
             if (idalumno != null) {
                 idalumno.getMensualidadList().add(mensualidad);
@@ -56,6 +72,14 @@ public class MensualidadJpaController implements Serializable {
             if (idingreso != null) {
                 idingreso.getMensualidadList().add(mensualidad);
                 idingreso = em.merge(idingreso);
+            }
+            if (idGrupoClase != null) {
+                idGrupoClase.getMensualidadList().add(mensualidad);
+                idGrupoClase = em.merge(idGrupoClase);
+            }
+            for (GrupoClase grupoClaseListGrupoClase : mensualidad.getGrupoClaseList()) {
+                grupoClaseListGrupoClase.getMensualidadList().add(mensualidad);
+                grupoClaseListGrupoClase = em.merge(grupoClaseListGrupoClase);
             }
             em.getTransaction().commit();
         } finally {
@@ -75,6 +99,10 @@ public class MensualidadJpaController implements Serializable {
             Alumno idalumnoNew = mensualidad.getIdalumno();
             Ingreso idingresoOld = persistentMensualidad.getIdingreso();
             Ingreso idingresoNew = mensualidad.getIdingreso();
+            GrupoClase idGrupoClaseOld = persistentMensualidad.getIdGrupoClase();
+            GrupoClase idGrupoClaseNew = mensualidad.getIdGrupoClase();
+            List<GrupoClase> grupoClaseListOld = persistentMensualidad.getGrupoClaseList();
+            List<GrupoClase> grupoClaseListNew = mensualidad.getGrupoClaseList();
             if (idalumnoNew != null) {
                 idalumnoNew = em.getReference(idalumnoNew.getClass(), idalumnoNew.getId());
                 mensualidad.setIdalumno(idalumnoNew);
@@ -83,6 +111,17 @@ public class MensualidadJpaController implements Serializable {
                 idingresoNew = em.getReference(idingresoNew.getClass(), idingresoNew.getId());
                 mensualidad.setIdingreso(idingresoNew);
             }
+            if (idGrupoClaseNew != null) {
+                idGrupoClaseNew = em.getReference(idGrupoClaseNew.getClass(), idGrupoClaseNew.getId());
+                mensualidad.setIdGrupoClase(idGrupoClaseNew);
+            }
+            List<GrupoClase> attachedGrupoClaseListNew = new ArrayList<GrupoClase>();
+            for (GrupoClase grupoClaseListNewGrupoClaseToAttach : grupoClaseListNew) {
+                grupoClaseListNewGrupoClaseToAttach = em.getReference(grupoClaseListNewGrupoClaseToAttach.getClass(), grupoClaseListNewGrupoClaseToAttach.getId());
+                attachedGrupoClaseListNew.add(grupoClaseListNewGrupoClaseToAttach);
+            }
+            grupoClaseListNew = attachedGrupoClaseListNew;
+            mensualidad.setGrupoClaseList(grupoClaseListNew);
             mensualidad = em.merge(mensualidad);
             if (idalumnoOld != null && !idalumnoOld.equals(idalumnoNew)) {
                 idalumnoOld.getMensualidadList().remove(mensualidad);
@@ -99,6 +138,26 @@ public class MensualidadJpaController implements Serializable {
             if (idingresoNew != null && !idingresoNew.equals(idingresoOld)) {
                 idingresoNew.getMensualidadList().add(mensualidad);
                 idingresoNew = em.merge(idingresoNew);
+            }
+            if (idGrupoClaseOld != null && !idGrupoClaseOld.equals(idGrupoClaseNew)) {
+                idGrupoClaseOld.getMensualidadList().remove(mensualidad);
+                idGrupoClaseOld = em.merge(idGrupoClaseOld);
+            }
+            if (idGrupoClaseNew != null && !idGrupoClaseNew.equals(idGrupoClaseOld)) {
+                idGrupoClaseNew.getMensualidadList().add(mensualidad);
+                idGrupoClaseNew = em.merge(idGrupoClaseNew);
+            }
+            for (GrupoClase grupoClaseListOldGrupoClase : grupoClaseListOld) {
+                if (!grupoClaseListNew.contains(grupoClaseListOldGrupoClase)) {
+                    grupoClaseListOldGrupoClase.getMensualidadList().remove(mensualidad);
+                    grupoClaseListOldGrupoClase = em.merge(grupoClaseListOldGrupoClase);
+                }
+            }
+            for (GrupoClase grupoClaseListNewGrupoClase : grupoClaseListNew) {
+                if (!grupoClaseListOld.contains(grupoClaseListNewGrupoClase)) {
+                    grupoClaseListNewGrupoClase.getMensualidadList().add(mensualidad);
+                    grupoClaseListNewGrupoClase = em.merge(grupoClaseListNewGrupoClase);
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -138,6 +197,16 @@ public class MensualidadJpaController implements Serializable {
             if (idingreso != null) {
                 idingreso.getMensualidadList().remove(mensualidad);
                 idingreso = em.merge(idingreso);
+            }
+            GrupoClase idGrupoClase = mensualidad.getIdGrupoClase();
+            if (idGrupoClase != null) {
+                idGrupoClase.getMensualidadList().remove(mensualidad);
+                idGrupoClase = em.merge(idGrupoClase);
+            }
+            List<GrupoClase> grupoClaseList = mensualidad.getGrupoClaseList();
+            for (GrupoClase grupoClaseListGrupoClase : grupoClaseList) {
+                grupoClaseListGrupoClase.getMensualidadList().remove(mensualidad);
+                grupoClaseListGrupoClase = em.merge(grupoClaseListGrupoClase);
             }
             em.remove(mensualidad);
             em.getTransaction().commit();

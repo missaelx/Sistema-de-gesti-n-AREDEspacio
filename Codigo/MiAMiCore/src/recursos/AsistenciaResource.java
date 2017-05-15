@@ -6,6 +6,7 @@
 package recursos;
 
 import controladores.AsistenciaJpaController;
+import controladores.AsistenciaJpaControllerExtended;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
@@ -31,7 +32,7 @@ public class AsistenciaResource {
     }
     
     public List<Asistencia> buscarAsistenciasAlumno(Alumno alumno, Date fecha){
-        AsistenciaJpaController control = new AsistenciaJpaController(emf);
+        AsistenciaJpaControllerExtended control = new AsistenciaJpaControllerExtended(emf);
         return control.getAsistenciaAlumno(alumno, fecha);
     }
 }

@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import modelo.Promociones;
 import modelo.Mensualidad;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,11 @@ public class IngresoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Promociones idPromocion = ingreso.getIdPromocion();
+            if (idPromocion != null) {
+                idPromocion = em.getReference(idPromocion.getClass(), idPromocion.getId());
+                ingreso.setIdPromocion(idPromocion);
+            }
             List<Mensualidad> attachedMensualidadList = new ArrayList<Mensualidad>();
             for (Mensualidad mensualidadListMensualidadToAttach : ingreso.getMensualidadList()) {
                 mensualidadListMensualidadToAttach = em.getReference(mensualidadListMensualidadToAttach.getClass(), mensualidadListMensualidadToAttach.getId());
@@ -59,6 +65,10 @@ public class IngresoJpaController implements Serializable {
             }
             ingreso.setInscripcionList(attachedInscripcionList);
             em.persist(ingreso);
+            if (idPromocion != null) {
+                idPromocion.getIngresoList().add(ingreso);
+                idPromocion = em.merge(idPromocion);
+            }
             for (Mensualidad mensualidadListMensualidad : ingreso.getMensualidadList()) {
                 Ingreso oldIdingresoOfMensualidadListMensualidad = mensualidadListMensualidad.getIdingreso();
                 mensualidadListMensualidad.setIdingreso(ingreso);
@@ -91,6 +101,8 @@ public class IngresoJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Ingreso persistentIngreso = em.find(Ingreso.class, ingreso.getId());
+            Promociones idPromocionOld = persistentIngreso.getIdPromocion();
+            Promociones idPromocionNew = ingreso.getIdPromocion();
             List<Mensualidad> mensualidadListOld = persistentIngreso.getMensualidadList();
             List<Mensualidad> mensualidadListNew = ingreso.getMensualidadList();
             List<Inscripcion> inscripcionListOld = persistentIngreso.getInscripcionList();
@@ -115,6 +127,10 @@ public class IngresoJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
+            if (idPromocionNew != null) {
+                idPromocionNew = em.getReference(idPromocionNew.getClass(), idPromocionNew.getId());
+                ingreso.setIdPromocion(idPromocionNew);
+            }
             List<Mensualidad> attachedMensualidadListNew = new ArrayList<Mensualidad>();
             for (Mensualidad mensualidadListNewMensualidadToAttach : mensualidadListNew) {
                 mensualidadListNewMensualidadToAttach = em.getReference(mensualidadListNewMensualidadToAttach.getClass(), mensualidadListNewMensualidadToAttach.getId());
@@ -130,6 +146,14 @@ public class IngresoJpaController implements Serializable {
             inscripcionListNew = attachedInscripcionListNew;
             ingreso.setInscripcionList(inscripcionListNew);
             ingreso = em.merge(ingreso);
+            if (idPromocionOld != null && !idPromocionOld.equals(idPromocionNew)) {
+                idPromocionOld.getIngresoList().remove(ingreso);
+                idPromocionOld = em.merge(idPromocionOld);
+            }
+            if (idPromocionNew != null && !idPromocionNew.equals(idPromocionOld)) {
+                idPromocionNew.getIngresoList().add(ingreso);
+                idPromocionNew = em.merge(idPromocionNew);
+            }
             for (Mensualidad mensualidadListNewMensualidad : mensualidadListNew) {
                 if (!mensualidadListOld.contains(mensualidadListNewMensualidad)) {
                     Ingreso oldIdingresoOfMensualidadListNewMensualidad = mensualidadListNewMensualidad.getIdingreso();
@@ -198,6 +222,11 @@ public class IngresoJpaController implements Serializable {
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
+            }
+            Promociones idPromocion = ingreso.getIdPromocion();
+            if (idPromocion != null) {
+                idPromocion.getIngresoList().remove(ingreso);
+                idPromocion = em.merge(idPromocion);
             }
             em.remove(ingreso);
             em.getTransaction().commit();
