@@ -286,7 +286,8 @@ public class AdministrarIngresosController implements Initializable {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Mensualidad, String> mensualidad) {
                     SimpleStringProperty property = new SimpleStringProperty();
-                    property.setValue(mensualidad.getValue().getIdGrupoClase().getIdMaestro().getNombre() + " " + mensualidad.getValue().getIdGrupoClase().getIdMaestro().getApellidos());
+                    //property.setValue(mensualidad.getValue().getIdGrupoClase().getIdMaestro().getNombre() + " " + mensualidad.getValue().getIdGrupoClase().getIdMaestro().getApellidos());
+                    property.setValue("Por hacer");
                     return property;
                 }
             }
@@ -297,7 +298,8 @@ public class AdministrarIngresosController implements Initializable {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Mensualidad, String> mensualidad) {
                     SimpleStringProperty property = new SimpleStringProperty();
-                    property.setValue(mensualidad.getValue().getIdGrupoClase().getIdTipoDanza().getNombre());
+                    //property.setValue(mensualidad.getValue().getIdGrupoClase().getIdTipoDanza().getNombre());
+                    property.setValue("Por hacer");
                     return property;
                 }
             }

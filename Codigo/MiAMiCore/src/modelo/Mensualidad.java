@@ -33,10 +33,6 @@ public class Mensualidad implements Serializable {
     @ManyToMany(mappedBy = "mensualidadList")
     private List<GrupoClase> grupoClaseList;
 
-    @JoinColumn(name = "idGrupoClase", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private GrupoClase idGrupoClase;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -104,14 +100,6 @@ public class Mensualidad implements Serializable {
     @Override
     public String toString() {
         return "modelo.Mensualidad[ id=" + id + " ]";
-    }
-
-    public GrupoClase getIdGrupoClase() {
-        return idGrupoClase;
-    }
-
-    public void setIdGrupoClase(GrupoClase idGrupoClase) {
-        this.idGrupoClase = idGrupoClase;
     }
 
     @XmlTransient

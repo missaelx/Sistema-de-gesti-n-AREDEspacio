@@ -53,11 +53,6 @@ public class MensualidadJpaController implements Serializable {
                 idingreso = em.getReference(idingreso.getClass(), idingreso.getId());
                 mensualidad.setIdingreso(idingreso);
             }
-            GrupoClase idGrupoClase = mensualidad.getIdGrupoClase();
-            if (idGrupoClase != null) {
-                idGrupoClase = em.getReference(idGrupoClase.getClass(), idGrupoClase.getId());
-                mensualidad.setIdGrupoClase(idGrupoClase);
-            }
             List<GrupoClase> attachedGrupoClaseList = new ArrayList<GrupoClase>();
             for (GrupoClase grupoClaseListGrupoClaseToAttach : mensualidad.getGrupoClaseList()) {
                 grupoClaseListGrupoClaseToAttach = em.getReference(grupoClaseListGrupoClaseToAttach.getClass(), grupoClaseListGrupoClaseToAttach.getId());
@@ -72,10 +67,6 @@ public class MensualidadJpaController implements Serializable {
             if (idingreso != null) {
                 idingreso.getMensualidadList().add(mensualidad);
                 idingreso = em.merge(idingreso);
-            }
-            if (idGrupoClase != null) {
-                idGrupoClase.getMensualidadList().add(mensualidad);
-                idGrupoClase = em.merge(idGrupoClase);
             }
             for (GrupoClase grupoClaseListGrupoClase : mensualidad.getGrupoClaseList()) {
                 grupoClaseListGrupoClase.getMensualidadList().add(mensualidad);
@@ -99,8 +90,6 @@ public class MensualidadJpaController implements Serializable {
             Alumno idalumnoNew = mensualidad.getIdalumno();
             Ingreso idingresoOld = persistentMensualidad.getIdingreso();
             Ingreso idingresoNew = mensualidad.getIdingreso();
-            GrupoClase idGrupoClaseOld = persistentMensualidad.getIdGrupoClase();
-            GrupoClase idGrupoClaseNew = mensualidad.getIdGrupoClase();
             List<GrupoClase> grupoClaseListOld = persistentMensualidad.getGrupoClaseList();
             List<GrupoClase> grupoClaseListNew = mensualidad.getGrupoClaseList();
             if (idalumnoNew != null) {
@@ -110,10 +99,6 @@ public class MensualidadJpaController implements Serializable {
             if (idingresoNew != null) {
                 idingresoNew = em.getReference(idingresoNew.getClass(), idingresoNew.getId());
                 mensualidad.setIdingreso(idingresoNew);
-            }
-            if (idGrupoClaseNew != null) {
-                idGrupoClaseNew = em.getReference(idGrupoClaseNew.getClass(), idGrupoClaseNew.getId());
-                mensualidad.setIdGrupoClase(idGrupoClaseNew);
             }
             List<GrupoClase> attachedGrupoClaseListNew = new ArrayList<GrupoClase>();
             for (GrupoClase grupoClaseListNewGrupoClaseToAttach : grupoClaseListNew) {
@@ -138,14 +123,6 @@ public class MensualidadJpaController implements Serializable {
             if (idingresoNew != null && !idingresoNew.equals(idingresoOld)) {
                 idingresoNew.getMensualidadList().add(mensualidad);
                 idingresoNew = em.merge(idingresoNew);
-            }
-            if (idGrupoClaseOld != null && !idGrupoClaseOld.equals(idGrupoClaseNew)) {
-                idGrupoClaseOld.getMensualidadList().remove(mensualidad);
-                idGrupoClaseOld = em.merge(idGrupoClaseOld);
-            }
-            if (idGrupoClaseNew != null && !idGrupoClaseNew.equals(idGrupoClaseOld)) {
-                idGrupoClaseNew.getMensualidadList().add(mensualidad);
-                idGrupoClaseNew = em.merge(idGrupoClaseNew);
             }
             for (GrupoClase grupoClaseListOldGrupoClase : grupoClaseListOld) {
                 if (!grupoClaseListNew.contains(grupoClaseListOldGrupoClase)) {
@@ -197,11 +174,6 @@ public class MensualidadJpaController implements Serializable {
             if (idingreso != null) {
                 idingreso.getMensualidadList().remove(mensualidad);
                 idingreso = em.merge(idingreso);
-            }
-            GrupoClase idGrupoClase = mensualidad.getIdGrupoClase();
-            if (idGrupoClase != null) {
-                idGrupoClase.getMensualidadList().remove(mensualidad);
-                idGrupoClase = em.merge(idGrupoClase);
             }
             List<GrupoClase> grupoClaseList = mensualidad.getGrupoClaseList();
             for (GrupoClase grupoClaseListGrupoClase : grupoClaseList) {
