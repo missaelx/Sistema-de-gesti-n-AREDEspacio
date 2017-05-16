@@ -11,14 +11,11 @@
 /Codigo/DRedPelotas/nbproject/private/
 /Codigo/DRedPelotas/build/
 .*/build/.*
-<<<<<<< HEAD
 /Codigo/MiAMiFX/build/
 /Codigo/MiAMiFX/dist/
-=======
 /Codigo/MiAMiCore/dist/
->>>>>>> 032c742a898ccc6005cd666c99535de151d8e99e
 /Codigo/MiAMiCore/build
-Codigo/MiAMiFX/nbproject/
+/Codigo/MiAMiFX/nbproject/
 
 Diseno/modelo relacional\.mwb\.bak
 Codigo/MiAMiFX/.idea/workspace.xml

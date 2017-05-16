@@ -22,7 +22,7 @@ import modelo.GrupoClase;
 import modelo.Ingreso;
 import modelo.Promociones;
 import recursos.AlumnoResource;
-import recursos.IngresoResource;
+import recursos.IngresosResource;
 import recursos.PromocionesResource;
 
 /**
@@ -65,7 +65,7 @@ public class pagarCuotaController implements Initializable {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fecha);
         Ingreso ingreso = new Ingreso();
-        IngresoResource recursoIngreso = new IngresoResource();
+        IngresosResource recursoIngreso = new IngresosResource();
         ingreso.setFecha(fecha);
         ingreso.setMonto(pago);
         if(promociones.getValue()!=null){

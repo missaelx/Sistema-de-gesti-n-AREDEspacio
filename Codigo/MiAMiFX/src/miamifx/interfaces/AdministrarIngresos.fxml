@@ -30,8 +30,6 @@
       <TableView fx:id="tableMensualidades" layoutX="26.0" layoutY="78.0" prefHeight="170.0" prefWidth="831.0">
         <columns>
           <TableColumn fx:id="colMensualidadAlumno" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Alumno" />
-            <TableColumn fx:id="colMensualidadMaestro" prefWidth="75.0" text="Maestro" />
-            <TableColumn fx:id="colMensualidadDanza" prefWidth="75.0" text="Tipo danza" />
           <TableColumn fx:id="colMensualidadMonto" prefWidth="75.0" text="Monto" />
             <TableColumn fx:id="colMensualidadDescripcion" prefWidth="75.0" text="Descripción" />
             <TableColumn fx:id="colMensualidadFecha" prefWidth="75.0" text="Fecha" />

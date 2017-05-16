@@ -257,7 +257,7 @@ public class Alumno implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Alumno[ id=" + id + " ]";
+        return this.nombre + " " + this.apellidos;
     }
 
     public String getFoto() {
