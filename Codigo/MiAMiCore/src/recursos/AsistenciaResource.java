@@ -30,7 +30,7 @@ public class AsistenciaResource {
         return true;
     }
     
-    public List<Asistencia> buscarAsistenciasAlumno(Alumno alumno, Date fecha){
+    public List<Asistencia> buscarAsistenciasAlumno(int alumno, Date fecha){
         AsistenciaJpaController control = new AsistenciaJpaController(emf);
         return control.getAsistenciaAlumno(alumno, fecha);
     }

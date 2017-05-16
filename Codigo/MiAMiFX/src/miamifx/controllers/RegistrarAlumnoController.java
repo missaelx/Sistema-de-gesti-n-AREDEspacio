@@ -10,6 +10,8 @@ import java.nio.file.Paths;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -241,6 +243,11 @@ public class RegistrarAlumnoController implements Initializable {
         return destinyPath;
         
     }
+    public static final LocalDate LOCAL_DATE (String dateString){
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    LocalDate localDate = LocalDate.parse(dateString, formatter);
+    return localDate;
+}
     
     
     
@@ -248,6 +255,7 @@ public class RegistrarAlumnoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         campoSangre.setEditable(false);
         campoSangre.getItems().addAll("O-", "O+","A-","A+","B+","B-","AB+","AB-");
+        campoFechaNacimiento.setValue(LOCAL_DATE("01-01-1990"));
         if(alumno != null){
             this.campoEmergencia.setText(alumno.getTelefonoEmergencia());
             this.campoCorreo.setText(alumno.getCorreo());
@@ -272,6 +280,6 @@ public class RegistrarAlumnoController implements Initializable {
         return phone.matches(regexStr) && phone.length() <= 22;
     }
     public boolean isValidName(String name){
-        return name.matches("[a-zA-Z]+") && name.length() <= 45;
+        return name.matches("([a-z]|[A-Z]|\\s)+") && name.length() <= 45;
     }
 }
