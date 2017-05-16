@@ -2,6 +2,7 @@ package miamifx.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 import javafx.fxml.Initializable;
 
 /**
@@ -11,12 +12,14 @@ import javafx.fxml.Initializable;
  */
 public class RegistrarPagoInscripcionController implements Initializable {
 
+    private Preferences prefs;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }

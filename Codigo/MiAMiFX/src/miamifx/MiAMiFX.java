@@ -1,6 +1,7 @@
 package miamifx;
 
 import java.io.IOException;
+import java.util.prefs.Preferences;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,10 +18,11 @@ import javafx.stage.Stage;
  * @author macbookpro
  */
 public class MiAMiFX extends Application {
-
+    private Preferences prefs;
     
     @Override
     public void start(Stage primaryStage) throws IOException {
+        prefs = Preferences.userRoot().node("miamiPref");
         
         Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("Principal.fxml"));
  
@@ -30,17 +32,9 @@ public class MiAMiFX extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
         
-        /*ControPantallas control = new ControPantallas();
-        if(control.cargarPantalla(this.idRegistrarAlumno, this.escenaRegistrarAlumno)){        
-            control.establecerPantalla(MiAMiFX.idRegistrarAlumno);
-        }else{
-            System.out.println("no se agrego");
-        }
-        Group root = new Group();
-        root.getChildren().addAll(control);
-        Scene escena = new Scene(root);
-        primaryStage.setScene(escena);
-        primaryStage.show();*/
+        prefs.getDouble("monto-inscripcion", 500);
+        
+        
     }
 
     /**
