@@ -23,12 +23,16 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -40,10 +44,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import modelo.Alumno;
+import modelo.Asistencia;
+import modelo.GrupoClase;
+import modelo.Pagodesalario;
 import recursos.AlumnoResource;
 import recursos.AsistenciaResource;
 
@@ -85,16 +95,81 @@ public class EditarAlumnoController implements Initializable {
     @FXML
     private void verAsistencia(ActionEvent event){
         Date fecha = new Date();
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(fecha);
+        calendario.add(Calendar.MONTH, -2);
+        fecha = calendario.getTime();
         Stage Asistencias = new Stage();
-        AnchorPane root = new AnchorPane();
+        GridPane root = new GridPane();
         TableView tablaAsist = new TableView();
         TableColumn columnaFecha = new TableColumn("Fecha");
-        TableColumn columnaClase = new TableColumn("Clase");
+        TableColumn columnaClase = new TableColumn("Tipo de danza");
+        TableColumn columnaMaestro = new TableColumn("Maestro");
+        tablaAsist.getColumns().addAll(columnaFecha, columnaClase, columnaMaestro);
+        tablaAsist.setPrefSize(700, 450);
+        columnaFecha.prefWidthProperty().bind((tablaAsist.widthProperty().divide(3)));
+        columnaClase.prefWidthProperty().bind((tablaAsist.widthProperty().divide(3)));
+        columnaMaestro.prefWidthProperty().bind((tablaAsist.widthProperty().divide(3)));
         Button cerrar = new Button("Cerrar");
-        AsistenciaResource recurso = new AsistenciaResource();
-        ObservableList lista = FXCollections.observableArrayList(recurso.buscarAsistenciasAlumno(alumno, fecha));
+        cerrar.setPadding(new Insets(10));
+        root.setRowIndex(cerrar, 1);
+        cerrar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Asistencias.close();
+            }
+        });
         
-        columnaFecha.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        root.getChildren().addAll(tablaAsist, cerrar);
+        AsistenciaResource recurso = new AsistenciaResource();
+        ObservableList lista = FXCollections.observableArrayList(recurso.buscarAsistenciasAlumno(alumno.getId(), fecha));
+        
+        columnaFecha.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<Asistencia, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<Asistencia, String> film) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    if(film.getValue().getDia() != null)
+                        property.setValue(dateFormat.format(film.getValue().getDia()));
+                    else
+                        property.setValue("N/A");
+                    return property;
+                }
+        });
+        columnaClase.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<Asistencia, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<Asistencia, String> film) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    if(film.getValue().getIdGrupoClase().getIdTipoDanza().getNombre()!= null)
+                        property.setValue(film.getValue().getIdGrupoClase().getIdTipoDanza().getNombre());
+                    else
+                        property.setValue("N/A");
+                    return property;
+                }
+            }
+        );
+        columnaMaestro.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<Asistencia, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<Asistencia, String> film) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    if(film.getValue().getIdGrupoClase().getIdMaestro().getNombre()!= null)
+                        property.setValue(film.getValue().getIdGrupoClase().getIdMaestro().getNombre() + " " + film.getValue().getIdGrupoClase().getIdMaestro().getApellidos());
+                    else
+                        property.setValue("N/A");
+                    return property;
+                }
+            }
+        );
+        tablaAsist.setItems(lista);
+        Scene escena = new Scene(root);
+        Asistencias.setScene(escena);
+        Asistencias.setTitle("Asistencias ");
+        Asistencias.setMinWidth(700);
+        Asistencias.setMinHeight(500);
+        Asistencias.show();
         
     }
     

@@ -109,7 +109,7 @@ public class PasarListaController implements Initializable {
    }
    
    public void setNombreGrupo(){
-       this.txtNombreGrupo.setText("Clase de" + clase.getIdTipoDanza().getNombre());
+       this.txtNombreGrupo.setText("Clase de " + clase.getIdTipoDanza().getNombre() + " del maestro " + clase.getIdMaestro().getNombre() + " " + clase.getIdMaestro().getApellidos());
    }
     /**
      * Initializes the controller class.

@@ -180,6 +180,19 @@ public class AsistenciaJpaController implements Serializable {
             em.close();
         }
     }
+<<<<<<< HEAD
+    
+    public List<Asistencia> getAsistenciaAlumno(int alumno, Date fecha){//Regresa las asistencias registradas de un alumno en un tiempo determinado
+        EntityManager em = getEntityManager();
+        List<Asistencia> Asistencias = (List<Asistencia>) em.createNamedQuery("Asistencia.findByAlumno")
+                .setParameter("idAlumno", alumno)
+                .setParameter("fecha",fecha, TemporalType.DATE)
+                .getResultList();
+        
+        return Asistencias;
+    }
+=======
+>>>>>>> 88846d774b9ef3f30282d81e44416635e1cd67c9
 
     public int getAsistenciaCount() {
         EntityManager em = getEntityManager();

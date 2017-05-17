@@ -89,6 +89,7 @@ public class VerListaAlumnoGrupoController implements Initializable {
             PasarListaController controller = cargador.getController();
             controller.setClase(grupoSeleccionado);
             controller.setListaAsistencia();
+            controller.setNombreGrupo();
             registrarAsistencia.setScene(new Scene(root));
             registrarAsistencia.show();
         } catch (IOException ex) {
