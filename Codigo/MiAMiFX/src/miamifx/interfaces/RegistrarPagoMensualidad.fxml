@@ -12,29 +12,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="476.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.RegistrarPagoMensualidadController">
+<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.RegistrarPagoMensualidadController">
    <children>
       <Label layoutX="93.0" layoutY="14.0" text="Registrar pago mensualidad">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="84.0" layoutY="134.0" text="Monto:" />
-      <Label layoutX="56.0" layoutY="201.0" text="Descripción:" />
-      <Label layoutX="87.0" layoutY="168.0" text="Fecha:" />
-      <Label layoutX="75.0" layoutY="61.0" text="Alumno:" />
-      <Label layoutX="13.0" layoutY="98.0" text="Aplicar promoción:" />
-      <ComboBox fx:id="cmbAlumno" layoutX="144.0" layoutY="56.0" onAction="#onAlumnoChange" prefHeight="27.0" prefWidth="249.0" />
-      <ComboBox fx:id="cmbPromocion" disable="true" layoutX="179.0" layoutY="93.0" onAction="#onPromocionClaseChange" prefHeight="27.0" prefWidth="214.0" />
-      <CheckBox fx:id="checkBoxPromocion" layoutX="151.0" layoutY="97.0" mnemonicParsing="false" onAction="#onPromocionCheck" />
-      <TextField fx:id="txtMonto" layoutX="179.0" layoutY="130.0" prefHeight="27.0" prefWidth="214.0" />
-      <DatePicker fx:id="datePickerFecha" editable="false" layoutX="144.0" layoutY="164.0" prefHeight="27.0" prefWidth="249.0" />
-      <TextArea fx:id="txtDescripcion" layoutX="145.0" layoutY="201.0" prefHeight="22.0" prefWidth="249.0" wrapText="true" />
-      <Label layoutX="156.0" layoutY="134.0" text="\$" />
-      <Button fx:id="btnGuardar" defaultButton="true" disable="true" layoutX="210.0" layoutY="428.0" mnemonicParsing="false" onAction="#registrarPagoMensualidad" prefHeight="27.0" prefWidth="93.0" text="Guardar" />
-      <Button cancelButton="true" layoutX="108.0" layoutY="428.0" mnemonicParsing="false" onAction="#cancelarPago" text="Cancelar" />
-      <Label layoutX="37.0" layoutY="250.0" text="Clases a pagar:" />
-      <TableView fx:id="tableClases" layoutX="26.0" layoutY="275.0" prefHeight="139.0" prefWidth="369.0">
+      <Label layoutX="55.0" layoutY="225.0" text="Monto final:" />
+      <Label layoutX="56.0" layoutY="292.0" text="Descripción:" />
+      <Label layoutX="87.0" layoutY="259.0" text="Fecha:" />
+      <Label layoutX="75.0" layoutY="128.0" text="Alumno:" />
+      <Label layoutX="13.0" layoutY="165.0" text="Aplicar promoción:" />
+      <ComboBox fx:id="cmbAlumno" layoutX="144.0" layoutY="123.0" onAction="#onAlumnoChange" prefHeight="27.0" prefWidth="249.0" />
+      <ComboBox fx:id="cmbPromocion" disable="true" layoutX="179.0" layoutY="160.0" onAction="#onPromocionClaseChange" prefHeight="27.0" prefWidth="214.0" />
+      <CheckBox fx:id="checkBoxPromocion" layoutX="151.0" layoutY="164.0" mnemonicParsing="false" onAction="#onPromocionCheck" />
+      <TextField fx:id="txtMonto" layoutX="179.0" layoutY="221.0" prefHeight="27.0" prefWidth="214.0" />
+      <DatePicker fx:id="datePickerFecha" editable="false" layoutX="144.0" layoutY="255.0" prefHeight="27.0" prefWidth="249.0" />
+      <TextArea fx:id="txtDescripcion" layoutX="145.0" layoutY="292.0" prefHeight="22.0" prefWidth="249.0" wrapText="true" />
+      <Label layoutX="156.0" layoutY="225.0" text="\$" />
+      <Button fx:id="btnGuardar" defaultButton="true" disable="true" layoutX="210.0" layoutY="519.0" mnemonicParsing="false" onAction="#registrarPagoMensualidad" prefHeight="27.0" prefWidth="93.0" text="Guardar" />
+      <Button cancelButton="true" layoutX="108.0" layoutY="519.0" mnemonicParsing="false" onAction="#cancelarPago" text="Cancelar" />
+      <Label layoutX="37.0" layoutY="341.0" text="Clases a pagar:" />
+      <TableView fx:id="tableClases" layoutX="26.0" layoutY="366.0" prefHeight="139.0" prefWidth="369.0">
         <columns>
           <TableColumn fx:id="colTipoDanza" prefWidth="75.0" text="Tipo de danza" />
           <TableColumn fx:id="colMaestro" prefWidth="75.0" text="Maestro" />
@@ -43,5 +43,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Label layoutX="197.0" layoutY="50.0" text="Próximo pago:" textFill="#12792a" />
+      <Label fx:id="lbUltimoPago" layoutX="296.0" layoutY="50.0" text="No registrado" textFill="#12792a" />
+      <Label layoutX="142.0" layoutY="74.0" text="Fecha de reinscripción:" textFill="#12792a" />
+      <Label fx:id="lbFechaReinscripcion" layoutX="296.0" layoutY="74.0" text="No registrado" textFill="#12792a" />
+      <Label layoutX="100.0" layoutY="95.0" text="El alumno tiene un adeudo de:" textFill="#860b0b" />
+      <Label fx:id="lbAdeudo" layoutX="297.0" layoutY="96.0" text="\$0.00" textFill="#860b0b" />
+      <CheckBox fx:id="checkAdeudo" layoutX="151.0" layoutY="195.0" mnemonicParsing="false" onAction="#onPromocionClaseChange" text="Incluir adeudo" />
    </children>
 </AnchorPane>

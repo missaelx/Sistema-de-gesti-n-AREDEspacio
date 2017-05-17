@@ -215,7 +215,7 @@ public class AdministrarIngresosController implements Initializable {
         }
         
         RegistrarPagoInscripcionController controlHijo = (RegistrarPagoInscripcionController) cargador.getController();
-        //controlHijo.setControladorPadre(this);
+        controlHijo.setControladorPadre(this);
         
         Scene escena = new Scene(root);
         
