@@ -1,6 +1,7 @@
 package recursos;
 
 import controladores.AlumnoJpaController;
+import controladores.AlumnoJpaControllerExtended;
 import controladores.EgresoJpaController;
 import controladores.GastovariableJpaController;
 import controladores.GastovariableJpaControllerExtended;
@@ -153,6 +154,7 @@ public class IngresosResource {
     }
 
     public boolean eliminarInscripcion(Inscripcion pago) {
+        
         Ingreso ingreso = pago.getIdingreso();
         InscripcionJpaController controladorInscripcion = new InscripcionJpaController(emf);
         IngresoJpaController controladorIngreso = new IngresoJpaController(emf);
@@ -164,10 +166,45 @@ public class IngresosResource {
             pago.setIdingreso(null);
             ingreso.setInscripcionList(null);
             controladorIngreso.destroy(ingreso.getId());
-        } catch (IllegalOrphanException | NonexistentEntityException ex) {
+            
+            
+            //modificamos la fecha de inscripcion del alumno
+            AlumnoJpaControllerExtended controladorAlumno = new AlumnoJpaControllerExtended(emf);
+            Alumno alumnoAfectado = controladorAlumno.findAlumno(pago.getIdalumno().getId());
+            Date nuevaInscripcion;
+            if(alumnoAfectado.getInscripcionList().size() >= 1){
+                nuevaInscripcion = alumnoAfectado.getInscripcionList().get(0).getIdingreso().getFecha();
+                for(Inscripcion i : alumnoAfectado.getInscripcionList()){
+                    if(nuevaInscripcion.compareTo(i.getIdingreso().getFecha()) < 0){
+                        nuevaInscripcion = i.getIdingreso().getFecha();
+                    }
+                }
+            } else {
+                nuevaInscripcion = null;
+            }
+            
+            if(nuevaInscripcion != null){
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(nuevaInscripcion);
+                cal.add(Calendar.YEAR, 1);
+                alumnoAfectado.setFechaInscripcion(cal.getTime());
+            } else{
+                alumnoAfectado.setFechaInscripcion(nuevaInscripcion);
+            }
+            
+            
+            
+
+            controladorAlumno.edit(alumnoAfectado);
+            
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             result = false;
         }
+        
+            
+        
+        
         return result;
     }
     

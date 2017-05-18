@@ -250,6 +250,7 @@ public class AdministrarIngresosController implements Initializable {
                 eliminado.setTitle("Pago eliminado correctamente");
                 eliminado.setHeaderText("Se ha eliminado el pago");
                 eliminado.show();
+                setTableInscripciones();
             } else {
                 eliminado.setTitle("Conexión perdida con la base de datos");
                 eliminado.setHeaderText("No se ha eliminado el pago");

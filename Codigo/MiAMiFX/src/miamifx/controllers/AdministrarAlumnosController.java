@@ -48,7 +48,7 @@ import recursos.AlumnoResource;
 public class AdministrarAlumnosController implements Initializable {
 
     @FXML
-    private Button btnPagar, btnDetalles, btnBuscar, btnEliminar;
+    private Button btnDetalles, btnBuscar, btnEliminar;
     @FXML
     private ComboBox comboBusqueda;
     @FXML
@@ -130,7 +130,6 @@ public class AdministrarAlumnosController implements Initializable {
     private void activarBotones() {
         this.btnDetalles.setDisable(false);
         this.btnEliminar.setDisable(false);
-        this.btnPagar.setDisable(false);
     }
 
     @FXML
@@ -172,7 +171,6 @@ public class AdministrarAlumnosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         campoBusqueda.setDisable(true);
         btnBuscar.setDisable(true);
-        btnPagar.setDisable(true);
         comboBusqueda.getItems().addAll("Nombre", "Correo");
         setTabla();
 
@@ -186,19 +184,11 @@ public class AdministrarAlumnosController implements Initializable {
     }
 
     public void onTableSelection() {
-        activarBotones();
         Alumno alumnoSeleccionado = (Alumno) tablaAlumnos.getSelectionModel().getSelectedItem();
-        if (!"".equals(alumnoSeleccionado.getFoto()) && alumnoSeleccionado.getFoto() != null) {
-            Image image = null;
-            File file;
-            try {
-                file = new File(alumnoSeleccionado.getFoto());
-                image = new Image(file.toURI().toURL().toExternalForm());
-                fotoAlumno.setImage(image);
-            } catch (MalformedURLException ex) {
-                System.out.println("Ruta incorrecta");
-            }
-        } else {
+        if(alumnoSeleccionado == null) return;
+        else activarBotones();
+        
+        if (alumnoSeleccionado.getFoto() == null || alumnoSeleccionado.getFoto().equals("")) {    
             Path currentRelativePath = Paths.get("");
             String currentPath = currentRelativePath.toAbsolutePath().toString();
             String dfu = currentPath + "/USERSPICTURES/userDefault.png";
@@ -209,28 +199,16 @@ public class AdministrarAlumnosController implements Initializable {
             } catch (MalformedURLException ex1) {
                 Logger.getLogger(EditarAlumnoController.class.getName()).log(Level.SEVERE, null, ex1);
             }
+        } else {
+            Image image = null;
+            File file;
+            try {
+                file = new File(alumnoSeleccionado.getFoto());
+                image = new Image(file.toURI().toURL().toExternalForm());
+                fotoAlumno.setImage(image);
+            } catch (MalformedURLException ex) {
+                System.out.println("Ruta incorrecta");
+            }
         }
-        if(alumnoSeleccionado.getFechaInscripcion()!=null){
-            btnPagar.setText("Pagar Mensualidad");
-        }else{
-            btnPagar.setText("Inscribir");
-        }
-    }
-
-    @FXML
-    private void pagarCuota(ActionEvent actionEvent) throws IOException, ParseException {
-        Stage pagarCuota = new Stage();
-        FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/PagarCuota.fxml"));
-        AnchorPane root = cargador.load();
-        pagarCuotaController control = (pagarCuotaController) cargador.getController();
-        cargador.setController(control);
-        control.setControlPadre(this);
-        control.setAlumno((Alumno) tablaAlumnos.getSelectionModel().getSelectedItem());
-        control.setInscripcionEnable();
-        control.setFechaPago();
-        control.setCantidadPago();
-        Scene escena = new Scene(root);
-        pagarCuota.setScene(escena);
-        pagarCuota.show();
     }
 }

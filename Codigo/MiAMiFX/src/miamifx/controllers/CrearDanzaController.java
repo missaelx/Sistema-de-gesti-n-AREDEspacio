@@ -34,7 +34,7 @@ import recursos.DanzaResource;
 public class CrearDanzaController implements Initializable {
 
     @FXML
-    private Button botonGuardar, botonCancelar, botonGuardarYCGrupo;
+    private Button botonGuardar, botonCancelar;
     @FXML
     private TextField tfNombreDanza, tfDescripcion;
     private TipoDanza tipoDanza;
@@ -45,10 +45,8 @@ public class CrearDanzaController implements Initializable {
     public void tfNoVacio() {
         if (tfNombreDanza.getText().isEmpty() || tfDescripcion.getText().isEmpty()) {
             botonGuardar.setDisable(true);
-            botonGuardarYCGrupo.setDisable(true);
         } else {
             botonGuardar.setDisable(false);
-            botonGuardarYCGrupo.setDisable(false);
         }
 
     }
@@ -100,33 +98,7 @@ public class CrearDanzaController implements Initializable {
 
     }
 
-    @FXML
-    private void guardarYCGrupo(ActionEvent evento) {
-        DanzaResource recurso = new DanzaResource();
-        tipoDanza = new TipoDanza();
-        tipoDanza.setActivo(true);
-        tipoDanza.setNombre(tfNombreDanza.getText());
-        tipoDanza.setDescripcion(tfDescripcion.getText());
-        recurso.crearDanza(tipoDanza);
-        controlador.setTabla();
-        botonGuardarYCGrupo.getScene().getWindow().hide();
-        try {
-            Stage crearGrupoDanza = new Stage();
-            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearGrupoDeDanza.fxml"));
-            CrearGrupoDeDanzaController crearGrupoDeDanzaControl = (CrearGrupoDeDanzaController) cargador.getController();
-            AnchorPane root = cargador.load();
-            CrearGrupoDeDanzaController control = (CrearGrupoDeDanzaController) cargador.getController();
-            control.setTipoDazanza(tipoDanza);
-            control.setTituloNombreDanza();
-            Scene escena = new Scene(root);
-            crearGrupoDanza.setScene(escena);
-            crearGrupoDanza.show();
-
-        } catch (IOException ex) {
-            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
+    
 
     /**
      * Initializes the controller class.

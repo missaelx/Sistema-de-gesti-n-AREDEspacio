@@ -393,7 +393,7 @@ public class EditarAlumnoController implements Initializable {
         return phone.matches(regexStr) && phone.length() <= 22;
     }
     public boolean isValidName(String name){
-        return name.matches("[a-zA-Z]+");
+        return name.length() < 45;
     }
     
 }

@@ -280,6 +280,6 @@ public class RegistrarAlumnoController implements Initializable {
         return phone.matches(regexStr) && phone.length() <= 22;
     }
     public boolean isValidName(String name){
-        return name.matches("([a-z]|[A-Z]|\\s)+") && name.length() <= 45;
+        return name.length() <= 45;
     }
 }
