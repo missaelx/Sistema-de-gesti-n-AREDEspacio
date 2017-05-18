@@ -29,10 +29,6 @@ public class AsistenciaResource {
 
     public List<Asistencia> buscarAsistenciasAlumno(Alumno alumno, Date fecha){
         AsistenciaJpaControllerExtended control = new AsistenciaJpaControllerExtended(emf);
-<<<<<<< HEAD
-=======
-
->>>>>>> 0e2f1f2fa016521f63fb241e3ed5e6beaed094f3
         return control.getAsistenciaAlumno(alumno, fecha);
     }
 }
