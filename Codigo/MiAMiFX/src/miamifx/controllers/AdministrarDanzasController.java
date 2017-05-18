@@ -141,7 +141,38 @@ public class AdministrarDanzasController implements Initializable {
 
     @FXML
     private void editarGrupo(ActionEvent event) {
-        System.out.println("Hola mundo");
+        try {
+            Stage crearGrupoDanza = new Stage();
+            FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearGrupoDeDanza.fxml"));
+
+            //URL url = new File("src/miamifx/CrearDanza.fxml").toURL();            
+            AnchorPane root = cargador.load();
+            CrearGrupoDeDanzaController control = (CrearGrupoDeDanzaController) cargador.getController();
+            control.setControlador(this);
+            if(tablaGrupos.getSelectionModel().getSelectedItem()!=null){
+                TipoDanza tipoDanza = tablaDanzas.getSelectionModel().getSelectedItem();
+                control.setTipoDazanza(tipoDanza);
+                control.setClase(tablaGrupos.getSelectionModel().getSelectedItem());
+                control.setEditar(true);
+                control.setSpinnerClase(tablaGrupos.getSelectionModel().getSelectedItem());
+                control.iniciarModificacion();
+                
+            }else{
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setHeaderText("No se eligió ninguna danza");
+                alerta.setTitle("Error");
+                alerta.setContentText("Por favor, selecciona una danza antes de continuar");
+                alerta.show();
+                return;
+            }
+            control.setTituloNombreDanza();
+            Scene escena = new Scene(root);
+            crearGrupoDanza.setScene(escena);
+            crearGrupoDanza.show();
+
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
