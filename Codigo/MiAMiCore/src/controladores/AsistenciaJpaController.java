@@ -7,11 +7,13 @@ package controladores;
 
 import controladores.exceptions.NonexistentEntityException;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.TemporalType;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import modelo.Alumno;
@@ -180,9 +182,7 @@ public class AsistenciaJpaController implements Serializable {
             em.close();
         }
     }
-<<<<<<< HEAD
-    
-    public List<Asistencia> getAsistenciaAlumno(int alumno, Date fecha){//Regresa las asistencias registradas de un alumno en un tiempo determinado
+   public List<Asistencia> getAsistenciaAlumno(int alumno, Date fecha){//Regresa las asistencias registradas de un alumno en un tiempo determinado
         EntityManager em = getEntityManager();
         List<Asistencia> Asistencias = (List<Asistencia>) em.createNamedQuery("Asistencia.findByAlumno")
                 .setParameter("idAlumno", alumno)
@@ -191,8 +191,6 @@ public class AsistenciaJpaController implements Serializable {
         
         return Asistencias;
     }
-=======
->>>>>>> 88846d774b9ef3f30282d81e44416635e1cd67c9
 
     public int getAsistenciaCount() {
         EntityManager em = getEntityManager();

@@ -122,7 +122,7 @@ public class EditarAlumnoController implements Initializable {
         
         root.getChildren().addAll(tablaAsist, cerrar);
         AsistenciaResource recurso = new AsistenciaResource();
-        ObservableList lista = FXCollections.observableArrayList(recurso.buscarAsistenciasAlumno(alumno.getId(), fecha));
+        ObservableList lista = FXCollections.observableArrayList(recurso.buscarAsistenciasAlumno(alumno, fecha));
         
         columnaFecha.setCellValueFactory(
             new Callback<TableColumn.CellDataFeatures<Asistencia, String>, ObservableValue<String>>() {

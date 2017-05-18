@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Asistencia.findAll", query = "SELECT a FROM Asistencia a")
-        ,@NamedQuery(name = "Asistencia.findByAlumno", query = "Select a FROM Asistencia a WHERE a.idAlumno.id = :idAlumno AND a.dia > :fecha")
+        ,@NamedQuery(name = "Asistencia.findByAlumno", query = "Select a FROM Asistencia a WHERE a.idAlumno = :idAlumno AND a.dia > :fecha")
     , @NamedQuery(name = "Asistencia.findById", query = "SELECT a FROM Asistencia a WHERE a.id = :id")
     , @NamedQuery(name = "Asistencia.findByDia", query = "SELECT a FROM Asistencia a WHERE a.dia = :dia")})
 public class Asistencia implements Serializable {
