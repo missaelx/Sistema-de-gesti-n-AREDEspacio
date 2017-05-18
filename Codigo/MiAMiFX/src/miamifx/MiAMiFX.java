@@ -30,6 +30,7 @@ public class MiAMiFX extends Application {
  
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
+        primaryStage.setTitle("Ared Espacio - MiAMi System");
         primaryStage.show();
         
         prefs.getDouble("monto-inscripcion", 500);
