@@ -1,6 +1,7 @@
 package miamifx.controllers;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 import javafx.event.ActionEvent;
@@ -36,11 +37,15 @@ public class AdministrarConfiguracionController implements Initializable {
         Alert alert;
         try{
             double montoNuevo = Double.parseDouble(txtMonto.getText());
+            DecimalFormat df = new DecimalFormat("#.##"); 
+            montoNuevo = Double.valueOf(df.format(montoNuevo));
             prefs.putDouble("monto-inscripcion", montoNuevo);
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Guardado");
             alert.setContentText("Guardado");
             alert.setHeaderText("Se ha guardado con exito el cambio");
+            alert.show();
+            txtMonto.setText(Double.toString(montoNuevo));
         } catch (Exception e){
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Número mal escrito");

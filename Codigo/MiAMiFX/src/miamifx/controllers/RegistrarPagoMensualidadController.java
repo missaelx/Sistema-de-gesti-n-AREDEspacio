@@ -3,9 +3,11 @@ package miamifx.controllers;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import static java.time.temporal.TemporalQueries.localDate;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +26,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -56,12 +59,17 @@ public class RegistrarPagoMensualidadController implements Initializable {
     @FXML
     private Button btnGuardar;
     @FXML
-    private CheckBox checkBoxPromocion;
+    private CheckBox checkBoxPromocion, checkAdeudo;
     @FXML
     private TableView tableClases;
     @FXML
     private TableColumn colMaestro, colTipoDanza;
+    @FXML
+    private Label lbUltimoPago, lbFechaReinscripcion, lbAdeudo;
 
+    private static BigDecimal adeudoAlumno = new BigDecimal(0);
+    private static BigDecimal montoTotalAPagar = new BigDecimal(0);
+    
     private AdministrarIngresosController controladorPadre;
     public AdministrarIngresosController getControladorPadre() {
         return controladorPadre;
@@ -82,6 +90,7 @@ public class RegistrarPagoMensualidadController implements Initializable {
     }    
 
     private void inicializarControles() {
+        datePickerFecha.setValue(LocalDate.now());
         boolean activamosBoton = true;
         
         AlumnoResource recursoAlumno = new AlumnoResource();
@@ -94,19 +103,20 @@ public class RegistrarPagoMensualidadController implements Initializable {
             alert.setHeaderText("No se han encontrado registros de alumnos");
             alert.setContentText("Registra un alumno primero");
             alert.show();
+            return;
         } else {
             ObservableList llistaAlumno = FXCollections.observableArrayList(alumnos);
             cmbAlumno.setItems(llistaAlumno);
             cmbAlumno.getSelectionModel().selectFirst();
             
+            
             PromocionesResource recursoPromociones = new PromocionesResource();
-            ObservableList llistaPromociones = FXCollections.observableArrayList(recursoPromociones.getActivos());
+            ObservableList llistaPromociones = FXCollections.observableArrayList(recursoPromociones.getPromoMensualidad());
             cmbPromocion.setItems(llistaPromociones);
             cmbPromocion.getSelectionModel().selectFirst();
             
-            Alumno alumnoSeleccionado = (Alumno) cmbAlumno.getSelectionModel().getSelectedItem();
-            ObservableList llistaClasesAlumno = FXCollections.observableArrayList(alumnoSeleccionado.getGrupoClaseList());
-            tableClases.setItems(llistaClasesAlumno);
+            onAlumnoChange(null);
+            
             colMaestro.setCellValueFactory(
                 new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
                     @Override
@@ -136,7 +146,7 @@ public class RegistrarPagoMensualidadController implements Initializable {
                 }
             );
                 
-            if(llistaClasesAlumno.size() <= 0){
+            if(tableClases.getItems().size() <= 0){
                 activamosBoton = false;
                 alert.setTitle("No existen clases registradas para el alumno");
                 alert.setHeaderText("No se han encontrado registros de clases");
@@ -146,8 +156,6 @@ public class RegistrarPagoMensualidadController implements Initializable {
                 onPromocionClaseChange(null);
             }
         }
-        
-        datePickerFecha.setValue(LocalDate.now());
         
         btnGuardar.setDisable(!activamosBoton);
         
@@ -174,7 +182,16 @@ public class RegistrarPagoMensualidadController implements Initializable {
         for(GrupoClase g: listaClases){
             montoFinal = montoFinal.add(g.getCostoMensual());
         }
+        montoTotalAPagar = montoFinal;
         descripcion += "Monto por mensualidad: $" + montoFinal;
+        
+        calcularAdeudo();
+        if(checkAdeudo.isSelected()){
+            montoFinal = montoFinal.add(adeudoAlumno);
+            descripcion += " - Monto más adeudo: $" + Double.toString(montoFinal.setScale(2, RoundingMode.HALF_UP).doubleValue());
+        }
+        
+        
         if(checkBoxPromocion.isSelected()){
             Promociones promocionSeleccionada = (Promociones) cmbPromocion.getSelectionModel().getSelectedItem();
             BigDecimal factorDescuento = new BigDecimal((
@@ -182,13 +199,32 @@ public class RegistrarPagoMensualidadController implements Initializable {
             montoFinal = montoFinal.divide(factorDescuento, 2 ,RoundingMode.CEILING);
             descripcion += " - Monto con descuento: $" + montoFinal;
         }
-        txtMonto.setText(montoFinal.toString());
+        
+        txtMonto.setText(Double.toString(montoFinal.setScale(2, RoundingMode.HALF_UP).doubleValue()));
         txtDescripcion.setText(descripcion);
     }
     
     @FXML
     public void onAlumnoChange(ActionEvent event){
         setTablaClases();
+        calcularAdeudo();
+        SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
+        
+        Date proximoPago = ((Alumno) cmbAlumno.getSelectionModel().getSelectedItem()).getDiapago();
+        if(proximoPago != null)
+            lbUltimoPago.setText(formater.format(proximoPago));
+        else
+            lbUltimoPago.setText("No registrado");
+        
+        Date reinscripcion = ((Alumno) cmbAlumno.getSelectionModel().getSelectedItem()).getFechaInscripcion();
+        if(reinscripcion != null)
+            lbFechaReinscripcion.setText(formater.format(reinscripcion));
+        else
+            lbFechaReinscripcion.setText("No registrado");
+        
+        
+        lbAdeudo.setText("$" + Double.toString(adeudoAlumno.setScale(2, RoundingMode.HALF_UP).doubleValue()));
+        
     }
     
     @FXML
@@ -244,5 +280,25 @@ public class RegistrarPagoMensualidadController implements Initializable {
             alert.setContentText("Contácta con tu administrador del sistema");
             alert.show();
         }
+    }
+
+    private void calcularAdeudo() {
+        Alumno alumnoSeleccionado = (Alumno) cmbAlumno.getSelectionModel().getSelectedItem();
+        Date fechaDePagoCorrespondiente = alumnoSeleccionado.getDiapago();
+        Date fechaDePago = Date.from(datePickerFecha.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        
+        int diasPasados = (int)( (fechaDePago.getTime() - fechaDePagoCorrespondiente.getTime()) 
+                 / (1000 * 60 * 60 * 24));
+        
+        int semanasPasadas = (diasPasados+1)/8;
+        
+        BigDecimal adeudo = montoTotalAPagar;
+        
+        for(int i = 0; i < semanasPasadas; i++){
+            BigDecimal porcentaje5 = adeudo.add(adeudo.multiply(new BigDecimal(0.05))).add(montoTotalAPagar.negate());
+            adeudo = adeudo.add(porcentaje5);
+        }
+        adeudo = adeudo.add(montoTotalAPagar.negate());
+        adeudoAlumno = adeudo;
     }
 }

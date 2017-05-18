@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="418.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="miamifx.controllers.RegistrarPagoInscripcionController">
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="418.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miamifx.controllers.RegistrarPagoInscripcionController">
    <children>
       <Label layoutX="92.0" layoutY="14.0" text="Registrar pago de inscripción">
          <font>
@@ -23,14 +22,14 @@
       <Label layoutX="20.0" layoutY="111.0" text="Aplicar promoción:" />
       <Label layoutX="87.0" layoutY="205.0" text="Fecha:" />
       <Label layoutX="59.0" layoutY="240.0" text="Descripción:" />
-      <ComboBox layoutX="163.0" layoutY="61.0" prefHeight="27.0" prefWidth="217.0" />
-      <ComboBox disable="true" layoutX="192.0" layoutY="104.0" prefHeight="27.0" prefWidth="188.0" />
-      <TextField layoutX="192.0" layoutY="155.0" prefHeight="27.0" prefWidth="188.0" />
+      <ComboBox fx:id="cmbAlumno" layoutX="163.0" layoutY="61.0" prefHeight="27.0" prefWidth="217.0" />
+      <ComboBox fx:id="cmbPromocion" disable="true" layoutX="192.0" layoutY="104.0" onAction="#onCmbPromocionChange" prefHeight="27.0" prefWidth="188.0" />
+      <TextField fx:id="txtMonto" layoutX="192.0" layoutY="155.0" prefHeight="27.0" prefWidth="188.0" />
       <Label layoutX="170.0" layoutY="159.0" text="\$" />
-      <DatePicker editable="false" layoutX="163.0" layoutY="200.0" prefHeight="27.0" prefWidth="217.0" />
-      <TextArea layoutX="37.0" layoutY="266.0" prefHeight="164.0" prefWidth="344.0" />
-      <CheckBox layoutX="164.0" layoutY="109.0" mnemonicParsing="false" />
-      <Button defaultButton="true" disable="true" layoutX="257.0" layoutY="440.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" text="Registrar" />
-      <Button cancelButton="true" layoutX="150.0" layoutY="440.0" mnemonicParsing="false" text="Cancelar" />
+      <DatePicker fx:id="datePickerFecha" editable="false" layoutX="163.0" layoutY="200.0" prefHeight="27.0" prefWidth="217.0" />
+      <TextArea fx:id="txtDescripcion" layoutX="37.0" layoutY="266.0" prefHeight="164.0" prefWidth="344.0" />
+      <CheckBox fx:id="checkPromocion" layoutX="164.0" layoutY="109.0" mnemonicParsing="false" onAction="#onCheckPromocionClick" />
+      <Button fx:id="btnRegistrar" defaultButton="true" disable="true" layoutX="257.0" layoutY="440.0" mnemonicParsing="false" onAction="#onRegistrarInscripcion" prefHeight="27.0" prefWidth="92.0" text="Registrar" />
+      <Button cancelButton="true" layoutX="150.0" layoutY="440.0" mnemonicParsing="false" onAction="#onCancelar" text="Cancelar" />
    </children>
 </AnchorPane>

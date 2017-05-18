@@ -116,7 +116,7 @@ public class RegistrarMaestroController implements Initializable {
     }
 
     public boolean isValidName(String name) {
-        return name.matches("([a-z]|[A-Z]|\\s)+") && name.length() <= 45;
+        return name.length() <= 45;
     }
 
     @Override

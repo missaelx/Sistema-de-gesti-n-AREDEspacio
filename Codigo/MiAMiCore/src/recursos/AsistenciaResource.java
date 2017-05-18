@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package recursos;
 
 import controladores.AsistenciaJpaController;
@@ -34,6 +29,10 @@ public class AsistenciaResource {
 
     public List<Asistencia> buscarAsistenciasAlumno(Alumno alumno, Date fecha){
         AsistenciaJpaControllerExtended control = new AsistenciaJpaControllerExtended(emf);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0e2f1f2fa016521f63fb241e3ed5e6beaed094f3
         return control.getAsistenciaAlumno(alumno, fecha);
     }
 }
