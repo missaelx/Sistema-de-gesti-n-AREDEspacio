@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,11 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -27,9 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Mensualidad.findById", query = "SELECT m FROM Mensualidad m WHERE m.id = :id")})
 public class Mensualidad implements Serializable {
 
-    @JoinColumn(name = "idGrupoClase", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private GrupoClase idGrupoClase;
+    @ManyToMany(mappedBy = "mensualidadList")
+    private List<GrupoClase> grupoClaseList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -100,12 +102,13 @@ public class Mensualidad implements Serializable {
         return "modelo.Mensualidad[ id=" + id + " ]";
     }
 
-    public GrupoClase getIdGrupoClase() {
-        return idGrupoClase;
+    @XmlTransient
+    public List<GrupoClase> getGrupoClaseList() {
+        return grupoClaseList;
     }
 
-    public void setIdGrupoClase(GrupoClase idGrupoClase) {
-        this.idGrupoClase = idGrupoClase;
+    public void setGrupoClaseList(List<GrupoClase> grupoClaseList) {
+        this.grupoClaseList = grupoClaseList;
     }
     
 }

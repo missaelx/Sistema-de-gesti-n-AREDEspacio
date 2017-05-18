@@ -7,9 +7,13 @@ package miamifx.controllers;
 
 import controladores.exceptions.NonexistentEntityException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,6 +36,8 @@ import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
+import modelo.Pagodesalario;
 import recursos.MaestroResource;
 
 /**
@@ -71,7 +77,7 @@ public class EditarMaestrosController implements Initializable {
     }
 
     public boolean isValidName(String name) {
-        return name.matches("([a-z]|[A-Z]|\\s)+") && name.length() <= 45;
+        return name.length() <= 45;
     }
 
     @FXML
@@ -176,8 +182,32 @@ public class EditarMaestrosController implements Initializable {
         });
         ObservableList lista = FXCollections.observableArrayList(recurso.getPagosDeSalario(maestro.getId()));
 
-        monto.setCellValueFactory(new PropertyValueFactory<>("monto"));
-        fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        monto.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<Pagodesalario, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<Pagodesalario, String> film) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    if(film.getValue().getMonto() != null)
+                        property.setValue("$" + film.getValue().getMonto());
+                    else
+                        property.setValue("N/A");
+                    return property;
+                }
+            }
+        );
+        fecha.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<Pagodesalario, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<Pagodesalario, String> film) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    if(film.getValue().getFecha() != null)
+                        property.setValue(dateFormat.format(film.getValue().getFecha()));
+                    else
+                        property.setValue("N/A");
+                    return property;
+                }
+        });
         descripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tablaPagos.getColumns().addAll(monto, fecha, descripcion);
         tablaPagos.setItems(lista);

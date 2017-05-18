@@ -26,7 +26,9 @@ import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.util.Callback;
 import modelo.Gastovariable;
 
@@ -66,7 +68,7 @@ public class AdministrarPromocionesController implements Initializable {
     }
 
     @FXML
-    private void crearPromocion(ActionEvent actionEvent){
+    private void crearPromocion(ActionEvent event){
         try {
             Stage promocion = new Stage();
             FXMLLoader cargador = new FXMLLoader(getClass().getClassLoader().getResource("miamifx/interfaces/CrearPromocion.fxml"));
@@ -76,6 +78,12 @@ public class AdministrarPromocionesController implements Initializable {
             control.setControlPadre(this);
             Scene escena = new Scene(root);
             promocion.setScene(escena);
+            
+            promocion.initModality(Modality.WINDOW_MODAL);
+            promocion.initOwner(
+                    ((Node) event.getSource()).getScene().getWindow());
+            promocion.setResizable(false);
+            
             promocion.show();
         } catch (IOException e) {
             e.printStackTrace();

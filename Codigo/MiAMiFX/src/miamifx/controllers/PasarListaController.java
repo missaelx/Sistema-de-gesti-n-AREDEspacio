@@ -90,7 +90,7 @@ public class PasarListaController implements Initializable {
         confirmacion.setTitle("Cancelar Registro");
 
         if (confirmacion.showAndWait().get().equals(ButtonType.OK)) {
-            btnCancelar.getScene().getWindow().hide();
+            btnGuardar.getScene().getWindow().hide();
         }
 
    }
@@ -109,7 +109,7 @@ public class PasarListaController implements Initializable {
    }
    
    public void setNombreGrupo(){
-       this.txtNombreGrupo.setText("Clase de" + clase.getIdTipoDanza().getNombre());
+       this.txtNombreGrupo.setText("Clase de " + clase.getIdTipoDanza().getNombre() + " del maestro " + clase.getIdMaestro().getNombre() + " " + clase.getIdMaestro().getApellidos());
    }
     /**
      * Initializes the controller class.

@@ -47,7 +47,7 @@ public class CrearPromocionController implements Initializable {
     private void guardarPromocion(ActionEvent actionEvent) {
         PromocionesResource recurso = new PromocionesResource();
         Promociones promocion = new Promociones();
-        if (campoNombrePromocion.getText().equals("") || campoDescuento.equals("") || comboTipoPromocion == null) {
+        if (campoNombrePromocion.getText().equals("") || campoDescuento.getText().equals("") || comboTipoPromocion.getValue() == null) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setContentText("Los campos no pueden estar vacios, por favor ingresa la informacion completa.");
             alerta.setTitle("Campos vacios");
@@ -73,8 +73,16 @@ public class CrearPromocionController implements Initializable {
                     alerta.setTitle("Ocurrio un error");
                     alerta.show();
                 }
+            } else {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setContentText("El número está mal escrito");
+                alerta.setTitle("Número incorrecto");
+                alerta.setHeaderText("Corrige el número para continuar");
+                alerta.show();
             }
         }
+        
+        
         controlPadre.setTabla();
     }
 
