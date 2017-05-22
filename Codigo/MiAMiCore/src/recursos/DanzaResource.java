@@ -86,6 +86,7 @@ public class DanzaResource {
     }
     
     public boolean modificarGrupoClase(GrupoClase grupo) throws NonexistentEntityException{
+        
         GrupoClaseJpaController grupoController = new GrupoClaseJpaController(emf);
         try {
             grupoController.edit(grupo);
