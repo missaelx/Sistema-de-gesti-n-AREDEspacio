@@ -85,11 +85,35 @@ public class DanzaResource {
         return true;
     }
     
-    public boolean modificarGrupoClase(GrupoClase grupo) throws NonexistentEntityException{
+    public boolean modificarGrupoClase(GrupoClase grupoNuevo) throws NonexistentEntityException{
         
         GrupoClaseJpaController grupoController = new GrupoClaseJpaController(emf);
+        GrupoClase anteriorGrupo = grupoController.findGrupoClase(grupoNuevo.getId());
+        
+        HorarioJpaController controladorHorario = new HorarioJpaController(emf);
         try {
-            grupoController.edit(grupo);
+            //eliminamos los horarios anteriores para meter los nuevos
+            for(Horario h : anteriorGrupo.getHorarioList()){
+                controladorHorario.destroy(h.getId());
+            }
+
+            //pasamos los datos del nuevo registro al viejo
+            anteriorGrupo.setHorarioList(grupoNuevo.getHorarioList());
+            anteriorGrupo.setAsistenciaList(grupoNuevo.getAsistenciaList());
+            anteriorGrupo.setActivo(grupoNuevo.getActivo());
+            anteriorGrupo.setCostoMensual(grupoNuevo.getCostoMensual());
+            anteriorGrupo.setIdMaestro(grupoNuevo.getIdMaestro());
+            anteriorGrupo.setIdTipoDanza(grupoNuevo.getIdTipoDanza());
+            anteriorGrupo.setPorcentajeGananciaMaestro(grupoNuevo.getPorcentajeGananciaMaestro());
+            anteriorGrupo.setTerminado(grupoNuevo.getTerminado());
+            
+            //se guardan todos los horarios antes
+            for(Horario h : anteriorGrupo.getHorarioList()){
+                controladorHorario.create(h);
+            }
+            
+            
+            grupoController.edit(anteriorGrupo);
         } catch (Exception ex) {
             Logger.getLogger(DanzaResource.class.getName()).log(Level.SEVERE, null, ex);
             return false;
