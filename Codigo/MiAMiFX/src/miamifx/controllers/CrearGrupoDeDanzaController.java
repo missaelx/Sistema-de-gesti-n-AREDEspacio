@@ -296,6 +296,7 @@ public class CrearGrupoDeDanzaController implements Initializable {
                 controlador.setTabla();
                 botonGuardar.getScene().getWindow().hide();
             }
+            
         }
     }
 
