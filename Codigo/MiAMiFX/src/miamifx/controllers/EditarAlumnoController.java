@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +34,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -47,7 +50,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Alumno;
@@ -56,6 +61,7 @@ import modelo.GrupoClase;
 import modelo.Pagodesalario;
 import recursos.AlumnoResource;
 import recursos.AsistenciaResource;
+import recursos.GrupoClaseResource;
 
 /**
  * FXML Controller class
@@ -169,6 +175,10 @@ public class EditarAlumnoController implements Initializable {
         Asistencias.setTitle("Asistencias ");
         Asistencias.setMinWidth(700);
         Asistencias.setMinHeight(500);
+        Asistencias.setResizable(false);
+        Asistencias.initModality(Modality.WINDOW_MODAL);
+        Asistencias.initOwner(
+                    ((Node) event.getSource()).getScene().getWindow());
         Asistencias.show();
         
     }
@@ -396,4 +406,73 @@ public class EditarAlumnoController implements Initializable {
         return name.length() < 45;
     }
     
+    @FXML
+    public void verClaseInscritasClick(ActionEvent e){
+        Stage clasesInscritasStage = new Stage();
+        VBox vbox = new VBox();
+        vbox.setAlignment(Pos.CENTER);
+        TableView tableClases = new TableView();
+        TableColumn colTipoDanza = new TableColumn("Tipo de danza");
+        TableColumn colMaestro = new TableColumn("Maestro");
+        TableColumn colCosto = new TableColumn("Costo mensual");
+        
+        colTipoDanza.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    if(grupo.getValue().getIdTipoDanza() != null)
+                        property.setValue(grupo.getValue().getIdTipoDanza().getNombre());
+                    else
+                        property.setValue("N/A");
+                    return property;
+                }
+        });
+        
+        colMaestro.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    if(grupo.getValue().getIdMaestro() != null)
+                        property.setValue(grupo.getValue().getIdMaestro().getNombre() + " " + grupo.getValue().getIdMaestro().getApellidos());
+                    else
+                        property.setValue("N/A");
+                    return property;
+                }
+        });
+        
+        colCosto.setCellValueFactory(
+            new Callback<TableColumn.CellDataFeatures<GrupoClase, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<GrupoClase, String> grupo) {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    
+                    if(grupo.getValue().getCostoMensual() != null)
+                        property.setValue("$" + grupo.getValue().getCostoMensual().toString());
+                    else
+                        property.setValue("N/A");
+                    return property;
+                }
+        });
+        
+        
+        
+        
+        tableClases.getColumns().addAll(colTipoDanza, colMaestro, colCosto);
+        tableClases.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        
+        GrupoClaseResource recurso = new GrupoClaseResource();
+        
+        tableClases.setItems(FXCollections.observableArrayList(recurso.getClasesFromAlumno(this.alumno)));
+        
+        vbox.getChildren().add(tableClases);
+        
+        Scene scene = new Scene(vbox, 500, 400);
+        clasesInscritasStage.setScene(scene);
+        
+        clasesInscritasStage.show();
+    }
 }

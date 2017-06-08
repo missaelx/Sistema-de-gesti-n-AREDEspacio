@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -19,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -29,6 +31,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.GrupoClase;
@@ -67,6 +70,10 @@ public class AdministrarDanzasController implements Initializable {
             control.setControlador(this);
             Scene escena = new Scene(root);
             crearDanza.setScene(escena);
+            crearDanza.initModality(Modality.WINDOW_MODAL);
+            crearDanza.initOwner(
+                    ((Node) evento.getSource()).getScene().getWindow());
+            crearDanza.setResizable(false);
             crearDanza.show();
 
         } catch (IOException ex) {
@@ -98,6 +105,10 @@ public class AdministrarDanzasController implements Initializable {
             control.setCampos(danza);
             Scene escena = new Scene(root);
             editarDanzas.setScene(escena);
+            editarDanzas.setResizable(false);
+            editarDanzas.initModality(Modality.WINDOW_MODAL);
+            editarDanzas.initOwner(
+                    ((Node) evento.getSource()).getScene().getWindow());
             editarDanzas.show();
 
         } catch (IOException ex) {
@@ -131,6 +142,10 @@ public class AdministrarDanzasController implements Initializable {
             control.setTituloNombreDanza();
             Scene escena = new Scene(root);
             crearGrupoDanza.setScene(escena);
+            crearGrupoDanza.setResizable(false);
+            crearGrupoDanza.initModality(Modality.WINDOW_MODAL);
+            crearGrupoDanza.initOwner(
+                    ((Node) evento.getSource()).getScene().getWindow());
             crearGrupoDanza.show();
 
         } catch (IOException ex) {
@@ -168,6 +183,10 @@ public class AdministrarDanzasController implements Initializable {
             control.setTituloNombreDanza();
             Scene escena = new Scene(root);
             crearGrupoDanza.setScene(escena);
+            crearGrupoDanza.setResizable(false);
+            crearGrupoDanza.initModality(Modality.WINDOW_MODAL);
+            crearGrupoDanza.initOwner(
+                    ((Node) event.getSource()).getScene().getWindow());
             crearGrupoDanza.show();
 
         } catch (IOException ex) {
@@ -191,6 +210,10 @@ public class AdministrarDanzasController implements Initializable {
 
             Scene escena = new Scene(root);
             verListaAlumnos.setScene(escena);
+            verListaAlumnos.setResizable(false);
+            verListaAlumnos.initModality(Modality.WINDOW_MODAL);
+            verListaAlumnos.initOwner(
+                    ((Node) evento.getSource()).getScene().getWindow());
             verListaAlumnos.show();
 
         } catch (IOException ex) {
@@ -271,7 +294,11 @@ public class AdministrarDanzasController implements Initializable {
         columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tablaDanzas.refresh();
         tablaDanzas.setItems(list);
-
+        tablaDanzas.getSelectionModel().clearSelection();
+        
+        tablaGrupos.refresh();
+        tablaGrupos.setItems(FXCollections.observableArrayList(new ArrayList<GrupoClase>()));
+        
     }
 
     private void setTablaGrupoDanzas(TipoDanza tipoDanza) {

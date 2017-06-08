@@ -256,7 +256,8 @@ public class RegistrarPagoMensualidadController implements Initializable {
         Ingreso ingreso = new Ingreso();
         ingreso.setDescripcion(txtDescripcion.getText());
         ingreso.setFecha(Date.from(datePickerFecha.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        ingreso.setIdPromocion((Promociones) cmbPromocion.getSelectionModel().getSelectedItem());
+        if(checkBoxPromocion.isSelected())
+            ingreso.setIdPromocion((Promociones) cmbPromocion.getSelectionModel().getSelectedItem());
         ingreso.setMonto(monto);
         
         Mensualidad mensualidad = new Mensualidad();

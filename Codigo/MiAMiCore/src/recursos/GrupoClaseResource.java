@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import modelo.Alumno;
 import modelo.GrupoClase;
 import modelo.Horario;
 
@@ -60,5 +61,10 @@ public class GrupoClaseResource {
             clases.add(h.getIdGrupoClase());
         }
         return clases;
+    }
+    
+    public List<GrupoClase> getClasesFromAlumno(Alumno alumno){
+        GrupoClaseJpaControllerExtended controlador = new GrupoClaseJpaControllerExtended(emf);
+        return controlador.findGrupoPorAlumno(alumno);
     }
 }

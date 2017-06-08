@@ -13,11 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Alumno;
@@ -91,6 +93,10 @@ public class VerListaAlumnoGrupoController implements Initializable {
             controller.setListaAsistencia();
             controller.setNombreGrupo();
             registrarAsistencia.setScene(new Scene(root));
+            registrarAsistencia.setResizable(false);
+            registrarAsistencia.initModality(Modality.WINDOW_MODAL);
+            registrarAsistencia.initOwner(
+                    ((Node) event.getSource()).getScene().getWindow());
             registrarAsistencia.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -112,6 +118,10 @@ public class VerListaAlumnoGrupoController implements Initializable {
 
             Scene escena = new Scene(root);
             verListaAlumnos.setScene(escena);
+            verListaAlumnos.setResizable(false);
+            verListaAlumnos.initModality(Modality.WINDOW_MODAL);
+            verListaAlumnos.initOwner(
+                    ((Node) event.getSource()).getScene().getWindow());
             verListaAlumnos.show();
 
         } catch (IOException ex) {

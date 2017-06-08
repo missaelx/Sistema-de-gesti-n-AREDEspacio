@@ -1,0 +1,2536 @@
+commit 6144960b86ea3ccfabc9609d178e67a0ea5dd117
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Jun 5 23:22:09 2017 -0500
+
+    Se corrigió lo siguiente:
+    - [x] Checar funcionamiento de las danzas (botones), editar, mostrar las ventanas como modal
+    - [x] Hacer que se actualice la tabla al guardar
+    - [x] Checar el funcionamiento de la lista
+    
+    Alumnos
+    - [x] Que se vea donde esta inscrito el alumno
+
+commit e947274b52f2e7225842bfec334c97546f9b7b51
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 22 16:31:50 2017 -0500
+
+    ya se pueden modificar danzas :D
+
+commit b9b78e57d0d0b28bb665fabbec28f899c328484a
+Merge: 5b99cf2 68182ec
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 22 16:01:16 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 5b99cf262497f018aa6fc67a96caa8acb4c5759e
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 22 16:00:40 2017 -0500
+
+    previo a revision
+
+commit 68182ec448f4cf7cec5f52cf5a1bc2185cc878ae
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Sun May 21 23:53:09 2017 -0500
+
+    Se actualizo el documento, Profe no tengo su correo :S, ya esta todo lo que faltaba
+
+commit f635356ee220d91ef38e6a36688103e5c83f8e3a
+Merge: 2139bdb 08f4674
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu May 18 17:13:58 2017 -0500
+
+    errores de merge
+
+commit 2139bdb834cebc076a7425ce8602c578ca358e4d
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu May 18 17:11:31 2017 -0500
+
+    se actualizaron los diagrams de clases y el documento se termino
+
+commit 08f46743485f446790df25cdeb4341820e14d95d
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 18 15:46:14 2017 -0500
+
+    merge
+
+commit 0c05cedea3789afe455645dc793496fe2752d775
+Merge: 233fd77 3178535
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 18 15:45:37 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 233fd77e2ed10b9e90645c22f8728c33ba7bb09a
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 18 15:45:24 2017 -0500
+
+    últimos diagramas de secuencia
+
+commit 317853572bcc7ff8af85faa5643be84321ea2add
+Merge: 0cdb53a 7e01148
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu May 18 15:08:40 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 0cdb53a42601f7420156e7a4ade8b30b67acfdac
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu May 18 15:08:31 2017 -0500
+
+    Se añadieron descripciones de CU y diagramas de robustez faltantes
+
+commit 7e01148c439359b540378e03930df30b25620bc3
+Merge: 537723f 8070c0d
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu May 18 15:03:32 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 537723f6a73f71a3c7acc8dbfd7315e2575a5bb5
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu May 18 15:03:02 2017 -0500
+
+    funcion mejorada en pestana danzas y unas pruebas
+
+commit 8070c0d02151f1102cd3f5366a988f969521efef
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 18 11:58:22 2017 -0500
+
+    Creacion de dos diagramas de clase
+
+commit e504675b472f5d8327c2609b4701434669bb0a1d
+Merge: 209911b 81cbfd7
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu May 18 06:34:00 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 209911bac026dc9049620f2aebaad2144a853fa6
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu May 18 06:33:46 2017 -0500
+
+    se añadieron descripciones CU faltantes
+
+commit 81cbfd783c283caf1656862d835682fca77450bb
+Merge: bd94749 52a0bd8
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 18 00:43:51 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit bd947498f07cc7dd01d5a08b1f814e4f2e5a044d
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 18 00:43:45 2017 -0500
+
+    Se agregaron 3 diagramas de secuencia y se actualizaron los diagramas de clases
+
+commit 52a0bd85d000114d9f5ce8228b5f3bf1ec0924c1
+Merge: 2b00941 0e2f1f2
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Wed May 17 23:08:14 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiCore/src/controladores/AsistenciaJpaController.java
+    #       Codigo/MiAMiCore/src/recursos/AsistenciaResource.java
+
+commit 2b00941f1609356e33a6a81f62e40264e397edcd
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Wed May 17 23:06:09 2017 -0500
+
+    inicio de manual de usuario y correcciones en interfaz de danzas
+
+commit 0e2f1f2fa016521f63fb241e3ed5e6beaed094f3
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed May 17 23:01:39 2017 -0500
+
+    Corregidos errores menores de verificación y rediseño de interfaces enorme -_-
+
+commit ec435e42a4fc0971a46ee375e728f6d7becea7f9
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed May 17 01:48:08 2017 -0500
+
+    Corrección de cabezas
+
+commit e07e08a11d78fabadeb8966e7ac27a6763f8cbb0
+Merge: e8c9fc2 9cabcda
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed May 17 01:27:56 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit e8c9fc2349e04b04a120a1f8001ba8d2eb0d3cf5
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed May 17 01:27:06 2017 -0500
+
+    Se incluyen finalmente los intereses en los ingresos
+
+commit 9cabcda86b8f9d5f26246b7c0255f3c63a079e7c
+Merge: 8ce66f6 88846d7
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue May 16 17:33:00 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiCore/src/controladores/AsistenciaJpaController.java
+    #       Codigo/MiAMiCore/src/recursos/AsistenciaResource.java
+
+commit 8ce66f6702e67a63c2819956292411a9987656b7
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue May 16 17:32:06 2017 -0500
+
+    Pase de lista completado
+
+commit 88846d774b9ef3f30282d81e44416635e1cd67c9
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue May 16 15:31:07 2017 -0500
+
+    Se creo la interfaz para configuraciones
+
+commit 9ab6d39234dbdbca22119f3a87a35b10903c6d47
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 15 17:34:59 2017 -0500
+
+    1. Se cambio la BD para incluir descripciones mas largas de los ingresos
+    2. se agrego la funcionalidad de agregar inscripciones y eliminarlas
+
+commit 31da5f7372dcff5f593f8993dada59877b9cde5d
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 15 00:03:51 2017 -0500
+
+    Correcciones al código autogenerado
+
+commit 1d24ea1697ce57d3a32a8d973b2d10dbb476084d
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun May 14 23:48:25 2017 -0500
+
+    Se actualizó la BD y se actualizará el modelo y los controladores para coincidir con la BD, que dios nos bendiga en este punto.
+
+commit 7ac1f88db1755150778001acda709d91456153b5
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun May 14 23:31:25 2017 -0500
+
+    IMPORTANTE: RESPALDO PREVIO A LA MODIFICACION DE LA BD. Ademas termine de crear la interfaz de pagar mensualidad
+
+commit 7c0269d1ccf53f1cef786d4b72d190b4356475fa
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 11 23:44:02 2017 -0500
+
+    Se agrego la funcionalidad parcial al inicializar la ventana de registrar mensualidad
+
+commit 4ae3a40550e4a565552bd827921b7641c4924be7
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 11 22:28:04 2017 -0500
+
+    se unifico el recurso de ingresos, se crearon las interfaces de agregar mensualidad/inscripcion, y se agrego funcionalidad a la interfaz de administras ingresos
+
+commit 0fa01ee6b02ac7eba6479616f826fc89f1520bb7
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu May 11 17:17:52 2017 -0500
+
+    codigo funcional
+
+commit 898e860c7c99bea4591696e0a9d3e5219e059160
+Merge: 1c250e1 adebbcb
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Mon May 8 15:43:55 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 1c250e18671b1821b29a818a1b964122cec3f8b1
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Mon May 8 15:05:12 2017 -0500
+
+    PAse de lista completo
+
+commit adebbcb469211cdc6b75813fb9bf20343c41ae3e
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun May 7 23:37:44 2017 -0500
+
+    Agregados los ingresos
+
+commit 39481edd06762cc6106261eb82ddc2e4fe94de65
+Author: Missael <missaelxp@gmail.com>
+Date:   Fri May 5 16:41:49 2017 -0500
+
+    Se creo la funcionalidad en la pagina de inicio de mostrar las clases del día actual
+
+commit 7eff44cca30215e7614ff0a61da3d2c4f16ea5fc
+Merge: 324d0e4 09c939a
+Author: Missael <missaelxp@gmail.com>
+Date:   Fri May 5 15:32:06 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 324d0e4eb58b5df4b7699a745ae702d33b14f50f
+Author: Missael <missaelxp@gmail.com>
+Date:   Fri May 5 15:31:03 2017 -0500
+
+    Agregada funcionalidad de lista alumnos que no están en la clase, falta depurar bien lo de las inscripciones pero ya funciona :)
+
+commit 09c939a73e3806f36c2cca5e3cb43695a87fe39e
+Merge: ae5740c 48d4acf
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Fri May 5 15:30:13 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit ae5740c1b9b0720ab5e06738d123b8bc8d176461
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Fri May 5 15:29:47 2017 -0500
+
+    Pase de lista
+
+commit 48d4acfdcb98a9a331f0e3952bd7c0fead8fc2c6
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu May 4 18:22:46 2017 -0500
+
+    pequeños cambios a la interfaz
+
+commit 4beba6411baf0cb5bf7e4d7192c6a3d3a0bf7921
+Merge: 8d2a66c 5dc0ddf
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu May 4 17:27:55 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/AdministrarAlumnosController.java
+
+commit 8d2a66c861d3358f6f6399b35f395518cf02523e
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu May 4 17:27:05 2017 -0500
+
+    modificacion de controller en el pase de lista
+
+commit 5dc0ddf757022f515e8fc1ff22afddc0b110cf29
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 4 01:27:15 2017 -0500
+
+    Ya se ven las clases y los horarios en la interfaz de danzas
+
+commit a2a4a770dd4b357c5ca955b85f06913ffe3b206d
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu May 4 01:00:31 2017 -0500
+
+    Ya se pueden crear grupos de clase :D \o/
+    Incluida verificación de horas provistas por el usuario
+
+commit 11153d5e373177c0ef8eada785c56e4b0d7e934a
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed May 3 18:19:02 2017 -0500
+
+    merge
+
+commit 93d69a0cf98521bf3c7b1031b0b425f1837fe4cb
+Merge: 49c82d1 cf5e364
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed May 3 18:16:36 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 49c82d1ee90a1e0f9c776e6365968d8f8d7448da
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed May 3 18:16:29 2017 -0500
+
+    Se realiza correctamente el calculo del pago de salario
+
+commit cf5e36487a4556b6cbc6034ba4eae510aa7394e1
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed May 3 18:03:32 2017 -0500
+
+    coreccion de errores y posible solucion de horarios.
+
+commit 1610fc519ce005ed73d9b361f0a3103eb83359ca
+Merge: de4a272 91e0bc9
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed May 3 15:54:44 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit de4a2721edbd88fb4a946fcf696ebd837f1c98b8
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed May 3 15:54:38 2017 -0500
+
+    Funcion de edicion de danzas, nuevas ventanas y arreglos al spinner
+
+commit 91e0bc998752787d1d50b0fcdf557034c42c945f
+Merge: 2bea7f5 49e3ebf
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue May 2 18:47:50 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 2bea7f59d9574e7b2c3e17b55fcbd77a3594e08f
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue May 2 18:47:30 2017 -0500
+
+    cree el controller y el fxml de pasar lista
+
+commit 49e3ebf24f8ff321c4eac0a98cee64cedbd27368
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue May 2 18:47:08 2017 -0500
+
+    Código para calcular el pago predeterminado de un salario
+
+commit 57708aa40da24addf27376b5e77e5dece5ef4915
+Merge: dfb7714 1120121
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue May 2 17:42:53 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit dfb7714b7ed9a5c32210cd2874ce7b8381564a6c
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue May 2 17:42:45 2017 -0500
+
+    Anotaciones de porcentaje y centrado de texto en tablas
+
+commit 1120121ff5c90fc1708879eeff5bdeb2a7a5634d
+Merge: 2c18fb5 57fd02a
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue May 2 17:11:47 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/CrearGrupoDeDanzaController.java
+
+commit 2c18fb5e9fdcb5c19d1d569c538847f4de02064d
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue May 2 17:09:57 2017 -0500
+
+    correcciones del repositorio ¬¬ y nueva interfaz :)
+
+commit 57fd02af82e0aee7c3cd1cb4894568f247f50dd0
+Merge: ea812a9 cd53460
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue May 2 15:44:26 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/CrearGrupoDeDanzaController.java
+
+commit ea812a989616322c0c19296a319c55c3dbab91fa
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue May 2 15:42:09 2017 -0500
+
+    funcion de pago de mensualidad de acuerdo con las clases que esta inscrito
+
+commit cd53460477540e781677cc0247775ec9dc04af91
+Merge: 5a2faee 7df3392
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue May 2 15:22:40 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/CrearGrupoDeDanzaController.java
+    #       PSPs/Andrés/PSP Proyecto.xlsm
+
+commit 5a2faee1e27a06d4a6961ac229b33cc7991e77d7
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue May 2 15:22:07 2017 -0500
+
+    se termino la funcionalidad de crear grupos
+
+commit 7df33928cf4a2e7bac079efeff58cd0135520004
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue May 2 15:08:24 2017 -0500
+
+    correcciones de nulos en la base de datos, funcionalidad de avisos (mensualidades y preinscripciones agregadas)
+
+commit fb05f070deed6144a8ec46d82a2f465b8a97c6f0
+Merge: 24bbd6b a36465b
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue May 2 13:25:40 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 24bbd6bd2deb20f9533c06010004bb2aa0d34a46
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue May 2 13:23:27 2017 -0500
+
+    Agregada funcionalidad a los modelos
+
+commit a36465b4a7ff76e419c5e671d987fc8e55ce0568
+Merge: f42d8b3 8686b53
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Mon May 1 22:14:05 2017 -0500
+
+    merge
+
+commit f42d8b35e9ba0cf1fc57b835dcfea4799721f3b0
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Mon May 1 22:11:34 2017 -0500
+
+    Funcion de inscribir y pagar mensualidad y aplicar promociones
+
+commit 8686b53aef155b91903e04c30215f66e0b9ae513
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 1 14:28:45 2017 -0500
+
+    index tab2
+
+commit c7e2413216a89d8324c00a734b432adddecb3ad0
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 1 14:26:49 2017 -0500
+
+    cabezas
+
+commit 70bfb1a3a3c849d38cd75e29b0542276ea11d88b
+Merge: de04b42 6754cee
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 1 14:26:13 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/CrearGrupoDeDanzaController.java
+
+commit de04b42eed8d4452bada653eaab9e8cc6223910f
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon May 1 14:25:42 2017 -0500
+
+    merge raro
+
+commit 19942782e652c3249233e3e6e50e6aecbd319237
+Author: Missael <missaelxp@gmail.com>
+Date:   Fri Apr 28 15:27:03 2017 -0500
+
+    Cambio del index tab
+
+commit 6754cee90bd7cbb78b3fea4eeeca4052f309d90f
+Merge: a90fc9d 24d416a
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun Apr 30 22:44:52 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 24d416a120bceb747ad634a9371e6b6871022cb1
+Merge: 9da2ea1 e4f5166
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Fri Apr 28 15:59:07 2017 -0500
+
+    merge
+
+commit 9a9370db834e82b9f523f1549f07e8cff4e01246
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Fri Apr 28 15:53:35 2017 -0500
+
+    Se extendo la funcionalidad del controler y el metodo de busquea para visualizar datos en la BD de grupoClase, se añadio más funcionalidad y verificaciones.
+
+commit 9da2ea1f5d2989a60e24e9bb4023191f5db64fff
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Fri Apr 28 15:53:01 2017 -0500
+
+    ya se pueden seleccionar las promociones en la interfaz de pago y se pueden eliminar y agregar promociones
+
+commit a90fc9d5bd7e01cf62228560dc319a9507139aa3
+Author: Missael <missaelxp@gmail.com>
+Date:   Fri Apr 28 15:27:03 2017 -0500
+
+    Cambio del index tab
+
+commit e4f5166d32a43dd209de3fbe350a7e5eeb6652b0
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 27 18:39:29 2017 -0500
+
+    Funcionalidad del los egresos definida
+    
+    solo faltan validaciones y detalles de navegacion por la interfaz
+
+commit 043445f5907954cea6e5548b91511f2a787bd034
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 27 17:38:36 2017 -0500
+
+    Auto stash for revert of "Merge remote-tracking branch 'origin/master'"
+
+commit 23a80cc783eb3e9cf049262a78b53ef7447726ef
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 27 17:34:10 2017 -0500
+
+    Revert "Merge remote-tracking branch 'origin/master'"
+    
+    This reverts commit 87d20797e4357e5abcde4bb0959d26399cc857c9.
+
+commit 609156aa57647699af646489c5f9d939266e14c1
+Merge: 87d2079 c07bead
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 27 17:38:08 2017 -0500
+
+    On master: Auto stash for revert of "Merge remote-tracking branch 'origin/master'"
+
+commit c07beadfc99f3c7193c61858b0dc4ad0c578485f
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 27 17:38:08 2017 -0500
+
+    index on master: 87d2079 Merge remote-tracking branch 'origin/master'
+
+commit 87d20797e4357e5abcde4bb0959d26399cc857c9
+Merge: 2e362cd fcb7652
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 27 17:34:10 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 2e362cd1418fd24bd96d78a95fbcf45652925095
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 27 17:34:02 2017 -0500
+
+    Elimine cabecera autogeneradas
+
+commit fcb7652a013043b4c967cd279cb85c80b67d9211
+Merge: e7c7d59 442846a
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 27 17:22:14 2017 -0500
+
+    commit
+
+commit e7c7d59ecc139c0a5385ca1ed5fb3ff4125ad5b8
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 27 17:17:58 2017 -0500
+
+    correccion de errores
+
+commit 09ef51ff843b637a7a5ab9024a00f23da4395ccf
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 27 15:47:00 2017 -0500
+
+    Revert "Modificaciones a los egresos"
+    
+    This reverts commit ff887ed48dc8a7029bcd48104e1ff40b72d1c908.
+
+commit 442846ac0ba7ed6c101dcbd1065aa37de4e9a9df
+Merge: 8526ae0 ff887ed
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 27 13:07:02 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 8526ae0aaadbfe257c4da531fc3ff4155e06bbec
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 27 13:05:37 2017 -0500
+
+    más funcionalidad y estilo a danzas
+
+commit ff887ed48dc8a7029bcd48104e1ff40b72d1c908
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Apr 26 21:01:39 2017 -0500
+
+    Modificaciones a los egresos
+
+commit 87c6801ab843be05a791c3b70b67dabfe4c97183
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Apr 26 15:55:48 2017 -0500
+
+    Se creo la funcionalidad de elimnar egresos y salarios
+    
+    Incluyendo recurso y controlador de patalla
+
+commit de678d7ce438aaaf72dd0a7f7eac9d0714254af4
+Merge: 600a73e dcf9724
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 25 21:57:33 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 600a73e41a4a3e607c88355ff2e78d28108cbf08
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 25 21:56:22 2017 -0500
+
+    Funcion agregar egreso variable creada
+    
+    Se creo la funcion en interfaz, recurso y base de datos de guardar egreso variable
+
+commit dcf97240bab2e19a9595539bed5daf6dffc699cb
+Merge: e70dc30 b088683
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Apr 25 18:56:56 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit e70dc3003578d626cb666703466c78d7bbaf43eb
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Apr 25 18:56:04 2017 -0500
+
+    funcionabilidad en las promociones, creacion y  eliminacion de registros
+
+commit b088683e02be225a685932f268d48accdd6d0856
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 25 18:01:16 2017 -0500
+
+    Se corrigieron aspectos de presentacion de los alumnos
+
+commit ec2a25d4ffcd0774b37901d77f87b0286437297a
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 25 17:57:30 2017 -0500
+
+    Mejora de presentacion en los elementos de maestros
+    
+    Incluyendo interfaces y controladores
+
+commit 6bf2b1281ad3d0c12b5470728a229bab43030be4
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 25 17:34:29 2017 -0500
+
+    Actualizacion a los egresos para incluir ventana de pago de salario
+    
+    Se incluyen modificacion de la interfaz, controlador de interfaz y recurso
+
+commit 79459bfdfff1b0ba5fe52881b763180ab601c52a
+Merge: 68706ba 12e884d
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 24 18:24:07 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 68706ba9c8813128c3693b6113ac00c51197c637
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 24 18:23:49 2017 -0500
+
+    Se mejoro la presentacion de los datos
+    
+    La presentacion de los datos de los egresos se mejoraron y se agrego funcionalidad a los recursos
+
+commit 12e884d76b7b35ad6778b14d899dd0c6c29d2432
+Merge: 9a75581 a43c121
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Mon Apr 24 17:26:21 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 9a75581bf4a7f5d200bfef79c8a323ca5fa924c4
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Mon Apr 24 17:25:58 2017 -0500
+
+    Se modifico la interfaz de danzas, la de grupo, se dio funcionalidad al boton de crear danzaGrupo y se añadio funcionalidad parcial a la de crear grupos,
+
+commit a43c121493281a5e2d5784f42a41d4ad9c0aa552
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 24 14:03:18 2017 -0500
+
+    merge
+
+commit d18e57a77bb312a6125cce8353277177c0b61da0
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 24 14:02:26 2017 -0500
+
+    Primer kracken
+
+commit 6d070b69b6b2aa39024f89dffd9dbef0af0fc00c
+Merge: 703777b 578490f
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 24 13:49:45 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 703777ba2f9f13e5477fd1fcc4906ba8abf5e345
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 24 13:49:31 2017 -0500
+
+    Se modifico la interfaz de inicio para el espaciado y se agrego soporte al evento de tecla en la interfaz de alumno
+
+commit 578490f50f0bc6476388a87c67253a205085359a
+Merge: 0b84efe 1b68a0c
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Mon Apr 24 13:39:05 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 1b68a0cba8356d0e80b10d3af4cbc29d24effc7d
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 24 11:08:36 2017 -0500
+
+    Se pueden leer los egresos y los pagos de los maestros, se creo la seccion egresos y se recreo la pestaña de inicio para incluir seccion de avisos.
+
+commit 4fb2d3d1ac73cad37fe8b9a20b53512cb3fd7fab
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun Apr 23 22:43:54 2017 -0500
+
+    Se creo la interfaz de egresos
+
+commit e2cf3daf9ab9514273495b93d281f30d8cc80eda
+Merge: 0ddf979 55ab852
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 22:11:07 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 0ddf97937bc5ee3e2de9fdc457bbe42a1ab06ae3
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 22:11:01 2017 -0500
+
+    Correcion de imports
+
+commit 0b84efe008e15fc3ce01754388069fd9b35d4d63
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Apr 20 19:04:33 2017 -0500
+
+    Pagar cuota
+
+commit 55ab852aaf023594e83f04a8768ca5b2d25e4196
+Merge: 14c33df a4a870b
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 20 19:00:17 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 14c33df715c2109dba68d4ee28da5c2d6df46365
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 20 19:00:10 2017 -0500
+
+    ;) borro mis interfaces el pull, las subo
+
+commit a4a870b43f8d1ba3b3183258296626c5fa04c11f
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:49:28 2017 -0500
+
+    eliminación de imports innecesarios
+
+commit e699aabbf1f09ef33b455f4e3b7f705bf4c51566
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:45:25 2017 -0500
+
+    eliminación de cabezones
+
+commit b72517b903695e98afcc6f6e0e672db6c0ca8057
+Merge: 087e70f f094d8a
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:43:37 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/nbproject/project.properties
+    #       Codigo/MiAMiFX/src/miamifx/controllers/PrincipalController.java
+
+commit 087e70f2ee747e3c79598159dcccac75198fdd85
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:42:58 2017 -0500
+
+    commit2
+
+commit f094d8ad1a69cacb0c7eeb972f60b4bad6f40abf
+Merge: 75a2298 237fadf
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 20 18:40:59 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 7edbade526f3ed556d9e27a2773108190f95b6a2
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:40:58 2017 -0500
+
+    comit
+
+commit 75a2298b2793c67e90d95bdf4c92b55637e049a2
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 20 18:40:51 2017 -0500
+
+    borre cabezas ;)
+
+commit 237fadf01f69a794966c5c7bcc1eb6425a7cd3d0
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Apr 20 18:37:30 2017 -0500
+
+    agregue nuevas interfaces
+
+commit edfd3be451f595a2fe62a690b8daa447c66bf28a
+Merge: 14bfce1 108c1df
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:28:47 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv into HEAD
+    
+    # Conflicts:
+    #       Diseno/modelo relacional.mwb
+
+commit 108c1df0fbe1b2f6807795307efa45ee61cf5701
+Merge: 0c068f9 6d89338
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 20 18:27:40 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Diseno/modelo relacional.mwb
+    #       Diseno/modelo relacional.mwb.bak
+
+commit 0c068f92a2b25ac21356aab480b66e122d773de3
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 20 18:24:58 2017 -0500
+
+    Actualice las interfaces de danzas
+
+commit 14bfce1045b5636fd638781edb36cfc7983039c5
+Merge: 891dde6 6d89338
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:23:23 2017 -0500
+
+    Merge remote-tracking branch 'origin/master' into HEAD
+
+commit 891dde68b1a06447f82c8a16eeceee9b565726f9
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:21:03 2017 -0500
+
+    Recuperación del modelo relacional ;(
+
+commit 6d8933877852288c5c9430fbcae14310b1f10bed
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:07:03 2017 -0500
+
+    no message
+
+commit 9bde8c086189775269193f9e7e0fc1eb1a077bb6
+Merge: 8d621ce 297b7fe
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:05:24 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/PrincipalController.java
+
+commit 8d621ce43441794dc50ed13fc5dcb4753ca0eb78
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 18:02:26 2017 -0500
+
+    removing heads
+
+commit 297b7fecd34501928896da7765dcb58234328faf
+Merge: 5307b0d ae87219
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Apr 20 17:58:21 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/nbproject/UPDATED.TXT
+    #       Codigo/MiAMiFX/nbproject/jfx-impl.xml
+    #       Codigo/MiAMiFX/src/miamifx/controllers/PrincipalController.java
+    #       Diseno/Andrés/MiAMi.EAP
+
+commit 5307b0d27527c7e93d65d3b7eb04226a8339f722
+Merge: c2146c9 1dace90
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Apr 20 17:42:53 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/.idea/workspace.xml
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/src/miamifx/controllers/PrincipalController.java
+    #       Diseno/Andrés/MiAMi.EAP
+
+commit ae87219ffe628705d8852623c45a61d521b67f30
+Merge: 4306c23 341ec52
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 20 17:24:07 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 4306c235c8ab39ca62f08cdab55de7c0ee83b15a
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 20 17:23:14 2017 -0500
+
+    commit
+
+commit 341ec528a00153f1ec25b60eff8c6cf8d0c68a05
+Merge: 8c7bb8b 1dace90
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 17:19:29 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/MiAMiFX.class
+    #       Codigo/MiAMiFX/build/classes/miamifx/Principal.fxml
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/AdministrarAlumnosController.class
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/EditarAlumnoController.class
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/PrincipalController.class
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/RegistrarAlumnoController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/dist/lib/eclipselink.jar
+    #       Codigo/MiAMiFX/dist/lib/mysql-connector-java-5.1.23-bin.jar
+
+commit 8c7bb8b9f78fb44cfefc5696c31340859e446557
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 20 17:18:39 2017 -0500
+
+    cambios
+
+commit c2146c946d03c7c99708e6afc7e43ec1b6f5e5e2
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Apr 18 19:01:55 2017 -0500
+
+    aver que show
+
+commit 1dace9014d3cba0c5057c41f034ac6bf7605acc5
+Merge: bb6e568 3ad68d6
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Apr 18 19:00:54 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/PrincipalController.java
+
+commit bb6e568b480c776e461dce42d0eeb77a023ff1aa
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Apr 18 19:00:39 2017 -0500
+
+    tab de inicio agregado
+
+commit 3ad68d6a33b295d8b8c2f7e709d2af9a4cdf1c47
+Merge: 90fe064 bc70413
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Apr 18 18:42:55 2017 -0500
+
+    no message
+
+commit 90fe064451b2f219b79866bf64715dee26d76ae4
+Merge: d2b063b d92dd4e
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Apr 18 18:42:15 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/PrincipalController.java
+
+commit bc70413286845b3606b5099ae7f2057330a6b366
+Merge: 4ef3828 d92dd4e
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Apr 18 18:39:27 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/PrincipalController.java
+
+commit 4ef38288d0eaf4b8ec4e0e73aae8780aee33bef7
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Apr 18 18:38:57 2017 -0500
+
+    Se eliminaron las copias de las interfaces y se movieron de paquete
+
+commit d2b063beeccf67f7bcb6665f04f5b9df372ad13d
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Apr 18 18:30:30 2017 -0500
+
+    quite imports que no servian
+
+commit d92dd4e08fa7375bd67979a21ee71fbd5161f071
+Merge: 37e3147 e501dfb
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 18 18:29:16 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 37e31470b1c996c61d2dd0032ff6038d381f8715
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 18 18:29:01 2017 -0500
+
+    Cambios para el soporte de imágenes en windows
+
+commit e501dfb889811ccaeefbcb008546efaed2df14ed
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Apr 18 18:24:24 2017 -0500
+
+    Modifique y añadi pantalla de grupos de danza, administrar.
+
+commit a319fc1f376007659905e5bbb66d1806e25bc6ff
+Merge: 3d7ead1 e7956c5
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 18 18:19:58 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 3d7ead1732d703009f07370ec8dd7c1ca3ba28ae
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Apr 18 18:19:45 2017 -0500
+
+    Controladores
+
+commit e7956c591b3ad2e78854c4632b9b5a79f9762df2
+Merge: 3d7a61e 1348577
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Apr 18 18:11:42 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 13485772bf81d7519a3e91ce25bd366f163fccb5
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 17 22:04:03 2017 -0500
+
+    Actualizados las clases de los modelos para coincidir con la base de datos
+
+commit 525d951ece6f1aef84aad89f47ab7dd1d866e6e8
+Merge: a5c7537 80c38c2
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 17 22:00:47 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit a5c7537d03a4ba326931324af917f168bcda08a6
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Apr 17 22:00:38 2017 -0500
+
+    Correcciones al modelo relacionan para incluir deducciones de pagos a maestros, fechas de inscripción de los alumnos y relación en promociones
+
+commit 3d7a61e8f1e2229e85a05310f373a2d6c899bc47
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Sun Apr 16 21:27:05 2017 -0500
+
+    cree la clase de promociones resource y modifique algunos controllers
+
+commit 80c38c2892a67b1f009948c18e199d6a864df5f3
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Apr 6 17:48:43 2017 -0500
+
+    interfaces de danzas modificadas, correciones a alumnos, adicion  de interfaces
+
+commit 0fbf354993494adb6e1de538c53a42346b14f8a9
+Merge: 76958e8 fc27930
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 6 17:25:27 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Documentos de avance/Primera Entrega PDanzas.docx
+
+commit 76958e8be90d87ac7f4e4b10732f5b40b8f074c5
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Apr 6 17:24:58 2017 -0500
+
+    compilación
+
+commit fc27930961f030ef7e45f14cfed9d0300c358b27
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Wed Apr 5 14:44:20 2017 -0500
+
+    movi de carpeta los controllers y cree uno nuevo de administrar danzas y el fxml
+
+commit 48a278f2dc8e2f86edfec9f7b6f6c4187abad1e4
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Apr 4 16:35:36 2017 -0500
+
+    archivos para idea
+
+commit cc1cc66e3ba5616fe93f1d799956d8d9e68a5a3c
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun Apr 2 11:58:23 2017 -0500
+
+    Corregido la entrega del documento y diagramas de clase
+
+commit a2b77bd825daaf3a0a956d379d2e9d24f3eb3053
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun Apr 2 11:47:45 2017 -0500
+
+    actualizados los diagramas de secuencia
+
+commit 9cf743f69903634aa0ac325c50f092a12634f61b
+Merge: 121030f 0ac064e
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun Apr 2 11:00:14 2017 -0500
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiCore/test/controladores/AlumnoJpaControllerExtTest.java
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit 121030f0c758ba081328063f061664fe9870514e
+Author: Missael <missaelxp@gmail.com>
+Date:   Sun Apr 2 10:59:36 2017 -0500
+
+    correcciones
+
+commit 0ac064ea9cca32bf169dc8778078f34e1b653430
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Sat Apr 1 21:00:58 2017 -0600
+
+    se modificaron los diagramas de robustez, se actualizo el documento de entrega.
+
+commit afaf3b91677507328a7bdb480f0c7b0e9230e00d
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 30 18:09:08 2017 -0600
+
+    elimine imagen
+
+commit a5ddd2fb7281d0db06b40df2ce716502c8783a52
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 17:57:43 2017 -0600
+
+    interfaz
+
+commit 7b8151144369a5be44f57f95d5aae74674ae04a6
+Merge: 0c5d33b cd331ae
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 17:42:41 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 0c5d33bdbf63bf1e989686bbad281368b927629b
+Merge: eb2d7eb 2b012c8
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 17:42:18 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit eb2d7eb5155aa79d106027b69af12969621d1a98
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 17:42:06 2017 -0600
+
+    previo revision
+
+commit cd331aefbf07d9a8d2e9feba3889481e3ebd57a7
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Mar 30 17:42:02 2017 -0600
+
+    commit
+
+commit 2b012c86f06375e0a7d64c884b8f68ce43d718d5
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Mar 30 17:25:01 2017 -0600
+
+    commit interfaces y pruebas
+
+commit 020e30d8abfcfb0ab3da2dd5d724ac3336c530d5
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 17:03:46 2017 -0600
+
+    compilacion
+
+commit e8175649a295d67ff837d9338ff60a0651d7762d
+Merge: e9b398a 168ccb7
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 16:46:26 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/dist/lib/eclipselink.jar
+    #       Codigo/MiAMiFX/dist/lib/mysql-connector-java-5.1.23-bin.jar
+
+commit e9b398ae286e94d4f1cdbad58fe673bdde750dfb
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 16:45:10 2017 -0600
+
+    corrección de lectura de archivos
+
+commit 168ccb78e95f14576cd047018a163d62f63384b7
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 30 16:17:54 2017 -0600
+
+    correccion en validaciones de campos
+
+commit a045763352fd41f3ac5c651b5648bbb49cd45489
+Merge: c68fb0d 84ff8f1
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 30 14:01:57 2017 -0600
+
+    cambio en interfaz
+
+commit c68fb0dd11273a24d8c8a682ba48605212f151d8
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 30 13:06:25 2017 -0600
+
+    validaciones y correcciones en botones
+
+commit 84ff8f1791ea5b41a2894001b37902425a1f278c
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Mar 30 12:44:05 2017 -0600
+
+    Se añadieron pruebas unitarias, se mejoro la interfaz de danzas
+
+commit b590883e143849c3d09a95ea4457dcd4ca5fd922
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 30 12:26:48 2017 -0600
+
+    quite los head :v
+
+commit 80cc55e080728a911cfecd952a54211d01902426
+Author: Missael Hernandez <missaelxp@gmail.com>
+Date:   Thu Mar 30 09:51:49 2017 -0600
+
+    Verificaciones y correcciones a la actualizacion de la tabla de alumnos
+
+commit 43d3fc874312ef42c1a97b37d0f03866950dae67
+Merge: 28c5a91 91a83ce
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 05:39:56 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+
+commit 28c5a9126507b5464e105630960b6429e8100eea
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 30 05:39:22 2017 -0600
+
+    MegaCommit
+
+commit 91a83ce913a21517242031ec91fcd2796c98c8b0
+Merge: e5145a7 f117d71
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Wed Mar 29 18:53:50 2017 -0600
+
+    correccion de errores en interfaz maestro
+
+commit e5145a73f4d5e4e9a7df1dac6d6c45b046d3202a
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Wed Mar 29 18:52:00 2017 -0600
+
+    correccion de codigo
+
+commit f117d7195ccd3cdab792a3d9f915b45bd8916ea7
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 29 18:48:16 2017 -0600
+
+    agregados los setters para la consulta de pagos de salario
+
+commit 91750cb2bba836c3e757e81cc0e143addf823468
+Merge: dfc48bb fbce292
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 29 18:13:49 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiCore/src/controladores/TipoDanzaJpaControllerExtended.java
+
+commit dfc48bb2b7c21d9e56628c6cb41cbdea25cf94c2
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 29 18:13:27 2017 -0600
+
+    tipodedanza
+
+commit fbce2922458000d81662a9361cf9b243293dd84c
+Merge: 6849334 4b7e6b9
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed Mar 29 18:07:12 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit 6849334b42a35936d490c9e658aea480bab02d7e
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed Mar 29 18:06:41 2017 -0600
+
+    mejore la ventana de crear danza
+
+commit 4b7e6b98ac064d8e32c4e04e4d7cb217dfb199ce
+Merge: 6daecae d458b06
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Wed Mar 29 17:53:11 2017 -0600
+
+    Validaciones y confimaciones en las interfaces de maestros
+
+commit 6daecaebfef0a071d228bb9250eb7cd92cc85be4
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Wed Mar 29 17:51:18 2017 -0600
+
+    Validaciones de botones y confirmaciones de eventos
+
+commit d458b063647b14e7882178c945ea67dda7a201ca
+Merge: 4d7623e 5e5f189
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed Mar 29 16:33:44 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiCore/src/controladores/TipoDanzaJpaControllerExtended.java
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/AdministrarAlumnosController.class
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/EditarAlumnoController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit 5e5f189d65573d4f7647f48224037963c2d0ce7a
+Merge: eacb6de 348b7f0
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 29 16:31:14 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/AdministrarAlumnosController.class
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/EditarAlumnoController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit 4d7623e5abafbe86e63493e87a28092c917132dc
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed Mar 29 16:30:51 2017 -0600
+
+    trabajo de interfaces
+
+commit eacb6de4ac2cfe3b83528bfdf60d69e30f0ebd18
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 29 16:30:31 2017 -0600
+
+    búsquedas de danzas corregidas
+
+commit 348b7f0031d127d1a27da2c2e0889d54bd24d0bd
+Merge: 370eac5 abb32ed
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed Mar 29 14:49:14 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/AdministrarAlumnosController.class
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/EditarAlumnoController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/src/miamifx/CrearDanza.fxml
+    #       Codigo/MiAMiFX/src/miamifx/controllers/AdministrarAlumnosController.java
+    #       Codigo/MiAMiFX/src/miamifx/controllers/EditarAlumnoController.java
+
+commit 370eac5bc9fdd255437603ee0eafc0aca260be52
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed Mar 29 14:43:43 2017 -0600
+
+    se modificaron y arreglaron algunos diagramas de robustez, se corrigio un error de danzas
+
+commit abb32ed82424db9efde27c16f347d60bfdd360ed
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 29 14:33:59 2017 -0600
+
+    conflictos
+
+commit a25f7ca059b4377cfcf0c64d77ee384509a4a515
+Merge: 5510bfc 3b3cdb4
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 29 14:25:37 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/EditarAlumnoController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/src/miamifx/controllers/CrearDanzaController.java
+    #       Codigo/MiAMiFX/src/miamifx/controllers/EditarAlumnoController.java
+
+commit 5510bfc7c34ea4c518be99fa399f236bf5f93d24
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 29 14:22:43 2017 -0600
+
+    conflictos
+
+commit 3b3cdb4bc1979c69a59230f8a14fbac10052d395
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Wed Mar 29 13:34:42 2017 -0600
+
+    termine de implementar la funcion de las interfaces de los maestros de los casos de uso que se tenian presupuestados.
+
+commit 8fed57c6f191d78b9365900bac3cfd84a9b84cdd
+Author: Missael Hernandez <missaelxp@gmail.com>
+Date:   Wed Mar 29 11:34:22 2017 -0600
+
+    compilaciones
+
+commit 2f3036a8270b111f5b70192c22af23434952e09d
+Author: Missael Hernandez <missaelxp@gmail.com>
+Date:   Wed Mar 29 10:49:29 2017 -0600
+
+    Correccion a las busquedas de maestros
+
+commit 03376acb8f19147b90af69895bdb5a940977cb6f
+Author: Missael Hernandez <missaelxp@gmail.com>
+Date:   Wed Mar 29 10:46:20 2017 -0600
+
+    Correcciones a mostras alumnos
+
+commit ba077fbd4b11bd896e9a238021fac8d5cf2c28cc
+Merge: d9423c0 1a08bd9
+Author: MigueelAcosta <necros.omega@gmail.com>
+Date:   Wed Mar 29 01:09:25 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/nbproject/UPDATED.TXT
+    #       Codigo/MiAMiFX/src/miamifx/controllers/CrearDanzaController.java
+
+commit d9423c0647a86a3a481e6b450402b10de8b13414
+Author: MigueelAcosta <necros.omega@gmail.com>
+Date:   Wed Mar 29 01:04:33 2017 -0600
+
+    actualizacion en interfaces, se agregaron funciones de interfaces de maestro y funciones a botones en alumnos.
+
+commit 1a08bd91844d65dfe89b162e8c570b8cfc558ebc
+Merge: 04d0636 ef82fa5
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed Mar 29 00:33:58 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/EditarAlumnoController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/eclipselink.jar
+    #       Codigo/MiAMiFX/dist/lib/mysql-connector-java-5.1.23-bin.jar
+    #       Codigo/MiAMiFX/src/miamifx/controllers/AdministrarAlumnosController.java
+    #       Codigo/MiAMiFX/src/miamifx/controllers/EditarAlumnoController.java
+
+commit 04d0636c9391fd26abc5ed53dfe52578489ed4fb
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Wed Mar 29 00:33:30 2017 -0600
+
+    se dio funcionalidad a las interfaces administrar danzas, crearDanza, se modifico el danzaResource para hacer una conulta junto con jpa de tipo de danza, se comenzo a explorar el grupoClase.
+
+commit ef82fa59c89add0b2357a2c716eb18f6a29f07b9
+Merge: 5952114 9a7e1d2
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 22:35:44 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/EditarAlumnoController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/src/miamifx/controllers/AdministrarAlumnosController.java
+    #       Codigo/MiAMiFX/src/miamifx/controllers/EditarAlumnoController.java
+
+commit 5952114ce0c8ac247f178a3fe34503b145aca8f9
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 22:35:18 2017 -0600
+
+    compilación
+
+commit 9a7e1d230a43ab4a9bbe0127cddf3361aa369f92
+Merge: 0400a34 ebc7f44
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 21:09:50 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 0400a345b7637c022dbddca5f941b487fa8d9183
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 21:08:54 2017 -0600
+
+    actualizacion de interfaz de maestros
+
+commit 0d2a2a348febb92cefbc2b1e8754cece89b9333e
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 20:54:19 2017 -0600
+
+    interfaz administrar maestros
+
+commit ebc7f44850b1a8f4bc9c3f49558207c3562bef8a
+Merge: 957c263 eeb4838
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 19:04:07 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/src/miamifx/controllers/CrearDanzaController.java
+
+commit 957c2638471c8dda69eb4978ef9e855e10188a77
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 19:00:12 2017 -0600
+
+    Se modifico la ventana de crear danza, se añadio funcionalidad a la ventana
+
+commit eeb483894afafb1b211cc23fa16ad00e77e50f0c
+Merge: 278af22 f39a9f3
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 18:39:38 2017 -0600
+
+    actualizacion
+
+commit 278af222373621485ae395505f4094ee49a15a53
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 18:38:06 2017 -0600
+
+    codigo
+
+commit f10389a24436af52ca1aa119d67c5b1c1a3f5114
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 18:37:20 2017 -0600
+
+    correcciones en la interfaz de edicion
+
+commit f39a9f3f2e5597bd697f365a3bc59a86c2bafaaa
+Merge: 0108bad c4401e3
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 18:35:08 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/dist/lib/eclipselink.jar
+    #       Codigo/MiAMiFX/dist/lib/mysql-connector-java-5.1.23-bin.jar
+    #       Codigo/MiAMiFX/src/miamifx/controllers/AdministrarAlumnosController.java
+
+commit 0108bad9f10524210ef4571ff052208654027099
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 18:34:50 2017 -0600
+
+    corregido la salida de la ventana de los detalles de los alumno
+
+commit c4401e3562f26a4afb368c9926c0ae0960b6479f
+Merge: 867876d 83c6bf1
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 18:05:55 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/dist/lib/eclipselink.jar
+    #       Codigo/MiAMiFX/dist/lib/mysql-connector-java-5.1.23-bin.jar
+    #       Codigo/MiAMiFX/src/miamifx/CrearDanza.fxml
+    #       Codigo/MiAMiFX/src/miamifx/controllers/AdministrarAlumnosController.java
+
+commit 867876d5efd1d0ee897a3762e98e882fde5b3217
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 18:05:17 2017 -0600
+
+    se actualiza codigo de danzas con @FXML
+
+commit 83c6bf1376a33b88435cca7e698a0918de564616
+Merge: 215ba3b 519f5b2
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 17:59:55 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/AdministrarAlumnosController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/src/miamifx/controllers/AdministrarAlumnosController.java
+
+commit 215ba3b06424ec334132fa26084f5c2a9020fcef
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 17:59:08 2017 -0600
+
+    compilaciones
+
+commit 519f5b29daa39b5e8207f6bf1538c00b32727c0c
+Merge: edda545 e177dfa
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 17:57:36 2017 -0600
+
+    modificacion en el metodo init de editar alumnos
+
+commit edda5459ffa239be320e899901198790a96226ea
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 17:56:19 2017 -0600
+
+    error en el seteo de los campos de editar alumno
+
+commit e177dfa35272f1aea58d46a67353b0039e0c2f8b
+Merge: 0c612bf da8e554
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 16:29:24 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/AdministrarAlumnosController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/src/miamifx/controllers/AdministrarAlumnosController.java
+
+commit 0c612bf75e325367306b66a6c2e716d7558bcecb
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 16:28:59 2017 -0600
+
+    correccion de errores extraños al hacer pull
+
+commit da8e5547bbec9ce83427bb7f2bd3c7743dc444af
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 16:28:07 2017 -0600
+
+    corrección a la muestra de las danzas
+
+commit 46d0cea5691924fa1fb2acfafa29c4fc32ced976
+Merge: a327186 5f0ece1
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 16:22:09 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+
+commit a327186090562ca4d506b561981001dda8b232f3
+Merge: dcaeb66 a18cb3d
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 16:21:30 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+
+commit 5f0ece1c51ad60be71dfcc7cfc7b0bf5d235db3c
+Merge: be2b762 a18cb3d
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 16:15:45 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/AdministrarAlumnos.fxml
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/RegistrarAlumnoController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit dcaeb66ba13991a4c4600dddeae2aeb51cde26bf
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 16:14:46 2017 -0600
+
+    compilación
+
+commit be2b7621abeb5d8308d36dce72cf0ad486aa4c56
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 16:14:35 2017 -0600
+
+    modifique el controlador principal, se añadio funcionalidad a ciertass acciones en las interfaces de danzas
+
+commit a18cb3dd65d3cf0c2055a3408ca3195cd1c650f2
+Merge: 6ecb7a5 8875955
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 15:29:32 2017 -0600
+
+    actualizacion en interfaces
+
+commit 6ecb7a5e1fe73078db4991bdc4b50f249aa53b5d
+Merge: 80a0bf1 6d47cde
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 15:27:43 2017 -0600
+
+    correccion de metodos de tabla
+
+commit 8875955ce563cfaff481bc76fea5d105d8f0a634
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 15:18:47 2017 -0600
+
+    correcion de lectura de columnas
+
+commit 80a0bf12ef3b3185be1041616d22b7281852e9f6
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 15:18:23 2017 -0600
+
+    metodos de validacion de campos
+
+commit 6d47cde87c3022e50c0ad8f5237921c235c4de90
+Merge: a238b14 e3da086
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 14:43:38 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/AdministrarAlumnosController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit a238b1442e31023865404102e2f60ee033ac38d9
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 14:42:11 2017 -0600
+
+    Corrección de las búsquedas por nombre y correo
+
+commit e3da0860f913f299e36cfa9fae1d80d778d7812e
+Merge: a0e742d a408a1b
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 14:32:20 2017 -0600
+
+    actualizacion
+
+commit a0e742db8d2fdea0faa2c972189888422cb85422
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 14:31:37 2017 -0600
+
+    correccion de interfaz y validaciones
+
+commit a408a1ba963c1abc17dcbc9fba5fe977b3259452
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 14:20:10 2017 -0600
+
+    Correcciones a las búsquedas por nombre o correo
+
+commit a7a6d7be5834664da0c1e2fabae7e4717935b27d
+Merge: 722ba1e a767e68
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 14:01:12 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit 722ba1e8b60578dd03a80ee124973b8488b279c5
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 14:00:58 2017 -0600
+
+    Corrección para la consulta de alumnos
+
+commit a767e6800e9d279d6adf7418229bca947d4ac979
+Merge: 43b5160 7a8ac96
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 13:29:13 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/AdministrarAlumnosController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit 43b516095f2edb2daaa32327b8e5fb0b8ada66c2
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 28 13:26:13 2017 -0600
+
+    implementacion de registrar y editar alumnos
+
+commit e94f946066cec3f9e263a318a3ea2059d69e5141
+Merge: d05ee73 7a8ac96
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 11:24:38 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+
+commit d05ee731dca0922f7fda10d114dc3cdee20d1175
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 28 11:22:31 2017 -0600
+
+    se actualizo el psp y trabaje en las interfaces de Danzas
+
+commit 7a8ac968e48ba638cf1c04b0027870026ddd0591
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 01:11:22 2017 -0600
+
+    Actualización de clases
+
+commit f590f73ca0c088826d747060f213afc1644c0d87
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 28 01:07:54 2017 -0600
+
+    Arreglado la búsqueda por nombre
+
+commit 6d08e1e3dd94a75f816353cb6350b17fc316865b
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 23:16:14 2017 -0600
+
+    Terminadas las pruebas básicas de los recursos
+
+commit 4c26ec0f35b6a1f39171bf799b72fb198b844996
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 21:40:37 2017 -0600
+
+    terminados los diagramas de secuencia y clases
+
+commit 0b097ec32cb19fac8094ec7e08b5d94a010408e6
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 18:52:33 2017 -0600
+
+    Corrección al controlador extendido de alumno para incluir la validación de activos
+
+commit fbb32e2848c37a9c3fbf92eca1020318f55ca058
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 18:31:37 2017 -0600
+
+    Se agrego el path a la foto del alumno en la base de datos y la clase entidad
+
+commit e6b70d3ea2fe68794dfdf5c8d60a1b8bb7d57df8
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 18:23:53 2017 -0600
+
+    Ahora busca el alumno con LIKE
+
+commit aaf2333ee75dd8b9f1f93d76f63ca5a45326f9da
+Merge: 6144409 7ec564e
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 18:16:13 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 61444090ed1abc66667966b25a6350b3bd92433f
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 18:14:54 2017 -0600
+
+    Se crearon los diagramas de clase
+
+commit 7ec564e087d1d541260af1364c19cf3195d53b16
+Merge: ad447db 6c05343
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Mon Mar 27 18:12:27 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit ad447dbfbd18a6ee34a9f7dac421de41e284bb6b
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Mon Mar 27 18:11:47 2017 -0600
+
+    Implementacion de codigo en metodos
+
+commit 6c053434c86683099f23c608aafdef08e76cd0bd
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 18:08:57 2017 -0600
+
+    filtrados los alumnos a únicamente activos
+
+commit 5d7109f02853c029d609f5e582683b68c4bf6596
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Mar 27 14:28:20 2017 -0600
+
+    Búsqueda de alumnos por correo
+
+commit 04d6c8a5ef2ec7655cccfb1edff56d5bb2b8a441
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 23 18:55:55 2017 -0600
+
+    Actualizacion de PSP
+
+commit 34d40a684e8b4ac1d3e030b017a2d7d03565a7cc
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 23 18:40:43 2017 -0600
+
+    codigo en el controlador de la interfaz de administracion de alumnos
+
+commit 77e00cb77a2356f6de8eb8dc207f5b7e400fcb75
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 23 18:39:57 2017 -0600
+
+    mas codigo
+
+commit a6f50dc44b63d2fdd8eab45419a92ed70d4c9db3
+Merge: f309614 7b11b04
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 23 18:36:30 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit f30961412c6bde6774fd1b02e8d3fef445378145
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 23 18:34:46 2017 -0600
+
+    Corrección en los Find (s)
+
+commit 7b11b04eaba59b79d9ee34dd186724e159f5c2da
+Merge: c311eb9 f030658
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 23 18:07:51 2017 -0600
+
+    actualizacion de codigo
+
+commit c311eb91267f2e84482d2c38bb992bb9054c1a4b
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 23 18:06:29 2017 -0600
+
+    Codigo en las interfaces
+
+commit f030658ed8484800e9f588d56d1bce6a9c7e528e
+Merge: 7840936 da62a9b
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Mar 23 18:02:09 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+    #       Codigo/MiAMiFX/dist/lib/eclipselink.jar
+    #       Codigo/MiAMiFX/dist/lib/mysql-connector-java-5.1.23-bin.jar
+
+commit 784093610d605eab23ba0aa758a563ebace1c226
+Merge: 0744948 9942949
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Mar 23 18:00:47 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit da62a9bd5090427573cb28f4c62209b0502b4ebf
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 23 18:00:20 2017 -0600
+
+    GetFromApellidos- alumnos
+
+commit ae3e755f57234e05f654cb247ef8a7ed05260216
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 22 14:51:07 2017 -0600
+
+    compilando con los modelos actualizados
+
+commit 78458a8fb5b9a9b741372b740ba2ee7fbee1b7a1
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Mar 22 09:33:18 2017 -0600
+
+    Refactorizacion, acomodo de código extra de los controladores y modificaciones menores a la base de datos
+
+commit 6ebfbe6882f47887a7751896ccf838303ced0a21
+Merge: 0a529a2 9942949
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 21 18:17:21 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Codigo/MiAMiFX/build/built-jar.properties
+    #       Codigo/MiAMiFX/build/classes/miamifx/controllers/PrincipalController.class
+    #       Codigo/MiAMiFX/dist/MiAMiFX.html
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jar
+    #       Codigo/MiAMiFX/dist/MiAMiFX.jnlp
+    #       Codigo/MiAMiFX/dist/lib/MiAMiCore.jar
+
+commit 0a529a22bfbd28db388647ebe182758037d76e4c
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 21 18:17:00 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       .gitignore
+    conflictos
+
+commit 0744948863b972f574a47b6e562c6aec95b03e98
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 21 18:10:45 2017 -0600
+
+    necesario para hacer pull, se bajo el proyecto fx
+
+commit 99429499ccf92ccb67bd31017d2bc31c1d9a69ae
+Merge: 3eb7573 49866f4
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 21 18:07:23 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 3eb7573f92609caf930ad1333a57942da8483166
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 21 18:05:56 2017 -0600
+
+    actualizacion
+
+commit 49866f47db64be9e5be8818f2f041ca19927d267
+Merge: b034a5b 032c742
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 21 17:22:26 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       .gitignore
+
+commit b034a5b98c90b6f7dee5d5e533f77cf671513f67
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 21 17:19:42 2017 -0600
+
+    Pruebas
+
+commit 032c742a898ccc6005cd666c99535de151d8e99e
+Merge: 19ef089 2197da8
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 21 17:17:14 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 19ef0890634c41a64ceee72de6ec920315e77596
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 21 17:16:32 2017 -0600
+
+    funcionamiento y acoplamiento de interfaces
+
+commit 2197da826b31bbc7807ec38c1c9f3e62803cfbcb
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 16 09:34:39 2017 -0600
+
+    Detalles a los recursos
+
+commit 507e8aa4d91e3938ef1e1df322cffe9f012a4636
+Merge: ec3a50c 2e11152
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 14 18:24:21 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit ec3a50c0acd0985789968d42fc32b499b957dcc4
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 14 18:23:44 2017 -0600
+
+    se agregaron las descripciones de CU faltantes, se modifico mi psp, se agrego una imagen del mapa actualizado, se actualizaron diagramas de robustez
+
+commit 2e1115291e5db8c99d0bba56264a2fb6a7d23103
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 14 18:20:29 2017 -0600
+
+    Terminada la lógica de los recursos
+
+commit 7e36cb372bc1c21ff41b08d3ca77c95ab99f5998
+Merge: 0ff0be9 9bc8876
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 14 17:19:38 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       .gitignore
+
+commit 0ff0be98194d46aa42cd2e0062a553079169e97f
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 14 17:18:04 2017 -0600
+
+    modificado los servicios
+
+commit 9bc8876f98c977f8013da3f3816020fc2a04648e
+Merge: 40344eb 64c76ca
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Fri Mar 10 04:16:23 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       .gitignore
+
+commit 40344ebf38c664c37ee558e472ab16c4d0d4de4e
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Fri Mar 10 04:14:26 2017 -0600
+
+    nuevas interfaces
+
+commit 64c76ca0343f2bc5e6315a90e4d5bd00d3874600
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 9 18:38:19 2017 -0600
+
+    funcionalidad de eliminar editar y agregar listas para pruebas
+
+commit cf6f71d6e6655756d3750b9981129815cd688fc5
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Mar 9 18:03:56 2017 -0600
+
+    Lista la funcionalidad de registrar alumno, falta pruebas unitarias
+
+commit b4d3e85430577a3ae589436ba71c2ac85302415a
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Thu Mar 9 17:22:37 2017 -0600
+
+    inicio de 2 interfaces y actualizacion de psp
+
+commit 0d8ad27f7974ac02a8b0b783c8afc99bb166e460
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 7 19:04:45 2017 -0600
+
+    se actualizo el DCU y diagrams de robustez
+
+commit 1b2bb300b8b891dbdbd837514b3aee1412d6aa5b
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 7 18:54:56 2017 -0600
+
+    correcciones al modelo relacional
+
+commit 96f65d6e2e2934a78d4cf8cb7e2324bc1f119efb
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 7 18:28:56 2017 -0600
+
+    Creados los skeleton de los recursos a consumir por las vistas
+
+commit 432f7007d6686a7e3ff01f97eab3e6a24be05982
+Merge: 0bd1555 d32e3e2
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 7 18:12:49 2017 -0600
+
+    Commit para actualizacion
+
+commit 0bd1555ac442976b583d67e6d5923b1ec81e1d75
+Author: Miguel Acosta\ Surface <noselaneta_12@hotmail.com>
+Date:   Tue Mar 7 18:05:24 2017 -0600
+
+    actualizacion
+
+commit d32e3e27e2070e10f1e33ff515d4710d23be310f
+Merge: bb03daf 5e38415
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 7 17:50:47 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit bb03dafc916de9297499fc27dacc583f7078c124
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 7 17:50:18 2017 -0600
+
+    Se agrego la imagen de el actual diagrama de CU
+
+commit 5e38415d159303b08c0b5184239ee6ae416620be
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 7 17:49:40 2017 -0600
+
+    Proyecto listo con JPA
+
+commit ecd1b80528022c2a97e7efd0dc7aabc626920a44
+Merge: 453e7c7 a3a92c1
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 7 17:42:32 2017 -0600
+
+    :S<-<
+
+commit 453e7c7ac743e573c9303d42132574e0e3c34123
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Mar 7 17:32:03 2017 -0600
+
+    Se copiaron los archivos que modifique  para evitar conflictos con las modificaciones de miguel ¬¬
+
+commit a3a92c10c98f4ef18c031f2a9271578db1c212b5
+Merge: fae6433 8349149
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 7 17:22:35 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit fae64331d0de40b3e3240c390847d9791c92b6a3
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Mar 7 17:22:00 2017 -0600
+
+    Modelo de clases finalizado y creación inicial de código
+
+commit 834914910f8b496510da552f55e550d7b3652870
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Thu Mar 2 18:45:26 2017 -0600
+
+    Nuevos diagramas y actualización de psp
+
+commit a3ee443d1d4ae71b2888e09cf4dcb8a2ffd6d5eb
+Merge: 0f77d9a bf7b6dd
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Feb 27 16:31:05 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 0f77d9ad138a69083076f385cb107d18e083674e
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Feb 27 16:30:38 2017 -0600
+
+    se actualiza el modelo de la DB
+
+commit bf7b6ddcfdde90b685b90df5efd5abb2587a20c2
+Merge: 9e0bcb7 e796cdc
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Thu Feb 23 18:40:41 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Diseno/MiAMi.EAP
+
+commit 9e0bcb7a0c8d1ed7788b399fbaad0212f2f5bdf9
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Thu Feb 23 18:39:21 2017 -0600
+
+    Se agregaron unos diagramas de robustez y se actualizo mi psp
+
+commit e796cdc977ca3a9932f4b540884aef7d7165e109
+Merge: 5e4f56c 1507827
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Feb 23 18:36:18 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 5e4f56c87429b9a4753e95ad194946a7be745435
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Feb 23 18:35:43 2017 -0600
+
+    Se modificaron las tablas de CU referentes a alumnos
+
+commit 1507827055d0a6057cf6eb8e22e3ec95aca5eee8
+Merge: 32497e1 2e2b087
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Thu Feb 23 17:37:04 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 2e2b087a43655dec6bd03c4a425b0e0797a16aed
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Feb 23 17:35:50 2017 -0600
+
+    modificaciones previas al diseño
+
+commit 6bf0a87cde56b9d50323379b7dbca5b7dec7e5ae
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Feb 21 18:26:01 2017 -0600
+
+    Se modificaron errores minimos del Diagrama de CU y modelo de dominio
+
+commit 592f26e6865fc710165fe30ff53615b56f3dfd2a
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Feb 21 17:50:57 2017 -0600
+
+    se agrego el diagrama de CU detallado al diseño
+
+commit 32497e15a877e87da68500e101a28968b4f46414
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Tue Feb 21 17:24:34 2017 -0600
+
+    psp actualizado
+
+commit efaad0828489237e4e92603c907410f2024ef879
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Feb 21 17:21:14 2017 -0600
+
+    :S
+
+commit a911093f3ae55867ed04e59cb85d5e447945de0e
+Merge: 947ff2a 8076a41
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Feb 21 17:18:58 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 947ff2aebe9b39eedb2952136aec6220faf0cf38
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Tue Feb 21 17:18:18 2017 -0600
+
+    Se añadio el psp a mi carpeta
+
+commit 8076a41d438e4494a90d7508bb8b4fa42cbfb889
+Author: Missael <missaelxp@gmail.com>
+Date:   Tue Feb 21 17:17:31 2017 -0600
+
+    actualizando al dia
+
+commit 985b7471cc8ef3d8cb19e2bd8a9bde4a9b8db292
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Tue Feb 21 16:54:16 2017 -0600
+
+    doc final
+
+commit 44761e8e969e3b9f2a1581d960024522e142cf5b
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Tue Feb 21 13:32:01 2017 -0600
+
+    Se agrega modelo de CU y mi PSPMerge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Diseno/Modelo casos de uso.EAP
+    
+    Se corrigio el diagrama de CU
+
+commit 16f6332967bf93cd905b0e650dbe07a1456a14ad
+Author: Missael <missaelxp@gmail.com>
+Date:   Mon Feb 20 12:55:39 2017 -0600
+
+    agregadas las interfaces exportadas
+
+commit 33ceeaa539edd43597c9c81391e6a82bdc94b94a
+Merge: c49c1fc 114368a
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Feb 16 17:49:05 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit c49c1fc22dc59b7b8877f5abe3b2482de266e87f
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Feb 16 15:06:31 2017 -0600
+
+    mas interfaces
+
+commit 114368ab5a438efa5e574f467c25ffc136a06b0b
+Merge: 0d7c04a bb4f0a7
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Thu Feb 16 14:28:01 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+    
+    # Conflicts:
+    #       Diseno/Modelo casos de uso.EAP
+    
+    SE agregaron descripciones de CU y bocetos de interfaces de usuario
+
+commit 0d7c04a4fe4e33f484f3e208a174f329d3858c06
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Thu Feb 16 14:24:40 2017 -0600
+
+    Actualizacion de documentos
+
+commit 00588665c9fd7ce60b6709567ea6d6d1e0db04dd
+Author: RANGER\AndrésRoberto <techmeza@hotmail.com>
+Date:   Thu Feb 16 13:01:56 2017 -0600
+
+    se agrego la ventana de registrar
+
+commit bb4f0a731f47eca192b5288c3a38a55c38741476
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Feb 16 00:57:10 2017 -0600
+
+    Se registro el trabajo del día de 16/feb/2017
+
+commit 99f2ba87ce90d49e4d55304ff1f1a51d04ee1a94
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Feb 16 00:49:48 2017 -0600
+
+    Se agregaron flujos alternos no contemplados en las interfaces
+
+commit a2eb2f9cfbe7b5c61d2123e5d881b715535d4799
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Feb 16 00:26:41 2017 -0600
+
+    Se actualizo el modelo de casos de uso para dividir el caso de uso “Administrar grupos” en agregar/eliminar alumnos de clases
+
+commit 725e08ba3cc01ef6b2e79156197ee302f872e14a
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Feb 16 00:20:43 2017 -0600
+
+    Se actualizo el modelo de dominio y se agregaron interfaces de 3 casos de uso
+
+commit 8019886dc256e75c342ade83005827fcf5d7d505
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Feb 15 14:42:03 2017 -0600
+
+    Se dividió el diagrama de casos de uso
+
+commit e00da30ceda34164e467d86cd6689d589814a8c0
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Feb 15 14:27:54 2017 -0600
+
+    Agregado el trabajo de 15/2/17
+
+commit 68f9aa64fda8b7301c3a48400ec8a618f35642b2
+Author: Missael <missaelxp@gmail.com>
+Date:   Wed Feb 15 14:24:50 2017 -0600
+
+    Se modifico el nombre de caso de uso por “pagar salario”
+
+commit 4a3b793c4092c08051f7b7ec4e81d93dfa2143ed
+Author: DESKTOP-3K4OOH9\Miguel Acosta <noselaneta_12@hotmail.com>
+Date:   Tue Feb 14 17:33:04 2017 -0600
+
+    Se agrega modelo de CU y mi PSP
+
+commit 28210470ca1b157a7363b5e9775dcf250151ce96
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Feb 9 20:46:59 2017 -0600
+
+    Modelo de dominio
+
+commit 8aa54cf400dc15804a69bfd6fa0672dc2f8a97cf
+Merge: b103115 6a6081e
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Feb 9 17:47:16 2017 -0600
+
+    Merge branch 'master' of https://bitbucket.org/missaelxp/desarrollo-de-software-uv
+
+commit 6a6081ed79a28f46bbb9a58ed4d13e33d8d3335b
+Author: Missael Hernández Rosado <missaelxp@gmail.com>
+Date:   Thu Feb 9 23:46:14 2017 +0000
+
+    README.md creado vía web con Bitbucket
+
+commit b103115516b9f29b81fdf37e02c31e31169c6c42
+Author: Missael <missaelxp@gmail.com>
+Date:   Thu Feb 9 17:41:32 2017 -0600
+
+    Primer commit
